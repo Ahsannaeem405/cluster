@@ -94,7 +94,7 @@
 					<div class="mCustomScrollbar">
 						<ul>
 							<li class="nav-item">
-								<a href="00-HomePage.html" class="nav-link">Home</a>
+								<a href="index.php" class="nav-link">Home</a>
 							</li>
 							<!-- <li class="nav-item">
 							<a href="#" class="nav-link">Terms & Conditions</a>
@@ -103,7 +103,7 @@
 								<a href="#" class="nav-link">About Us</a>
 							</li>
 							<li class="nav-item ">
-								<a href="01-LandingPage.html" class="nav-link join-us ">Join us</a>
+								<a href="01-LandingPage.php" class="nav-link join-us ">Join us</a>
 							</li>
 							<!-- <li class="nav-item">
 							<a href="#" class="nav-link">Privacy Policy</a>
