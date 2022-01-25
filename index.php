@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from html.crumina.net/html-olympus/01-LandingPage.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Feb 2021 07:41:14 GMT -->
 
 <head>
 
@@ -28,7 +27,7 @@
 	<!-- WebP Safari Support -->
 	<script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/polyfills.js"></script>
 	<script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/webp-hero.bundle.js"></script>
-
+	<script src="https://kit.fontawesome.com/9838783293.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="landing-page">
@@ -76,9 +75,9 @@
 
 				<a href="#" class="logo">
 					<div class="img-wrap">
-						<img loading="lazy" src="img/logo.png" alt="Olympus" width="34" height="34">
+						<img loading="lazy" src="img/logo.png" alt="header-white-log" width="34" height="34">
 
-						<img loading="lazy" src="img/logo.png" width="34" height="34" alt="Olympus"
+						<img loading="lazy" src="img/logo.png" width="34" height="34" alt="header-color-logo"
 							class="logo-colored">
 
 					</div>
@@ -100,10 +99,10 @@
 							<a href="#" class="nav-link">Terms & Conditions</a>
 						</li> -->
 							<li class="nav-item">
-								<a href="#" class="nav-link">About Us</a>
+								<a href="login.php" class="nav-link">Sign up</a>
 							</li>
 							<li class="nav-item ">
-								<a href="01-LandingPage.php" class="nav-link join-us ">Join us</a>
+								<a href="login.php" class="nav-link join-us ">Log in</a>
 							</li>
 							<!-- <li class="nav-item">
 							<a href="#" class="nav-link">Privacy Policy</a>
@@ -139,7 +138,7 @@
 			<div class="row w-100 d-flex justify-content-center">
 				<div class="col-lg-10 col-md-10 col-12 d-flex justify-content-center">
 					<div>
-						<h2 class="text-center">Find The Perfect Cluster for Yourself</h2>
+						<h2 class="text-center">Find The Perfect Clustor for Yourself</h2>
 						<form class="form-inline search-form" method="post">
 							<div class="form-group label-floating">
 								<label class="control-label">What are you looking for?</label>
@@ -157,14 +156,14 @@
 		<div class="row">
 			<div class="col-12 mt-5">
 				<div class="row d-flex justify-content-between align-items-center">
-					<div class="col-3">
-						<p class="total-clusters"> 250 cluster available</p>
+					<div class="col-xl-3 col-lg-4 col-md-6 col-12">
+						<p class="total-clustors"> 250 clustor available</p>
 					</div>
-					<div class="col-3">
+					<div class="col-xl-3 col-lg-4 col-md-6  col-12">
 						<div class="form-group clustor-sort d-flex align-items-center justify-content-around">
-							<label for="inputState">Sort By </label>
-							<select id="inputState" class="form-control w-75">
-								<option selected>Top Clusters</option>
+							<label for="inputState">Sort By</label>
+							<select id="inputState" class=" w-75">
+								<option selected>Top Clustors</option>
 								<option>Most Popular</option>
 								<option>Most Newest</option>
 							</select>
@@ -174,16 +173,16 @@
 
 			</div>
 		</div>
-		<div class="row d-flex justify-content-center">
+		<div class="row d-flex justify-content-center mb-4">
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="#">
-					<div class="cluster-card">
-						<div class="cluster-card-head">
+				<a href="clustor.php">
+					<div class="clustor-card">
+						<div class="clustor-card-head">
 							<img src="./img/clusterbg.jpg" />
 						</div>
-						<div class="cluster-card-body">
-							<h3 class="cluster-card-heading">Floppy</h3>
-							<div class="cluster-card-details d-flex justify-content-between align-items-center">
+						<div class="clustor-card-body">
+							<h3 class="clustor-card-heading">Floppy</h3>
+							<div class="clustor-card-details d-flex justify-content-between align-items-center">
 								<h4>Manager: <span>Faizan</span></h4>
 								<p>2-01-2022</p>
 							</div>
@@ -195,14 +194,14 @@
 				</a>
 			</div>
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="#">
-					<div class="cluster-card">
-						<div class="cluster-card-head">
+				<a href="clustor.php">
+					<div class="clustor-card">
+						<div class="clustor-card-head">
 							<img src="./img/clusterbg.jpg" />
 						</div>
-						<div class="cluster-card-body">
-							<h3 class="cluster-card-heading">Floppy</h3>
-							<div class="cluster-card-details d-flex justify-content-between align-items-center">
+						<div class="clustor-card-body">
+							<h3 class="clustor-card-heading">Floppy</h3>
+							<div class="clustor-card-details d-flex justify-content-between align-items-center">
 								<h4>Manager: <span>Faizan</span></h4>
 								<p>2-01-2022</p>
 							</div>
@@ -214,14 +213,14 @@
 				</a>
 			</div>
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="#">
-					<div class="cluster-card">
-						<div class="cluster-card-head">
+				<a href="clustor.php">
+					<div class="clustor-card">
+						<div class="clustor-card-head">
 							<img src="./img/clusterbg.jpg" />
 						</div>
-						<div class="cluster-card-body">
-							<h3 class="cluster-card-heading">Floppy</h3>
-							<div class="cluster-card-details d-flex justify-content-between align-items-center">
+						<div class="clustor-card-body">
+							<h3 class="clustor-card-heading">Floppy</h3>
+							<div class="clustor-card-details d-flex justify-content-between align-items-center">
 								<h4>Manager: <span>Faizan</span></h4>
 								<p>2-01-2022</p>
 							</div>
@@ -233,14 +232,14 @@
 				</a>
 			</div>
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="#">
-					<div class="cluster-card">
-						<div class="cluster-card-head">
+				<a href="clustor.php">
+					<div class="clustor-card">
+						<div class="clustor-card-head">
 							<img src="./img/clusterbg.jpg" />
 						</div>
-						<div class="cluster-card-body">
-							<h3 class="cluster-card-heading">Floppy</h3>
-							<div class="cluster-card-details d-flex justify-content-between align-items-center">
+						<div class="clustor-card-body">
+							<h3 class="clustor-card-heading">Floppy</h3>
+							<div class="clustor-card-details d-flex justify-content-between align-items-center">
 								<h4>Manager: <span>Faizan</span></h4>
 								<p>2-01-2022</p>
 							</div>
@@ -252,14 +251,14 @@
 				</a>
 			</div>
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="#">
-					<div class="cluster-card">
-						<div class="cluster-card-head">
+				<a href="clustor.php">
+					<div class="clustor-card">
+						<div class="clustor-card-head">
 							<img src="./img/clusterbg.jpg" />
 						</div>
-						<div class="cluster-card-body">
-							<h3 class="cluster-card-heading">Floppy</h3>
-							<div class="cluster-card-details d-flex justify-content-between align-items-center">
+						<div class="clustor-card-body">
+							<h3 class="clustor-card-heading">Floppy</h3>
+							<div class="clustor-card-details d-flex justify-content-between align-items-center">
 								<h4>Manager: <span>Faizan</span></h4>
 								<p>2-01-2022</p>
 							</div>
@@ -271,14 +270,14 @@
 				</a>
 			</div>
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="#">
-					<div class="cluster-card">
-						<div class="cluster-card-head">
+				<a href="clustor.php">
+					<div class="clustor-card">
+						<div class="clustor-card-head">
 							<img src="./img/clusterbg.jpg" />
 						</div>
-						<div class="cluster-card-body">
-							<h3 class="cluster-card-heading">Floppy</h3>
-							<div class="cluster-card-details d-flex justify-content-between align-items-center">
+						<div class="clustor-card-body">
+							<h3 class="clustor-card-heading">Floppy</h3>
+							<div class="clustor-card-details d-flex justify-content-between align-items-center">
 								<h4>Manager: <span>Faizan</span></h4>
 								<p>2-01-2022</p>
 							</div>
@@ -290,14 +289,14 @@
 				</a>
 			</div>
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="#">
-					<div class="cluster-card">
-						<div class="cluster-card-head">
+				<a href="clustor.php">
+					<div class="clustor-card">
+						<div class="clustor-card-head">
 							<img src="./img/clusterbg.jpg" />
 						</div>
-						<div class="cluster-card-body">
-							<h3 class="cluster-card-heading">Floppy</h3>
-							<div class="cluster-card-details d-flex justify-content-between align-items-center">
+						<div class="clustor-card-body">
+							<h3 class="clustor-card-heading">Floppy</h3>
+							<div class="clustor-card-details d-flex justify-content-between align-items-center">
 								<h4>Manager: <span>Faizan</span></h4>
 								<p>2-01-2022</p>
 							</div>
@@ -309,14 +308,14 @@
 				</a>
 			</div>
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="#">
-					<div class="cluster-card">
-						<div class="cluster-card-head">
+				<a href="clustor.php">
+					<div class="clustor-card">
+						<div class="clustor-card-head">
 							<img src="./img/clusterbg.jpg" />
 						</div>
-						<div class="cluster-card-body">
-							<h3 class="cluster-card-heading">Floppy</h3>
-							<div class="cluster-card-details d-flex justify-content-between align-items-center">
+						<div class="clustor-card-body">
+							<h3 class="clustor-card-heading">Floppy</h3>
+							<div class="clustor-card-details d-flex justify-content-between align-items-center">
 								<h4>Manager: <span>Faizan</span></h4>
 								<p>2-01-2022</p>
 							</div>
@@ -333,6 +332,67 @@
 	</div>
 
 	<!--Home page end-->
+
+	 <!--footer start-->
+	 <div class="homepage-footer">
+        <div class="container ">
+            <div class="row d-flex align-items-center py-4">
+                <div class="col-lg-6 col-12 mt-5 px-0 px-xl-5">
+                    <div class="news-sub">
+                        <h5 class="news-sub-heading text-white">
+                            News Subscribe Now for Updates!
+                        </h5>
+                        <form>
+                            <div class="footer-form">
+                                <input type="email" required placeholder="Email Address" class="form=conteol w-100 " />
+                                <input type="submit" class="footer-news-btn form-control" />
+                            </div>
+                            
+                            
+                        </form>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="footer-logo text-lg-center text-start">
+                        <img loading="lazy" src="img/white-logo.png" alt="footer-logo">
+                    </div>
+
+                    <h2>Thank You for Visiting Our website</h2>
+                </div>
+
+                <div class="col-lg-3 col-6 d-flex justify-content-center">
+                    <div class="contact-us">
+                        <h4>
+                            Contact Us
+                        </h4>
+                        <div class="d-flex " style="gap:10px;">
+                            <a href="#">
+                                <div class="footer-links">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div class="footer-links">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+               
+            </div>
+            <div class="row footer-buttom">
+                <div class="col-12">
+                    <p class="text-center text-white">
+                        Copyrights © 2022-2023 All Rights Reserved by website.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer end -->
 	<!-- JS Scripts -->
 
 	<script>
@@ -365,6 +425,5 @@
 
 </body>
 
-<!-- Mirrored from html.crumina.net/html-olympus/01-LandingPage.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Feb 2021 07:41:16 GMT -->
 
 </html>

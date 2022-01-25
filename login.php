@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from html.crumina.net/html-olympus/01-LandingPage.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Feb 2021 07:41:14 GMT -->
 <head>
 
 	<title>Landing Page</title>
@@ -71,9 +70,9 @@
 
 			<a href="#" class="logo">
 				<div class="img-wrap">
-					<img loading="lazy" src="img/logo.png" alt="Olympus" width="34" height="34">
+					<img loading="lazy" src="img/logo.png" alt="header-white-logo" width="34" height="34">
 			
-					 <img loading="lazy" src="img/logo.png" width="34" height="34" alt="Olympus" class="logo-colored">
+					 <img loading="lazy" src="img/logo.png" width="34" height="34" alt="header-color-logo" class="logo-colored">
 
 				</div>
 			</a>
@@ -92,10 +91,10 @@
 							<a href="#" class="nav-link">Terms & Conditions</a>
 						</li> -->
 						<li class="nav-item">
-							<a href="#" class="nav-link">About Us</a>
+							<a href="login.php" class="nav-link">Sign up</a>
 						</li>
 						<li class="nav-item ">
-							<a href="01-LandingPage.php" class="nav-link join-us ">Join us</a>
+							<a href="login.php" class="nav-link join-us ">Log in</a>
 						</li>
 						<!-- <li class="nav-item">
 							<a href="#" class="nav-link">Privacy Policy</a>
@@ -145,7 +144,7 @@
 						</a>
 					</li>
 					<li class="nav-item w-50" role="presentation">
-						<a class="nav-link d-flex justify-content-center align-items-center" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+						<a class="nav-link  d-flex justify-content-center align-items-center" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
 							<svg class="olymp-register-icon mx-2"><use xlink:href="#olymp-register-icon"></use></svg> Login
 						</a>
 					</li>
@@ -237,14 +236,9 @@
 
 									<a href="#" class="btn btn-lg btn-primary full-width">Login</a>
 
-									<div class="or"></div>
-
-									<a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left"><svg width="16" height="16"><use xlink:href="#olymp-facebook-icon"></use></svg>Login with Facebook</a>
-
-									<a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left"><svg width="16" height="16"><use xlink:href="#olymp-twitter-icon"></use></svg>Login with Twitter</a>
 
 
-									<p>Don’t you have an account? <a href="01-LandingPage.html">Register Now!</a> it’s really simple and you can start enjoing all the benefits!</p>
+									<p>Don’t you have an account? <a href="login.php">Register Now!</a> it’s really simple and you can start enjoing all the benefits!</p>
 								</div>
 							</div>
 						</form>
@@ -285,7 +279,7 @@
 					</div>
 					<div class="form-group label-floating">
 						<label class="control-label">Your New Password</label>
-						<input class="form-control" placeholder="" type="password" value="olympus">
+						<input class="form-control" placeholder="" type="password" value="password">
 					</div>
 					<button class="btn btn-primary btn-lg full-width">Change your Password!</button>
 				</form>
@@ -354,5 +348,4 @@
 
 </body>
 
-<!-- Mirrored from html.crumina.net/html-olympus/01-LandingPage.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Feb 2021 07:41:16 GMT -->
 </html>
