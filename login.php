@@ -3,7 +3,7 @@
 
 <head>
 
-	<title>Landing Page</title>
+	<title>Login | Sign up</title>
 
 	<!-- Required meta tags always come first -->
 	<meta charset="utf-8">
