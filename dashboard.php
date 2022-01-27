@@ -88,7 +88,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="clustor-manager.php">
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
 							<use xlink:href="#olymp-star-icon"></use>
 						</svg>
@@ -175,7 +175,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="clustor-manager.php">
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
 							<use xlink:href="#olymp-star-icon"></use>
 						</svg>
