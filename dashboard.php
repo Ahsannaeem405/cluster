@@ -95,7 +95,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="your-events.php">
 						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
 							<use xlink:href="#olymp-manage-widgets-icon"></use>
 						</svg>
@@ -313,7 +313,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="your-events.php">
 						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
 							<use xlink:href="#olymp-manage-widgets-icon"></use>
 						</svg>
