@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>Landing Page</title>
+    <title>Cluster Page</title>
 
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
@@ -133,7 +133,7 @@
     <!--header end-->
     <!--Clustor page start-->
     <div class="clustor-page-header d-flex"
-        style="background: linear-gradient(rgba(9, 126, 235, 0.5), rgba(9, 126, 235, 0.5)),url(./img/clusterbg.jpg);background-position:center;background-repeat: no-repeat; background-size: cover;">
+        style="background: linear-gradient(rgba(227, 9, 23, 0.5), rgba(227, 9, 23, 0.5)),url(./img/clusterbg.jpg);background-position:center;background-repeat: no-repeat; background-size: cover;">
         <div class="container d-flex align-items-center w-100">
             <div class="row py-4 w-100">
                 <div class="col-12">
