@@ -3,28 +3,43 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 class install extends Controller
 {
-    function install_script(Request $req)
+    function install_script(Request $request)
     {
-        
+       // dd($request->input());
+        $request->validate([
+            'dbname' => 'required',
+            'dbusername' => 'required',
+            'email' => 'required',
+            'pwd' => 'required',
+               
+        ]);
+    $dbname=$request->dbname;
+    $dbusername = $request->dbusername;
+    $dbpass=$request->dbpass;
+
+
+
+
         $myfile = fopen("../.env", "w") or die("Unable to open file!");
         $txt0 = "APP_NAME=Laravel\n
-APP_NAME=Laravel\n
-APP_ENV=local\n
-APP_KEY=base64:ZTQ6Z06QE1/WXpuORbsNqEaka3zzdmEwHiVxm+QDZl4=\n
-APP_DEBUG=true\n
-APP_URL=http://localhost\n
-LOG_CHANNEL=stack\n
-LOG_DEPRECATIONS_CHANNEL=null\n
-LOG_LEVEL=debug\n
-DB_CONNECTION=mysql\n
-DB_HOST=127.0.0.1\n";
+        APP_NAME=Laravel\n
+        APP_ENV=local\n
+        APP_KEY=base64:ZTQ6Z06QE1/WXpuORbsNqEaka3zzdmEwHiVxm+QDZl4=\n
+        APP_DEBUG=true\n
+        APP_URL=http://localhost\n
+        LOG_CHANNEL=stack\n
+        LOG_DEPRECATIONS_CHANNEL=null\n
+        LOG_LEVEL=debug\n
+        DB_CONNECTION=mysql\n
+        DB_HOST=127.0.0.1\n";
         $txt11 = "DB_PORT=3306\n";
-        $txt12 = "DB_DATABASE=laravel\n";
-        $txt13 = "DB_USERNAME=root\n";
-        $txt14 = "DB_PASSWORD=\n";
+        $txt12 = "DB_DATABASE=".$dbname."\n";
+        $txt13 = "DB_USERNAME=".$dbusername."\n";
+        $txt14 = "DB_PASSWORD=".$dbpass."\n";
 
         $txt15 = "BROADCAST_DRIVER=log\n";
         $txt16 = "CACHE_DRIVER=file\n";
@@ -98,6 +113,26 @@ DB_HOST=127.0.0.1\n";
         fwrite($myfile, $txt44);
         fclose($myfile);
 
+        
+        return redirect('/migrate');
+
+       
+        //sleep(10);
+        
+        $email=$request->email;
+        $pwd=$request->pwd;
+        $user=new User();
+        $user->email=$email;
+        $user->password=Hash::make($pwd);
+        $user->role='admin';
+        $user->status='1';
+        $user->save();
+       
+
+        
+
     }
+
+
    
 }

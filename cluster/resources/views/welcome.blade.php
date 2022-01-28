@@ -225,7 +225,7 @@ p {
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                 <h2 id="heading">Cluster</h2>
                 <p>Fill all form field to go to next step</p>
-                <form id="msform" class="install" method="POST" action="{{ url('install') }}">
+                <form id="msform" class="install" method="POST" action="{{ url('install_saved') }}">
                     @csrf
                     <!-- progressbar -->
                     <div class="row">
@@ -254,8 +254,8 @@ p {
                                 </div>
                             </div> 
                              
-                            <input type="text" name="email" value="PHP Version (>= 7.3)" readonly  />
-                            <input type="text" name="email" value="SQL" readonly  /> 
+                            <input type="text" name="php_version" value="PHP Version (>= 7.3)" readonly  />
+                            <input type="text" name="sql" value="SQL" readonly  /> 
                             
                         </div> <input type="button" name="next" class="next action-button" value="Next" />
                     </fieldset>
@@ -271,11 +271,26 @@ p {
                             </div> 
                             <label class="fieldlabels">DataBase Name: *</label> 
                             <input type="text" name="dbname" class="dbname" placeholder="DataBase Name"  required /> 
+                            @error('dbname')
+								<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+								</span>
+								@enderror
                             <label class="fieldlabels">DataBase User Name: *</label> 
                             <input type="text" name="dbusername" class="dbname" placeholder="DataBase User Name" required/> 
+                            @error('dbusername')
+								<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+								</span>
+								@enderror
                             <label class="fieldlabels">DataBase Password *</label> 
                             <input type="text" name="dbpass" placeholder="DataBase Password" required/> 
                             
+                            @error('dbpass')
+                            <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror  
                         </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     </fieldset>
                     <fieldset>
@@ -289,12 +304,23 @@ p {
                                 </div>
                             </div> 
 
-                            <label class="fieldlabels">Username: *</label> 
-                            <input type="text" name="uname" placeholder="UserName" required /> 
+                            <label class="fieldlabels">Email: *</label> 
+                            <input type="email" name="email" placeholder="UserName" required /> 
+                            @error('email')
+								<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+								</span>
+								@enderror
                             <label class="fieldlabels">Password: *</label> 
                             <input type="password" name="pwd" placeholder="Password"  required/> 
+                            @error('pwd')
+								<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+								</span>
+								@enderror
                             
-                        </div> <input type="button" name="next" class="next action-button" value="Submit" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                        </div> <input type="button" name="next" class="next action-button" value="Submit" /> 
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     </fieldset>
                     <fieldset>
                         <div class="form-card">
