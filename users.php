@@ -3,7 +3,7 @@
 
 <head>
 
-	<title>Members</title>
+	<title>Users</title>
 
 	<!-- Required meta tags always come first -->
 	<meta charset="utf-8">
@@ -216,7 +216,7 @@
 								data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
 								<use xlink:href="#olymp-happy-faces-icon"></use>
 							</svg>
-							<span class="left-menu-title">Members</span>
+							<span class="left-menu-title">Manage Users</span>
 						</a>
 					</li>
 					<li>
@@ -357,7 +357,7 @@
 								data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
 								<use xlink:href="#olymp-happy-faces-icon"></use>
 							</svg>
-							<span class="left-menu-title">Members</span>
+							<span class="left-menu-title">User</span>
 						</a>
 					</li>
 					<li>
@@ -446,7 +446,7 @@
 	<header class="header" id="site-header">
 
 		<div class="page-title">
-			<h6>Profile</h6>
+			<h6>Manager Users</h6>
 		</div>
 
 		<div class="header-content-wrapper">
@@ -1060,8 +1060,8 @@
 			<div class="row">
 				<div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
 					<div class="main-header-content">
-						<h1>Members</h1>
-						<p>Welcome to your member manager page.Here you can easly Add, Delete and Edit you mambers.
+						<h1>Manage User</h1>
+						<p>Welcome to your user manager page.Here you can easly Add, Delete and Edit you mambers.
 							Thank you</p>
 					</div>
 				</div>
@@ -1076,34 +1076,139 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
+				<div class="add-new-member my-3">
+					<a href="#" data-bs-toggle="modal"  data-bs-toggle="modal"
+					data-bs-target="#add-new-user">
+						<button><i class="fas fa-plus mx-1"></i> Add New</button>
+					</a>
+					
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
 				<div class="members-table">
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th scope="col">#</th>
-								<th scope="col">First</th>
-								<th scope="col">Last</th>
-								<th scope="col">Handle</th>
+								<th scope="col" class="text-center">#</th>
+								<th scope="col">Name</th>
+								<th scope="col">Email</th>
+								<th scope="col"></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
+								<td class="text-center">1</td>
+								<td class="py-2">Francine Smith</td>
+								<td>abc@xyz.com</td>
+								
+								<td>
+									<div class="d-flex justify-content-end">
+										<button class="mx-2 members-btns">
+											<span>Delete </span><i class="fas fa-trash-alt"></i>
+										</button>
+										<button class="mx-2 members-btns">
+											<span>Edit</span> <i class="fas fa-edit"></i>
+										</button>
+									</div>
+								</td>
 							</tr>
 							<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
+								<td class="text-center">2</td>
+								<td class="py-2">Francine Smith</td>
+								<td>abc@xyz.com</td>
+								
+								<td>
+									<div class="d-flex justify-content-end">
+										<button class="mx-2 members-btns">
+											<span>Delete </span><i class="fas fa-trash-alt"></i>
+										</button>
+										<button class="mx-2 members-btns">
+											<span>Edit</span> <i class="fas fa-edit"></i>
+										</button>
+									</div>
+								</td>
 							</tr>
 							<tr>
-								<th scope="row">3</th>
-								<td>Larry</td>
-								<td>the Bird</td>
-								<td>@twitter</td>
+								<td class="text-center">3</td>
+								<td class="py-2">Francine Smith</td>
+								<td>abc@xyz.com</td>
+								
+								<td>
+									<div class="d-flex justify-content-end">
+										<button class="mx-2 members-btns">
+											<span>Delete </span><i class="fas fa-trash-alt"></i>
+										</button>
+										<button class="mx-2 members-btns">
+											<span>Edit</span> <i class="fas fa-edit"></i>
+										</button>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center">4</td>
+								<td class="py-2">Francine Smith</td>
+								<td>abc@xyz.com</td>
+								
+								<td>
+									<div class="d-flex justify-content-end">
+										<button class="mx-2 members-btns">
+											<span>Delete </span><i class="fas fa-trash-alt"></i>
+										</button>
+										<button class="mx-2 members-btns">
+											<span>Edit</span> <i class="fas fa-edit"></i>
+										</button>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center">5</td>
+								<td class="py-2">Francine Smith</td>
+								<td>abc@xyz.com</td>
+								
+								<td>
+									<div class="d-flex justify-content-end">
+										<button class="mx-2 members-btns">
+											<span>Delete </span><i class="fas fa-trash-alt"></i>
+										</button>
+										<button class="mx-2 members-btns">
+											<span>Edit</span> <i class="fas fa-edit"></i>
+										</button>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center">6</td>
+								<td class="py-2">Francine Smith</td>
+								<td>abc@xyz.com</td>
+								
+								<td>
+									<div class="d-flex justify-content-end">
+										<button class="mx-2 members-btns">
+											<span>Delete </span><i class="fas fa-trash-alt"></i>
+										</button>
+										<button class="mx-2 members-btns">
+											<span>Edit</span> <i class="fas fa-edit"></i>
+										</button>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center">7</td>
+								<td class="py-2">Francine Smith</td>
+								<td>abc@xyz.com</td>
+								
+								<td>
+									<div class="d-flex justify-content-end">
+										<button class="mx-2 members-btns">
+											<span>Delete </span><i class="fas fa-trash-alt"></i>
+										</button>
+										<button class="mx-2 members-btns">
+											<span>Edit</span> <i class="fas fa-edit"></i>
+										</button>
+									</div>
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -1118,7 +1223,7 @@
 
 	<!-- Window-popup Create Friends Group -->
 
-	<div class="modal fade" id="create-friend-group-1" tabindex="-1" role="dialog"
+	<div class="modal fade" id="add-new-user" tabindex="-1" role="dialog"
 		aria-labelledby="create-friend-group-1" aria-hidden="true">
 		<div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
 			<div class="modal-content">
@@ -1128,27 +1233,24 @@
 					</svg>
 				</a>
 				<div class="modal-header">
-					<h6 class="title">Create New Cluster</h6>
+					<h6 class="title">Add New User</h6>
 				</div>
 
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-							<label for="exampleFormControlInput1">Cluster Name</label>
-							<input type="text" class="form-control" id="Cluster-Name" placeholder="Enter Cluster Name">
-						</div>
-
-						<div class="form-group">
-							<label for="exampleFormControlTextarea1">Cluster Details</label>
-							<textarea class="form-control" id="exampleFormControlTextarea1"
-								rows="3">Enter details here</textarea>
+							<label for="exampleFormControlInput1">Name</label>
+							<input type="text" class="form-control" id="Cluster-Name" placeholder="enter Name">
 						</div>
 						<div class="form-group">
-							<label for="exampleFormControlInput1">Select Cluster Image</label>
-							<input type="file" class="form-control" id="Cluster-Name" placeholder="Enter Cluster Name">
+							<label for="exampleFormControlInput1">Email</label>
+							<input type="email" class="form-control" id="Cluster-Name" placeholder="enter email">
 						</div>
-
-						<a href="#" class="btn btn-blue btn-lg full-width">Create Cluster</a>
+						<div class="form-group">
+							<label for="exampleFormControlInput1">Password</label>
+							<input type="password" class="form-control" id="Cluster-Name" placeholder="enter passowrd">
+						</div>
+						<a href="#" class="btn btn-blue btn-lg full-width">Add Now</a>
 					</form>
 				</div>
 			</div>
