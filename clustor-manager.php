@@ -93,7 +93,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="your-events.php">
 						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
 							<use xlink:href="#olymp-manage-widgets-icon"></use>
 						</svg>
@@ -181,7 +181,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="your-events.php">
 						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
 							<use xlink:href="#olymp-manage-widgets-icon"></use>
 						</svg>
@@ -1005,8 +1005,8 @@
 			<!-- ... end Friend Item -->		</div>
 
 		<div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
-			<div class="ui-block h-100 mb-0">
-				
+			<a href="Events-manager.php">
+			<div class="ui-block h-100 mb-0">	
 				<!-- Friend Item -->
 				
 				<div class="friend-item clusotr-groups">
@@ -1039,12 +1039,12 @@
 						</div>
 					</div>
 				</div>
-				
-				<!-- ... end Friend Item -->			</div>
+			</div>
+			</a>
 		</div>
 		<div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
-			<div class="ui-block h-100 mb-0">
-				
+			<a href="Events-manager.php">
+			<div class="ui-block h-100 mb-0">	
 				<!-- Friend Item -->
 				
 				<div class="friend-item clusotr-groups">
@@ -1077,12 +1077,12 @@
 						</div>
 					</div>
 				</div>
-				
-				<!-- ... end Friend Item -->			</div>
+			</div>
+			</a>
 		</div>
 		<div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
-			<div class="ui-block h-100 mb-0">
-				
+			<a href="Events-manager.php">
+			<div class="ui-block h-100 mb-0">	
 				<!-- Friend Item -->
 				
 				<div class="friend-item clusotr-groups">
@@ -1115,12 +1115,12 @@
 						</div>
 					</div>
 				</div>
-				
-				<!-- ... end Friend Item -->			</div>
+			</div>
+			</a>
 		</div>
 		<div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
-			<div class="ui-block h-100 mb-0">
-				
+			<a href="Events-manager.php">
+			<div class="ui-block h-100 mb-0">	
 				<!-- Friend Item -->
 				
 				<div class="friend-item clusotr-groups">
@@ -1153,8 +1153,8 @@
 						</div>
 					</div>
 				</div>
-				
-				<!-- ... end Friend Item -->			</div>
+			</div>
+			</a>
 		</div>
 
 

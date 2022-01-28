@@ -95,30 +95,23 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="your-events.php">
 						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
 							<use xlink:href="#olymp-manage-widgets-icon"></use>
 						</svg>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="members.php">
 						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
 							<use xlink:href="#olymp-happy-faces-icon"></use>
 						</svg>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="users.php">
 						<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
 							<use xlink:href="#olymp-happy-sticker-icon"></use>
-						</svg>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="WEATHER APP">
-							<use xlink:href="#olymp-music-shuffle-icon"></use>
 						</svg>
 					</a>
 				</li>
@@ -130,7 +123,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="communication.php">
 						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
 							<use xlink:href="#olymp-status-icon"></use>
 						</svg>
@@ -138,6 +131,13 @@
 				</li>
 				<li>
 					<a href="#">
+						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
+							<use xlink:href="#olymp-badge-icon"></use>
+						</svg>
+					</a>
+				</li>
+				<li>
+					<a href="website-setting.php">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
 							<use xlink:href="#olymp-settings-icon"></use>
 						</svg>
@@ -183,7 +183,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="your-events.php">
 						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
 							<use xlink:href="#olymp-manage-widgets-icon"></use>
 						</svg>
@@ -191,7 +191,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="members.php">
 						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
 							<use xlink:href="#olymp-happy-faces-icon"></use>
 						</svg>
@@ -199,23 +199,16 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="users.php">
 						<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
 							<use xlink:href="#olymp-happy-sticker-icon"></use>
 						</svg>
 						<span class="left-menu-title">Users</span>
 					</a>
 				</li>
+				
 				<li>
-					<a href="#">
-						<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="WEATHER APP">
-							<use xlink:href="#olymp-music-shuffle-icon"></use>
-						</svg>
-						<span class="left-menu-title">Cluster Manager</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
+					<a href="communication.php">
 						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
 							<use xlink:href="#olymp-badge-icon"></use>
 						</svg>
@@ -231,7 +224,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="website-setting.php">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
 							<use xlink:href="#olymp-settings-icon"></use>
 						</svg>
@@ -243,8 +236,6 @@
 	</div>
 </div>
 <!-- ... end Fixed Sidebar Left -->
-
-
 <!-- Fixed Sidebar Left -->
 <div class="fixed-sidebar left fixed-sidebar-responsive">
 
@@ -273,14 +264,14 @@
 						<img alt="author" src="img/author-page.html" width="36" height="36" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
-					<a href="02-ProfilePage.html" class="author-name fn">
+					<a href="dashboard.php" class="author-name fn">
 						<div class="author-title">
 							Abu Sufian
 							<svg class="olymp-dropdown-arrow-icon">
 								<use xlink:href="#olymp-dropdown-arrow-icon"></use>
 							</svg>
 						</div>
-						<span class="author-subtitle">SPACE COWBOY</span>
+						<span class="author-subtitle">web developer</span>
 					</a>
 				</div>
 			</div>
@@ -299,13 +290,13 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="dashboard.php">
 						<svg  class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="NEWSFEED"><use xlink:href="#olymp-status-icon"></use></svg>
 						<span class="left-menu-title">Dashboard</span>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="clustor-manager.php">
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
 							<use xlink:href="#olymp-star-icon"></use>
 						</svg>
@@ -313,7 +304,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="your-events.php">
 						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
 							<use xlink:href="#olymp-manage-widgets-icon"></use>
 						</svg>
@@ -321,7 +312,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="members.php">
 						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
 							<use xlink:href="#olymp-happy-faces-icon"></use>
 						</svg>
@@ -329,7 +320,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="users.php">
 						<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
 							<use xlink:href="#olymp-happy-sticker-icon"></use>
 						</svg>
@@ -337,15 +328,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
-						<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="WEATHER APP">
-							<use xlink:href="#olymp-music-shuffle-icon"></use>
-						</svg>
-						<span class="left-menu-title">Cluster Manager</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
+					<a href="communication.php">
 						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
 							<use xlink:href="#olymp-badge-icon"></use>
 						</svg>
@@ -361,7 +344,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="website-setting.php">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
 							<use xlink:href="#olymp-settings-icon"></use>
 						</svg>
@@ -403,7 +386,6 @@
 
 
 <!-- Header-BP -->
-
 <header class="header" id="site-header">
 
 	<div class="page-title">
@@ -411,21 +393,7 @@
 	</div>
 
 	<div class="header-content-wrapper">
-		<!-- <form class="search-bar w-search notification-list friend-requests">
-			<div class="form-group with-button">
-				<input class="form-control js-user-search" placeholder="Search here events" type="text">
-				<button>
-					<svg class="olymp-magnifying-glass-icon">
-						<use xlink:href="#olymp-magnifying-glass-icon"></use>
-					</svg>
-				</button>
-			</div>
-		</form> -->
-
-		<!-- <a href="#" class="link-find-friend">Find Events</a> -->
-
 		<div class="control-block">
-
 			<div class="author-page author vcard inline-items more">
 				<div class="author-thumb">
 					<img alt="author" src="img/author-page.html" width="36" height="36" class="avatar">
@@ -553,12 +521,10 @@
 	</div>
 
 </header>
-
 <!-- ... end Header-BP -->
 
 
 <!-- Responsive Header-BP -->
-
 <header class="header header-responsive" id="site-header-responsive">
 
 	<div class="header-content-wrapper float-end">
@@ -950,8 +916,9 @@
 	<!-- ... end  Tab panes -->
 
 </header>
-
 <!-- ... end Responsive Header-BP -->
+
+
 <div class="header-spacer header-spacer-small"></div>
 
 
@@ -1224,318 +1191,7 @@
 </div>
 
 <div class="container">
-	<div class="row">
-
-		<div class="col col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-3">
-			<div class="ui-block h-100 mb-0">
-				<div class="ui-block-title">
-					<div class="h6 title">Pie Chart with Text</div>
-					<a href="#" class="more">
-						<svg class="olymp-three-dots-icon">
-							<use xlink:href="#olymp-three-dots-icon"></use>
-						</svg>
-					</a>
-				</div>
-				<div class="ui-block-content">
-
-					<!---------------------------------------------- PIE-CHART ---------------------------------------->
-
-					<div class="circle-progress circle-pie-chart">
-						<div class="pie-chart" data-value="0.68" data-startcolor="#38a9ff" data-endcolor="#317cb6">
-							<div class="content"><span>%</span></div>
-						</div>
-					</div>
-
-					<!--
-						JS libraries for PIE-CHART:
-						js/libs/circle-progress.min.js
-					 -->
-
-
-					<!-- JS-init for PIE-CHART: js/libs/run-chart.min.js -->
-
-					<!------------------------------------ ... end PIE-CHART ------------------------------------------>
-
-					<div class="chart-text">
-						<h6>Friends Comments</h6>
-						<p>68% of friends that visit your profile comment on your posts.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="col col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 mb-3">
-			<div class="ui-block h-100 mb-0">
-				<div class="ui-block-title">
-					<div class="h6 title">Worldwide Statistics</div>
-					<a href="#" class="more">
-						<svg class="olymp-three-dots-icon">
-							<use xlink:href="#olymp-three-dots-icon"></use>
-						</svg>
-					</a>
-				</div>
-
-				<div class="ui-block-content">
-					<div class="world-statistics">
-						<div class="world-statistics-img">
-							<img loading=lazy src="img/world-map.html" alt="map" width="520" height="281">
-						</div>
-
-						<ul class="country-statistics">
-							<li>
-								<img loading=lazy src="img/flag1.html" alt="flag" width="16" height="11">
-								<span class="country">United States</span>
-								<span class="count-stat">86.134</span>
-							</li>
-							<li>
-								<img loading="lazy" src="img/flag2.html" alt="flag" width="16" height="11">
-								<span class="country">Mexico</span>
-								<span class="count-stat">35.136</span>
-							</li>
-							<li>
-								<img loading="lazy" src="img/flag3.html" alt="flag" width="16" height="11">
-								<span class="country">France</span>
-								<span class="count-stat">12.600</span>
-							</li>
-							<li>
-								<img loading="lazy" src="img/flag4.html" alt="flag" width="16" height="11">
-								<span class="country">Spain</span>
-								<span class="count-stat">9.471</span>
-							</li>
-							<li>
-								<img loading="lazy" src="img/flag5.html" alt="flag" width="16" height="11">
-								<span class="country">Ireland</span>
-								<span class="count-stat">8.058</span>
-							</li>
-							<li>
-								<img loading="lazy" src="img/flag6.html" alt="flag" width="16" height="11">
-								<span class="country">Argentina</span>
-								<span class="count-stat">5.653</span>
-							</li>
-							<li>
-								<img loading="lazy" src="img/flag7.html" alt="flag" width="16" height="11">
-								<span class="country">Ecuador</span>
-								<span class="count-stat">2.924</span>
-							</li>
-						</ul>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="row">
-		<div class="col col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-3">
-			<div class="ui-block h-100 mb-0">
-				<div class="ui-block-title">
-					<div class="h6 title">Country Detail</div>
-					<a href="#" class="more">
-						<svg class="olymp-three-dots-icon">
-							<use xlink:href="#olymp-three-dots-icon"></use>
-						</svg>
-					</a>
-				</div>
-				<div class="ui-block-content js-google-map">
-
-					<!------------------------------------------- US-CHART-MAP ---------------------------------------->
-
-					<div id="us-chart-map" style="width: 270px; height: 180px; max-width: 100%;"></div>
-
-					<!--
-						JS libraries for US-CHART-MAP:
-						js/libs/Chart.min.js
-						js/libs/chartjs-plugin-deferred.min.js
-						js/libs/loader.min.js
-					 -->
-
-
-					<!-- JS-init for US-CHART-MAP: js/libs/run-chart.min.js -->
-
-					<!------------------------------------ ... end US-CHART-MAP --------------------------------------->
-
-
-					<ul class="statistics-list-count style-2">
-						<li>
-							<div class="points">
-									<span>
-										<span class="statistics-point bg-blue"></span>
-										Profile Visits
-									</span>
-							</div>
-							<div class="count-stat">4.290</div>
-						</li>
-						<li>
-							<div class="points">
-									<span>
-										<span class="statistics-point bg-breez"></span>
-										Post Likes
-									</span>
-							</div>
-							<div class="count-stat">2.758</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-
-		<div class="col col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-3">
-			<div class="ui-block h-100 mb-0">
-				<div class="ui-block-title">
-					<div class="h6 title">Progress Bars</div>
-					<a href="#" class="more">
-						<svg class="olymp-three-dots-icon">
-							<use xlink:href="#olymp-three-dots-icon"></use>
-						</svg>
-					</a>
-				</div>
-
-				<div class="ui-block-content">
-					<div class="skills-item">
-						<div class="skills-item-info">
-							<span class="skills-item-title">Orange Gradient Progress</span>
-							<span class="skills-item-count"><span class="count-animate" data-speed="1000" data-refresh-interval="50" data-to="62" data-from="0"></span><span class="units">62%</span></span>
-						</div>
-						<div class="skills-item-meter">
-							<span class="skills-item-meter-active bg-primary" style="width: 62%"></span>
-						</div>
-					</div>
-
-					<div class="skills-item">
-						<div class="skills-item-info">
-							<span class="skills-item-title">Violet Progress</span>
-							<span class="skills-item-count"><span class="count-animate" data-speed="1000" data-refresh-interval="50" data-to="46" data-from="0"></span><span class="units">46%</span></span>
-						</div>
-						<div class="skills-item-meter">
-							<span class="skills-item-meter-active bg-purple" style="width: 46%"></span>
-						</div>
-					</div>
-
-					<div class="skills-item">
-						<div class="skills-item-info">
-							<span class="skills-item-title">Blue Progress</span>
-							<span class="skills-item-count"><span class="count-animate" data-speed="1000" data-refresh-interval="50" data-to="79" data-from="0"></span><span class="units">79%</span></span>
-						</div>
-						<div class="skills-item-meter">
-							<span class="skills-item-meter-active bg-blue" style="width: 79%"></span>
-						</div>
-					</div>
-
-					<div class="skills-item">
-						<div class="skills-item-info">
-							<span class="skills-item-title">Aqua Progress</span>
-							<span class="skills-item-count"><span class="count-animate" data-speed="1000" data-refresh-interval="50" data-to="34" data-from="0"></span><span class="units">34%</span></span>
-						</div>
-						<div class="skills-item-meter">
-							<span class="skills-item-meter-active bg-breez" style="width: 34%"></span>
-						</div>
-					</div>
-
-					<div class="skills-item">
-						<div class="skills-item-info">
-							<span class="skills-item-title">Yellow Progress</span>
-							<span class="skills-item-count"><span class="count-animate" data-speed="1000" data-refresh-interval="50" data-to="95" data-from="0"></span><span class="units">95%</span></span>
-						</div>
-						<div class="skills-item-meter">
-							<span class="skills-item-meter-active bg-yellow" style="width: 95%"></span>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-
-		<div class="col col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-3">
-			<div class="ui-block h-100 mb-0">
-				<div class="ui-block-title">
-					<div class="h6 title">Icons with Text</div>
-					<a href="#" class="more">
-						<svg class="olymp-three-dots-icon">
-							<use xlink:href="#olymp-three-dots-icon"></use>
-						</svg>
-					</a>
-				</div>
-
-				<div class="ui-block-content">
-					<div class="monthly-indicator-wrap">
-						<div class="monthly-indicator">
-							<a href="#" class="btn btn-control bg-blue">
-								<svg class="olymp-happy-face-icon">
-									<use xlink:href="#olymp-happy-face-icon"></use>
-								</svg>
-							</a>
-
-							<div class="monthly-count">
-								9.855
-								<span class="period">Likes</span>
-							</div>
-						</div>
-
-						<div class="monthly-indicator">
-							<a href="#" class="btn btn-control bg-blue">
-								<svg class="olymp-happy-face-icon">
-									<use xlink:href="#olymp-happy-face-icon"></use>
-								</svg>
-							</a>
-
-							<div class="monthly-count">
-								6.721
-								<span class="period">Shares</span>
-							</div>
-						</div>
-
-						<div class="monthly-indicator">
-							<a href="#" class="btn btn-control bg-blue">
-								<svg class="olymp-happy-face-icon">
-									<use xlink:href="#olymp-happy-face-icon"></use>
-								</svg>
-							</a>
-
-							<div class="monthly-count">
-								2.047
-								<span class="period">Comments</span>
-							</div>
-						</div>
-
-						<div class="monthly-indicator">
-							<a href="#" class="btn btn-control bg-blue">
-								<svg class="olymp-happy-face-icon">
-									<use xlink:href="#olymp-happy-face-icon"></use>
-								</svg>
-							</a>
-
-							<div class="monthly-count">
-								1.536
-								<span class="period">Messages</span>
-							</div>
-						</div>
-
-						<div class="monthly-indicator">
-							<a href="#" class="btn btn-control bg-primary">
-								<svg class="olymp-comments-post-icon">
-									<use xlink:href="#olymp-comments-post-icon"></use>
-								</svg>
-							</a>
-
-							<div class="monthly-count">
-								Paragraph
-								<span class="period">Lorem ipsum dolor sit amet, consectetur icing elit, sed do eiusmod
-									tempor incididunt ut ore et dolore magna aliqua. Ut enim ad minim an quis nostrud
-									exercitation.
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-	</div>
-
+	
 
 	<div class="row">
 		<div class="col col-lg-12 col-sm-12 col-12">
