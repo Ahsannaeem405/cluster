@@ -947,6 +947,8 @@
 
 <!-- ... end Main Header Groups -->
 
+
+
 <!-- Main Content Groups -->
 <div class="modal fade" id="delete-new-member" tabindex="-1" role="dialog"
 		aria-labelledby="create-friend-group-1" aria-hidden="true">
