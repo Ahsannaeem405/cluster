@@ -72,14 +72,11 @@
     <div class="header--standard header--standard-landing" id="header--standard">
         <div class="container">
             <div class="header--standard-wrap">
-
                 <a href="#" class="logo">
                     <div class="img-wrap">
                         <img loading="lazy" src="img/logo.png" alt="header-white-log" width="34" height="34">
-
                         <img loading="lazy" src="img/logo.png" width="34" height="34" alt="header-color-logo"
                             class="logo-colored">
-
                     </div>
                 </a>
 
@@ -338,7 +335,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
-                    <div class="footer-logo text-lg-center text-start">
+                    <div class="footer-logo text-start">
                         <img loading="lazy" src="img/white-logo.png" alt="footer-logo">
                     </div>
 

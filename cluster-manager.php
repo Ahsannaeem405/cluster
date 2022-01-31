@@ -86,7 +86,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="clustor-manager.php">
+					<a href="cluster-manager.php">
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
 							<use xlink:href="#olymp-star-icon"></use>
 						</svg>
@@ -100,42 +100,35 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="members.php">
 						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
 							<use xlink:href="#olymp-happy-faces-icon"></use>
 						</svg>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="users.php">
 						<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
 							<use xlink:href="#olymp-happy-sticker-icon"></use>
 						</svg>
 					</a>
 				</li>
 				<li>
-					<a href="#">
-						<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="WEATHER APP">
-							<use xlink:href="#olymp-music-shuffle-icon"></use>
-						</svg>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
-							<use xlink:href="#olymp-badge-icon"></use>
-						</svg>
-					</a>
-				</li>
-				<li>
-					<a href="#">
+					<a href="communication.php">
 						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
 							<use xlink:href="#olymp-status-icon"></use>
 						</svg>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="services.php">
+						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
+							<use xlink:href="#olymp-badge-icon"></use>
+						</svg>
+					</a>
+				</li>
+				<li>
+					<a href="setting.php">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
 							<use xlink:href="#olymp-settings-icon"></use>
 						</svg>
@@ -173,11 +166,11 @@
 					</a>
 				</li>
 				<li>
-					<a href="clustor-manager.php">
+					<a href="cluster-manager.php">
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
 							<use xlink:href="#olymp-star-icon"></use>
 						</svg>
-						<span class="left-menu-title">Clustors</span>
+						<span class="left-menu-title">Clusters</span>
 					</a>
 				</li>
 				<li>
@@ -189,7 +182,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="members.php">
 						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
 							<use xlink:href="#olymp-happy-faces-icon"></use>
 						</svg>
@@ -197,23 +190,16 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="users.php">
 						<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
 							<use xlink:href="#olymp-happy-sticker-icon"></use>
 						</svg>
 						<span class="left-menu-title">Users</span>
 					</a>
 				</li>
+				
 				<li>
-					<a href="#">
-						<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="WEATHER APP">
-							<use xlink:href="#olymp-music-shuffle-icon"></use>
-						</svg>
-						<span class="left-menu-title">Cluster Manager</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
+					<a href="communication.php">
 						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
 							<use xlink:href="#olymp-badge-icon"></use>
 						</svg>
@@ -221,7 +207,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="services.php">
 						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
 							<use xlink:href="#olymp-status-icon"></use>
 						</svg>
@@ -229,7 +215,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="setting.php">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
 							<use xlink:href="#olymp-settings-icon"></use>
 						</svg>
@@ -241,8 +227,6 @@
 	</div>
 </div>
 <!-- ... end Fixed Sidebar Left -->
-
-
 <!-- Fixed Sidebar Left -->
 <div class="fixed-sidebar left fixed-sidebar-responsive">
 
@@ -271,14 +255,14 @@
 						<img alt="author" src="img/author-page.html" width="36" height="36" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
-					<a href="02-ProfilePage.html" class="author-name fn">
+					<a href="dashboard.php" class="author-name fn">
 						<div class="author-title">
 							Abu Sufian
 							<svg class="olymp-dropdown-arrow-icon">
 								<use xlink:href="#olymp-dropdown-arrow-icon"></use>
 							</svg>
 						</div>
-						<span class="author-subtitle">SPACE COWBOY</span>
+						<span class="author-subtitle">web developer</span>
 					</a>
 				</div>
 			</div>
@@ -303,15 +287,15 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="cluster-manager.php">
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
 							<use xlink:href="#olymp-star-icon"></use>
 						</svg>
-						<span class="left-menu-title">Clustors</span>
+						<span class="left-menu-title">Clusters</span>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="your-events.php">
 						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
 							<use xlink:href="#olymp-manage-widgets-icon"></use>
 						</svg>
@@ -319,7 +303,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="members.php">
 						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
 							<use xlink:href="#olymp-happy-faces-icon"></use>
 						</svg>
@@ -327,7 +311,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="users.php">
 						<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
 							<use xlink:href="#olymp-happy-sticker-icon"></use>
 						</svg>
@@ -335,15 +319,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
-						<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="WEATHER APP">
-							<use xlink:href="#olymp-music-shuffle-icon"></use>
-						</svg>
-						<span class="left-menu-title">Cluster Manager</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
+					<a href="communication.php">
 						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
 							<use xlink:href="#olymp-badge-icon"></use>
 						</svg>
@@ -351,7 +327,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="services.php">
 						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
 							<use xlink:href="#olymp-status-icon"></use>
 						</svg>
@@ -359,7 +335,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="setting.php">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
 							<use xlink:href="#olymp-settings-icon"></use>
 						</svg>
@@ -399,6 +375,7 @@
 </div>
 <!-- ... end Fixed Sidebar Left -->
 
+
 <!-- ... end Fixed Sidebar Left -->
 
 
@@ -407,7 +384,7 @@
 <header class="header" id="site-header">
 
 	<div class="page-title">
-		<h6>Profile</h6>
+		<h6>Cluster Manager</h6>
 	</div>
 
 	<div class="header-content-wrapper">
@@ -553,12 +530,10 @@
 	</div>
 
 </header>
-
 <!-- ... end Header-BP -->
 
 
 <!-- Responsive Header-BP -->
-
 <header class="header header-responsive" id="site-header-responsive">
 
 	<div class="header-content-wrapper float-end">
@@ -950,14 +925,12 @@
 	<!-- ... end  Tab panes -->
 
 </header>
-
 <!-- ... end Responsive Header-BP -->
 
 <div class="header-spacer header-spacer-small"></div>
 
 
 <!-- Main Header Groups -->
-
 <div class="main-header">
 	<div class="content-bg-wrap bg-group clusterbg"></div>
 	<div class="container">
@@ -975,22 +948,48 @@
 <!-- ... end Main Header Groups -->
 
 <!-- Main Content Groups -->
+<div class="modal fade" id="delete-new-member" tabindex="-1" role="dialog"
+		aria-labelledby="create-friend-group-1" aria-hidden="true">
+		<div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
+			<div class="modal-content">
+				<a href="#" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">
+					<svg class="olymp-close-icon">
+						<use xlink:href="#olymp-close-icon"></use>
+					</svg>
+				</a>
+				<div class="modal-header">
+					<h6 class="title">Delete Cluster</h6>
+				</div>
 
+				<div class="modal-body">
+					<div class="">
+						<p>Are you sure you want to delete this Cluster <span class="text-danger">Floppy</span></p>
+					</div>
+					<div class="row">
+						<div class="col-6">
+						<button href="#" class="btn btn-blue full-width" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">Ok</button>
+
+						</div>
+						<div class="col-6">
+						<button href="#" class="btn btn-secondary full-width" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">No</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 <div class="container">
 	<div class="row">
 		<div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
 			
 			<!-- Friend Item -->
-			
 			<div class="friend-item friend-groups create-group h-75 mb-3">
-			
 				<a href="#" class="  full-block" data-bs-toggle="modal" data-bs-target="#create-friend-group-1"></a>
 				<div class="content">
-			
 					<a href="#" class="  btn btn-control bg-green" data-bs-toggle="modal" data-bs-target="#create-friend-group-1">
 						<svg class="olymp-plus-icon"><use xlink:href="#olymp-plus-icon"></use></svg>
 					</a>
-			
 					<div class="author-content">
 						<a href="#" class="h5 author-name">Create New</a>
 						<div class="country"></div>
@@ -1006,9 +1005,7 @@
 			<a href="Events-manager.php">
 			<div class="ui-block h-100 mb-0">	
 				<!-- Friend Item -->
-				
 				<div class="friend-item clusotr-groups">
-				
 					<div class="friend-item-content">
 						<div class="friend-avatar">
 							<div class="author-thumb">
@@ -1025,11 +1022,11 @@
 						</div>
 				
 						<div class="control-block-button">
-							<a href="#" class="  btn btn-control bg-blue" data-bs-toggle="modal" data-bs-target="#create-friend-group-add-friends">
+							<a href="#" class=" btn btn-control bg-blue" data-bs-toggle="modal" data-bs-target="#delete-new-member">
 								<i class="far fa-trash-alt olymp-happy-faces-icon"></i>
 							</a>
 				
-							<a href="#" class="btn btn-control btn-grey-lighter">
+							<a href="#" class="btn btn-control btn-grey-lighter" data-bs-toggle="modal" data-bs-target="#edit-clustor">
 								<!-- <svg class="olymp-settings-icon"><use xlink:href="#olymp-settings-icon"></use></svg> -->
 								<i class="far fa-edit"></i>
 							</a>
@@ -1044,9 +1041,7 @@
 			<a href="Events-manager.php">
 			<div class="ui-block h-100 mb-0">	
 				<!-- Friend Item -->
-				
 				<div class="friend-item clusotr-groups">
-				
 					<div class="friend-item-content">
 						<div class="friend-avatar">
 							<div class="author-thumb">
@@ -1063,11 +1058,11 @@
 						</div>
 				
 						<div class="control-block-button">
-							<a href="#" class="  btn btn-control bg-blue" data-bs-toggle="modal" data-bs-target="#create-friend-group-add-friends">
+							<a href="#" class=" btn btn-control bg-blue" data-bs-toggle="modal" data-bs-target="#delete-new-member">
 								<i class="far fa-trash-alt olymp-happy-faces-icon"></i>
 							</a>
 				
-							<a href="#" class="btn btn-control btn-grey-lighter">
+							<a href="#" class="btn btn-control btn-grey-lighter" data-bs-toggle="modal" data-bs-target="#edit-clustor">
 								<!-- <svg class="olymp-settings-icon"><use xlink:href="#olymp-settings-icon"></use></svg> -->
 								<i class="far fa-edit"></i>
 							</a>
@@ -1082,9 +1077,7 @@
 			<a href="Events-manager.php">
 			<div class="ui-block h-100 mb-0">	
 				<!-- Friend Item -->
-				
 				<div class="friend-item clusotr-groups">
-				
 					<div class="friend-item-content">
 						<div class="friend-avatar">
 							<div class="author-thumb">
@@ -1101,11 +1094,11 @@
 						</div>
 				
 						<div class="control-block-button">
-							<a href="#" class="  btn btn-control bg-blue" data-bs-toggle="modal" data-bs-target="#create-friend-group-add-friends">
+							<a href="#" class=" btn btn-control bg-blue" data-bs-toggle="modal" data-bs-target="#delete-new-member">
 								<i class="far fa-trash-alt olymp-happy-faces-icon"></i>
 							</a>
 				
-							<a href="#" class="btn btn-control btn-grey-lighter">
+							<a href="#" class="btn btn-control btn-grey-lighter" data-bs-toggle="modal" data-bs-target="#edit-clustor">
 								<!-- <svg class="olymp-settings-icon"><use xlink:href="#olymp-settings-icon"></use></svg> -->
 								<i class="far fa-edit"></i>
 							</a>
@@ -1120,9 +1113,7 @@
 			<a href="Events-manager.php">
 			<div class="ui-block h-100 mb-0">	
 				<!-- Friend Item -->
-				
 				<div class="friend-item clusotr-groups">
-				
 					<div class="friend-item-content">
 						<div class="friend-avatar">
 							<div class="author-thumb">
@@ -1139,11 +1130,11 @@
 						</div>
 				
 						<div class="control-block-button">
-							<a href="#" class="  btn btn-control bg-blue" data-bs-toggle="modal" data-bs-target="#create-friend-group-add-friends">
+							<a href="#" class=" btn btn-control bg-blue" data-bs-toggle="modal" data-bs-target="#delete-new-member">
 								<i class="far fa-trash-alt olymp-happy-faces-icon"></i>
 							</a>
 				
-							<a href="#" class="btn btn-control btn-grey-lighter">
+							<a href="#" class="btn btn-control btn-grey-lighter" data-bs-toggle="modal" data-bs-target="#edit-clustor">
 								<!-- <svg class="olymp-settings-icon"><use xlink:href="#olymp-settings-icon"></use></svg> -->
 								<i class="far fa-edit"></i>
 							</a>
@@ -1154,7 +1145,43 @@
 			</div>
 			</a>
 		</div>
-
+		<div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
+			<a href="Events-manager.php">
+			<div class="ui-block h-100 mb-0">	
+				<!-- Friend Item -->
+				<div class="friend-item clusotr-groups">
+					<div class="friend-item-content">
+						<div class="friend-avatar">
+							<div class="author-thumb">
+								<img loading="lazy" src="img/clusterbg.jpg" alt="Olympus">
+							</div>
+							<div class="author-content">
+								<a href="#" class="h5 author-name">Fopply</a>
+								<div class="country">Manager:<span> Faizan</span></div>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+									Ea eius necessitatibus labore doloribus. Culpa, laboriosam? Amet 
+									suscipit illo odio aut sequi possimus ratione est, 
+									et at asperiores quos provident! Quo.</p>
+							</div>
+						</div>
+				
+						<div class="control-block-button">
+							<a href="#" class=" btn btn-control bg-blue" data-bs-toggle="modal" data-bs-target="#delete-new-member">
+								<i class="far fa-trash-alt olymp-happy-faces-icon"></i>
+							</a>
+				
+							<a href="#" class="btn btn-control btn-grey-lighter" data-bs-toggle="modal" data-bs-target="#edit-clustor">
+								<!-- <svg class="olymp-settings-icon"><use xlink:href="#olymp-settings-icon"></use></svg> -->
+								<i class="far fa-edit"></i>
+							</a>
+				
+						</div>
+					</div>
+				</div>
+			</div>
+			</a>
+		</div>
+		
 
 	</div>
 </div>
@@ -1187,21 +1214,75 @@
 					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Enter details here</textarea>
 				</div>
 				<div class="form-group">
+					<label for="exampleFormControlTextarea1">Cluster Details</label>
+					<select class="w-100">
+						<option>Abu  Sufian</option>
+						<option>Faizan</option>
+					</select>
+				</div>
+				
+				<div class="form-group">
 					<label for="exampleFormControlInput1">Select Cluster Image</label>
 					<input type="file" class="form-control" id="Cluster-Name" placeholder="Enter Cluster Name">
 				  </div>
 
-				<a href="#" class="btn btn-blue btn-lg full-width">Create Cluster</a>
+				<a href="#" class="btn btn-blue  mt-0 btn-lg full-width">Create Cluster</a>
+			</form>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="edit-clustor" tabindex="-1" role="dialog" aria-labelledby="edit-clustor" aria-hidden="true">
+	<div class="modal-dialog window-popup create-friend-group edit-clustor" role="document">
+		<div class="modal-content">
+			<a href="#" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">
+				<svg class="olymp-close-icon"><use xlink:href="#olymp-close-icon"></use></svg>
+			</a>
+			<div class="modal-header">
+				<h6 class="title">Edit Cluster</h6>
+			</div>
+
+			<div class="modal-body">
+				<form>
+				<div class="form-group">
+					<label for="exampleFormControlInput1">Cluster Name</label>
+					<input type="text" class="form-control" id="Cluster-Name" placeholder="" value="Floppy">
+				  </div>
+				
+				<div class="form-group">
+					<label for="exampleFormControlTextarea1">Cluster Details</label>
+					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea eius necessitatibus labore doloribus. Culpa, laboriosam? Amet suscipit illo odio aut sequi possimus ratione est, et at asperiores quos provident! Quo.</textarea>
+				</div>
+				<div class="form-group">
+					<label for="exampleFormControlTextarea1">Cluster Manager</label>
+					<select class="w-100">
+						<option>Abu  Sufian</option>
+						<option selected>Faizan</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<div class="row my-3 d-flex align-items-end">
+					<div class="col-6">
+						<div class="cluter-edit-img">
+							<img src="img/clusterbg.jpg"/>
+						</div>
+						</div>
+						<div class="col-6">
+							<label class="btn btn-secondary w-100">
+								Change Image
+								<input type="file" hidden/>
+							</label>
+						</div>
+						
+					</div>
+
+				<button href="#" class="btn btn-blue mb-0 btn-lg full-width">Create Cluster</button>
 			</form>
 			</div>
 		</div>
 	</div>
 </div>
 
-<!-- ... end Window-popup Create Friends Group -->
-
-
-<!-- ... end Window-popup Create Friends Group Add Friends -->
 
 
 

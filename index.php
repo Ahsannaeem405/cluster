@@ -175,7 +175,7 @@
 		</div>
 		<div class="row d-flex justify-content-center mb-4">
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="clustor.php">
+				<a href="cluster.php">
 					<div class="clustor-card">
 						<div class="clustor-card-head">
 							<img src="./img/clusterbg.jpg" />
@@ -194,7 +194,7 @@
 				</a>
 			</div>
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="clustor.php">
+				<a href="cluster.php">
 					<div class="clustor-card">
 						<div class="clustor-card-head">
 							<img src="./img/clusterbg.jpg" />
@@ -213,7 +213,7 @@
 				</a>
 			</div>
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="clustor.php">
+				<a href="cluster.php">
 					<div class="clustor-card">
 						<div class="clustor-card-head">
 							<img src="./img/clusterbg.jpg" />
@@ -232,7 +232,7 @@
 				</a>
 			</div>
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="clustor.php">
+				<a href="cluster.php">
 					<div class="clustor-card">
 						<div class="clustor-card-head">
 							<img src="./img/clusterbg.jpg" />
@@ -251,7 +251,7 @@
 				</a>
 			</div>
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="clustor.php">
+				<a href="cluster.php">
 					<div class="clustor-card">
 						<div class="clustor-card-head">
 							<img src="./img/clusterbg.jpg" />
@@ -270,7 +270,7 @@
 				</a>
 			</div>
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="clustor.php">
+				<a href="cluster.php">
 					<div class="clustor-card">
 						<div class="clustor-card-head">
 							<img src="./img/clusterbg.jpg" />
@@ -289,7 +289,7 @@
 				</a>
 			</div>
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="clustor.php">
+				<a href="cluster.php">
 					<div class="clustor-card">
 						<div class="clustor-card-head">
 							<img src="./img/clusterbg.jpg" />
@@ -308,7 +308,7 @@
 				</a>
 			</div>
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="clustor.php">
+				<a href="cluster.php">
 					<div class="clustor-card">
 						<div class="clustor-card-head">
 							<img src="./img/clusterbg.jpg" />
@@ -439,7 +439,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
-                    <div class="footer-logo text-lg-center text-start">
+                    <div class="footer-logo text-start">
                         <img loading="lazy" src="img/white-logo.png" alt="footer-logo">
                     </div>
 

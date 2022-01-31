@@ -88,7 +88,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="clustor-manager.php">
+					<a href="cluster-manager.php">
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
 							<use xlink:href="#olymp-star-icon"></use>
 						</svg>
@@ -116,13 +116,6 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
-						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
-							<use xlink:href="#olymp-badge-icon"></use>
-						</svg>
-					</a>
-				</li>
-				<li>
 					<a href="communication.php">
 						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
 							<use xlink:href="#olymp-status-icon"></use>
@@ -130,14 +123,14 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="services.php">
 						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
 							<use xlink:href="#olymp-badge-icon"></use>
 						</svg>
 					</a>
 				</li>
 				<li>
-					<a href="website-setting.php">
+					<a href="setting.php">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
 							<use xlink:href="#olymp-settings-icon"></use>
 						</svg>
@@ -175,11 +168,11 @@
 					</a>
 				</li>
 				<li>
-					<a href="clustor-manager.php">
+					<a href="cluster-manager.php">
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
 							<use xlink:href="#olymp-star-icon"></use>
 						</svg>
-						<span class="left-menu-title">Clustors</span>
+						<span class="left-menu-title">Clusters</span>
 					</a>
 				</li>
 				<li>
@@ -216,7 +209,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="services.php">
 						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
 							<use xlink:href="#olymp-status-icon"></use>
 						</svg>
@@ -224,7 +217,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="website-setting.php">
+					<a href="setting.php">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
 							<use xlink:href="#olymp-settings-icon"></use>
 						</svg>
@@ -296,11 +289,11 @@
 					</a>
 				</li>
 				<li>
-					<a href="clustor-manager.php">
+					<a href="cluster-manager.php">
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
 							<use xlink:href="#olymp-star-icon"></use>
 						</svg>
-						<span class="left-menu-title">Clustors</span>
+						<span class="left-menu-title">Clusters</span>
 					</a>
 				</li>
 				<li>
@@ -336,7 +329,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="services.php">
 						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
 							<use xlink:href="#olymp-status-icon"></use>
 						</svg>
@@ -344,7 +337,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="website-setting.php">
+					<a href="setting.php">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
 							<use xlink:href="#olymp-settings-icon"></use>
 						</svg>
@@ -932,7 +925,7 @@
 				<div class="main-header-content">
 					<h1>DashBoard</h1>
 					<p>Welcome to your dashboard! Here you’l see all your profile stats like: visits,
-	 events, clustors, annual graphs, and much more!</p>
+	 events, clusters, annual graphs, and much more!</p>
 				</div>
 			</div>
 		</div>
@@ -943,7 +936,6 @@
 
 <div class="container">
 	<div class="row">
-
 		<div class="col col-xl-3 order-xl-3 col-lg-6 order-lg-3 col-md-6 col-sm-12 col-12">
 			<div class="ui-block">
 				<div class="ui-block-content">
@@ -951,7 +943,7 @@
 						<li>
 							<div class="points">
 								<span>
-									Total Clustors
+									Total Clusters
 								</span>
 							</div>
 							<div class="count-stat text-danger">28

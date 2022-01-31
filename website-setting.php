@@ -607,13 +607,10 @@
 		<div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
 			<div class="ui-block">
 				<div class="ui-block-title">
-					<h6 class="title">Personal Information</h6>
+					<h6 class="title">Website Settings</h6>
 				</div>
-				<div class="ui-block-content">
-
-					
+				<div class="ui-block-content">	
 					<!-- Personal Information Form  -->
-					
 					<form>
 						<div class="row">
 							<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
