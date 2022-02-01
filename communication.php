@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from html.crumina.net/html-olympus/28-YourAccount-PersonalInformation.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Feb 2021 07:41:40 GMT -->
 
 <head>
 	<title>Communication</title>
@@ -1132,6 +1131,5 @@
 
 </body>
 
-<!-- Mirrored from html.crumina.net/html-olympus/28-YourAccount-PersonalInformation.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Feb 2021 07:41:40 GMT -->
 
 </html>
