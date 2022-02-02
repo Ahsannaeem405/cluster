@@ -17,22 +17,17 @@ class InstallMiddleware
     public function handle(Request $request, Closure $next)
     {
        $data=env('DB_DATABASE');
-       
+// dd($data);
         if($data==null)
         {
-          
+
             return redirect('/install');
-            //dd('yes');
         }
         else{
             return $next($request);
 
         }
-       
 
-           // $install=$next($request);
-           // return $install;
-    
-    
+
 }
 }

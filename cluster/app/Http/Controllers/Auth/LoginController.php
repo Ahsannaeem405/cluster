@@ -27,22 +27,22 @@ class LoginController extends Controller
      * @var string
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
-    
+
     protected function redirectTo(){
-        
-       
+
+
         if (auth()->user()->role == 'admin') {
             //dd(11);
         return '/admin';
         }
-        
+
         else{
             if(auth()->user()->role == 'user' && auth()->user()->status==1 ){
-            return '/';
+                return '/user';
             }
-    
+
             else if(auth()->user()->role == 'user' && auth()->user()->status==0){
-          
+
                $msg="Your Account has been Suspended!";
                     session()->flash('message',$msg);
                 return '/login';

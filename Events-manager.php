@@ -1032,12 +1032,12 @@
 
 			<div class="tab-pane fade" id="search" role="tabpanel" aria-labelledby="search-tab">
 
-				<form class="search-bar w-search notification-list friend-requests">
+				<div class="search-bar w-search notification-list friend-requests">
 					<div class="form-group with-button">
 						<input class="form-control js-user-search" placeholder="Search here people or pages..."
 							type="text">
 					</div>
-				</form>
+				</div>
 
 			</div>
 
@@ -1725,7 +1725,7 @@
 							placeholder="Event Description">I need to take Querty for a check up and ask the doctor if he needs a new tank.</textarea>
 					</div>
 
-					<form class="form-group">
+					<div class="form-group">
 						<svg class="olymp-happy-face-icon">
 							<use xlink:href="#olymp-happy-face-icon"></use>
 						</svg>
@@ -1742,7 +1742,7 @@
 							<option title="Rachel Howlett">Rachel Howlett</option>
 
 						</select>
-					</form>
+					</div>
 
 					<button class="btn btn-lg full-width create-event">Create Event</button>
 
@@ -1771,7 +1771,7 @@
 				</div>
 
 				<div class="modal-body">
-					<form class="form-group is-select">
+					<div class="form-group is-select">
 
 						<select class="form-select">
 							<option title="Green Goo Rock">Green Goo Rock</option>
@@ -1785,7 +1785,7 @@
 							<option title="Rachel Howlett">Rachel Howlett</option>
 
 						</select>
-					</form>
+					</div>
 
 					<a href="#" class="btn btn-blue btn-lg full-width">Save Changes</a>
 				</div>
@@ -1868,7 +1868,7 @@
 					</ul>
 				</div>
 
-				<form class="need-validation">
+				<div class="need-validation">
 
 					<div class="form-group">
 						<textarea class="form-control" placeholder="Press enter to post..."></textarea>
@@ -2052,7 +2052,7 @@
 						</div>
 					</div>
 
-				</form>
+				</div>
 			</div>
 		</div>
 

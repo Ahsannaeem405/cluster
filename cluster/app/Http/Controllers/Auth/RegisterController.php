@@ -36,9 +36,9 @@ class RegisterController extends Controller
              return '/admin';
          }
          else{
-               return '/';
+            return '/user';
          }
- 
+
       }
     /**
      * Create a new controller instance.
@@ -77,7 +77,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         //dd($data);
-        
+
 
         return User::create([
             'first_name' => $data['first_name'],

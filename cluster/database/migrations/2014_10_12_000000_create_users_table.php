@@ -24,6 +24,9 @@ class CreateUsersTable extends Migration
             $table->string('gender')->nullable();
             $table->string('role')->nullable();
             $table->string('status')->nullable();
+            $table->string('post_role')->default('user');
+
+
             $table->rememberToken();
             $table->timestamps();
         });
