@@ -515,8 +515,6 @@
 
 </header>
 <!-- ... end Header-BP -->
-
-
 <!-- Responsive Header-BP -->
 <header class="header header-responsive" id="site-header-responsive">
 
@@ -1297,99 +1295,6 @@
 					<div class="chart-js chart-js-two-bar">
 						<canvas id="two-bar-chart-2" width="400" height="300"></canvas>
 					</div>
-
-					<!--
-						JS libraries for TWO-BAR-CHART-2:
-						js/libs/Chart.min.js
-						js/libs/chartjs-plugin-deferred.min.js
-						js/libs/loader.min.js
-					 -->
-
-					<!-- JS-init for TWO-BAR-CHART-2: js/libs/run-chart.min.js -->
-
-					<!--------------------------------- ... end TWO-BAR-CHART-2 --------------------------------------->
-
-				</div>
-			</div>
-		</div>
-		<!-- <div class="col col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-3">
-			<div class="ui-block h-100 mb-0">
-				<div class="ui-block-title">
-					<div class="h6 title">Number with Slider</div>
-					<a href="#" class="more">
-						<svg class="olymp-three-dots-icon">
-							<use xlink:href="#olymp-three-dots-icon"></use>
-						</svg>
-					</a>
-				</div>
-
-				<div class="ui-block-content">
-					<div class="swiper-container" data-slide="fade">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<div class="statistics-slide">
-									<div class="count-stat" data-swiper-parallax="-500">248</div>
-									<div class="title" data-swiper-parallax="-100">
-										<span class="c-primary">Olympus</span> Posts Rank
-									</div>
-									<div class="sub-title" data-swiper-parallax="-100">The Olympus Rank measures the quantity of comments, likes and posts.</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="statistics-slide">
-									<div class="count-stat" data-swiper-parallax="-500">358</div>
-									<div class="title" data-swiper-parallax="-100">
-										<span class="c-primary">Olympus</span> Posts Rank
-									</div>
-									<div class="sub-title" data-swiper-parallax="-100">The Olympus Rank measures the quantity of comments, likes and posts.</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="statistics-slide">
-									<div class="count-stat" data-swiper-parallax="-500">711</div>
-									<div class="title" data-swiper-parallax="-100">
-										<span class="c-primary">Olympus</span> Posts Rank
-									</div>
-									<div class="sub-title" data-swiper-parallax="-100">The Olympus Rank measures the quantity of comments, likes and posts.</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- If we need pagination -->
-						<div class="swiper-pagination pagination-blue"></div>
-					</div>
-				</div>
-			</div>
-		</div> -->
-		<!-- <div class="col col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-3">
-			<div class="ui-block h-100 mb-0">
-				<div class="ui-block-title">
-					<div class="h6 title">Pie Chart</div>
-					<a href="#" class="more">
-						<svg class="olymp-three-dots-icon">
-							<use xlink:href="#olymp-three-dots-icon"></use>
-						</svg>
-					</a>
-				</div>
-				<div class="ui-block-content">
-
-					<!------------------------------------------- RADAR-CHART ----------------------------------------->
-
-					<!-- <div class="chart-js chart-radar">
-						<canvas class="radar-chart" id="radar-chart" width="400" height="300"></canvas>
-					</div> -->
-
-					<!--
-						JS libraries for RADAR-CHART:
-						js/libs/Chart.min.js
-						js/libs/chartjs-plugin-deferred.min.js
-						js/libs/loader.min.js
-					 -->
-
-					<!-- JS-init for RADAR-CHART: js/libs/run-chart.min.js -->
-
-					<!------------------------------------ ... end RADAR-CHART ---------------------------------------->
-
 				</div>
 			</div>
 		</div> -->

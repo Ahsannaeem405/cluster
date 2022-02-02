@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from html.crumina.net/html-olympus/17-FriendGroups.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Feb 2021 07:40:50 GMT -->
 
 <head>
 
@@ -67,377 +66,322 @@
 	</div>
 
 	<!-- ... end Preloader -->
-	<!-- Fixed Sidebar Left -->
-	<div class="fixed-sidebar left">
-		<div class="fixed-sidebar-left sidebar--small" id="sidebar-left">
 
-			<a href="dashboard.php" class="logo">
-				<div class="img-wrap">
-					<img loading="lazy" src="img/white-logo.png" alt="logo-tital" width="50" height="50">
-				</div>
-			</a>
+<!-- Fixed Sidebar Left -->
+<div class="fixed-sidebar left">
+	<div class="fixed-sidebar-left sidebar--small" id="sidebar-left">
 
-			<div class="mCustomScrollbar" data-mcs-theme="dark">
-				<ul class="left-menu">
-					<li>
-						<a href="#" class="js-sidebar-open">
-							<svg class="olymp-menu-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="OPEN MENU">
-								<use xlink:href="#olymp-menu-icon"></use>
-							</svg>
-						</a>
-					</li>
-					<li>
-						<a href="dashboard.php">
-							<svg class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="NEWSFEED">
-								<use xlink:href="#olymp-newsfeed-icon"></use>
-							</svg>
-						</a>
-					</li>
-					<li>
-						<a href="clustor-manager.php">
-							<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="FAV PAGE">
-								<use xlink:href="#olymp-star-icon"></use>
-							</svg>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="Manage Widgets">
-								<use xlink:href="#olymp-manage-widgets-icon"></use>
-							</svg>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
-								<use xlink:href="#olymp-happy-faces-icon"></use>
-							</svg>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
-								<use xlink:href="#olymp-happy-sticker-icon"></use>
-							</svg>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="WEATHER APP">
-								<use xlink:href="#olymp-music-shuffle-icon"></use>
-							</svg>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
-								<use xlink:href="#olymp-badge-icon"></use>
-							</svg>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="Community Badges">
-								<use xlink:href="#olymp-status-icon"></use>
-							</svg>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="Friends Birthdays">
-								<use xlink:href="#olymp-settings-icon"></use>
-							</svg>
-						</a>
-					</li>
-
-				</ul>
+		<a href="dashboard.php" class="logo">
+			<div class="img-wrap">
+				<img loading="lazy" src="img/white-logo.png" alt="logo-tital" width="50" height="50">
 			</div>
-		</div>
+		</a>
 
-		<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1">
-			<a href="02-ProfilePage.html" class="logo">
-				<div class="img-wrap">
-					<img loading="lazy" src="img/white-logo.png" alt="logo-tital" width="34" height="34">
-				</div>
-				<div class="title-block">
-					<h6 class="logo-title">Cluster</h6>
-				</div>
-			</a>
-
-			<div class="mCustomScrollbar" data-mcs-theme="dark">
-				<ul class="left-menu">
-					<li>
-						<a href="#" class="js-sidebar-open">
-							<svg class="olymp-close-icon left-menu-icon">
-								<use xlink:href="#olymp-close-icon"></use>
-							</svg>
-							<span class="left-menu-title">Main Menu</span>
-						</a>
-					</li>
-					<li>
-						<a href="dashboard.php">
-							<svg class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="NEWSFEED">
-								<use xlink:href="#olymp-status-icon"></use>
-							</svg>
-							<span class="left-menu-title">Dashboard</span>
-						</a>
-					</li>
-					<li>
-						<a href="clustor-manager.php">
-							<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="FAV PAGE">
-								<use xlink:href="#olymp-star-icon"></use>
-							</svg>
-							<span class="left-menu-title">Clustors</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="Manage Widgets">
-								<use xlink:href="#olymp-manage-widgets-icon"></use>
-							</svg>
-							<span class="left-menu-title">Events</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
-								<use xlink:href="#olymp-happy-faces-icon"></use>
-							</svg>
-							<span class="left-menu-title">Members</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
-								<use xlink:href="#olymp-happy-sticker-icon"></use>
-							</svg>
-							<span class="left-menu-title">Users</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="WEATHER APP">
-								<use xlink:href="#olymp-music-shuffle-icon"></use>
-							</svg>
-							<span class="left-menu-title">Cluster Manager</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
-								<use xlink:href="#olymp-badge-icon"></use>
-							</svg>
-							<span class="left-menu-title">Communication</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="Community Badges">
-								<use xlink:href="#olymp-status-icon"></use>
-							</svg>
-							<span class="left-menu-title">Services</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="Friends Birthdays">
-								<use xlink:href="#olymp-settings-icon"></use>
-							</svg>
-							<span class="left-menu-title">Settings</span>
-						</a>
-					</li>
-				</ul>
-			</div>
+		<div class="mCustomScrollbar" data-mcs-theme="dark">
+			<ul class="left-menu">
+				<li>
+					<a href="#" class="js-sidebar-open">
+						<svg class="olymp-menu-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="OPEN MENU">
+							<use xlink:href="#olymp-menu-icon"></use>
+						</svg>
+					</a>
+				</li>
+				<li>
+					<a href="dashboard.php">
+						<svg class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="NEWSFEED">
+							<use xlink:href="#olymp-newsfeed-icon"></use>
+						</svg>
+					</a>
+				</li>
+				<li>
+					<a href="cluster-manager.php">
+						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
+							<use xlink:href="#olymp-star-icon"></use>
+						</svg>
+					</a>
+				</li>
+				<li>
+					<a href="your-events.php">
+						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
+							<use xlink:href="#olymp-manage-widgets-icon"></use>
+						</svg>
+					</a>
+				</li>
+				<li>
+					<a href="members.php">
+						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
+							<use xlink:href="#olymp-happy-faces-icon"></use>
+						</svg>
+					</a>
+				</li>
+				<li>
+					<a href="users.php">
+						<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
+							<use xlink:href="#olymp-happy-sticker-icon"></use>
+						</svg>
+					</a>
+				</li>
+				<li>
+					<a href="communication.php">
+						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
+							<use xlink:href="#olymp-status-icon"></use>
+						</svg>
+					</a>
+				</li>
+				<li>
+					<a href="services.php">
+						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
+							<use xlink:href="#olymp-badge-icon"></use>
+						</svg>
+					</a>
+				</li>
+				<li>
+					<a href="setting.php">
+						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
+							<use xlink:href="#olymp-settings-icon"></use>
+						</svg>
+					</a>
+				</li>
+				
+			</ul>
 		</div>
 	</div>
-	<!-- ... end Fixed Sidebar Left -->
 
+	<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1">
+		<a href="02-ProfilePage.html" class="logo">
+			<div class="img-wrap">
+				<img loading="lazy" src="img/white-logo.png" alt="logo-tital" width="34" height="34">
+			</div>
+			<div class="title-block">
+				<h6 class="logo-title">Cluster</h6>
+			</div>
+		</a>
 
-	<!-- Fixed Sidebar Left -->
-	<div class="fixed-sidebar left fixed-sidebar-responsive">
-
-		<div class="fixed-sidebar-left sidebar--small" id="sidebar-left-responsive">
-			<a href="#" class="logo js-sidebar-open">
-				<img loading="lazy" src="img/white-logo.png" alt="white-logo" width="34" height="34">
-			</a>
-
+		<div class="mCustomScrollbar" data-mcs-theme="dark">
+			<ul class="left-menu">
+				<li>
+					<a href="#" class="js-sidebar-open">
+						<svg class="olymp-close-icon left-menu-icon">
+							<use xlink:href="#olymp-close-icon"></use>
+						</svg>
+						<span class="left-menu-title">Main Menu</span>
+					</a>
+				</li>
+				<li>
+					<a href="dashboard.php">
+						<svg  class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="NEWSFEED"><use xlink:href="#olymp-status-icon"></use></svg>
+						<span class="left-menu-title">Dashboard</span>
+					</a>
+				</li>
+				<li>
+					<a href="cluster-manager.php">
+						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
+							<use xlink:href="#olymp-star-icon"></use>
+						</svg>
+						<span class="left-menu-title">Clusters</span>
+					</a>
+				</li>
+				<li>
+					<a href="your-events.php">
+						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
+							<use xlink:href="#olymp-manage-widgets-icon"></use>
+						</svg>
+						<span class="left-menu-title">Events</span>
+					</a>
+				</li>
+				<li>
+					<a href="members.php">
+						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
+							<use xlink:href="#olymp-happy-faces-icon"></use>
+						</svg>
+						<span class="left-menu-title">Members</span>
+					</a>
+				</li>
+				<li>
+					<a href="users.php">
+						<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
+							<use xlink:href="#olymp-happy-sticker-icon"></use>
+						</svg>
+						<span class="left-menu-title">Users</span>
+					</a>
+				</li>
+				
+				<li>
+					<a href="communication.php">
+						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
+							<use xlink:href="#olymp-badge-icon"></use>
+						</svg>
+						<span class="left-menu-title">Communication</span>
+					</a>
+				</li>
+				<li>
+					<a href="services.php">
+						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
+							<use xlink:href="#olymp-status-icon"></use>
+						</svg>
+						<span class="left-menu-title">Services</span>
+					</a>
+				</li>
+				<li>
+					<a href="setting.php">
+						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
+							<use xlink:href="#olymp-settings-icon"></use>
+						</svg>
+						<span class="left-menu-title">Settings</span>
+					</a>
+				</li>
+			</ul>
 		</div>
+	</div>
+</div>
+<!-- ... end Fixed Sidebar Left -->
+<!-- Fixed Sidebar Left -->
+<div class="fixed-sidebar left fixed-sidebar-responsive">
 
-		<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1-responsive">
-			<a href="#" class="logo">
-				<div class="img-wrap">
-					<img loading="lazy" src="img/logo.png" alt="white-logo" width="34" height="34">
-				</div>
-				<div class="title-block">
-					<h6 class="logo-title">Clusters</h6>
-				</div>
-			</a>
+	<div class="fixed-sidebar-left sidebar--small" id="sidebar-left-responsive">
+		<a href="#" class="logo js-sidebar-open">
+			<img loading="lazy" src="img/white-logo.png" alt="white-logo" width="34" height="34">
+		</a>
 
-			<div class="mCustomScrollbar" data-mcs-theme="dark">
+	</div>
 
-				<div class="control-block">
-					<div class="author-page author vcard inline-items">
-						<div class="author-thumb">
-							<img alt="author" src="img/author-page.html" width="36" height="36" class="avatar">
-							<span class="icon-status online"></span>
-						</div>
-						<a href="02-ProfilePage.html" class="author-name fn">
-							<div class="author-title">
-								Abu Sufian
-								<svg class="olymp-dropdown-arrow-icon">
-									<use xlink:href="#olymp-dropdown-arrow-icon"></use>
-								</svg>
-							</div>
-							<span class="author-subtitle">SPACE COWBOY</span>
-						</a>
+	<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1-responsive">
+		<a href="#" class="logo">
+			<div class="img-wrap">
+				<img loading="lazy" src="img/logo.png" alt="white-logo" width="34" height="34">
+			</div>
+			<div class="title-block">
+				<h6 class="logo-title">Clusters</h6>
+			</div>
+		</a>
+
+		<div class="mCustomScrollbar" data-mcs-theme="dark">
+
+			<div class="control-block">
+				<div class="author-page author vcard inline-items">
+					<div class="author-thumb">
+						<img alt="author" src="img/author-page.html" width="36" height="36" class="avatar">
+						<span class="icon-status online"></span>
 					</div>
+					<a href="dashboard.php" class="author-name fn">
+						<div class="author-title">
+							Abu Sufian
+							<svg class="olymp-dropdown-arrow-icon">
+								<use xlink:href="#olymp-dropdown-arrow-icon"></use>
+							</svg>
+						</div>
+						<span class="author-subtitle">web developer</span>
+					</a>
 				</div>
-
-				<div class="ui-block-title ui-block-title-small">
-					<h6 class="title">MAIN SECTIONS</h6>
-				</div>
-
-				<ul class="left-menu">
-					<li>
-						<a href="#" class="js-sidebar-open">
-							<svg class="olymp-close-icon left-menu-icon">
-								<use xlink:href="#olymp-close-icon"></use>
-							</svg>
-							<span class="left-menu-title">Main Menu</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="NEWSFEED">
-								<use xlink:href="#olymp-status-icon"></use>
-							</svg>
-							<span class="left-menu-title">Dashboard</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="FAV PAGE">
-								<use xlink:href="#olymp-star-icon"></use>
-							</svg>
-							<span class="left-menu-title">Clustors</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="Manage Widgets">
-								<use xlink:href="#olymp-manage-widgets-icon"></use>
-							</svg>
-							<span class="left-menu-title">Events</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
-								<use xlink:href="#olymp-happy-faces-icon"></use>
-							</svg>
-							<span class="left-menu-title">Members</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
-								<use xlink:href="#olymp-happy-sticker-icon"></use>
-							</svg>
-							<span class="left-menu-title">Users</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="WEATHER APP">
-								<use xlink:href="#olymp-music-shuffle-icon"></use>
-							</svg>
-							<span class="left-menu-title">Cluster Manager</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
-								<use xlink:href="#olymp-badge-icon"></use>
-							</svg>
-							<span class="left-menu-title">Communication</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="Community Badges">
-								<use xlink:href="#olymp-status-icon"></use>
-							</svg>
-							<span class="left-menu-title">Services</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip"
-								data-bs-placement="right" data-bs-original-title="Friends Birthdays">
-								<use xlink:href="#olymp-settings-icon"></use>
-							</svg>
-							<span class="left-menu-title">Settings</span>
-						</a>
-					</li>
-				</ul>
-
-				<div class="ui-block-title ui-block-title-small">
-					<h6 class="title">YOUR ACCOUNT</h6>
-				</div>
-
-				<ul class="account-settings">
-					<li>
-						<a href="#">
-
-							<svg class="olymp-menu-icon">
-								<use xlink:href="#olymp-menu-icon"></use>
-							</svg>
-
-							<span>Profile Settings</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<svg class="olymp-logout-icon">
-								<use xlink:href="#olymp-logout-icon"></use>
-							</svg>
-
-							<span>Log Out</span>
-						</a>
-					</li>
-				</ul>
-
 			</div>
+
+			<div class="ui-block-title ui-block-title-small">
+				<h6 class="title">MAIN SECTIONS</h6>
+			</div>
+
+			<ul class="left-menu">
+				<li>
+					<a href="#" class="js-sidebar-open">
+						<svg class="olymp-close-icon left-menu-icon">
+							<use xlink:href="#olymp-close-icon"></use>
+						</svg>
+						<span class="left-menu-title">Main Menu</span>
+					</a>
+				</li>
+				<li>
+					<a href="dashboard.php">
+						<svg  class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="NEWSFEED"><use xlink:href="#olymp-status-icon"></use></svg>
+						<span class="left-menu-title">Dashboard</span>
+					</a>
+				</li>
+				<li>
+					<a href="cluster-manager.php">
+						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
+							<use xlink:href="#olymp-star-icon"></use>
+						</svg>
+						<span class="left-menu-title">Clusters</span>
+					</a>
+				</li>
+				<li>
+					<a href="your-events.php">
+						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
+							<use xlink:href="#olymp-manage-widgets-icon"></use>
+						</svg>
+						<span class="left-menu-title">Events</span>
+					</a>
+				</li>
+				<li>
+					<a href="members.php">
+						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
+							<use xlink:href="#olymp-happy-faces-icon"></use>
+						</svg>
+						<span class="left-menu-title">Members</span>
+					</a>
+				</li>
+				<li>
+					<a href="users.php">
+						<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
+							<use xlink:href="#olymp-happy-sticker-icon"></use>
+						</svg>
+						<span class="left-menu-title">Users</span>
+					</a>
+				</li>
+				<li>
+					<a href="communication.php">
+						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
+							<use xlink:href="#olymp-badge-icon"></use>
+						</svg>
+						<span class="left-menu-title">Communication</span>
+					</a>
+				</li>
+				<li>
+					<a href="services.php">
+						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
+							<use xlink:href="#olymp-status-icon"></use>
+						</svg>
+						<span class="left-menu-title">Services</span>
+					</a>
+				</li>
+				<li>
+					<a href="setting.php">
+						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
+							<use xlink:href="#olymp-settings-icon"></use>
+						</svg>
+						<span class="left-menu-title">Settings</span>
+					</a>
+				</li>
+			</ul>
+
+			<div class="ui-block-title ui-block-title-small">
+				<h6 class="title">YOUR ACCOUNT</h6>
+			</div>
+
+			<ul class="account-settings">
+				<li>
+					<a href="#">
+
+						<svg class="olymp-menu-icon">
+							<use xlink:href="#olymp-menu-icon"></use>
+						</svg>
+
+						<span>Profile Settings</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<svg class="olymp-logout-icon">
+							<use xlink:href="#olymp-logout-icon"></use>
+						</svg>
+
+						<span>Log Out</span>
+					</a>
+				</li>
+			</ul>
+
 		</div>
 	</div>
-	<!-- ... end Fixed Sidebar Left -->
+</div>
+<!-- ... end Fixed Sidebar Left -->
 
 	<!-- Header-BP -->
 
@@ -1071,25 +1015,7 @@
 	<!-- ... end Main Header Groups -->
 
 	<div class="container">
-		<div class="row">
-			<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<div class="ui-block responsive-flex">
-					<div class="ui-block-title">
-						<ul class="nav nav-tabs calendar-events-tabs" id="calendar-events-tabs" role="tablist">
-							<li class="nav-item" role="presentation">
-								<a class="nav-link active" id="events-tab" data-bs-toggle="tab" href="#events"
-									role="tab" aria-controls="home" aria-selected="true">
-									Calendar and Events
-								</a>
-							</li>
-
-
-						</ul>
-
-					</div>
-				</div>
-			</div>
-		</div>
+		
 	</div>
 	<!-- Tab panes -->
 	<div class="tab-content" id="calendar-events-tabs-content">
@@ -1229,7 +1155,7 @@
 												<button class="accordion-button collapsed" type="button"
 													data-bs-toggle="collapse" data-bs-target="#collapseTwo"
 													aria-expanded="false" aria-controls="collapseTwo">
-													Send the new “Olympus” project files to the Agency
+													Send the new “floppy” project files to the Agency
 													<svg width="8" height="8">
 														<use xlink:href="#olymp-dropdown-arrow-icon"></use>
 													</svg>
@@ -1508,7 +1434,7 @@
 
 						<div class="ui-block">
 							<div class="ui-block-title">
-								<h6 class="title">Event Managers</h6>
+								<h6 class="title">Cluster Manager</h6>
 							</div>
 
 
@@ -1516,33 +1442,6 @@
 							<!-- W-Action -->
 
 							<ul class="widget w-friend-pages-added notification-list friend-requests">
-								<li class="inline-items">
-									<div class="author-thumb">
-										<img loading="lazy" src="img/avatar38-sm.html" alt="author" width="36"
-											height="36">
-									</div>
-									<div class="notification-event">
-										<a href="#" class="h6 notification-friend">Francine Smith</a>
-									</div>
-								</li>
-								<li class="inline-items">
-									<div class="author-thumb">
-										<img loading="lazy" src="img/avatar38-sm.html" alt="author" width="36"
-											height="36">
-									</div>
-									<div class="notification-event">
-										<a href="#" class="h6 notification-friend">Francine Smith</a>
-									</div>
-								</li>
-								<li class="inline-items">
-									<div class="author-thumb">
-										<img loading="lazy" src="img/avatar38-sm.html" alt="author" width="36"
-											height="36">
-									</div>
-									<div class="notification-event">
-										<a href="#" class="h6 notification-friend">Francine Smith</a>
-									</div>
-								</li>
 								<li class="inline-items">
 									<div class="author-thumb">
 										<img loading="lazy" src="img/avatar38-sm.html" alt="author" width="36"
@@ -1561,7 +1460,7 @@
 						<div class="ui-block">
 
 							<div class="ui-block-title">
-								<h6 class="title">Activity Users</h6>
+								<h6 class="title">Cluster Members</h6>
 							</div>
 
 
@@ -2091,6 +1990,5 @@
 
 </body>
 
-<!-- Mirrored from html.crumina.net/html-olympus/17-FriendGroups.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Feb 2021 07:40:51 GMT -->
 
 </html>
