@@ -145,7 +145,7 @@ $role = Auth::user()->role;
                             </div>
 
                             <div class="modal-body">
-                                <form method="post" action="{{ url('user/updateCluster') }}/{{ $list->id }}"
+                                <form method="post" action="{{ url('admin/updateCluster') }}/{{ $list->id }}"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
@@ -233,7 +233,7 @@ $role = Auth::user()->role;
                 </div>
 
                 <div class="modal-body">
-                    <form method="post" action="{{ url('user/createCluster') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ url('admin/createCluster') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Cluster Name</label>
