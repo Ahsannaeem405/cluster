@@ -229,6 +229,25 @@
                                 
                                                     </select>
                                                 </div>
+
+                                                <div class="form-group">
+                                                    <svg class="olymp-happy-face-icon">
+                                                        <use xlink:href="#olymp-happy-face-icon"></use>
+                                                    </svg>
+                                
+                                                    <select class="form-select" name="manager_cluster">
+                                                        @php
+                                                        $user_id=Auth::user()->id;
+                                                $manager = App\Models\JoinCluster::Where('user_id', $user_id)->where('status', 2)->take(6)->get();
+
+                                                        @endphp
+                                                        <option>Select Cluster</option>
+                                                        @foreach( $manager as $list)
+                                                        <option value="{{ $list->name}}" title="Green Goo Rock">{{ $list->name}}</option>
+                                                        @endforeach
+                                                       
+                                                    </select>
+                                                </div>
                                 
                                                 <input type="submit"  class="btn btn-primary "  value="Create Event" name="" id="">
                                                 {{-- <button>Create Event</button> --}}
@@ -428,6 +447,24 @@
 
                         <option value="Rachel" title="Rachel Howlett">Rachel Howlett</option>
 
+                    </select>
+                </div>
+                <div class="form-group">
+                    <svg class="olymp-happy-face-icon">
+                        <use xlink:href="#olymp-happy-face-icon"></use>
+                    </svg>
+
+                    <select class="form-select" name="manager_cluster">
+                        @php
+                        $user_id=Auth::user()->id;
+                $manager = App\Models\JoinCluster::Where('user_id', $user_id)->where('status', 2)->take(6)->get();
+
+                        @endphp
+                        <option>Select Cluster</option>
+                        @foreach( $manager as $list)
+                        <option value="{{ $list->name}}" title="Green Goo Rock">{{ $list->name}}</option>
+                        @endforeach
+                       
                     </select>
                 </div>
 
