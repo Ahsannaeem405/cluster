@@ -434,8 +434,6 @@ $ii =$events->id;
                                                 {{ $users->User->last_name }}</b>
                                         </div>
                                     </li>
-
-                                @endforeach
 @if(Auth::user()->role == 'admin')
                                 <li style=" background: #2d2d2d; padding: 7px;">
                                     <div class="col-12">
@@ -445,6 +443,8 @@ $ii =$events->id;
 
                                 </li>
                                 @endif
+                                @endforeach
+
                             </ul>
 
                             <!-- .. end W-Activity-Feed -->

@@ -112,21 +112,18 @@ class install extends Controller
         fwrite($myfile, $txt43);
         fwrite($myfile, $txt44);
         fclose($myfile);
-
+   
+        $email=$request->email;
+        $pwd=$request->pwd;
+        session()->put('EMAIL',$email);
+        session()->put('PWD',$pwd);
+  
         
         return redirect('/migrate');
 
        
         //sleep(10);
-        
-        $email=$request->email;
-        $pwd=$request->pwd;
-        $user=new User();
-        $user->email=$email;
-        $user->password=Hash::make($pwd);
-        $user->role='admin';
-        $user->status='1';
-        $user->save();
+     
        
 
         

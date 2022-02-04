@@ -7,7 +7,8 @@ use App\Http\Controllers\frontController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\install;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +28,15 @@ Route::get('install', function () {
 
 Route::get('migrate', function () {
     $run = Artisan::call('migrate:fresh');
+   $email= session()->get('EMAIL');
+    $pwd=session()->get('PWD');
+    $user=new User();
+    $user->first_name='Admin';
+    $user->email=$email;
+    $user->password=Hash::make($pwd);
+    $user->role='admin';
+    $user->status='1';
+    $user->save();
     return redirect('/');
 });
 
