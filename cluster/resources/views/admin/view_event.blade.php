@@ -1,3 +1,4 @@
+
 @extends('admin.layout')
 @section('page_title', 'Home Page')
 @section('content')
@@ -52,10 +53,12 @@ $role = Auth::user()->role;
 		</div>
 	</div>
 	<!-- Tab panes -->
+	
 	<div class="tab-content" id="calendar-events-tabs-content">
 		<div class="tab-pane fade show active" id="notifications" role="tabpanel" aria-labelledby="notifications-tab">
 			<div class="container">
 				<div class="row">
+					
 					<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 						<div class="ui-block">
 

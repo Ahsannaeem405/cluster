@@ -116,7 +116,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/view/event")}}">
 						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
 							<use xlink:href="#olymp-manage-widgets-icon"></use>
 						</svg>
@@ -196,7 +196,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="{{url('admin/view_cluster')}}">
+					<a href="{{url("$role/view_cluster")}}">
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
 							<use xlink:href="#olymp-star-icon"></use>
 						</svg>
@@ -336,7 +336,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/view/event")}}">
 						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
 							<use xlink:href="#olymp-manage-widgets-icon"></use>
 						</svg>

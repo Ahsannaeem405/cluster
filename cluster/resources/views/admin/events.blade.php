@@ -16,8 +16,8 @@ $role = Auth::user()->role;
             <div class="row">
                 <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
                     <div class="main-header-content">
-                        <h1>Manage your Clusters</h1>
-                        <p>Welcome to your Clusters Management page.Here you can easly Add, Delete and Edit you clustors.
+                        <h1>Manage your Events</h1>
+                        <p>Welcome to your Events Management page.Here you can easly Add, Delete and Edit you clustors.
                             Thank you</p>
                     </div>
                 </div>
@@ -26,6 +26,9 @@ $role = Auth::user()->role;
     </div>
 
     <!-- ... end Main Header Groups -->
+
+
+
     <!-- Main Content Groups -->
 
     <div class="container">
@@ -80,7 +83,7 @@ $role = Auth::user()->role;
                 <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
 
                     <div class="ui-block h-100 mb-0">
-<a href="{{url("$role/view/cluster",$list->id)}}">
+<a href="{{url("$role/view/Event",$list->id)}}">
                         <!-- Friend Item -->
 
                         <div class="friend-item clusotr-groups">
@@ -103,7 +106,7 @@ $role = Auth::user()->role;
                                     {{-- @dd(Auth::user()->role ) --}}
 
                                     @if (Auth::user()->role == 'user')
-                                        <a href="{{ url('/user/Join/cluster',$list->id) }}" class="btn btn-control "
+                                        <a href="{{ url('/user/Join/cluster')}}/{{ $list->id }}" class="btn btn-control "
                                             style="background:#ff5e3a">
                                             <i class="fa fa-plus"></i>
                                         </a>
@@ -186,15 +189,13 @@ $role = Auth::user()->role;
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleFormControlInput1">manager</label>
-                                        <input list="browsers" name="manager_id" value="{{$list->manager_id}}"   placeholder="Select Manager"  class="form-control @error('manager_id') is-invalid @enderror">
+                                        <label for="exampleFormControlInput1">Cluster</label>
+                                        <input list="browsers" name="cluster"   placeholder="Select Cluster"  class="form-control @error('cluster') is-invalid @enderror">
                                             <datalist id="browsers">
-                                                @foreach($manager as $list)
-                                            <option value="{{$list->id}}">{{$list->first_name}}</option>
-                                                @endforeach
+                                            <option value=""></option>
                                             </datalist>
                                         
-                                        @error('manager_id')
+                                        @error('cluster')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -267,21 +268,19 @@ $role = Auth::user()->role;
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">manager</label>
-                            <input list="browsers" name="manager_id"  placeholder="Select Manager"  class="form-control @error('manager_id') is-invalid @enderror">
+                            <label for="exampleFormControlInput1">Cluster</label>
+                            <input list="browsers" name="cluster"   placeholder="Select Cluster"  class="form-control @error('cluster') is-invalid @enderror">
                                 <datalist id="browsers">
-                                    @foreach($manager as $list)
-                                <option value="{{$list->first_name}}">{{$list->first_name}}</option>
-                                    @endforeach
+                                <option value=""></option>
                                 </datalist>
                             
-                            @error('manager_id')
+                            @error('cluster')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-blue btn-lg full-width">Create Cluster</button>
+                        <button type="submit" class="btn btn-blue btn-lg full-width">Create Event</button>
                     </form>
                 </div>
             </div>

@@ -19,9 +19,10 @@ class ClusterController extends Controller
     public function user_index()
     {
 
-        $viewCluster = Cluster::all();
-        // dd($viewCluster);
-        return view('admin.view_cluster', compact('viewCluster'));
+        $viewCluster['viewCluster'] = Cluster::all();
+        $viewCluster['manager'] = User::where('role','user')->get();
+
+        return view('admin.view_cluster', $viewCluster);
     }
 
     public function communication()
@@ -122,13 +123,40 @@ class ClusterController extends Controller
         $event->description = $request->description;
         $event->type_Emj = $request->type_Emj;
         $event->save();
-        return back()->with('sucess', 'Event Added Sucessfully');
+        return redirect()->back()->with('success', 'Event Added Sucessfully!');
+
         // return view('admin.view_cluster', compact('viewCluster'));
 
     }
+    public function update_event(Request $request,$id)
+    {
+
+        //   dd($request);
+        $event =Event::find($id);
+        $event->name = $request->name;
+        $event->Event_type = $request->Event_type;
+        $event->join_cluster_ID = $request->mangerID;
+        $event->location = $request->location;
+        $event->datetimepicker = $request->datetimepicker;
+        $event->time = $request->time;
+        $event->time_type = $request->time_type;
+        $event->timezone = $request->timezone;
+        $event->description = $request->description;
+        $event->type_Emj = $request->type_Emj;
+        $event->save();
+        return redirect()->back()->with('success', 'Event Updated Sucessfully!');
 
 
+    }
+    public function delete_event($id)
+    {
+        //   dd($request);
+        $event =Event::find($id);
+        $event->delete();
+        return redirect()->back()->with('success', 'Event Deleted Sucessfully!');
 
+
+    }   
 
     public function index()
     {
@@ -160,8 +188,11 @@ class ClusterController extends Controller
 
         // dd($id);
 
-        $user = JoinCluster::where('cluster_id', $id)->get();
-        return view('admin.view_users', compact('user'));
+       // $user = JoinCluster::where('cluster_id', $id)->get();
+        $event['event'] = Event::all();
+        $event['event_join'] = Event::where('join_cluster_ID','1')->get();
+        return view('admin.view_users', $event);
+       // return view('admin.view_users', compact('user'));
     }
 
 
@@ -169,9 +200,10 @@ class ClusterController extends Controller
     function view_cluster($id)
     {
 
-
+        
         $manager = JoinCluster::Where('cluster_id', $id)->where('status', 2)->take(6)->get();
         $user = JoinCluster::Where('cluster_id', $id)->take(6)->get();
+
         $mang = JoinCluster::Where('cluster_id', $id)->Where('user_id', Auth::user()->id)->first();
         if ($mang == null && Auth::user()->role != 'admin') {
             $event = Event::where('Event_type', 'Public')->get();
@@ -182,7 +214,7 @@ class ClusterController extends Controller
         $joinn = EventJoin::Where('user_id', Auth::user()->id)->where('cluster_id', $id)->get();
 
         //  dd($id);
-
+        $id=$id;
         // @dd($mang);
         return view('admin.Events-manager', compact('user', 'manager', 'mang', 'event', 'id', 'joinn'));
     }
@@ -248,6 +280,7 @@ class ClusterController extends Controller
         }
         $clustor->name = $request->name;
         $clustor->detail = $request->detail;
+        $clustor->manager_id = $request->manager_id;
         $clustor->save();
         return redirect()->back()->with('success', 'Cluster addedd Successfully!');
     }
@@ -255,7 +288,9 @@ class ClusterController extends Controller
     public function viewCluster()
     {
         $viewCluster['viewCluster'] = Cluster::all();
-        return view('admin.view_cluster', $viewCluster);
+        $manager['manager'] = User::where('role','user')->get();
+       // dd($manager);
+        return view('admin.view_cluster', $viewCluster,$manager);
     }
 
 
@@ -275,6 +310,7 @@ class ClusterController extends Controller
         }
         $clustor->name = $request->name;
         $clustor->detail = $request->detail;
+        $clustor->manager_id = $request->manager_id;
         $clustor->save();
         return redirect()->back()->with('success', 'Cluster Updated Successfully!');
     }

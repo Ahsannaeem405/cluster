@@ -2,6 +2,7 @@
 <?php
 
 use App\Http\Controllers\ClusterController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\frontController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\install;
@@ -57,6 +58,8 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::post('/add/event/', [ClusterController::class, 'add_event']);
+    Route::post('/update/event/{id}', [ClusterController::class, 'update_event']);
+    Route::get('/delete/event/{id}', [ClusterController::class, 'delete_event']);
 
     //////////////////////cluster start
     //Route::view('/admin/view_cluster','admin/view_cluster');
@@ -70,6 +73,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/communication', [ClusterController::class, 'communication']);
     Route::post('/send/email', [ClusterController::class, 'send_email']);
     Route::get('/manager/status/{id}/{userID}', [ClusterController::class, 'manger']);
+
+    Route::get('/events', [EventController::class, 'events']);
+
 
 });
 
