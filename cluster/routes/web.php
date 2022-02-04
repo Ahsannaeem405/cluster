@@ -85,7 +85,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/manager/status/{id}/{userID}', [ClusterController::class, 'manger']);
 
     Route::get('/events', [EventController::class, 'events']);
-
+/////////////////////////////
+Route::get('/users', [ClusterController::class, 'users']);
+Route::post('/addUser', [ClusterController::class, 'addUser']);
+Route::post('/updateUser/{id}', [ClusterController::class, 'updateUser']);
+Route::post('/deleteUser/{id}', [ClusterController::class, 'deleteUser']);
 
 });
 

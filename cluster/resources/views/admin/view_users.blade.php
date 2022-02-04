@@ -87,7 +87,7 @@
                                         $i = 1;
                                         ?>
                                     @foreach ($event as $events)
-
+                                  
 									<tr class="event-item">
                                         <td>{{$i++}}</td>
 										<td class="author">
@@ -234,16 +234,22 @@
                                                     <svg class="olymp-happy-face-icon">
                                                         <use xlink:href="#olymp-happy-face-icon"></use>
                                                     </svg>
-                                
+                                                    @php
+                                                    $user_id=Auth::user()->id;
+                                            $manager = App\Models\JoinCluster::where('status', 2)->take(6)->get();
+                                            @endphp
+                                       
+                                                  
                                                     <select class="form-select" name="manager_cluster">
-                                                        @php
-                                                        $user_id=Auth::user()->id;
-                                                $manager = App\Models\JoinCluster::Where('user_id', $user_id)->where('status', 2)->take(6)->get();
-
-                                                        @endphp
+                                                      
                                                         <option>Select Cluster</option>
                                                         @foreach( $manager as $list)
-                                                        <option value="{{ $list->name}}" title="Green Goo Rock">{{ $list->name}}</option>
+                                                        @php
+                                                            
+                                                            $cluster=App\Models\cluster::where('id', $list->cluster_id)->first();
+                                                        @endphp
+                                
+                                                        <option value="{{ $cluster->name}}" >{{ $cluster->name}}</option>
                                                         @endforeach
                                                        
                                                     </select>
@@ -295,7 +301,10 @@
                                         $i = 1;
                                         ?>
                                     @foreach ($event_join as $events)
-
+                                    @php
+                                    $events_id=$events->event_id;
+                                    $list=App\Models\Event::where('id',$events_id)->first();
+                                @endphp
 									<tr class="event-item">
                                         <td>{{$i++}}</td>
 										<td class="author">
@@ -306,7 +315,7 @@
 												</div>
 												<div class="author-date">
 													<a href="#" class="author-name h6">
-                                                        {{$events->name}}
+                                                        {{$list->name}}
                                                     </a>
 												</div>
 											</div>
@@ -316,7 +325,7 @@
 												{{-- <svg class="olymp-add-a-place-icon">
 													<use xlink:href="#olymp-add-a-place-icon"></use>
 												</svg> --}}
-												<span>{{$events->name}}</span>
+												<span>{{$list->name}}</span>
 											</div>
 										</td>
 										<td class="upcoming">
@@ -325,12 +334,12 @@
 													<use xlink:href="#olymp-small-calendar-icon"></use>
 												</svg>
 
-												<span class="month">{{$events->datetimepicker}} {{$events->time}}{{$events->time_type}}</span>
+												<span class="month">{{$list->datetimepicker}} {{$list->time}}{{$events->time_type}}</span>
 
 											</div>
 										</td>
 										<td class="description">
-											<p class="description">Hey! {{$events->description}} </p>
+											<p class="description">Hey! {{$list->description}} </p>
 										</td>
 
 
@@ -453,16 +462,22 @@
                     <svg class="olymp-happy-face-icon">
                         <use xlink:href="#olymp-happy-face-icon"></use>
                     </svg>
-
+                    @php
+                    $user_id=Auth::user()->id;
+            $manager = App\Models\JoinCluster::where('status', 2)->take(6)->get();
+            @endphp
+       
+                  
                     <select class="form-select" name="manager_cluster">
-                        @php
-                        $user_id=Auth::user()->id;
-                $manager = App\Models\JoinCluster::Where('user_id', $user_id)->where('status', 2)->take(6)->get();
-
-                        @endphp
+                      
                         <option>Select Cluster</option>
                         @foreach( $manager as $list)
-                        <option value="{{ $list->name}}" title="Green Goo Rock">{{ $list->name}}</option>
+                        @php
+                            
+                            $cluster=App\Models\cluster::where('id', $list->cluster_id)->first();
+                        @endphp
+
+                        <option value="{{ $cluster->name}}" title="Green Goo Rock">{{ $cluster->name}}</option>
                         @endforeach
                        
                     </select>

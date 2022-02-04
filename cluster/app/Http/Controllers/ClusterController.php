@@ -11,6 +11,7 @@ use GuzzleHttp\Psr7\Request as Psr7Request;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\Hash;
 
 class ClusterController extends Controller
 {
@@ -122,6 +123,7 @@ class ClusterController extends Controller
         $event->timezone = $request->timezone;
         $event->description = $request->description;
         $event->type_Emj = $request->type_Emj;
+        $event->manager_cluster = $request->manager_cluster;
         $event->save();
         return redirect()->back()->with('success', 'Event Added Sucessfully!');
 
@@ -143,6 +145,7 @@ class ClusterController extends Controller
         $event->timezone = $request->timezone;
         $event->description = $request->description;
         $event->type_Emj = $request->type_Emj;
+        $event->manager_cluster = $request->manager_cluster;
         $event->save();
         return redirect()->back()->with('success', 'Event Updated Sucessfully!');
 
@@ -190,7 +193,8 @@ class ClusterController extends Controller
 
        // $user = JoinCluster::where('cluster_id', $id)->get();
         $event['event'] = Event::all();
-        $event['event_join'] = Event::where('join_cluster_ID','1')->get();
+        $event['event_join'] = EventJoin::where('event_id',$id)->get();
+        //dd($event['event_join']);
         return view('admin.view_users', $event);
        // return view('admin.view_users', compact('user'));
     }
@@ -323,5 +327,73 @@ class ClusterController extends Controller
         }
         $clustor->delete();
         return redirect()->back()->with('error', 'Cluster Deleted Successfully!');
+    }
+
+
+    public function users()
+    {
+        $user['user_list']=User::where('role','user')->get();
+
+        return view('admin.users',$user);
+    }
+    public function addUser(Request $request)
+    {
+        //dd($request->input());
+        $user=new User();
+        $user->first_name=$request->first_name;
+        $user->email=$request->email;
+        $user->password=Hash::make($request->password);
+        $user->role='user';
+        $user->status=1;
+        $user->save();
+        return redirect()->back()->with('success', 'User Added Successfully!');
+
+    }
+    public function updateUser(Request $request ,$id)
+    {
+       // dd($id);
+        
+      $user = User::find($id);
+  
+      $user->update([
+      'first_name' => $request->first_name,
+      'email' => $request->email,
+
+        ]);
+
+       if(isset($request->c_password))
+       {
+         $request->validate([
+            'new_password' => 'required|min:8',
+            'confirm_password' => 'required_with:password|same:new_password|min:8'
+
+        ]);
+        if(Hash::check($request->c_password,$user->password)) {
+                $user->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+           
+            return redirect()->back()->with('success', 'Your profile has been updated!');
+
+
+        }else{
+         
+            return redirect()->back()->with('error', 'Your Password doest match!');
+
+        }
+      }else{
+         
+          return redirect()->back()->with('success', 'Your profile has been updated!');
+
+
+      }
+
+    }
+    public function deleteUser($id)
+    {
+        $user=User::find($id);
+        $user->delete();
+        return redirect()->back()->with('error', 'User deleted successfully!');
+
     }
 }

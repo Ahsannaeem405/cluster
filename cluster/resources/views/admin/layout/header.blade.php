@@ -220,7 +220,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url('admin/users')}}">
 						<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
 							<use xlink:href="#olymp-happy-sticker-icon"></use>
 						</svg>
@@ -352,7 +352,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url('admin/users')}}">
 						<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
 							<use xlink:href="#olymp-happy-sticker-icon"></use>
 						</svg>
