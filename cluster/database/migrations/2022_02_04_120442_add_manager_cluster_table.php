@@ -13,10 +13,10 @@ class AddManagerClusterTable extends Migration
      */
     public function up()
     {
-        Schema::table('event', function (Blueprint $table) {
+        Schema::table('events', function (Blueprint $table) {
             $table->string('manager_cluster')->nullable();
 
-            
+
         });
     }
 
@@ -27,7 +27,7 @@ class AddManagerClusterTable extends Migration
      */
     public function down()
     {
-        Schema::table('event', function (Blueprint $table) {
+        Schema::table('events', function (Blueprint $table) {
             //
         });
     }
