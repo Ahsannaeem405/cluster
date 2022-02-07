@@ -137,7 +137,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/cluster_manager")}}">
 						<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="WEATHER APP">
 							<use xlink:href="#olymp-music-shuffle-icon"></use>
 						</svg>
@@ -228,7 +228,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/cluster_manager")}}">
 						<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="WEATHER APP">
 							<use xlink:href="#olymp-music-shuffle-icon"></use>
 						</svg>
@@ -360,7 +360,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/cluster_manager")}}">
 						<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="WEATHER APP">
 							<use xlink:href="#olymp-music-shuffle-icon"></use>
 						</svg>

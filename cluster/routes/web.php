@@ -96,6 +96,7 @@ Route::view('/members','admin/view_members');
 Route::view('/services','admin/view_services');
 Route::view('/setting','admin/view_setting');
 Route::view('/profile_setting','admin/profile_setting');
+Route::view('/cluster_manager','admin/cluster_manager');
 
 
 });
