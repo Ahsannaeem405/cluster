@@ -16,7 +16,12 @@ $role = Auth::user()->role;
             <div class="row">
                 <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
                     <div class="main-header-content">
+                     
+                        @if(Auth::user()->role == 'admin')
                         <h1>Manage your Clusters</h1>
+                        @else
+                        <h1>Join your Clusters</h1>
+                        @endif
                         <p>Welcome to your Clusters Management page.Here you can easly Add, Delete and Edit you clustors.
                             Thank you</p>
                     </div>

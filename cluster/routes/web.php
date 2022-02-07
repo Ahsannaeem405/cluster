@@ -127,6 +127,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/view/{id}', [ClusterController::class, 'view']);
         Route::get('/manager/status/{id}/{userID}', [ClusterController::class, 'manger']);
         Route::get('/view/join/{id}/{idd}', [ClusterController::class, 'view_join']);
+        
+        Route::view('/members','admin/view_members');
+        Route::view('/services','admin/view_services');
+        Route::view('/setting','admin/view_setting');
+        Route::view('/profile_setting','admin/profile_setting');
+        Route::view('/cluster_manager','admin/cluster_manager');
 
 
     });
