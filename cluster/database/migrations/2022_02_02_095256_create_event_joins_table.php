@@ -18,6 +18,9 @@ class CreateEventJoinsTable extends Migration
             $table->string('user_id')->nullable();
             $table->string('event_id')->nullable();
             $table->string('status')->default('joined');
+            $table->string('cluster_id')->nullable();
+
+
             $table->timestamps();
         });
     }

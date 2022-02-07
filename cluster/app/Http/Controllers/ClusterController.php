@@ -93,6 +93,9 @@ class ClusterController extends Controller
     public function view_event()
     {
 
+             // $event['event'] = Event::all();
+        // $event['event_join'] = EventJoin::where('event_id',$id)->get();
+
         $event = EventJoin::all();
         return view('admin.view_event', compact('event'));
     }
@@ -111,7 +114,7 @@ class ClusterController extends Controller
     public function add_event(Request $request)
     {
 
-        //   dd($request);
+        //   dd($request);W
         $event = new Event();
         $event->name = $request->name;
         $event->Event_type = $request->Event_type;
@@ -159,7 +162,7 @@ class ClusterController extends Controller
         return redirect()->back()->with('success', 'Event Deleted Sucessfully!');
 
 
-    }   
+    }
 
     public function index()
     {
@@ -191,12 +194,11 @@ class ClusterController extends Controller
 
         // dd($id);
 
-       // $user = JoinCluster::where('cluster_id', $id)->get();
-        $event['event'] = Event::all();
-        $event['event_join'] = EventJoin::where('event_id',$id)->get();
-        //dd($event['event_join']);
-        return view('admin.view_users', $event);
-       // return view('admin.view_users', compact('user'));
+     $user = JoinCluster::where('cluster_id', $id)->get();
+        // $event['event'] = Event::all();
+        //  $event['event_join'] = EventJoin::where('event_id',$id)->get();
+        // return view('admin.view_users', $event);
+ return view('admin.view_users', compact('user'));
     }
 
 
@@ -204,8 +206,9 @@ class ClusterController extends Controller
     function view_cluster($id)
     {
 
-        
+// dd($id);
         $manager = JoinCluster::Where('cluster_id', $id)->where('status', 2)->take(6)->get();
+
         $user = JoinCluster::Where('cluster_id', $id)->take(6)->get();
 
         $mang = JoinCluster::Where('cluster_id', $id)->Where('user_id', Auth::user()->id)->first();
@@ -214,6 +217,8 @@ class ClusterController extends Controller
         } else {
             $event = Event::all();
         }
+
+
 
         $joinn = EventJoin::Where('user_id', Auth::user()->id)->where('cluster_id', $id)->get();
 
@@ -352,9 +357,9 @@ class ClusterController extends Controller
     public function updateUser(Request $request ,$id)
     {
        // dd($id);
-        
+
       $user = User::find($id);
-  
+
       $user->update([
       'first_name' => $request->first_name,
       'email' => $request->email,
@@ -372,17 +377,17 @@ class ClusterController extends Controller
                 $user->update([
             'password' => Hash::make($request->new_password),
         ]);
-           
+
             return redirect()->back()->with('success', 'Your profile has been updated!');
 
 
         }else{
-         
+
             return redirect()->back()->with('error', 'Your Password doest match!');
 
         }
       }else{
-         
+
           return redirect()->back()->with('success', 'Your profile has been updated!');
 
 
