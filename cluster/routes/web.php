@@ -36,6 +36,7 @@ Route::get('migrate', function () {
     $user->password=Hash::make($pwd);
     $user->role='admin';
     $user->status='1';
+    $user->post_role='admin';
     $user->save();
     return redirect('/');
 });
