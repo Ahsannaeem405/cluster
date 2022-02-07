@@ -102,12 +102,14 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="{{url("$role/services")}}">
+					<a href="{{url("$role")}}">
 						<svg class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="NEWSFEED">
 							<use xlink:href="#olymp-newsfeed-icon"></use>
 						</svg>
 					</a>
 				</li>
+				@if(Auth::user()->role == 'admin')
+
 				<li>
 					<a href="{{url("$role/services")}}">
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
@@ -115,6 +117,7 @@ $role = Auth::user()->role;
 						</svg>
 					</a>
 				</li>
+				@endif
 				<li>
 					<a href="{{url("$role/view/event")}}">
 						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
@@ -122,6 +125,15 @@ $role = Auth::user()->role;
 						</svg>
 					</a>
 				</li>
+				<li>
+					<a href="{{url("$role/services")}}">
+						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
+							<use xlink:href="#olymp-status-icon"></use>
+						</svg>
+					</a>
+				</li>
+				@if(Auth::user()->role == 'admin')
+
 				<li>
 					<a href="{{url("$role/members")}}">
 						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
@@ -150,13 +162,7 @@ $role = Auth::user()->role;
 						</svg>
 					</a>
 				</li>
-				<li>
-					<a href="{{url("$role/services")}}">
-						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
-							<use xlink:href="#olymp-status-icon"></use>
-						</svg>
-					</a>
-				</li>
+			
 				<li>
 					<a href="{{url("$role/setting")}}">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
@@ -164,7 +170,7 @@ $role = Auth::user()->role;
 						</svg>
 					</a>
 				</li>
-
+				@endif
 			</ul>
 		</div>
 	</div>
@@ -195,6 +201,7 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Dashboard</span>
 					</a>
 				</li>
+				@if(Auth::user()->role == 'admin')
 				<li>
 					<a href="{{url("$role/view_cluster")}}">
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
@@ -203,6 +210,7 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Clustors</span>
 					</a>
 				</li>
+				@endif
 				<li>
 					<a href="{{url("$role/view/event")}}">
 						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
@@ -211,6 +219,15 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Events</span>
 					</a>
 				</li>
+				<li>
+					<a href="{{url("$role/services")}}">
+						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
+							<use xlink:href="#olymp-status-icon"></use>
+						</svg>
+						<span class="left-menu-title">Services</span>
+					</a>
+				</li>
+				@if(Auth::user()->role == 'admin')
 				<li>
 					<a href="{{url("$role/members")}}">
 						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
@@ -243,14 +260,7 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Communication</span>
 					</a>
 				</li>
-				<li>
-					<a href="{{url("$role/services")}}">
-						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
-							<use xlink:href="#olymp-status-icon"></use>
-						</svg>
-						<span class="left-menu-title">Services</span>
-					</a>
-				</li>
+				
 				<li>
 					<a href="{{url("$role/setting")}}">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
@@ -259,6 +269,7 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Settings</span>
 					</a>
 				</li>
+				@endif
 			</ul>
 		</div>
 	</div>
@@ -327,6 +338,8 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Dashboard</span>
 					</a>
 				</li>
+				@if(Auth::user()->role == 'admin')
+
 				<li>
 					<a href="{{url("$role/view_cluster")}}">
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
@@ -335,6 +348,7 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Clustors</span>
 					</a>
 				</li>
+				@endif
 				<li>
 					<a href="{{url("$role/view/event")}}">
 						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
@@ -343,6 +357,16 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Events</span>
 					</a>
 				</li>
+				<li>
+					<a href="{{url("$role/services")}}">
+						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
+							<use xlink:href="#olymp-status-icon"></use>
+						</svg>
+						<span class="left-menu-title">Services</span>
+					</a>
+				</li>
+				@if(Auth::user()->role == 'admin')
+
 				<li>
 					<a href="{{url("admin/members")}}">
 						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
@@ -375,14 +399,7 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Communication</span>
 					</a>
 				</li>
-				<li>
-					<a href="{{url("$role/services")}}">
-						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
-							<use xlink:href="#olymp-status-icon"></use>
-						</svg>
-						<span class="left-menu-title">Services</span>
-					</a>
-				</li>
+				
 				<li>
 					<a href="{{url("$role/setting")}}">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
@@ -425,6 +442,7 @@ $role = Auth::user()->role;
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+									@endif
 				</li>
 			</ul>
 
