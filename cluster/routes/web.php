@@ -79,6 +79,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('deleteCluster/{id}', [ClusterController::class, 'deleteCluster']);
     Route::get('/view_cluster', [ClusterController::class, 'viewCluster']);
     Route::get('/view/{id}', [ClusterController::class, 'view']);
+
     Route::get('/view/join/{id}/{idd}', [ClusterController::class, 'view_join']);
     Route::get('/view/event/', [ClusterController::class, 'view_event']);
     Route::get('/communication', [ClusterController::class, 'communication']);

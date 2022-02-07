@@ -1,11 +1,11 @@
 @extends('admin.layout')
 @section('page_title', 'Home Page')
 @section('content')
-<?php
-$role = Auth::user()->role;
-$var = 0;
-$ii = 0;
-?>
+    <?php
+    $role = Auth::user()->role;
+    $var = 0;
+    $ii = 0;
+    ?>
     <!-- Main Header Groups -->
 
     <div class="main-header">
@@ -30,11 +30,11 @@ $ii = 0;
     <div class="container">
         <div class="row">
 
-            @if(session()->has('sucess'))
-    <div class="alert alert-success">
-        {{ session()->get('sucess') }}
-    </div>
-@endif
+            @if (session()->has('sucess'))
+                <div class="alert alert-success">
+                    {{ session()->get('sucess') }}
+                </div>
+            @endif
             <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="ui-block responsive-flex">
                     <div class="ui-block-title">
@@ -76,20 +76,20 @@ $ii = 0;
 
                                 <div class="list">
                                     <div class="control-block-button">
-{{-- @if(isset($mang->status)) --}}
-                                        @if( isset($mang->status) && $mang->status == 2)
-                                        <a  class="btn btn-control bg-green" data-bs-toggle="modal"
-                                            data-bs-target="#create-event">
-                                            <svg class="olymp-plus-icon">
-                                                <use xlink:href="#olymp-plus-icon"></use>
-                                            </svg>
-                                        </a>
+                                        {{-- @if (isset($mang->status)) --}}
+                                        @if (isset($mang->status) && $mang->status == 2)
+                                            <a class="btn btn-control bg-green" data-bs-toggle="modal"
+                                                data-bs-target="#create-event">
+                                                <svg class="olymp-plus-icon">
+                                                    <use xlink:href="#olymp-plus-icon"></use>
+                                                </svg>
+                                            </a>
                                         @else
-                                        <a  class="btn btn-control bg-green" >
-                                        <svg class="olymp-plus-icon">
-                                            <use xlink:href="#olymp-plus-icon"></use>
-                                        </svg>
-                                    </a>
+                                            <a class="btn btn-control bg-green">
+                                                <svg class="olymp-plus-icon">
+                                                    <use xlink:href="#olymp-plus-icon"></use>
+                                                </svg>
+                                            </a>
                                         @endif
 
                                     </div>
@@ -280,75 +280,81 @@ $ii = 0;
                     <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
 
                         <div id="newsfeed-items-grid">
-@foreach ($event as $events)
-@if($events->Event->cluster_id == $id)
+                            @foreach ($event as $events)
+                                @if ($events->Event->cluster_id == $id)
 
 
 
 
-@foreach ($joinn as $item)
-@if($item->event_id == $events->id)
-<?php
-$ii =$events->id;
+                                    @foreach ($joinn as $item)
+                                        @if ($item->event_id == $events->id)
+                                            <?php
+                                            $ii = $events->id;
 
-?>
-@endif
-@endforeach
-<?php
-    //   $joinn = App\Models\EventJoin::Where('user_id', Auth::user()->id)->where('event_id',  $events->id)->count();
-?>
+                                            ?>
+                                        @endif
+                                    @endforeach
+                                    <?php
+                                    //   $joinn = App\Models\EventJoin::Where('user_id', Auth::user()->id)->where('event_id',  $events->id)->count();
+                                    ?>
 
-                            <div class="ui-block">
-                                <article class="hentry post video">
-                                    <div class="post__author author vcard inline-items">
-                                        <img loading="lazy" src="{{ asset('img/avatar7-sm.html') }}" alt="author" width="42"
-                                            height="42">
+                                    <div class="ui-block">
+                                        <article class="hentry post video">
+                                            <div class="post__author author vcard inline-items">
+                                                <img loading="lazy" src="{{ asset('img/avatar7-sm.html') }}" alt="author"
+                                                    width="42" height="42">
 
-                                        <div class="author-date">
-                                            <a class="h6 post__author-name fn" href="#">{{$events->Event->User->first_name}} {{$events->Event->User->last_name}}</a> shared a <a
-                                                href="#">link</a>
-                                            <div class="post__date">
-                                                <time class="published" datetime="2004-07-24T18:18">
-                                                   {{$events->datetimepicker}} {{$events->time}}{{$events->time_type}}
-                                                </time>
+                                                <div class="author-date">
+                                                    <a class="h6 post__author-name fn"
+                                                        href="#">{{ $events->Event->User->first_name }}
+                                                        {{ $events->Event->User->last_name }}</a> shared a <a
+                                                        href="#">link</a>
+                                                    <div class="post__date">
+                                                        <time class="published" datetime="2004-07-24T18:18">
+                                                            {{ $events->datetimepicker }}
+                                                            {{ $events->time }}{{ $events->time_type }}
+                                                        </time>
+                                                    </div>
+                                                </div>
+                                                @if (Auth::user()->role == 'admin')
+
+                                                    <div class="more"><svg class="olymp-three-dots-icon">
+                                                            <use xlink:href="#olymp-three-dots-icon"></use>
+                                                        </svg>
+                                                        <ul class="more-dropdown">
+                                                            <li>
+                                                                <a href="#">Edit Post</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">Delete Post</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">Turn Off Notifications</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">Select as Featured</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                @endif
+
                                             </div>
-                                        </div>
-                                        @if(Auth::user()->role == 'admin')
 
-                                        <div class="more"><svg class="olymp-three-dots-icon">
-                                                <use xlink:href="#olymp-three-dots-icon"></use>
-                                            </svg>
-                                            <ul class="more-dropdown">
-                                                <li>
-                                                    <a href="#">Edit Post</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Delete Post</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Turn Off Notifications</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Select as Featured</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        @endif
+                                            <p>Hey <a href="#">{{ $events->Event->User->first_name }}</a>
+                                                {{ $events->description }}</p>
 
-                                    </div>
+                                            <div class="col-12 text-end">
 
-                                    <p>Hey <a href="#">{{$events->Event->User->first_name}}</a> {{$events->description}}</p>
+                                                @if ($ii != $events->id)
+                                                    <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
+                                                        class="btn btn-primary"> Join</a>
+                                                @else
+                                                    <a class="btn btn-primary bg-green "
+                                                        style="border-color:green; color:white"> Joined</a>
 
-                                    <div class="col-12 text-end">
-
-                                        @if($ii != $events->id )
-                                        <a href="{{url("$role/view/join",[$events->id,$events->Event->cluster_id])}}" class="btn btn-primary" > Join</a>
-                                        @else
-                                        <a class="btn btn-primary bg-green " style="border-color:green; color:white" > Joined</a>
-
-                                        @endif
-                                    </div>
-                                    {{-- <div class="post-video">
+                                                @endif
+                                            </div>
+                                            {{-- <div class="post-video">
                                         <div class="video-thumb">
                                             <img loading="lazy" src="{{ asset('img/video-youtube1.html') }}" alt="photo"
                                                 width="197" height="194">
@@ -368,9 +374,9 @@ $ii =$events->id;
                                             <a href="#" class="link-site">YOUTUBE.COM</a>
                                         </div>
                                     </div> --}}
-                                </article>
-                            </div>
-                            @endif
+                                        </article>
+                                    </div>
+                                @endif
                             @endforeach
 
                         </div>
@@ -396,15 +402,16 @@ $ii =$events->id;
                                 @foreach ($manager as $managers)
 
 
-                                <li class="inline-items">
-                                    <div class="author-thumb">
-                                        <img loading="lazy" src="{{ asset('/img/avatar38-sm.html') }}" alt="author"
-                                            width="36" height="36">
-                                    </div>
-                                    <div class="notification-event">
-                                        <a href="#" class="h6 notification-friend">{{$managers->User->first_name}} {{$managers->User->last_name}}</a>
-                                    </div>
-                                </li>
+                                    <li class="inline-items">
+                                        <div class="author-thumb">
+                                            <img loading="lazy" src="{{ asset('/img/avatar38-sm.html') }}" alt="author"
+                                                width="36" height="36">
+                                        </div>
+                                        <div class="notification-event">
+                                            <a href="#" class="h6 notification-friend">{{ $managers->User->first_name }}
+                                                {{ $managers->User->last_name }}</a>
+                                        </div>
+                                    </li>
                                 @endforeach
 
                             </ul>
@@ -430,20 +437,25 @@ $ii =$events->id;
                                                 width="28" height="28">
                                         </div>
                                         <div class="notification-event">
-                                            <b style="    font-size: 14px;"> {{ $users->User->first_name}}
+                                            <b style="    font-size: 14px;"> {{ $users->User->first_name }}
                                                 {{ $users->User->last_name }}</b>
                                         </div>
                                     </li>
-@if(Auth::user()->role == 'admin')
+
+                                @endforeach
+
+                                @if (Auth::user()->role == 'admin')
                                 <li style=" background: #2d2d2d; padding: 7px;">
                                     <div class="col-12">
-                                        <a href="{{url("$role/view",$users->cluster_id )}}" style="    color: white;font-size: 16px;"> <span> See All </span></a>
+                                        <a href="{{ url("$role/view",[$id]) }}"
+                                            style="    color: white;font-size: 16px;"> <span> See All </span></a>
+                                            {{-- <a href="{{ url("$role/view") }}"
+                                                style="    color: white;font-size: 16px;"> <span> See All </span></a> --}}
 
                                     </div>
 
                                 </li>
-                                @endif
-                                @endforeach
+                            @endif
 
                             </ul>
 
@@ -477,92 +489,93 @@ $ii =$events->id;
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{url("$role/add/event")}}" method="POST">
+                    <form action="{{ url("$role/add/event") }}" method="POST">
                         @csrf
-                    <div class="form-group label-floating is-select">
-                        <label class="control-label">Personal Event</label>
-                        <select class="form-select" name="Event_type">
-                            <option value="Public">Public Event</option>
-                            <option value="Private">Private Event</option>
-                        </select>
-                    </div>
+                        <div class="form-group label-floating is-select">
+                            <label class="control-label">Personal Event</label>
+                            <select class="form-select" name="Event_type">
+                                <option value="Public">Public Event</option>
+                                <option value="Private">Private Event</option>
+                            </select>
+                        </div>
 
-                    <div class="form-group label-floating">
-                        <label class="control-label">Event Name</label>
-                        <input class="form-control" name="name" placeholder="" value="Take Querty to the Veterinarian" type="text">
-                    </div>
-                    <input type="hidden" value="@if(isset($mang->id)) {{$mang->id}} @endif" name="mangerID" id="">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Event Name</label>
+                            <input class="form-control" name="name" placeholder=""
+                                value="Take Querty to the Veterinarian" type="text">
+                        </div>
+                        <input type="hidden" value="@if (isset($mang->id)) {{ $mang->id }} @endif" name="mangerID" id="">
 
-                    <div class="form-group label-floating is-empty">
-                        <label class="control-label">Event Location</label>
-                        <input class="form-control" placeholder="" name="location" value="" type="text">
-                    </div>
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label">Event Location</label>
+                            <input class="form-control" placeholder="" name="location" value="" type="text">
+                        </div>
 
-                    <div class="form-group date-time-picker label-floating">
-                        <label class="control-label">Event Date</label>
-                        <input name="datetimepicker" name="date" value="26/03/2016">
-                        <span class="input-group-addon">
-                            <svg class="olymp-calendar-icon icon">
-                                <use xlink:href="#olymp-calendar-icon"></use>
+                        <div class="form-group date-time-picker label-floating">
+                            <label class="control-label">Event Date</label>
+                            <input name="datetimepicker" name="date" value="26/03/2016">
+                            <span class="input-group-addon">
+                                <svg class="olymp-calendar-icon icon">
+                                    <use xlink:href="#olymp-calendar-icon"></use>
+                                </svg>
+                            </span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col col-lg-3 col-md-3 col-sm-12 col-12">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Event Time</label>
+                                    <input class="form-control" name="time" placeholder="" value="09:00" type="text">
+                                </div>
+                            </div>
+                            <div class="col col-lg-3 col-md-3 col-sm-12 col-12">
+                                <div class="form-group label-floating is-select">
+                                    <label class="control-label">AM-PM</label>
+                                    <select class="form-select" name="time_type">
+                                        <option value="AM">AM</option>
+                                        <option value="PM">PM</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="form-group label-floating is-select">
+                                    <label class="control-label">Timezone</label>
+                                    <select class="form-select" name="timezone">
+                                        <option value="US">US (UTC-8)</option>
+                                        <option value="UK">UK (UTC-0)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Event Description"
+                                name="description">I need to take Querty for a check up and ask the doctor if he needs a new tank.</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <svg class="olymp-happy-face-icon">
+                                <use xlink:href="#olymp-happy-face-icon"></use>
                             </svg>
-                        </span>
-                    </div>
 
-                    <div class="row">
-                        <div class="col col-lg-3 col-md-3 col-sm-12 col-12">
-                            <div class="form-group label-floating">
-                                <label class="control-label">Event Time</label>
-                                <input class="form-control" name="time" placeholder="" value="09:00" type="text">
-                            </div>
-                        </div>
-                        <div class="col col-lg-3 col-md-3 col-sm-12 col-12">
-                            <div class="form-group label-floating is-select">
-                                <label class="control-label">AM-PM</label>
-                                <select class="form-select" name="time_type">
-                                    <option value="AM">AM</option>
-                                    <option value="PM">PM</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="form-group label-floating is-select">
-                                <label class="control-label">Timezone</label>
-                                <select class="form-select" name="timezone">
-                                    <option value="US">US (UTC-8)</option>
-                                    <option value="UK">UK (UTC-0)</option>
-                                </select>
-                            </div>
+                            <select class="form-select" name="type_Emj">
+                                <option value="Green" title="Green Goo Rock">Green Goo Rock</option>
+
+                                <option value="Mathilda" title="Mathilda Brinker">Mathilda Brinker</option>
+
+                                <option value="Marina" title="Marina Valentine">Marina Valentine</option>
+
+                                <option value="Dave" title="Dave Marinara">Dave Marinara</option>
+
+                                <option value="Rachel" title="Rachel Howlett">Rachel Howlett</option>
+
+                            </select>
                         </div>
 
-                    </div>
-
-                    <div class="form-group">
-                        <textarea class="form-control"
-                            placeholder="Event Description" name="description">I need to take Querty for a check up and ask the doctor if he needs a new tank.</textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <svg class="olymp-happy-face-icon">
-                            <use xlink:href="#olymp-happy-face-icon"></use>
-                        </svg>
-
-                        <select class="form-select" name="type_Emj">
-                            <option value="Green" title="Green Goo Rock">Green Goo Rock</option>
-
-                            <option value="Mathilda" title="Mathilda Brinker">Mathilda Brinker</option>
-
-                            <option value="Marina" title="Marina Valentine">Marina Valentine</option>
-
-                            <option value="Dave" title="Dave Marinara">Dave Marinara</option>
-
-                            <option value="Rachel" title="Rachel Howlett">Rachel Howlett</option>
-
-                        </select>
-                    </div>
-
-                    <input type="submit"  class="btn btn-primary "  value="Create Event" name="" id="">
-                    {{-- <button>Create Event</button> --}}
-                </form>
+                        <input type="submit" class="btn btn-primary " value="Create Event" name="" id="">
+                        {{-- <button>Create Event</button> --}}
+                    </form>
                 </div>
             </div>
         </div>
@@ -632,7 +645,7 @@ $ii =$events->id;
             <div class="modal-header">
                 <span class="icon-status online"></span>
                 <h6 class="title">Chat</h6>
-                {{-- @if(Auth::user()->role == 'admin') --}}
+                {{-- @if (Auth::user()->role == 'admin') --}}
                 <div class="more">
                     <svg class="olymp-three-dots-icon">
                         <use xlink:href="#olymp-three-dots-icon"></use>
