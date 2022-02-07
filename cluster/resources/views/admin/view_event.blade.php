@@ -4,6 +4,7 @@
 
     <?php
     $role = Auth::user()->role;
+    $post_role = Auth::user()->post_role;
     ?>
 
     <!-- ... end Responsive Header-BP -->
@@ -47,13 +48,15 @@
                             </li> --}}
 
                             <ul class="nav nav-pills" role="tablist">
+                                @if($post_role  != 'user')
                                 <li class="nav-item">
                                     <a class="nav-link" id="notifications-tab" data-bs-toggle="pill" href="#home" data-bs-toggle="tab"
                                     role="tab" aria-controls="home" aria-selected="false">
-                                    Events <span class="items-round-little bg-breez">{{ $event->count() }}</span>
+                                  Your Events <span class="items-round-little bg-breez">{{ $event->count() }}</span>
                                 </a>
                                   {{-- <a class="nav-link active" >Your Events</a> --}}
                                 </li>
+                                @endif
                                 <li class="nav-item">
                                   <a class="nav-link" data-bs-toggle="pill" href="#menu1">Join Events</a>
                                 </li>
@@ -70,7 +73,8 @@
     <!-- Tab panes -->
 
     <div class="tab-content" id="calendar-events-tabs-content">
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="notifications-tab">
+
+        <div    @if($post_role  != 'user') class="tab-pane fade show active" @else class="tab-pane fade show" @endif id="home" role="tabpanel" aria-labelledby="notifications-tab">
             <div class="container">
                 <div class="row">
 
@@ -114,6 +118,7 @@
                                     <?php
                                     $i = 1;
                                     ?>
+
                                     @foreach ($event as $events)
                                         {{-- @dd($events->EventJoin) --}}
 
@@ -126,9 +131,10 @@
                                                             width="34" height="34" alt="author">
                                                     </div>
                                                     <div class="author-date">
+                                                        {{-- @dd($events) --}}
                                                         <a href="#"
-                                                            class="author-name h6">{{ $events->EventJoin->Event->User->first_name }}
-                                                            {{ $events->EventJoin->Event->User->last_name }}</a>
+                                                            class="author-name h6">{{ $events->Event->User->first_name }}
+                                                            {{ $events->Event->User->last_name }}</a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -137,7 +143,110 @@
                                                     {{-- <svg class="olymp-add-a-place-icon">
 													<use xlink:href="#olymp-add-a-place-icon"></use>
 												</svg> --}}
-                                                    <span>{{ $events->EventJoin->name }}</span>
+                                                    <span>{{ $events->name }}</span>
+                                                </div>
+                                            </td>
+                                            <td class="upcoming">
+                                                <div class="date-event inline-items align-left">
+                                                    <svg class="olymp-small-calendar-icon">
+                                                        <use xlink:href="#olymp-small-calendar-icon"></use>
+
+                                                    </svg>
+
+                                                    <span class="month">{{ $events->datetimepicker }}
+                                                        {{ $events->time }}{{ $events->time_type }}</span>
+
+                                                </div>
+                                            </td>
+                                            <td class="description">
+                                                <p class="description">Hey! {{ $events->description }} </p>
+                                            </td>
+
+
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div @if($post_role  != 'user') class="tab-pane fade show " @else class="tab-pane fade show active" @endif id="menu1" role="tabpanel" aria-labelledby="notifications-tab">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="ui-block">
+
+
+                            <table class="event-item-table event-item-table-fixed-width">
+
+                                <thead>
+
+                                    <tr>
+                                        <th>#</th>
+
+                                        <th class="author">
+                                            Picture
+                                        </th>
+
+                                        <th class="location">
+                                            Name
+                                        </th>
+
+                                        <th class="upcoming">
+                                            DATE
+                                        </th>
+
+                                        <th class="description">
+                                            DESCRIPTION
+                                        </th>
+
+
+
+                                        <th class="add-event">
+
+                                        </th>
+                                    </tr>
+
+                                </thead>
+
+                                <tbody>
+                                    <?php
+                                    $i = 1;
+                                    ?>
+
+                                    @foreach ($event_join as $eventss)
+                                        {{-- @dd($eventss->EventJoin) --}}
+
+                                        <tr class="event-item">
+                                            <td>{{ $i++ }}</td>
+                                            <td class="author">
+                                                <div class="event-author inline-items">
+                                                    <div class="author-thumb">
+                                                        <img loading="lazy" src="{{ asset('img/avatar62-sm.html') }}"
+                                                            width="34" height="34" alt="author">
+                                                    </div>
+                                                    <div class="author-date">
+                                                        <a href="#"
+                                                            class="author-name h6">{{  Auth::user()->first_name }}
+                                                            {{ Auth::user()->last_name }}</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                            {{-- @dd(Auth::user()->first_name) --}}
+                                            <td class="location">
+                                                <div class="place inline-items">
+                                                    {{-- <svg class="olymp-add-a-place-icon">
+													<use xlink:href="#olymp-add-a-place-icon"></use>
+												</svg> --}}
+                                                    <span>{{ $eventss->EventJoin->name }}</span>
                                                 </div>
                                             </td>
                                             <td class="upcoming">
@@ -146,13 +255,13 @@
                                                         <use xlink:href="#olymp-small-calendar-icon"></use>
                                                     </svg>
 
-                                                    <span class="month">{{ $events->EventJoin->datetimepicker }}
-                                                        {{ $events->EventJoin->time }}{{ $events->EventJoin->time_type }}</span>
+                                                    <span class="month">{{ $eventss->EventJoin->datetimepicker }}
+                                                        {{ $eventss->EventJoin->time }}{{ $eventss->EventJoin->time_type }}</span>
 
                                                 </div>
                                             </td>
                                             <td class="description">
-                                                <p class="description">Hey! {{ $events->EventJoin->description }} </p>
+                                                <p class="description">Hey! {{ $eventss->EventJoin->description }} </p>
                                             </td>
 
 
@@ -187,14 +296,11 @@
             <h3>HOME</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           </div> --}}
-          <div id="menu1" class="container tab-pane fade"><br>
+          {{-- <div id="menu1" class="container tab-pane fade"><br>
             <h3>Menu 1</h3>
             <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
-          <div id="menu2" class="container tab-pane fade"><br>
-            <h3>Menu 2</h3>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-          </div>
+          </div> --}}
+
         </div>
 
 
