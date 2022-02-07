@@ -49,10 +49,6 @@ Route::group(['middleware' => 'install'], function () {
     Route::get('/', [frontController::class, 'viewCluster']);
 });
 
-// Route::view('/','front/index');
-Route::middleware(['auth'])->group(function () {
-    //Route::view('/','front/index');
-});
 
 Route::middleware(['auth'])->group(function () {
 
@@ -78,10 +74,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('updateCluster/{id}', [ClusterController::class, 'updateCluster']);
     Route::get('deleteCluster/{id}', [ClusterController::class, 'deleteCluster']);
     Route::get('/view_cluster', [ClusterController::class, 'viewCluster']);
-    Route::get('/view/{id}', [ClusterController::class, 'view']);
+    // Route::get('/view/{id}', [ClusterController::class, 'view']);
 
     Route::get('/view/join/{id}/{idd}', [ClusterController::class, 'view_join']);
-    Route::get('/view/event/', [ClusterController::class, 'view_event']);
+
+    // @dd(123);
+    Route::get('/view/event', [ClusterController::class, 'view_event']);
+
+
     Route::get('/communication', [ClusterController::class, 'communication']);
     Route::post('/send/email', [ClusterController::class, 'send_email']);
     Route::get('/manager/status/{id}/{userID}', [ClusterController::class, 'manger']);
@@ -128,7 +128,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/view/{id}', [ClusterController::class, 'view']);
         Route::get('/manager/status/{id}/{userID}', [ClusterController::class, 'manger']);
         Route::get('/view/join/{id}/{idd}', [ClusterController::class, 'view_join']);
-        
+
         Route::view('/members','admin/view_members');
         Route::view('/services','admin/view_services');
         Route::view('/setting','admin/view_setting');

@@ -25,6 +25,7 @@ class CreateEventsTable extends Migration
             $table->string('timezone')->nullable();
             $table->string('description')->nullable();
             $table->string('type_Emj')->nullable();
+            $table->string('cluster_id')->nullable();
 
 
             $table->timestamps();

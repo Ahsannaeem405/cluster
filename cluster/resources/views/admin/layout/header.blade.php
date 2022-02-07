@@ -162,7 +162,7 @@ $role = Auth::user()->role;
 						</svg>
 					</a>
 				</li>
-			
+
 				<li>
 					<a href="{{url("$role/setting")}}">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
@@ -212,7 +212,7 @@ $role = Auth::user()->role;
 				</li>
 				@endif
 				<li>
-					<a href="{{url("$role/view/event")}}">
+					<a href="{{url("$role/view/event/")}}">
 						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
 							<use xlink:href="#olymp-manage-widgets-icon"></use>
 						</svg>
@@ -260,7 +260,7 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Communication</span>
 					</a>
 				</li>
-				
+
 				<li>
 					<a href="{{url("$role/setting")}}">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
@@ -399,7 +399,7 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Communication</span>
 					</a>
 				</li>
-				
+
 				<li>
 					<a href="{{url("$role/setting")}}">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">

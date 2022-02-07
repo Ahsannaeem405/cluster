@@ -61,6 +61,14 @@
                                   <a class="nav-link" data-bs-toggle="pill" href="#menu1">Join Events</a>
                                 </li>
 
+                                <li class="nav-item">
+                                    <a class="btn btn-control bg-green" data-bs-toggle="modal"
+                                    data-bs-target="#create-event">
+                                    <svg class="olymp-plus-icon">
+                                        <use xlink:href="#olymp-plus-icon"></use>
+                                    </svg>
+                                </a>                                  </li>
+
                               </ul>
 
                         </ul>
@@ -282,6 +290,121 @@
 
 
 
+        <div class="modal fade" id="create-event" tabindex="-1" role="dialog" aria-labelledby="create-event"
+        aria-hidden="true">
+        <div class="modal-dialog window-popup create-event" role="document">
+            <div class="modal-content">
+                <a href="#" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">
+                    <svg class="olymp-close-icon">
+                        <use xlink:href="#olymp-close-icon"></use>
+                    </svg>
+                </a>
+                <div class="modal-header">
+                    <h6 class="title">Create an Event</h6>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ url("$role/add/event") }}" method="POST">
+                        @csrf
+                        <div class="form-group label-floating is-select">
+                            <label class="control-label">Personal Event</label>
+                            <select class="form-select" name="Event_type">
+                                <option value="Public">Public Event</option>
+                                <option value="Private">Private Event</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group label-floating">
+                            <label class="control-label">Event Name</label>
+                            <input class="form-control" name="name" placeholder=""
+                                value="Take Querty to the Veterinarian" type="text">
+                        </div>
+                        <input type="hidden" value="@if (isset($mang->id)) {{ $mang->id }} @endif" name="mangerID" id="">
+
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label">Event Location</label>
+                            <input class="form-control" placeholder="" name="location" value="" type="text">
+                        </div>
+
+                        <div class="form-group date-time-picker label-floating">
+                            <label class="control-label">Event Date</label>
+                            <input name="datetimepicker" name="date" value="26/03/2016">
+                            <span class="input-group-addon">
+                                <svg class="olymp-calendar-icon icon">
+                                    <use xlink:href="#olymp-calendar-icon"></use>
+                                </svg>
+                            </span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col col-lg-3 col-md-3 col-sm-12 col-12">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Event Time</label>
+                                    <input class="form-control" name="time" placeholder="" value="09:00" type="text">
+                                </div>
+                            </div>
+                            <div class="col col-lg-3 col-md-3 col-sm-12 col-12">
+                                <div class="form-group label-floating is-select">
+                                    <label class="control-label">AM-PM</label>
+                                    <select class="form-select" name="time_type">
+                                        <option value="AM">AM</option>
+                                        <option value="PM">PM</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="form-group label-floating is-select">
+                                    <label class="control-label">Timezone</label>
+                                    <select class="form-select" name="timezone">
+                                        <option value="US">US (UTC-8)</option>
+                                        <option value="UK">UK (UTC-0)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Event Description"
+                                name="description">I need to take Querty for a check up and ask the doctor if he needs a new tank.</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <svg class="olymp-happy-face-icon">
+                                <use xlink:href="#olymp-happy-face-icon"></use>
+                            </svg>
+
+                            <select class="form-select" name="type_Emj">
+                                <option value="Green" title="Green Goo Rock">Green Goo Rock</option>
+
+                                <option value="Mathilda" title="Mathilda Brinker">Mathilda Brinker</option>
+
+                                <option value="Marina" title="Marina Valentine">Marina Valentine</option>
+
+                                <option value="Dave" title="Dave Marinara">Dave Marinara</option>
+
+                                <option value="Rachel" title="Rachel Howlett">Rachel Howlett</option>
+
+                            </select>
+
+
+                            <select class="form-select" name="type_Emj">
+                                @foreach ($clustor as $item)
+@dd($clustor)
+
+                                <option value="Green" title="Green Goo Rock">Green Goo Rock</option>
+
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <input type="submit" class="btn btn-primary " value="Create Event" name="" id="">
+                        {{-- <button>Create Event</button> --}}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
