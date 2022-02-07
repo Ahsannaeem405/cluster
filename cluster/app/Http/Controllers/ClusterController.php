@@ -95,13 +95,13 @@ class ClusterController extends Controller
 
         // dd(12);
 
-        $clustor = JoinCluster::all();
-
+            $event['clustor'] = Cluster::all();
              $event['event'] = Event::where('userid', Auth::user()->id)->get();
              $event['event_join'] = EventJoin::where('user_id',Auth::user()->id )->get();
 
+
         // @dd($event);
-        return view('admin.view_event', $event, $clustor);
+        return view('admin.view_event', $event);
     }
 
     public function view_join($id, $idd)
@@ -137,6 +137,11 @@ class ClusterController extends Controller
 
         // return view('admin.view_cluster', compact('viewCluster'));
 
+    }
+
+    public function add_events(Request $request){
+
+        // dd($request)
     }
     public function update_event(Request $request,$id)
     {

@@ -47,7 +47,7 @@
                                 </a>
                             </li> --}}
 
-                            <ul class="nav nav-pills" role="tablist">
+                            {{-- <ul class="nav nav-pills" role="tablist"> --}}
                                 @if($post_role  != 'user')
                                 <li class="nav-item">
                                     <a class="nav-link" id="notifications-tab" data-bs-toggle="pill" href="#home" data-bs-toggle="tab"
@@ -61,17 +61,17 @@
                                   <a class="nav-link" data-bs-toggle="pill" href="#menu1">Join Events</a>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a class="btn btn-control bg-green" data-bs-toggle="modal"
-                                    data-bs-target="#create-event">
-                                    <svg class="olymp-plus-icon">
-                                        <use xlink:href="#olymp-plus-icon"></use>
-                                    </svg>
-                                </a>                                  </li>
+
 
                               </ul>
-
-                        </ul>
+                              <li class="nav-item">
+                                <a style="    height: 36px;" class="btn btn-control bg-green" data-bs-toggle="modal"
+                                data-bs-target="#create-event">
+                                <svg class="olymp-plus-icon">
+                                    <use xlink:href="#olymp-plus-icon"></use>
+                                </svg>
+                            </a>                                  </li>
+                        {{-- </ul> --}}
 
                     </div>
                 </div>
@@ -141,8 +141,8 @@
                                                     <div class="author-date">
                                                         {{-- @dd($events) --}}
                                                         <a href="#"
-                                                            class="author-name h6">{{ $events->Event->User->first_name }}
-                                                            {{ $events->Event->User->last_name }}</a>
+                                                            class="author-name h6">{{ Auth::user()->first_name }}
+                                                            {{ Auth::user()->last_name }}</a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -312,14 +312,29 @@
                                 <option value="Public">Public Event</option>
                                 <option value="Private">Private Event</option>
                             </select>
+
+
+
                         </div>
+
+
+                        <div class="form-group label-floating is-select">
+
+                        <select class="form-select" name="mangerID">
+                            @foreach ($clustor as $item)
+
+                            <option value="{{$item->id}}" title="Green Goo Rock">{{$item->name}}</option>
+
+                            @endforeach
+                        </select>
+                    </div>
 
                         <div class="form-group label-floating">
                             <label class="control-label">Event Name</label>
                             <input class="form-control" name="name" placeholder=""
                                 value="Take Querty to the Veterinarian" type="text">
                         </div>
-                        <input type="hidden" value="@if (isset($mang->id)) {{ $mang->id }} @endif" name="mangerID" id="">
+                        {{-- <input type="hidden" value="@if (isset($mang->id)) {{ $mang->id }} @endif" name="mangerID" id=""> --}}
 
                         <div class="form-group label-floating is-empty">
                             <label class="control-label">Event Location</label>
@@ -388,14 +403,7 @@
                             </select>
 
 
-                            <select class="form-select" name="type_Emj">
-                                @foreach ($clustor as $item)
-@dd($clustor)
 
-                                <option value="Green" title="Green Goo Rock">Green Goo Rock</option>
-
-                                @endforeach
-                            </select>
                         </div>
 
                         <input type="submit" class="btn btn-primary " value="Create Event" name="" id="">

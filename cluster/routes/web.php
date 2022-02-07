@@ -63,6 +63,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/Join/cluster/{id}', [ClusterController::class, 'join_cluster']);
 
+    Route::post('/add/events/', [ClusterController::class, 'add_events']);
 
     Route::post('/add/event/', [ClusterController::class, 'add_event']);
     Route::post('/update/event/{id}', [ClusterController::class, 'update_event']);
@@ -118,6 +119,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/view_cluster', [ClusterController::class, 'viewCluster']);
         Route::get('/view/cluster/{id}', [ClusterController::class, 'view_cluster']);
         Route::post('/add/event/', [ClusterController::class, 'add_event']);
+        Route::post('/add/events/', [ClusterController::class, 'add_events']);
+
+
+
+
         Route::get('/view/event/', [ClusterController::class, 'view_event']);
         Route::get('/communication', [ClusterController::class, 'communication']);
         Route::post('/send/email', [ClusterController::class, 'send_email']);
