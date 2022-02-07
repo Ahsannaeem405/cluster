@@ -77,7 +77,7 @@
                                 <div class="list">
                                     <div class="control-block-button">
                                         {{-- @if (isset($mang->status)) --}}
-                                        @if (isset($mang->status) && $mang->status == 2)
+                                        @if (isset($mang->status) && $mang->status == 2 || Auth::user()->role == 'admin')
                                             <a class="btn btn-control bg-green" data-bs-toggle="modal"
                                                 data-bs-target="#create-event">
                                                 <svg class="olymp-plus-icon">
