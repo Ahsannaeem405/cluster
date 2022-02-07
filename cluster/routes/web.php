@@ -91,6 +91,12 @@ Route::get('/users', [ClusterController::class, 'users']);
 Route::post('/addUser', [ClusterController::class, 'addUser']);
 Route::post('/updateUser/{id}', [ClusterController::class, 'updateUser']);
 Route::post('/deleteUser/{id}', [ClusterController::class, 'deleteUser']);
+//////////////////members
+Route::view('/members','admin/view_members');
+Route::view('/services','admin/view_services');
+Route::view('/setting','admin/view_setting');
+Route::view('/profile_setting','admin/profile_setting');
+
 
 });
 

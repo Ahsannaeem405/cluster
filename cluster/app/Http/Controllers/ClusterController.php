@@ -396,4 +396,10 @@ class ClusterController extends Controller
         return redirect()->back()->with('error', 'User deleted successfully!');
 
     }
+
+    public function view_members()
+    {
+        dd(11);
+        return view('admin.view_members');
+    }
 }

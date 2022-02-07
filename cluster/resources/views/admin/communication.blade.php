@@ -7,6 +7,18 @@ $role = Auth::user()->role;
 ?>
 
 
+<div class="main-header">
+	<div class="content-bg-wrap bg-account comm-bg"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
+				<div class="main-header-content">
+					<h1>Welcome to your Communication dashboard!</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 	<!-- Your Account Personal Information -->
 	<div class="container">
 		<div class="row">
