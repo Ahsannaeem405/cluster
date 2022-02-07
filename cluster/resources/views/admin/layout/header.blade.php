@@ -111,7 +111,7 @@ $role = Auth::user()->role;
 				@if(Auth::user()->role == 'admin')
 
 				<li>
-					<a href="{{url("$role/services")}}">
+					<a href="{{url("$role/view_cluster")}}">
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
 							<use xlink:href="#olymp-star-icon"></use>
 						</svg>
@@ -237,7 +237,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="{{url('admin/users')}}">
+					<a href="{{url("$role/users")}}">
 						<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
 							<use xlink:href="#olymp-happy-sticker-icon"></use>
 						</svg>

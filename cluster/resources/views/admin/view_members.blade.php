@@ -27,6 +27,7 @@
 	<!-- Main Content Groups -->
 
 	<div class="container">
+		@if(Auth::user()->role == 'admin')
 		<div class="row">
 			<div class="col-12">
 				<div class="add-new-member my-3">
@@ -38,6 +39,7 @@
 				</div>
 			</div>
 		</div>
+		@endif
 		<div class="row">
 			<div class="col-12">
 				<div class="members-table">
