@@ -102,14 +102,14 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="dashboard.php">
+					<a href="{{url("$role/services")}}">
 						<svg class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="NEWSFEED">
 							<use xlink:href="#olymp-newsfeed-icon"></use>
 						</svg>
 					</a>
 				</li>
 				<li>
-					<a href="clustor-manager.php">
+					<a href="{{url("$role/services")}}">
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
 							<use xlink:href="#olymp-star-icon"></use>
 						</svg>
@@ -123,42 +123,42 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/members")}}">
 						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
 							<use xlink:href="#olymp-happy-faces-icon"></use>
 						</svg>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/users")}}">
 						<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
 							<use xlink:href="#olymp-happy-sticker-icon"></use>
 						</svg>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/cluster_manager")}}">
 						<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="WEATHER APP">
 							<use xlink:href="#olymp-music-shuffle-icon"></use>
 						</svg>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/communication")}}">
 						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
 							<use xlink:href="#olymp-badge-icon"></use>
 						</svg>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/services")}}">
 						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
 							<use xlink:href="#olymp-status-icon"></use>
 						</svg>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/setting")}}">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
 							<use xlink:href="#olymp-settings-icon"></use>
 						</svg>
@@ -190,7 +190,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="dashboard.php">
+					<a href="{{url("$role")}}">
 						<svg  class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="NEWSFEED"><use xlink:href="#olymp-status-icon"></use></svg>
 						<span class="left-menu-title">Dashboard</span>
 					</a>
@@ -212,7 +212,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/members")}}">
 						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
 							<use xlink:href="#olymp-happy-faces-icon"></use>
 						</svg>
@@ -228,7 +228,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/cluster_manager")}}">
 						<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="WEATHER APP">
 							<use xlink:href="#olymp-music-shuffle-icon"></use>
 						</svg>
@@ -244,7 +244,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/services")}}">
 						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
 							<use xlink:href="#olymp-status-icon"></use>
 						</svg>
@@ -252,7 +252,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/setting")}}">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
 							<use xlink:href="#olymp-settings-icon"></use>
 						</svg>
@@ -322,7 +322,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role")}}">
 						<svg  class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="NEWSFEED"><use xlink:href="#olymp-status-icon"></use></svg>
 						<span class="left-menu-title">Dashboard</span>
 					</a>
@@ -344,7 +344,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("admin/members")}}">
 						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
 							<use xlink:href="#olymp-happy-faces-icon"></use>
 						</svg>
@@ -360,7 +360,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/cluster_manager")}}">
 						<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="WEATHER APP">
 							<use xlink:href="#olymp-music-shuffle-icon"></use>
 						</svg>
@@ -368,7 +368,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/communication")}}">
 						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
 							<use xlink:href="#olymp-badge-icon"></use>
 						</svg>
@@ -376,7 +376,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/services")}}">
 						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
 							<use xlink:href="#olymp-status-icon"></use>
 						</svg>
@@ -384,7 +384,7 @@ $role = Auth::user()->role;
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{url("$role/setting")}}">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
 							<use xlink:href="#olymp-settings-icon"></use>
 						</svg>
@@ -399,7 +399,7 @@ $role = Auth::user()->role;
 
 			<ul class="account-settings">
 				<li>
-					<a href="#">
+					<a href="{{url("$role/profile_setting")}}">
 
 						<svg class="olymp-menu-icon">
 							<use xlink:href="#olymp-menu-icon"></use>
@@ -470,7 +470,7 @@ $role = Auth::user()->role;
 
 							<ul class="account-settings">
 								<li>
-									<a href="29-YourAccount-AccountSettings.html">
+									<a href="{{url("$role/profile_setting")}}">
 
 										<svg class="olymp-menu-icon">
 											<use xlink:href="#olymp-menu-icon"></use>
