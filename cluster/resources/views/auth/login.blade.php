@@ -265,6 +265,9 @@
 								</div>
 							</div>
 						</form>
+						@if(isset($event_name))
+						<input  type="hidden"  class="event_value" value="{{$event_name}}">
+						@endif
 					</div>
 
 					<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -317,6 +320,7 @@
 								</div>
 							</div>
 						</form>
+						
 					</div>
 				</div>
 			</div>
@@ -364,7 +368,6 @@
 	</div>
 </div>
 
-<input name="event_name" value="user" id="user" type="radio" value="" @if(isset($event_name))   @endif required>
 
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
@@ -406,7 +409,18 @@
 
 <script>
 		$(document).ready(function() {
-		$('#event').hide();
+		$user_val=$('.event_value').val();
+		//alert($user_val);
+		if($user_val == 'event')
+		{
+			$('#event').show();
+			$('#cluster').hide();
+
+
+		}else{
+			$('#event').hide();
+
+		}
 	
 		$('#member').click(function(){
 		$('#cluster').show();
