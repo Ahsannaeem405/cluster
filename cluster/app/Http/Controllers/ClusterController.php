@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Ui\Presets\React;
 
 class ClusterController extends Controller
 {
@@ -117,9 +118,25 @@ class ClusterController extends Controller
     }
     public function add_event(Request $request)
     {
+        $cat = null;
+        //   dd($request);
 
-        //   dd($request);W
         $event = new Event();
+
+
+// @dd($request->file('image'));
+
+        if(isset($request->image))
+        {
+        $image=$request->file('image');
+        $imageName = $image->getClientOriginalName();
+        $event->image = $imageName;
+        $path=$image->move(public_path('images'),$imageName);
+
+        }
+
+
+
         $event->name = $request->name;
         $event->Event_type = $request->Event_type;
         $event->join_cluster_ID = $request->mangerID;
@@ -216,12 +233,15 @@ class ClusterController extends Controller
     function view_cluster($id)
     {
 
+
         $manager = JoinCluster::Where('cluster_id', $id)->where('status', 2)->take(6)->get();
 
         $user = JoinCluster::Where('cluster_id', $id)->take(6)->get();
 
         $mang = JoinCluster::Where('cluster_id', $id)->Where('user_id', Auth::user()->id)->first();
-        if ($mang == null && Auth::user()->role != 'admin') {
+
+        if ($mang == null) {
+            // dd($mang);
             $event = Event::where('Event_type', 'Public')->get();
         } else {
             $event = Event::all();
@@ -239,9 +259,22 @@ class ClusterController extends Controller
     function join_cluster($id)
     {
 
+        $date =   date("Y/m/d");
+        $clust = Cluster::find($id);
 
+        $clus_img2 = explode(',', $clust->image);
+
+        $clus_img1 = array_slice($clus_img2, 0, 1);
+
+        $clus_img = array_slice($clus_img2, 1, 2);
         $get = JoinCluster::Where('cluster_id', $id)->Where('user_id', Auth::user()->id)->count();
         $event = Event::all();
+        $eventtime = Event::WhereDate('datetimepicker','>', $date)->get();
+
+
+        $event_3 = Event::take(3)->get();
+
+
         $joinn = EventJoin::Where('user_id', Auth::user()->id)->where('cluster_id', $id)->get();
 
         if ($get == 0) {
@@ -265,7 +298,7 @@ class ClusterController extends Controller
 
             // $user = User::where('role', 'user')->take(6)->get();
 
-            return view('admin.Events-manager', compact('user', 'manager', 'mang', 'event', 'id', 'joinn'));
+            return view('admin.Events-manager', compact('user', 'manager', 'mang', 'event', 'id', 'joinn','clust','clus_img','clus_img1','event_3','clus_img2','eventtime'));
         } else {
 
             // $get = JoinCluster::Where('cluster_id', $id)->Where('user_id', Auth::user()->id)->get();
@@ -273,7 +306,7 @@ class ClusterController extends Controller
             $user = JoinCluster::Where('cluster_id', $id)->take(6)->get();
             $mang = JoinCluster::Where('cluster_id', $id)->Where('user_id', Auth::user()->id)->first();
 
-            return view('admin.Events-manager', compact('user', 'manager', 'mang', 'event', 'id', 'joinn'));
+            return view('admin.Events-manager', compact('user', 'manager', 'mang', 'event', 'id', 'joinn','clust','clus_img','clus_img1','event_3','clus_img2','eventtime'));
 
             //    return back()->with('success', 'Please Select Another Cluster');
         }
@@ -283,20 +316,32 @@ class ClusterController extends Controller
     //
     public function createCluster(Request $request)
     {
+
         $request->validate([
             'name' => 'required',
             'detail' => 'required',
             'image' => 'required',
 
         ]);
+
+
         $clustor = new Cluster();
+
+        $cat = null;
+
         if (isset($request->image)) {
-            $image = $request->file('image');
-            $imageName = $image->getClientOriginalName();
-            $clustor->image = $imageName;
-            $path = $image->move(public_path('images/'), $imageName);
+            foreach($request->image as $image)
+            {
+                $imageName = $image->getClientOriginalName();
+                $path = $image->move(public_path('images/'), $imageName);
+                $cat.= $imageName.",";
+            }
         }
+
+        $clustor->image = $cat;
         $clustor->name = $request->name;
+        $clustor->cluster_type = $request->cluster_type;
+
         $clustor->detail = $request->detail;
         $clustor->manager_id = $request->manager_id;
         $clustor->save();
@@ -332,6 +377,37 @@ class ClusterController extends Controller
         $clustor->save();
         return redirect()->back()->with('success', 'Cluster Updated Successfully!');
     }
+
+    public function upd_cluster(Request $request, $id)
+    {
+
+        // dd($request->detail);
+
+        $cat = null;
+        $clustor = Cluster::find($id);
+
+        if (isset($request->image)) {
+            foreach($request->image as $image)
+            {
+                $imageName = $image->getClientOriginalName();
+                $path = $image->move(public_path('images/'), $imageName);
+                $cat.= $imageName.",";
+            }
+        }
+        // if(isset($request->detail))
+        // {
+
+        $clustor->detail = $request->detail;
+    // }
+        $concat =  $clustor->image. $cat;
+        $clustor->image = $concat;
+        $clustor->save();
+
+
+        return redirect()->back()->with('success', 'Cluster Updated Successfully!');
+
+    }
+
     public function deleteCluster($id)
     {
         $clustor = Cluster::find($id);

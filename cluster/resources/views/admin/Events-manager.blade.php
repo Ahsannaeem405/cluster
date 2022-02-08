@@ -35,7 +35,7 @@
                     {{ session()->get('sucess') }}
                 </div>
             @endif
-            <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            {{-- <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="ui-block responsive-flex">
                     <div class="ui-block-title">
                         <ul class="nav nav-tabs calendar-events-tabs" id="calendar-events-tabs" role="tablist">
@@ -51,13 +51,13 @@
 
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <!-- Tab panes -->
     <div class="tab-content" id="calendar-events-tabs-content">
         <div class="tab-pane fade show active" id="events" role="tabpanel" aria-labelledby="events-tab">
-            <div class="container">
+            <div class="container-fluid" style="padding-left: 51px;padding-right: 51px;">
                 <div class="row">
                     <div class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                         <div class="ui-block">
@@ -76,198 +76,83 @@
 
                                 <div class="list">
                                     <div class="control-block-button">
+
                                         {{-- @if (isset($mang->status)) --}}
-                                        @if (isset($mang->status) && $mang->status == 2 || Auth::user()->role == 'admin')
-                                            <a class="btn btn-control bg-green" data-bs-toggle="modal"
+                                        @if ((isset($mang->status) && $mang->status == 2) || Auth::user()->role == 'admin')
+                                            <a style="height: 100%;" class="btn btn-control bg-green" data-bs-toggle="modal"
                                                 data-bs-target="#create-event">
                                                 <svg class="olymp-plus-icon">
                                                     <use xlink:href="#olymp-plus-icon"></use>
                                                 </svg>
                                             </a>
-                                        @else
-                                            <a class="btn btn-control bg-green">
-                                                <svg class="olymp-plus-icon">
-                                                    <use xlink:href="#olymp-plus-icon"></use>
-                                                </svg>
-                                            </a>
+
+
+
+
+
                                         @endif
 
                                     </div>
 
                                     <div class="accordion day-event" id="accordionExample" data-month="12" data-day="2">
-                                        <div class="accordion-item">
-                                            <div class="accordion-header" id="headingOne">
-                                                <div class="event-time">
-                                                    <time datetime="2004-07-24T18:18">9:00am</time>
-                                                    <div class="more">
-                                                        <svg class="olymp-three-dots-icon">
-                                                            <use xlink:href="#olymp-three-dots-icon"></use>
-                                                        </svg>
-                                                        <ul class="more-dropdown">
-                                                            <li>
-                                                                <a href="#">Mark as Completed</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">Delete Event</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseOne" aria-expanded="true"
-                                                    aria-controls="collapseOne">
-                                                    Breakfast at the Agency
-                                                    <svg width="8" height="8">
-                                                        <use xlink:href="#olymp-dropdown-arrow-icon"></use>
-                                                    </svg>
-                                                    <span class="event-status-icon" data-bs-toggle="modal"
-                                                        data-bs-target="#public-event">
-                                                        <svg class="olymp-calendar-icon" data-bs-toggle="tooltip"
-                                                            data-bs-placement="top" data-bs-original-title="UNCOMPLETED">
-                                                            <use xlink:href="#olymp-calendar-icon"></use>
-                                                        </svg>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                            <div id="collapseOne" class="accordion-collapse collapse show"
-                                                aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                                <div class="accordion-body">
-                                                    Hi Guys! I propose to go a litle earlier at the agency to have
-                                                    breakfast and talk a little more about the new design project we
-                                                    have been working on. Cheers!
-                                                    <div class="place inline-items">
-                                                        <svg class="olymp-add-a-place-icon">
-                                                            <use xlink:href="#olymp-add-a-place-icon"></use>
-                                                        </svg>
-                                                        <span>Daydreamz Agency</span>
-                                                    </div>
 
-                                                    <ul class="friends-harmonic inline-items">
-                                                        <li>
-                                                            <a href="#">
-                                                                <img loading="lazy" src="img/friend-harmonic5.html"
-                                                                    alt="friend" width="28" height="28">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                <img loading="lazy" src="img/friend-harmonic10.html"
-                                                                    alt="friend" width="28" height="28">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                <img loading="lazy" src="img/friend-harmonic7.html"
-                                                                    alt="friend" width="28" height="28">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                <img loading="lazy" src="img/friend-harmonic8.html"
-                                                                    alt="friend" width="28" height="28">
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                <img loading="lazy" src="img/friend-harmonic2.html"
-                                                                    alt="friend" width="28" height="28">
-                                                            </a>
-                                                        </li>
-                                                        <li class="with-text">
-                                                            Will Assist
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <div class="accordion-header" id="headingTwo">
-                                                <div class="event-time">
-                                                    <time datetime="2004-07-24T18:18">12:00pm</time>
-                                                    <div class="more">
-                                                        <svg class="olymp-three-dots-icon">
-                                                            <use xlink:href="#olymp-three-dots-icon"></use>
+
+
+
+                                        @foreach ($event_3 as $events)
+                                            <div class="accordion-item">
+                                                <div class="accordion-header" id="heading{{ $events->id }}">
+                                                    <div class="event-time">
+                                                        <time datetime="2004-07-24T18:18">{{ $events->time }}
+                                                            {{ $events->time_type }}</time>
+
+                                                    </div>
+                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#collapse{{ $events->id }}" aria-expanded="true"
+                                                        aria-controls="collapse{{ $events->id }}">
+                                                        {{ $events->name }}
+                                                        <svg width="8" height="8">
+                                                            <use xlink:href="#olymp-dropdown-arrow-icon"></use>
                                                         </svg>
-                                                        <ul class="more-dropdown">
+                                                        <span class="event-status-icon" data-bs-toggle="modal"
+                                                            data-bs-target="#public-event">
+                                                            <svg class="olymp-calendar-icon" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top"
+                                                                data-bs-original-title="UNCOMPLETED">
+                                                                <use xlink:href="#olymp-calendar-icon"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                                <div id="collapse{{ $events->id }}" class="accordion-collapse collapse"
+                                                    aria-labelledby="heading{{ $events->id }}"
+                                                    data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        {{ $events->description }}
+                                                        <div class="place inline-items">
+                                                            <svg class="olymp-add-a-place-icon">
+                                                                <use xlink:href="#olymp-add-a-place-icon"></use>
+                                                            </svg>
+                                                            <span> {{ $events->location }}</span>
+                                                        </div>
+
+                                                        <ul class="friends-harmonic inline-items">
+
                                                             <li>
-                                                                <a href="#">Mark as Completed</a>
+                                                                <a href="#">
+                                                                    <img loading="lazy"
+                                                                        src="{{ asset("images/$events->image") }}"
+                                                                        alt="friend" width="28" height="28">
+                                                                </a>
                                                             </li>
-                                                            <li>
-                                                                <a href="#">Delete Event</a>
-                                                            </li>
+
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                                    aria-expanded="false" aria-controls="collapseTwo">
-                                                    Send the new “Olympus” project files to the Agency
-                                                    <svg width="8" height="8">
-                                                        <use xlink:href="#olymp-dropdown-arrow-icon"></use>
-                                                    </svg>
-                                                    <span class="event-status-icon completed" data-toggle="tooltip"
-                                                        data-placement="top" data-original-title="COMPLETED">
-                                                        <svg class="olymp-checked-calendar-icon">
-                                                            <use xlink:href="#olymp-checked-calendar-icon"></use>
-                                                        </svg>
-                                                    </span>
-                                                </button>
                                             </div>
-                                            <div id="collapseTwo" class="accordion-collapse collapse"
-                                                aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                                <div class="accordion-body">
-                                                    Hi Guys! I propose to go a litle earlier at the agency to have
-                                                    breakfast and talk a little more about the new design project we
-                                                    have been working on. Cheers!
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <div class="accordion-header" id="headingThree">
-                                                <div class="event-time">
-                                                    <time datetime="2004-07-24T18:18">6:30pm</time>
-                                                    <div class="more">
-                                                        <svg class="olymp-three-dots-icon">
-                                                            <use xlink:href="#olymp-three-dots-icon"></use>
-                                                        </svg>
-                                                        <ul class="more-dropdown">
-                                                            <li>
-                                                                <a href="#">Mark as Completed</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">Delete Event</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                                    aria-expanded="false" aria-controls="collapseThree">
-                                                    Take Querty to the Veterinarian
-                                                    <svg width="8" height="8">
-                                                        <use xlink:href="#olymp-dropdown-arrow-icon"></use>
-                                                    </svg>
-                                                    <span class="event-status-icon" data-bs-toggle="modal"
-                                                        data-bs-target="#public-event">
-                                                        <svg class="olymp-calendar-icon" data-bs-toggle="tooltip"
-                                                            data-bs-placement="top" data-bs-original-title="UNCOMPLETED">
-                                                            <use xlink:href="#olymp-calendar-icon"></use>
-                                                        </svg>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                            <div id="collapseThree" class="accordion-collapse collapse"
-                                                aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                                <div class="accordion-body">
-                                                    <div class="place inline-items">
-                                                        <svg class="olymp-add-a-place-icon">
-                                                            <use xlink:href="#olymp-add-a-place-icon"></use>
-                                                        </svg>
-                                                        <span>Daydreamz Agency</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
+
+
                                     </div>
 
                                 </div>
@@ -278,106 +163,334 @@
                     </div>
                     <!-- Main Content -->
                     <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-
+                        @if (session()->has('success'))
+                            <div class="alert alert-success">
+                                {{ session()->get('success') }}
+                            </div>
+                        @endif
                         <div id="newsfeed-items-grid">
-                            @foreach ($event as $events)
-                                @if ($events->Event->cluster_id == $id)
+
+
+
+                            <div class="ui-block">
+
+                                <!-- Search Result -->
+
+                                <article class="hentry post searches-item">
+                                    {{-- @dd($clus_img[0]) --}}
+                                    <div class="post__author author vcard inline-items">
+                                        <img loading="lazy" @if (isset($clus_img1[0]))  src="{{ asset("images/$clus_img1[0]") }}" @endif alt="author"
+                                            style="    border-radius: 28%;" width="42" height="42">
+
+                                        <div class="author-date">
+                                            <a class="h6 post__author-name fn"
+                                                href="02-ProfilePage.html">{{ $clust->name }}</a>
+                                            <div class="country"></div>
+                                        </div>
+
+
+
+                                        <div class="more">
+                                            <svg class="olymp-three-dots-icon">
+                                                <use xlink:href="#olymp-three-dots-icon"></use>
+                                            </svg>
+                                            <ul class="more-dropdown">
+                                                <li>
+                                                    <a data-bs-toggle="modal" data-bs-target="#edit-clus">Upload Image</a>
+
+
+                                                </li>
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+
+                                    <form action="{{ url("$role/upd/cluster/$clust->id") }}" method="post">
+                                        @csrf
+                                        <p class="user-description ">
+                                            <span class="title text-start">About Me:</span>
+                                            @if ((isset($mang->status) && $mang->status == 2) || Auth::user()->role == 'admin')
+
+
+                                                <input class="cls_description" type="text" style="border: none;"
+                                                    value="{{ $clust->detail }}" name="detail" id="">
+                                            @else
+
+
+                                                <input type="text" style="border: none;" required
+                                                    value="{{ $clust->detail }}" name="detail" id="">
+
+                                            @endif
+                                        </p>
+
+                                        <p class="user-description text-end submitbtn"
+                                            style="display: none;    border-top: none; margin-top: -28px;">
+
+
+                                            <input style="margin-bottom: 0px;width: 11%;" type="submit"
+                                                class="btn btn-primary" value="Submit" name="" id="">
+
+
+                                        </p>
+                                    </form>
+                                    <div class="post-block-photo js-zoom-gallery">
+                                        <?php
+                                        $i = 1;
+                                        ?>
+
+                                        @foreach ($clus_img as $clus_imgs)
+
+                                            @if ($clus_imgs != null)
+                                                <?php
+                                                $i++;
+                                                ?>
+
+                                                <a href="{{ asset("images/$clus_imgs") }}" class="col col-3-width">
+                                                    <img loading="lazy" src="{{ asset("images/$clus_imgs") }}"
+                                                        alt="photo" width="600" height="600">
+                                                </a>
+                                            @endif
+                                        @endforeach
+
+                                        <a @if (isset($clus_img1[0]))  href="{{ asset("images/$clus_img1[0]") }}" @endif class="more-photos col col-3-width">
+                                            <img loading="lazy" src="{{ asset("images/$clus_img1[0]") }}" alt="photo"
+                                                width="600" height="600">
+                                            <span class="h2">+{{ $i }}</span>
+                                        </a>
+                                    </div>
+
+                                    <div class="post-additional-info">
+
+                                        <ul class="friends-harmonic">
+
+                                            @foreach ($clus_img2 as $clus_imgs2)
+                                                @if ($clus_imgs != null)
+                                                    <li>
+                                                        <a href="#">
+                                                            <img loading="lazy" src="{{ asset("images/$clus_imgs2") }}"
+                                                                alt="friend" width="28" height="28">
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                        <div class="names-people-likes">
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                </article>
+                                <!-- ... end Search Result -->
+                            </div>
 
 
 
 
-                                    @foreach ($joinn as $item)
-                                        @if ($item->event_id == $events->id)
-                                            <?php
-                                            $ii = $events->id;
 
-                                            ?>
-                                        @endif
-                                    @endforeach
-                                    <?php
-                                    //   $joinn = App\Models\EventJoin::Where('user_id', Auth::user()->id)->where('event_id',  $events->id)->count();
-                                    ?>
 
-                                    <div class="ui-block">
-                                        <article class="hentry post video">
-                                            <div class="post__author author vcard inline-items">
-                                                <img loading="lazy" src="{{ asset('img/avatar7-sm.html') }}" alt="author"
-                                                    width="42" height="42">
 
-                                                <div class="author-date">
-                                                    <a class="h6 post__author-name fn"
-                                                        href="#">{{ $events->Event->User->first_name }}
-                                                        {{ $events->Event->User->last_name }}</a> shared a <a
-                                                        href="#">link</a>
-                                                    <div class="post__date">
-                                                        <time class="published" datetime="2004-07-24T18:18">
-                                                            {{ $events->datetimepicker }}
-                                                            {{ $events->time }}{{ $events->time_type }}
-                                                        </time>
+
+
+                                <div class="row">
+                                    <div class=" col-12 responsive-display-none">
+                                        <div class="ui-block responsive-flex">
+                                            <div class="ui-block-title">
+
+                                                <ul class="nav nav-tabs calendar-events-tabs" id="calendar-events-tabs"
+                                                    role="tablist">
+
+
+                                                    <li class="nav-item" role="presentation">
+                                                        <a class="nav-link active" id="news-letter-tab" data-bs-toggle="tab"
+                                                            href="#news-letter" role="tab" aria-controls="home"
+                                                            aria-selected="true">
+                                                            Total Events
+                                                        </a>
+                                                    </li>
+
+                                                    <li class="nav-item" role="presentation">
+                                                        <a class="nav-link" id="meeting-tab" data-bs-toggle="tab"
+                                                            href="#meeting" role="tab" aria-controls="home"
+                                                            aria-selected="false">
+                                                            Upcoming Events
+                                                        </a>
+                                                    </li>
+
+
+
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" col-12">
+
+                                        <div class="tab-content" id="calendar-events-tabs-content">
+                                            <div class="tab-pane fade show active" id="news-letter" role="tabpanel"
+                                                aria-labelledby="news-letter-tab">
+                                                    <div class="row">
+                                                        <div class="col-12">
+
+
+                                                            @foreach ($event as $events)
+                                                                {{-- @dd($events) --}}
+                                                                @if ($events->Event->cluster_id == $id)
+
+
+
+
+                                                                    @foreach ($joinn as $item)
+                                                                        @if ($item->event_id == $events->id)
+                                                                            <?php
+                                                                            $ii = $events->id;
+
+                                                                            ?>
+                                                                        @endif
+                                                                    @endforeach
+
+                                                                    <div class="ui-block">
+                                                                        <article class="hentry post video">
+                                                                            <div
+                                                                                class="post__author author vcard inline-items">
+                                                                                <img loading="lazy"
+                                                                                    src="{{ asset('img/avatar7-sm.html') }}"
+                                                                                    alt="author" width="42" height="42">
+
+                                                                                <div class="author-date">
+                                                                                    <a class="h6 post__author-name fn"
+                                                                                        href="#">{{ $events->Event->User->first_name }}
+                                                                                        {{ $events->Event->User->last_name }}</a>
+                                                                                    created as <a href="#">{{$events->Event_type}}</a>
+                                                                                    <div class="post__date">
+                                                                                        <time class="published"
+                                                                                            datetime="2004-07-24T18:18">
+                                                                                            {{ $events->datetimepicker }}
+                                                                                            {{ $events->time }}{{ $events->time_type }}
+                                                                                        </time>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <p>Hey <a
+                                                                                    href="#">{{ $events->Event->User->first_name }}</a>
+                                                                                {{ $events->description }}</p>
+
+                                                                            <div class="col-12 text-end">
+
+                                                                                @if ($ii != $events->id)
+                                                                                    <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
+                                                                                        class="btn btn-primary"> Join</a>
+                                                                                @else
+                                                                                    <a class="btn btn-primary bg-green "
+                                                                                        style="border-color:green; color:white">
+                                                                                        Joined</a>
+
+                                                                                @endif
+                                                                            </div>
+
+                                                                        </article>
+                                                                    </div>
+                                                                @endif
+                                                            @endforeach
+
+                                                        </div>
+                                                    </div>
+
+                                            </div>
+
+                                            <div class="tab-pane fade" id="meeting" role="tabpanel"
+                                                aria-labelledby="meeting-tab">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            @foreach ($eventtime as $events)
+                                                            {{-- @dd($events) --}}
+                                                            @if ($events->Event->cluster_id == $id )
+
+
+
+
+                                                                @foreach ($joinn as $item)
+                                                                    @if ($item->event_id == $events->id)
+                                                                        <?php
+                                                                        $ii = $events->id;
+
+                                                                        ?>
+                                                                    @endif
+                                                                @endforeach
+
+                                                                <div class="ui-block">
+                                                                    <article class="hentry post video">
+                                                                        <div
+                                                                            class="post__author author vcard inline-items">
+                                                                            <img loading="lazy"
+                                                                                src="{{ asset('img/avatar7-sm.html') }}"
+                                                                                alt="author" width="42" height="42">
+
+                                                                            <div class="author-date">
+                                                                                <a class="h6 post__author-name fn"
+                                                                                    href="#">{{ $events->Event->User->first_name }}
+                                                                                    {{ $events->Event->User->last_name }}</a>
+                                                                                created as <a href="#">{{$events->Event_type}}</a>
+                                                                                <div class="post__date">
+                                                                                    <time class="published"
+                                                                                        datetime="2004-07-24T18:18">
+                                                                                        {{ $events->datetimepicker }}
+                                                                                        {{ $events->time }}{{ $events->time_type }}
+                                                                                    </time>
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                        </div>
+
+                                                                        <p>Hey <a
+                                                                                href="#">{{ $events->Event->User->first_name }}</a>
+                                                                            {{ $events->description }}</p>
+
+                                                                        <div class="col-12 text-end">
+
+                                                                            @if ($ii != $events->id)
+                                                                                <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
+                                                                                    class="btn btn-primary"> Join</a>
+                                                                            @else
+                                                                                <a class="btn btn-primary bg-green "
+                                                                                    style="border-color:green; color:white">
+                                                                                    Joined</a>
+
+                                                                            @endif
+                                                                        </div>
+
+                                                                    </article>
+                                                                </div>
+                                                            @endif
+                                                        @endforeach
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                @if (Auth::user()->role == 'admin')
-
-                                                    <div class="more"><svg class="olymp-three-dots-icon">
-                                                            <use xlink:href="#olymp-three-dots-icon"></use>
-                                                        </svg>
-                                                        <ul class="more-dropdown">
-                                                            <li>
-                                                                <a href="#">Edit Post</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">Delete Post</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">Turn Off Notifications</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">Select as Featured</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                @endif
-
                                             </div>
 
-                                            <p>Hey <a href="#">{{ $events->Event->User->first_name }}</a>
-                                                {{ $events->description }}</p>
 
-                                            <div class="col-12 text-end">
-
-                                                @if ($ii != $events->id)
-                                                    <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
-                                                        class="btn btn-primary"> Join</a>
-                                                @else
-                                                    <a class="btn btn-primary bg-green "
-                                                        style="border-color:green; color:white"> Joined</a>
-
-                                                @endif
-                                            </div>
-                                            {{-- <div class="post-video">
-                                        <div class="video-thumb">
-                                            <img loading="lazy" src="{{ asset('img/video-youtube1.html') }}" alt="photo"
-                                                width="197" height="194">
-                                            <a href="https://youtube.com/watch?v=excVFQ2TWig" class="play-video">
-                                                <svg class="olymp-play-icon">
-                                                    <use xlink:href="#olymp-play-icon"></use>
-                                                </svg>
-                                            </a>
                                         </div>
 
-                                        <div class="video-content">
-                                            <a href="#" class="h4 title">Iron Maid - ChillGroves</a>
-                                            <p>Lorem ipsum dolor sit amet, consectetur ipisicing elit, sed do eiusmod
-                                                tempor incididunt
-                                                ut labore et dolore magna aliqua...
-                                            </p>
-                                            <a href="#" class="link-site">YOUTUBE.COM</a>
-                                        </div>
-                                    </div> --}}
-                                        </article>
                                     </div>
-                                @endif
-                            @endforeach
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
 
                         </div>
                     </main>
@@ -444,24 +557,72 @@
 
                                 @endforeach
 
-                                @if (Auth::user()->role == 'admin')
-                                <li style=" background: #2d2d2d; padding: 7px;">
-                                    <div class="col-12">
-                                        <a href="{{ url("$role/view",[$id]) }}"
-                                            style="    color: white;font-size: 16px;"> <span> See All </span></a>
-                                            {{-- <a href="{{ url("$role/view") }}"
-                                                style="    color: white;font-size: 16px;"> <span> See All </span></a> --}}
 
-                                    </div>
+                                @if ($user->count() > 0 && Auth::user()->role == 'admin')
+                                    <li style=" background: #2d2d2d; padding: 7px;">
+                                        <div class="col-12">
+                                            <a href="{{ url("$role/view", [$id]) }}"
+                                                style="    color: white;font-size: 16px;"> <span> See All </span></a>
 
-                                </li>
-                            @endif
+                                        </div>
+
+                                    </li>
+                                @endif
+
 
                             </ul>
 
                             <!-- .. end W-Activity-Feed -->
                         </div>
 
+
+
+
+
+
+
+
+
+                        <div class="ui-block">
+                            <div class="ui-block-title">
+                                <h6 class="title">Approval Users</h6>
+                                {{-- <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a> --}}
+                            </div>
+
+
+
+                            <!-- W-Action -->
+
+                            <ul class="widget w-friend-pages-added notification-list friend-requests">
+
+                                @foreach ($user as $users)
+
+                                    <li class="inline-items">
+                                        <div class="author-thumb">
+                                            <img loading="lazy" src="{{ asset('img/avatar49-sm.html') }}" alt="author"
+                                                width="36" height="36">
+                                        </div>
+                                        <div class="notification-event">
+                                            <a href="#" class="h6 notification-friend">{{ $users->User->first_name }}
+                                                {{ $users->User->last_name }}</a>
+                                            {{-- <span class="chat-message-item">8 Friends in Common</span> --}}
+                                        </div>
+                                        <span class="notification-icon">
+                                            <a href="#" class="accept-request">
+                                                <span class="icon-add without-text">
+                                                    <svg class="olymp-happy-face-icon">
+                                                        <use xlink:href="#olymp-happy-face-icon"></use>
+                                                    </svg>
+                                                </span>
+                                            </a>
+                                        </span>
+                                    </li>
+                                @endforeach
+
+                            </ul>
+
+                            <!-- ... end W-Action -->
+                        </div>
 
                     </aside>
 
@@ -489,7 +650,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ url("$role/add/event") }}" method="POST">
+                    <form action="{{ url("$role/add/event") }}" enctype="multipart/form-data" method="POST">
                         @csrf
                         <div class="form-group label-floating is-select">
                             <label class="control-label">Personal Event</label>
@@ -504,6 +665,7 @@
                             <input class="form-control" name="name" placeholder=""
                                 value="Take Querty to the Veterinarian" type="text">
                         </div>
+                        {{-- @dd($mang) --}}
                         <input type="hidden" value="@if (isset($mang->id)) {{ $mang->id }} @endif" name="mangerID" id="">
 
                         <div class="form-group label-floating is-empty">
@@ -513,12 +675,18 @@
 
                         <div class="form-group date-time-picker label-floating">
                             <label class="control-label">Event Date</label>
-                            <input name="datetimepicker" name="date" value="26/03/2016">
-                            <span class="input-group-addon">
+                            <input type="date" name="datetimepicker" name="date" value="26/03/2016">
+                            {{-- <span class="input-group-addon">
                                 <svg class="olymp-calendar-icon icon">
                                     <use xlink:href="#olymp-calendar-icon"></use>
                                 </svg>
-                            </span>
+                            </span> --}}
+                        </div>
+
+                        <div class="form-group date-time-picker label-floating">
+                            <label class="control-label">Image</label>
+                            <input type="file" name="image" value="">
+
                         </div>
 
                         <div class="row">
@@ -574,6 +742,51 @@
                         </div>
 
                         <input type="submit" class="btn btn-primary " value="Create Event" name="" id="">
+                        {{-- <button>Create Event</button> --}}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="edit-clus" tabindex="-1" role="dialog" aria-labelledby="edit-clus" aria-hidden="true">
+        <div class="modal-dialog window-popup edit-clus" role="document">
+            <div class="modal-content">
+                <a href="#" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">
+                    <svg class="olymp-close-icon">
+                        <use xlink:href="#olymp-close-icon"></use>
+                    </svg>
+                </a>
+                <div class="modal-header">
+                    <h6 class="title">Upload Image</h6>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ url("$role/upd/cluster/$clust->id") }}" method="post" enctype="multipart/form-data">
+                        @csrf
+
+
+                        <div class="form-group ">
+                            <label for="exampleFormControlInput1">Select Cluster Image</label>
+                            <input type="file" name="image[]" class="form-control" id="Cluster-Name" required>
+                            <input type="hidden" style="border: none;" required value="{{ $clust->detail }}"
+                                name="detail" id="">
+                        </div>
+
+                        <div id="values" class="mb-2">
+
+                        </div>
+                        <div class="form-group" style="text-align: end">
+
+
+                            <button class="btn btn-primary" id="btnn"> <i class="fa fa-plus-circle"></i> Add Image
+                            </button>
+                        </div>
+                        @if ((isset($mang->status) && $mang->status == 2) || Auth::user()->role == 'admin')
+
+                            <input type="submit" class="btn btn-primary " value="Update" name="" id="">
+                        @endif
                         {{-- <button>Create Event</button> --}}
                     </form>
                 </div>
@@ -880,9 +1093,63 @@
         </div>
 
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!-- ... end Window-popup-CHAT for responsive min-width: 768px -->
 
 
-    <!-- JS Scripts -->
+    <script>
+        $(document).click(function() {
+            $('.submitbtn').css('display', 'none');
+
+        });
+
+        $(".submitbtn").click(function(event) {
+
+            event.stopPropagation();
+
+        });
+
+
+        $(".cls_description").click(function(event) {
+
+            event.stopPropagation();
+
+        });
+
+        $(".cls_description").focusin(function() {
+            $('.submitbtn').css('display', 'block');
+            // event.stopPropagation();
+
+
+        });
+
+
+        // $(document).ready(function() {
+        //     $(".cls_description").focusin(function() {
+        //         $('.submitbtn').css('display', 'block');
+
+        //     });
+
+        //     $(".cls_description").focusout(function() {
+        //         $('.submitbtn').css('display', 'none');
+
+        //     });
+        // });
+    </script>
+    <script>
+        $(document).ready(function() {
+            var counter = 1;
+
+
+            $("#btnn").on("click", function() {
+
+                $("#values").append(
+                    "<div class='form-group'> <input type='file' name='image[]' class='form-control' id='Cluster-Name' required> </div>"
+                );
+
+
+            });
+
+        });
+    </script>
 @endsection

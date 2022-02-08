@@ -19,7 +19,7 @@ class CreateEventsTable extends Migration
             $table->string('Event_type')->nullable();
             $table->string('join_cluster_ID')->nullable();
             $table->string('location')->nullable();
-            $table->string('datetimepicker')->nullable();
+            $table->date('datetimepicker')->nullable();
             $table->string('time')->nullable();
             $table->string('time_type')->nullable();
             $table->string('timezone')->nullable();
