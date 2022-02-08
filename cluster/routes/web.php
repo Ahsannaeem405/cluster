@@ -56,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
     // Route::view('/admin', 'admin/index');
     Route::get('/', [ClusterController::class, 'index']);
 
-    Route::get('/Join/cluster/{id}', [ClusterController::class, 'join_cluster']);
+    // Route::get('/Join/cluster/{id}', [ClusterController::class, 'join_cluster']);
     Route::get('/view/cluster/{id}', [ClusterController::class, 'view_cluster']);
 
 
@@ -73,6 +73,9 @@ Route::middleware(['auth'])->group(function () {
     //Route::view('/admin/view_cluster','admin/view_cluster');
     Route::post('createCluster', [ClusterController::class, 'createCluster']);
     Route::post('updateCluster/{id}', [ClusterController::class, 'updateCluster']);
+
+    Route::post('upd/cluster/{id}', [ClusterController::class, 'upd_cluster']);
+
     Route::get('deleteCluster/{id}', [ClusterController::class, 'deleteCluster']);
     Route::get('/view_cluster', [ClusterController::class, 'viewCluster']);
     // Route::get('/view/{id}', [ClusterController::class, 'view']);
@@ -99,6 +102,8 @@ Route::view('/services','admin/view_services');
 Route::view('/setting','admin/view_setting');
 Route::view('/profile_setting','admin/profile_setting');
 Route::view('/cluster_manager','admin/cluster_manager');
+Route::get('/view/{id}', [ClusterController::class, 'view']);
+
 
 
 });
@@ -115,6 +120,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [ClusterController::class, 'user_index']);
         Route::post('createCluster', [ClusterController::class, 'createCluster']);
         Route::post('updateCluster/{id}', [ClusterController::class, 'updateCluster']);
+
+        Route::post(' upd/cluster/{id}', [ClusterController::class, ' upd_cluster']);
+
+
+
         Route::get('deleteCluster/{id}', [ClusterController::class, 'deleteCluster']);
         Route::get('/admin/view_cluster', [ClusterController::class, 'viewCluster']);
         Route::get('/view/cluster/{id}', [ClusterController::class, 'view_cluster']);

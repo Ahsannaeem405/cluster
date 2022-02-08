@@ -2,9 +2,9 @@
 @section('page_title', 'Home Page')
 @section('content')
 
-<?php
-$role = Auth::user()->role;
-?>
+    <?php
+    $role = Auth::user()->role;
+    ?>
     <div class="header-spacer header-spacer-small"></div>
 
 
@@ -16,11 +16,11 @@ $role = Auth::user()->role;
             <div class="row">
                 <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
                     <div class="main-header-content">
-                     
-                        @if(Auth::user()->role == 'admin')
-                        <h1>Manage your Clusters</h1>
+
+                        @if (Auth::user()->role == 'admin')
+                            <h1>Manage your Clusters</h1>
                         @else
-                        <h1>Join your Clusters</h1>
+                            <h1>Join your Clusters</h1>
                         @endif
                         <p>Welcome to your Clusters Management page.Here you can easly Add, Delete and Edit you clustors.
                             Thank you</p>
@@ -33,7 +33,7 @@ $role = Auth::user()->role;
     <!-- ... end Main Header Groups -->
     <!-- Main Content Groups -->
 
-    <div class="container">
+    <div class="container-fluid" style="padding-right: 51px;padding-left: 51px;">
         @if ($message = Session::get('success'))
             <div class="alert alert-success ">
                 <strong>{{ $message }}</strong>
@@ -48,92 +48,201 @@ $role = Auth::user()->role;
 
 
         <div class="row">
-            @if(Auth::user()->role == 'admin')
 
-            <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
 
-                <!-- Friend Item -->
 
-                <div class="friend-item friend-groups create-group h-75 mb-3">
 
-                    <a href="#" class="  full-block" data-bs-toggle="modal" data-bs-target="#create-friend-group-1"></a>
-                    <div class="content">
 
-                        <a href="#" class="btn btn-control bg-green" data-bs-toggle="modal"
-                            data-bs-target="#create-friend-group-1">
-                            <svg class="olymp-plus-icon">
-                                <use xlink:href="#olymp-plus-icon"></use>
-                            </svg>
-                        </a>
 
-                        <div class="author-content">
-                            <a href="#" class="h5 author-name">Create New</a>
-                            <div class="country"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            @if (Auth::user()->role == 'admin')
+
+                <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+
+                    <!-- Friend Item -->
+
+                    <div class="friend-item friend-groups create-group h-75 mb-3">
+
+                        <a href="#" class="  full-block" data-bs-toggle="modal"
+                            data-bs-target="#create-friend-group-1"></a>
+                        <div class="content">
+
+                            <div class="friend-item-content" style="padding-bottom: 0px;">
+
+                            <div class="control-block-button" style="margin-bottom: 0px;">
+
+
+                            <a href="#" class="btn btn-control bg-green" data-bs-toggle="modal"
+                                data-bs-target="#create-friend-group-1">
+                                <svg class="olymp-plus-icon">
+                                    <use xlink:href="#olymp-plus-icon"></use>
+                                </svg>
+                            </a>
+                            </div>
+                        </div>
+                            <div class="author-content">
+                                <a href="#" class="h5 author-name" style="    ">Create New</a>
+                                <div class="country"></div>
+                            </div>
+
                         </div>
 
                     </div>
 
+                    <!-- ... end Friend Item -->
                 </div>
-
-                <!-- ... end Friend Item -->
-            </div>
             @endif
             {{-- @dd($viewCluster) --}}
 
 
             @foreach ($viewCluster as $list)
-                <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
+                {{-- <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
 
                     <div class="ui-block h-100 mb-0">
-<a href="{{url("$role/view/cluster",$list->id)}}">
-                        <!-- Friend Item -->
+                        <a href="{{ url("$role/view/cluster", $list->id) }}">
 
-                        <div class="friend-item clusotr-groups">
+                            <div class="friend-item clusotr-groups">
 
-                            <div class="friend-item-content">
-                                <div class="friend-avatar">
-                                    <div class="author-thumb">
-                                        <img loading="lazy" src="{{ asset('images') }}/{{ $list->image }}"
-                                            alt="Olympus">
+                                <div class="friend-item-content">
+                                    <div class="friend-avatar">
+                                        <div class="author-thumb">
+                                            <img loading="lazy" src="{{ asset('images') }}/{{ $list->image }}"
+                                                alt="Olympus">
+                                        </div>
+                                        <div class="author-content">
+                                            <a href="#" class="h5 author-name">{{ $list->name }}</a>
+                                            <div class="country">Manager:<span> Faizan</span></div>
+                                            <p>{{ $list->detail }}</p>
+                                        </div>
                                     </div>
-                                    <div class="author-content">
-                                        <a href="#" class="h5 author-name">{{ $list->name }}</a>
-                                        <div class="country">Manager:<span> Faizan</span></div>
-                                        <p>{{ $list->detail }}</p>
-                                    </div>
-                                </div>
 
-                                <div class="control-block-button">
+                                    <div class="control-block-button">
 
-                                    {{-- @dd(Auth::user()->role ) --}}
 
-                                    @if (Auth::user()->role == 'user')
-                                        <a href="{{ url('/user/Join/cluster',$list->id) }}" class="btn btn-control "
-                                            style="background:#ff5e3a">
-                                            <i class="fa fa-plus"></i>
-                                        </a>
+                                        @if (Auth::user()->role == 'user')
+                                            <a href="{{ url('/user/Join/cluster', $list->id) }}" class="btn btn-control "
+                                                style="background:#ff5e3a">
+                                                <i class="fa fa-plus"></i>
+                                            </a>
 
                                         @else
-                                        <a href="{{ url('user/deleteCluster')}}/{{ $list->id }}"
-                                            class=" btn btn-control bg-blue">
-                                            <i class="fa fa-trash olymp-happy-faces-icon" aria-hidden="true"></i>
-                                        </a>
+                                            <a href="{{ url('user/deleteCluster') }}/{{ $list->id }}"
+                                                class=" btn btn-control bg-blue">
+                                                <i class="fa fa-trash olymp-happy-faces-icon" aria-hidden="true"></i>
+                                            </a>
 
-                                        <a href="#" class="btn btn-control bg-green" data-bs-toggle="modal"
-                                            data-bs-target="#edit-cluster{{ $list->id }}">
-                                            <i class="fa fa-edit" aria-hidden="true"></i>
-                                        </a>
+                                            <a href="#" class="btn btn-control bg-green" data-bs-toggle="modal"
+                                                data-bs-target="#edit-cluster{{ $list->id }}">
+                                                <i class="fa fa-edit" aria-hidden="true"></i>
+                                            </a>
 
-                                    @endif
+                                        @endif
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
                         <!-- ... end Friend Item -->
                     </div>
 
+                </div> --}}
+
+
+
+
+
+
+
+
+                <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
+                    <div class="ui-block h-100 mb-0">
+
+                        <!-- Friend Item -->
+
+                        <div class="friend-item friend-groups">
+
+
+                            <a  @if(Auth::user()->role == 'admin') href="{{ url("$role/Join/cluster", $list->id) }}" @else  href="{{ url("$role/view/cluster", $list->id) }}" @endif>
+
+
+
+
+                            <div class="friend-item-content">
+
+
+                                <div class="friend-avatar">
+                                    <div class="author-thumb">
+                                        <img loading="lazy" src="{{ asset('images') }}/{{ $list->image }}" alt="Olympus" width="34" height="34">
+                                    </div>
+                                    <div class="author-content">
+
+                                        <a  class="h5 author-name">{{ $list->name }}</a>
+                                        <div class="country">Manager:<span> Faizan</span></div>
+                                        <p>{{ $list->detail }}</p>
+
+
+
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="control-block-button">
+                                    @if (Auth::user()->role == 'user')
+                                    <a href="{{ url('/user/Join/cluster', $list->id) }}" class="btn btn-control "
+                                        style="background:#ff5e3a;    color: white; ">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+
+                                @else
+                                    <a style="    color: white;" href="{{ url('user/deleteCluster') }}/{{ $list->id }}"
+                                        class=" btn btn-control bg-blue">
+                                        <i class="fa fa-trash olymp-happy-faces-icon" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a style="    color: white;" href="#" class="btn btn-control bg-green" data-bs-toggle="modal"
+                                        data-bs-target="#edit-cluster{{ $list->id }}">
+                                        <i class="fa fa-edit" aria-hidden="true"></i>
+                                    </a>
+
+                                @endif
+
+                                </div>
+
+                            </div>
+                        </a>
+                        </div>
+
+
+                        <!-- ... end Friend Item -->			</div>
                 </div>
+
+
+
+
+
+
+
+
 
 
                 <div class="modal fade" id="edit-cluster{{ $list->id }}" tabindex="-1" role="dialog"
@@ -177,6 +286,17 @@ $role = Auth::user()->role;
                                             </span>
                                         @enderror
                                     </div>
+
+                                    <div class="form-group">
+                                        <select class="form-select" name="cluster_type">
+                                            <option value="Public">Public </option>
+                                            <option value="Private">Private </option>
+                                        </select>
+                                    </div>
+
+
+
+
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1">Select Cluster Image</label>
                                         <input type="file" name="image"
@@ -192,13 +312,15 @@ $role = Auth::user()->role;
 
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1">manager</label>
-                                        <input list="browsers" name="manager_id" value="{{$list->manager_id}}"   placeholder="Select Manager"  class="form-control @error('manager_id') is-invalid @enderror">
-                                            <datalist id="browsers">
-                                                @foreach($manager as $list)
-                                            <option value="{{$list->id}}">{{$list->first_name}}</option>
-                                                @endforeach
-                                            </datalist>
-                                        
+                                        <input list="browsers" name="manager_id" value="{{ $list->manager_id }}"
+                                            placeholder="Select Manager"
+                                            class="form-control @error('manager_id') is-invalid @enderror">
+                                        <datalist id="browsers">
+                                            @foreach ($manager as $list)
+                                                <option value="{{ $list->id }}">{{ $list->first_name }}</option>
+                                            @endforeach
+                                        </datalist>
+
                                         @error('manager_id')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -263,23 +385,41 @@ $role = Auth::user()->role;
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Select Cluster Image</label>
-                            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror"
+                            <input type="file" name="image[]" class="form-control @error('image') is-invalid @enderror"
                                 id="Cluster-Name" placeholder="Enter Cluster Name" required>
+
                             @error('image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
+                        <div id="values" class="mb-2">
+
+                        </div>
+                        <div class="form-group" style="text-align: end">
+
+
+<button class="btn btn-primary" id="btnn"> <i class="fa fa-plus-circle"></i> Add Image </button>
+</div>
+                        <div class="form-group">
+                            <select class="form-select" name="cluster_type">
+                                <option value="Public">Public </option>
+                                <option value="Private">Private </option>
+                            </select>
+                        </div>
+
+
                         <div class="form-group">
                             <label for="exampleFormControlInput1">manager</label>
-                            <input list="browsers" name="manager_id"  placeholder="Select Manager"  class="form-control @error('manager_id') is-invalid @enderror">
-                                <datalist id="browsers">
-                                    @foreach($manager as $list)
-                                <option value="{{$list->first_name}}">{{$list->first_name}}</option>
-                                    @endforeach
-                                </datalist>
-                            
+                            <input list="browsers" name="manager_id" placeholder="Select Manager"
+                                class="form-control @error('manager_id') is-invalid @enderror">
+                            <datalist id="browsers">
+                                @foreach ($manager as $list)
+                                    <option value="{{ $list->first_name }}">{{ $list->first_name }}</option>
+                                @endforeach
+                            </datalist>
+
                             @error('manager_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -551,4 +691,24 @@ $role = Auth::user()->role;
         </div>
 
     </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var counter = 1;
+
+
+            $("#btnn").on("click", function () {
+
+   $("#values").append("<div class='form-group'> <input type='file' name='image[]' class='form-control' id='Cluster-Name' required> </div>");
+                // $("#rem-var-div").removeClass("d-none");
+                // $("#count").val(counter);
+
+            });
+
+        });
+    </script>
 @endsection
