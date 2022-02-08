@@ -38,7 +38,7 @@ Route::get('migrate', function () {
     $user->status='1';
     $user->post_role='admin';
     $user->save();
-    return redirect('/');
+    return redirect('/admin');
 });
 
 
@@ -49,6 +49,8 @@ Route::group(['middleware' => 'install'], function () {
     Route::get('/', [frontController::class, 'viewCluster']);
 });
 
+Route::get('/login/{cluster}/{id}', [frontController::class, 'login']);
+Route::get('/register/{event}/{id}', [frontController::class, 'login_event']);
 
 Route::middleware(['auth'])->group(function () {
 

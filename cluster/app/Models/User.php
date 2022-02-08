@@ -27,6 +27,8 @@ class User extends Authenticatable
         'role',
         'status',
         'post_role',
+        'register_role',
+        'cluster_or_event',
     ];
 
     /**

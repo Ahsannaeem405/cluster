@@ -1,3 +1,7 @@
+
+@php
+	//@dd($cluster_id);
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +35,30 @@
 
 <body class="landing-page">
 
-
+<style>
+	.select2-container--default.select2-container .select2-selection--multiple {
+    border: solid #e6ecf5  1px !important;
+    outline: 0;
+    height: 39px !important;
+}
+.select2-container .select2-selection--multiple .select2-selection__rendered {
+     display: block !important; 
+    /* list-style: none; */
+    padding: 4px !important;
+}
+.select2-container {
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0;
+    position: relative;
+    vertical-align: middle;
+    width: 100% !important;
+}
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border: solid #e6ecf5 1px !important;
+    outline: 0;
+}
+</style>
 <!-- Preloader -->
 
 <div id="hellopreloader">
@@ -177,15 +204,60 @@
                                         </span>
                                         @enderror
 									</div>
+									<div class="row my-3 d-flex justify-content-center">
+										<div class="col-md-6 col-lg-6 col-sm-6">
+											<div class="row">
+												<div class="col-md-6 col-lg-6 col-sm-6">
+													Register As Member
+												</div>
+												<div class="col-md-6 col-lg-6 col-sm-6 mt-1">
+													<input name="post_role" value="member" id="member" type="radio" @if(isset($cluster_name)) checked @else checked  @endif required>
 
-									<div class="remember">
+												</div>
+											</div>
+												
+
+										</div>
+										<div class="col-md-6 col-lg-6 col-sm-6">
+											<div class="row">
+												<div class="col-md-6 col-lg-6 col-sm-6">
+													Register As User
+												</div>
+												<div class="col-md-6 col-lg-6 col-sm-6 mt-1">
+													<input name="post_role" value="user" id="user" type="radio" @if(isset($event_name)) checked  @endif required>
+
+												</div>
+											</div>
+														
+
+										</div>
+									</div>
+									<div class="form-group label-floating is-select "  id="cluster">
+									<label class="control-label">Cluster</label>
+									<select class="clusterMultiple" name="cluster[]" multiple="multiple">
+										@foreach($cluster as $list)
+										<option value="{{$list->id}}" @if(isset($cluster_id)) @if($cluster_id == $list->id) selected @endif @endif>{{$list->name}}</option>
+							
+										@endforeach
+									  </select>
+									</div>
+									<div class="form-group label-floating is-select "  id="event"  >
+										<label class="control-label">Event</label>
+										<select class="eventMultiple" name="event[]" multiple="multiple">
+											@foreach($event as $listE)
+											<option value="{{$listE->id}}" @if(isset($event_id)) @if($event_id == $listE->id) selected @endif @endif>{{$listE->name}}</option>
+								
+											@endforeach
+										  </select>
+										</div>
+									{{-- <div class="remember">
 										<div class="checkbox">
 											<label>
-												<input name="optionsCheckboxes" type="checkbox">
+												<input name="optionsCheckboxes" type="checkbox" required 
 												I accept the <a href="#">Terms and Conditions</a> of the website
 											</label>
 										</div>
-									</div>
+									</div> --}}
 
                                     <button type="submit" class="btn btn-blue btn-lg full-width">
                                         {{ __('Complete Registration!') }}
@@ -292,40 +364,15 @@
 	</div>
 </div>
 
-<!-- ... end Window-popup Restore Password -->
-
-
-<!-- Window Popup Main Search -->
-<!-- 
-<div class="modal fade" id="main-popup-search" tabindex="-1" role="dialog" aria-labelledby="main-popup-search" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered window-popup main-popup-search" role="document">
-		<div class="modal-content">
-			<a href="#" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">
-				<svg class="olymp-close-icon"><use xlink:href="#olymp-close-icon"></use></svg>
-			</a>
-			<div class="modal-body">
-				<form class="form-inline search-form" method="post">
-					<div class="form-group label-floating">
-						<label class="control-label">What are you looking for?</label>
-						<input class="form-control bg-white" placeholder="" type="text" value="">
-					</div>
-
-					<button class="btn btn-purple btn-lg">Search</button>
-				</form>
-			</div>
-		</div>
-	</div>
-</div> -->
-
-<!-- ... end Window Popup Main Search -->
-
-<!-- JS Scripts -->
+<input name="event_name" value="user" id="user" type="radio" value="" @if(isset($event_name))   @endif required>
 
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
 		var webpMachine = new webpHero.WebpMachine()
 		webpMachine.polyfillDocument()
 	});
+
+
 </script>
 <script src="{{asset('js/jQuery/jquery-3.5.1.min.js')}}"></script>
 
@@ -345,6 +392,7 @@
 
 <script src="{{asset('Bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 
+
 <!-- SVG icons loader -->
 <script src="{{asset('js/svg-loader.js')}}"></script>
 <!-- /SVG icons loader -->
@@ -352,8 +400,28 @@
 </body>
 
 </html>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
+<script>
+		$(document).ready(function() {
+	//	$('#event').hide();
+	
+		$('#member').click(function(){
+		$('#cluster').show();
+		$('#event').hide();
+		});
+		
+		$('#user').click(function(){
+		$('#cluster').hide();
+		$('#event').show();
+		});
 
+    $('.clusterMultiple').select2();
+    $('.eventMultiple').select2();
+});
+</script>
 {{-- 
 @extends('layouts.app')
 

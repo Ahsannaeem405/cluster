@@ -478,11 +478,11 @@ Docs & License: https://fullcalendar.io/
     background-color: transparent;
     
 }
-.clustor-card:hover::after{
+.clustor-card:hover::after1{
     transform: scale(40);
     background-color: rgba(227, 9, 23, 0.2);
 }
-.clustor-card:hover .clustor-card-head{
+.clustor-card:hover .clustor-card-head1{
     padding: 0px;
 }
 .clustor-card .clustor-card-head{

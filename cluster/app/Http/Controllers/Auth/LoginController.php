@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use App\Models\Cluster;
+use App\Models\Event;
 class LoginController extends Controller
 {
     /*
@@ -50,6 +51,13 @@ class LoginController extends Controller
         }
 
      }
+public function showLoginForm()
+{
+    $cluster =Cluster::where('cluster_type','Public')->get();
+    $event =Event::where('Event_type','Public')->get();
+
+    return view('auth.login', compact('cluster','event'));
+}
     /**
      * Create a new controller instance.
      *

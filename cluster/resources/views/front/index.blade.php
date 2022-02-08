@@ -47,10 +47,13 @@
 			@foreach($viewCluster as $list)
 
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
-				<a href="clustor.php">
+			
 					<div class="clustor-card">
 						<div class="clustor-card-head">
+							<a href="{{ url('login/cluster') }}/{{$list->id}}">
 							<img src="{{asset('images')}}/{{$list->image}}" />
+						</a>
+
 						</div>
 						<div class="clustor-card-body">
 							<h3 class="clustor-card-heading">{{$list->name}}</h3>
@@ -59,9 +62,11 @@
 								<p><i class="far fa-calendar-alt mx-1"></i>{{date('m-d-Y',strtotime($list->created_at))}}</p>
 							</div>
 							<p>{{$list->detail}}</p>
+							<a href="{{ url('login/cluster') }}/{{$list->id}}" class="btn btn-outline-danger  mt-3 w-100"  style="color: black">Register Now</a>
+
 						</div>
 					</div>
-				</a>
+			
 			</div>
 			@endforeach
 		</div>
@@ -75,48 +80,23 @@
 				</div>
 			</div>
 			<div class="row mt-3">
+				@foreach($viewEvent as $eventlist)
 			<div class="col-lg-4 col-md-6 col-sm-8 col-12">
 				<div class="upcoming-card mt-3">
 					<div class="upcoming-card-img">
-						<img src="./img/upcoming1.jpg"/>
+						<img src="{{asset('images')}}/{{$eventlist->image}}"/>
 					</div>
 					<div class="upcoming-card-body">
-						<h3 class="py-2 ">Holiday Event At The Last Sunday</h3>
-						<span><i class="far fa-calendar-alt mx-1"></i>31-Jan-2022</span>
-						<p class="py-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem 
-							voluptate officia rerum. </p>
-						<a href="#"><button class="btn w-100">Register Now</button></a>
+						<h3 class="py-2 ">{{$eventlist->name}}</h3>
+						<span><i class="far fa-calendar-alt mx-1"></i>{{date('m-d-Y',strtotime($eventlist->created_at))}}</span>
+						<p class="py-2">{{$eventlist->description}} </p>
+						<a href="{{ url('register/event') }}/{{$eventlist->id}}" class="btn btn-outline-danger  mt-3 w-100"  style="color: black">Register Now</a>
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-4 col-md-6 col-sm-8 col-12 mt-3">
-				<div class="upcoming-card">
-					<div class="upcoming-card-img">
-						<img src="./img/upcoming2.jpg"/>
-					</div>
-					<div class="upcoming-card-body">
-						<h3 class="py-2 ">Holiday Event At The Last Sunday</h3>
-						<span><i class="far fa-calendar-alt mx-1"></i>31-Jan-2022</span>
-						<p class="py-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem 
-							voluptate officia rerum. </p>
-						<a href="#"><button class="btn w-100">Register Now</button></a>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 col-sm-8 col-12 mt-3">
-				<div class="upcoming-card">
-					<div class="upcoming-card-img">
-						<img src="./img/upcoming3.jpg"/>
-					</div>
-					<div class="upcoming-card-body">
-						<h3 class="py-2 ">Holiday Event At The Last Sunday</h3>
-						<span><i class="far fa-calendar-alt mx-1"></i>31-Jan-2022</span>
-						<p class="py-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem 
-							voluptate officia rerum. </p>
-						<a href="#"><button class="btn w-100">Register Now</button></a>
-					</div>
-				</div>
-			</div>
+			@endforeach
+		
+		
 		</div>
 		</div>	
 	</div>
