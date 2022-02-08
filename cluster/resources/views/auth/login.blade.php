@@ -406,7 +406,7 @@
 
 <script>
 		$(document).ready(function() {
-	//	$('#event').hide();
+		$('#event').hide();
 	
 		$('#member').click(function(){
 		$('#cluster').show();
