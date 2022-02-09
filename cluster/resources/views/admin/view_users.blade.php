@@ -1,4 +1,4 @@
-@extends('admin1.layout')
+@extends('admin.layout')
 @section('page_title', 'Home Page')
 @section('content')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
@@ -26,20 +26,25 @@
         </div>
 
     </div>
-    <div class="container">
+    <div class="container-fluid" style="padding-left: 26px;padding-right: 26px;">
 
 
-        <div class="ui-block responsive-flex">
+        {{-- <div class="ui-block responsive-flex">
             <br />
             <div class="col-12" style="    padding: 7px;">
                 @if ($message = Session::get('success'))
-                <div class="alert alert-success ">
-                    <strong>{{ $message }}</strong>
-                </div>
-            @endif
+                    <div class="alert alert-success ">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
 
                 <div class="table-responsive">
                     <table id="table_id" class="display">
+                        @if ($message = Session::get('success'))
+                            <div class="alert alert-success ">
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -82,7 +87,7 @@
                                                             <li>
 
                                                                 <a style="font-size: 14px;"
-                                                                    href="{{ url("$role/manager/status",[$users->id, $users->User->id]) }}">
+                                                                    href="{{ url("$role/manager/status", [$users->id, $users->User->id]) }}">
                                                                     <span> Manager</span>
                                                                 </a>
 
@@ -104,9 +109,80 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
+
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="members-table">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-center">#</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Second Name</th>
+                            <th scope="col">Email </th>
+                            <th scope="col">DOB </th>
+                            <th scope="col">Role </th>
+                            <th scope="col">Action </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                            $i = 1;
+                        @endphp
+                        @foreach ($user as $users)
+
+
+                            <tr>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $users->User->first_name }}</td>
+                                <td>{{ $users->User->last_name }}</td>
+                                <td>{{ $users->User->email }}</td>
+                                <td>{{ $users->User->dob }}</td>
+                                <td>{{ $users->User->role }}</td>
+                                <td>
+                                    <div class="author-page author vcard inline-items more">
+                                        <div class="author-thumb">
+                                            <button class="btn btn-primary">Action &nbsp; <i class="fa fa-angle-down"
+                                                    style="font-size: 17px;" aria-hidden="true"></i>
+                                            </button>
+                                            <div class="more-dropdown more-with-triangle" style="margin-top: -7px;">
+                                                <div class="mCustomScrollbar" data-mcs-theme="dark">
+
+
+                                                    <ul class="account-settings">
+                                                        <li>
+
+                                                            <a style="font-size: 14px;"
+                                                                href="{{ url("$role/manager/status", [$users->id, $users->User->id]) }}">
+                                                                <span> Manager</span>
+                                                            </a>
+
+                                                        </li>
+
+
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                        @endforeach
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 

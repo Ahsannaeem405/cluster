@@ -106,6 +106,7 @@ Route::view('/profile_setting','admin/profile_setting');
 Route::view('/cluster_manager','admin/cluster_manager');
 Route::get('/view/{id}', [ClusterController::class, 'view']);
 
+Route::post('upd/cluster_overview/{id}', [ClusterController::class, 'cluster_overview']);
 
 
 });
@@ -123,7 +124,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('createCluster', [ClusterController::class, 'createCluster']);
         Route::post('updateCluster/{id}', [ClusterController::class, 'updateCluster']);
 
-        Route::post(' upd/cluster/{id}', [ClusterController::class, ' upd_cluster']);
+        Route::post('upd/cluster/{id}', [ClusterController::class, 'upd_cluster']);
+
+        Route::post('upd/cluster_overview/{id}', [ClusterController::class, 'cluster_overview']);
 
 
 

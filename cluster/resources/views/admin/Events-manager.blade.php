@@ -6,6 +6,12 @@
     $var = 0;
     $ii = 0;
     ?>
+    <style>
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+    </style>
     <!-- Main Header Groups -->
 
     <div class="main-header">
@@ -16,7 +22,7 @@
             <div class="row">
                 <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
                     <div class="main-header-content">
-                        <h1>Manage Events</h1>
+                        <h1>Manage Cluster</h1>
                         <p>Welcome to your event manager page. Here you can Add new, Edit and Delete events.</p>
                     </div>
                 </div>
@@ -60,6 +66,113 @@
             <div class="container-fluid" style="padding-left: 51px;padding-right: 51px;">
                 <div class="row">
                     <div class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+
+
+                        <div class="ui-block">
+
+
+                            <div class="widget w-weather">
+
+
+
+
+                                <div class="row">
+
+                                    <form @if(isset($clust->id)) action="{{ url("$role/upd/cluster/$clust->id") }}" @endif method="post">
+                                        @csrf
+
+                                        <div class="col-12">
+                                            <img class="" loading="lazy" @if (isset($clus_img1[0]))  src="{{ asset("images/$clus_img1[0]") }}" @endif alt="author"
+                                                style="    border-radius: 28%;" width="100" height="100">
+                                        </div>
+
+
+                                        <div class="col-12">
+
+
+
+                                            <div class="wethear-now inline-items">
+                                                <div class="temperature-sensor"> @if(isset($clust->name)) {{ $clust->name }} @endif </div>
+
+
+                                            </div>
+
+
+                                            <div class="wethear-now-description">
+
+
+                                                @if ((isset($mang->status) && $mang->status == 2) || Auth::user()->role == 'admin')
+
+                                                    <div class="climate cls_description">
+                                                        <textarea name="detail"
+                                                            style="      margin-top: -10px;  border: none;    color: white;    font-weight: 400;background-color: rgba(0, 0, 0, 0);"
+                                                            name="" id="" cols="30" rows="2">
+                                                        {{ $clust->detail }}
+                                                    </textarea>
+
+                                                    </div>
+
+                                                @else
+                                                    <div class="climate mt-2">
+                                                        @if(isset($clust->detail))  {{ $clust->detail }} @endif
+                                                    </div>
+                                                @endif
+
+
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-12 position-relative">
+
+
+                                            <div class="control-block-button" style="right: 11px;">
+
+
+                                                <input style="margin-bottom: 0px;width: 11%;display: none" type="submit"
+                                                    class="btn btn-primary formsub" value="Submit" name="" id="">
+
+
+                                                <a style="height: 100%;display: none;"
+                                                    class="btn btn-control bg-green submitbtn">
+
+
+                                                    <svg class="olymp-plus-icon ">
+                                                        <use xlink:href="#olymp-plus-icon"></use>
+                                                    </svg>
+
+
+
+                                                </a>
+
+
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+
+
+
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <!-- W-Weather -->
+                        </div>
                         <div class="ui-block">
 
 
@@ -68,9 +181,9 @@
                             <div class="today-events calendar">
                                 <div class="today-events-thumb">
                                     <div class="date">
-                                        <div class="day-number">26</div>
-                                        <div class="day-week">Saturday</div>
-                                        <div class="month-year">March, 2016</div>
+                                        <div class="day-number">{{ date('d') }}</div>
+                                        <div class="day-week">{{ date('D') }}</div>
+                                        <div class="month-year">{{ date('M, Y') }}</div>
                                     </div>
                                 </div>
 
@@ -98,7 +211,7 @@
 
 
 
-
+@if(isset($event_3 ))
                                         @foreach ($event_3 as $events)
                                             <div class="accordion-item">
                                                 <div class="accordion-header" id="heading{{ $events->id }}">
@@ -152,6 +265,7 @@
                                             </div>
                                         @endforeach
 
+                                        @endif
 
                                     </div>
 
@@ -160,6 +274,8 @@
 
                             <!-- ... end Today Events -->
                         </div>
+
+
                     </div>
                     <!-- Main Content -->
                     <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
@@ -177,14 +293,13 @@
                                 <!-- Search Result -->
 
                                 <article class="hentry post searches-item">
-                                    {{-- @dd($clus_img[0]) --}}
-                                    <div class="post__author author vcard inline-items">
-                                        <img loading="lazy" @if (isset($clus_img1[0]))  src="{{ asset("images/$clus_img1[0]") }}" @endif alt="author"
-                                            style="    border-radius: 28%;" width="42" height="42">
+
+                                    <div class="post__author author vcard inline-items text-center">
+
 
                                         <div class="author-date">
-                                            <a class="h6 post__author-name fn"
-                                                href="02-ProfilePage.html">{{ $clust->name }}</a>
+                                            <a class="h6 post__author-name fn" href=""
+                                                style="font-size: 20px;">{{ 'Cluster Overview' }}</a>
                                             <div class="country"></div>
                                         </div>
 
@@ -206,39 +321,50 @@
 
                                     </div>
 
-                                    <form action="{{ url("$role/upd/cluster/$clust->id") }}" method="post">
+                                    <form @if(isset($clust->id)) action="{{ url("$role/upd/cluster_overview/$clust->id") }}" @endif method="post">
                                         @csrf
-                                        <p class="user-description ">
-                                            <span class="title text-start">About Me:</span>
+                                        <p class="user-description position-relative">
                                             @if ((isset($mang->status) && $mang->status == 2) || Auth::user()->role == 'admin')
 
 
-                                                <input class="cls_description" type="text" style="border: none;"
-                                                    value="{{ $clust->detail }}" name="detail" id="">
+                                                <input class="cls_description1" type="text" style="border: none;"
+                                                @if(isset($clust->cluster_overview )) value="{{ $clust->cluster_overview }}" @endif placeholder="Enter Overview Detail"  name="cluster_overview" id="">
                                             @else
 
 
                                                 <input type="text" style="border: none;" required
-                                                    value="{{ $clust->detail }}" name="detail" id="">
+                                                @if(isset($clust->cluster_overview ))   value="{{ $clust->cluster_overview }}" @endif  placeholder="Enter Overview Detail"  id="">
 
                                             @endif
+
+
+                                        <div class="control-block-button post-control-button heartt" style="top: 119px; display:none;">
+
+                                            <a  class="btn btn-control"  >
+                                                <i  class="fa fa-heart text-white" style="font-size: 17px;" aria-hidden="true"></i>
+                                            </a>
+
+
+                                        </div>
+
                                         </p>
 
-                                        <p class="user-description text-end submitbtn"
-                                            style="display: none;    border-top: none; margin-top: -28px;">
 
 
-                                            <input style="margin-bottom: 0px;width: 11%;" type="submit"
-                                                class="btn btn-primary" value="Submit" name="" id="">
+
+                                        <input style="margin-bottom: 0px;width: 11%;display:none" type="submit"
+                                            class="btn btn-primary formsum1" value="Submit" name="" id="">
 
 
-                                        </p>
+                                        {{-- </p> --}}
                                     </form>
                                     <div class="post-block-photo js-zoom-gallery">
                                         <?php
                                         $i = 1;
                                         ?>
+                                        {{-- @dd($clus_img2) --}}
 
+                                        @if(isset($clus_img))
                                         @foreach ($clus_img as $clus_imgs)
 
                                             @if ($clus_imgs != null)
@@ -252,11 +378,11 @@
                                                 </a>
                                             @endif
                                         @endforeach
-
+                                        @endif
                                         <a @if (isset($clus_img1[0]))  href="{{ asset("images/$clus_img1[0]") }}" @endif class="more-photos col col-3-width">
-                                            <img loading="lazy" src="{{ asset("images/$clus_img1[0]") }}" alt="photo"
-                                                width="600" height="600">
-                                            <span class="h2">+{{ $i }}</span>
+                                            <img loading="lazy" @if (isset($clus_img1[0])) src="{{ asset("images/$clus_img1[0]") }}" @endif alt="photo" width="600"
+                                                height="600">
+                                            <span class="h2"> @if(isset( $count_clus)) +{{ $count_clus - 1 }} @endif</span>
                                         </a>
                                     </div>
 
@@ -264,8 +390,9 @@
 
                                         <ul class="friends-harmonic">
 
+                                            @if(isset($clus_img2))
                                             @foreach ($clus_img2 as $clus_imgs2)
-                                                @if ($clus_imgs != null)
+                                                @if ($clus_imgs2 != null)
                                                     <li>
                                                         <a href="#">
                                                             <img loading="lazy" src="{{ asset("images/$clus_imgs2") }}"
@@ -274,6 +401,7 @@
                                                     </li>
                                                 @endif
                                             @endforeach
+                                            @endif
                                         </ul>
                                         <div class="names-people-likes">
 
@@ -295,122 +423,123 @@
 
 
 
-                                <div class="row">
-                                    <div class=" col-12 responsive-display-none">
-                                        <div class="ui-block responsive-flex">
-                                            <div class="ui-block-title">
+                            <div class="row">
+                                <div class=" col-12 responsive-display-none">
+                                    <div class="ui-block responsive-flex">
+                                        <div class="ui-block-title">
 
-                                                <ul class="nav nav-tabs calendar-events-tabs" id="calendar-events-tabs"
-                                                    role="tablist">
-
-
-                                                    <li class="nav-item" role="presentation">
-                                                        <a class="nav-link active" id="news-letter-tab" data-bs-toggle="tab"
-                                                            href="#news-letter" role="tab" aria-controls="home"
-                                                            aria-selected="true">
-                                                            Total Events
-                                                        </a>
-                                                    </li>
-
-                                                    <li class="nav-item" role="presentation">
-                                                        <a class="nav-link" id="meeting-tab" data-bs-toggle="tab"
-                                                            href="#meeting" role="tab" aria-controls="home"
-                                                            aria-selected="false">
-                                                            Upcoming Events
-                                                        </a>
-                                                    </li>
+                                            <ul class="nav nav-tabs calendar-events-tabs" id="calendar-events-tabs"
+                                                role="tablist">
 
 
+                                                <li class="nav-item" role="presentation">
+                                                    <a class="nav-link active" id="news-letter-tab" data-bs-toggle="tab"
+                                                        href="#news-letter" role="tab" aria-controls="home"
+                                                        aria-selected="true">
+                                                        Total Events
+                                                    </a>
+                                                </li>
 
-                                                </ul>
+                                                <li class="nav-item" role="presentation">
+                                                    <a class="nav-link" id="meeting-tab" data-bs-toggle="tab"
+                                                        href="#meeting" role="tab" aria-controls="home"
+                                                        aria-selected="false">
+                                                        Upcoming Events
+                                                    </a>
+                                                </li>
 
-                                            </div>
+
+
+                                            </ul>
+
                                         </div>
                                     </div>
-                                    <div class=" col-12">
+                                </div>
+                                <div class=" col-12">
 
-                                        <div class="tab-content" id="calendar-events-tabs-content">
-                                            <div class="tab-pane fade show active" id="news-letter" role="tabpanel"
-                                                aria-labelledby="news-letter-tab">
-                                                    <div class="row">
-                                                        <div class="col-12">
-
-
-                                                            @foreach ($event as $events)
-                                                                {{-- @dd($events) --}}
-                                                                @if ($events->Event->cluster_id == $id)
+                                    <div class="tab-content" id="calendar-events-tabs-content">
+                                        <div class="tab-pane fade show active" id="news-letter" role="tabpanel"
+                                            aria-labelledby="news-letter-tab">
+                                            <div class="row">
+                                                <div class="col-12">
 
 
+                                                    @foreach ($event as $events)
+                                                        {{-- @dd($events) --}}
+                                                        @if ($events->Event->cluster_id == $id)
 
 
-                                                                    @foreach ($joinn as $item)
-                                                                        @if ($item->event_id == $events->id)
-                                                                            <?php
-                                                                            $ii = $events->id;
 
-                                                                            ?>
-                                                                        @endif
-                                                                    @endforeach
 
-                                                                    <div class="ui-block">
-                                                                        <article class="hentry post video">
-                                                                            <div
-                                                                                class="post__author author vcard inline-items">
-                                                                                <img loading="lazy"
-                                                                                    src="{{ asset('img/avatar7-sm.html') }}"
-                                                                                    alt="author" width="42" height="42">
+                                                            @foreach ($joinn as $item)
+                                                                @if ($item->event_id == $events->id)
+                                                                    <?php
+                                                                    $ii = $events->id;
 
-                                                                                <div class="author-date">
-                                                                                    <a class="h6 post__author-name fn"
-                                                                                        href="#">{{ $events->Event->User->first_name }}
-                                                                                        {{ $events->Event->User->last_name }}</a>
-                                                                                    created as <a href="#">{{$events->Event_type}}</a>
-                                                                                    <div class="post__date">
-                                                                                        <time class="published"
-                                                                                            datetime="2004-07-24T18:18">
-                                                                                            {{ $events->datetimepicker }}
-                                                                                            {{ $events->time }}{{ $events->time_type }}
-                                                                                        </time>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-
-                                                                            <p>Hey <a
-                                                                                    href="#">{{ $events->Event->User->first_name }}</a>
-                                                                                {{ $events->description }}</p>
-
-                                                                            <div class="col-12 text-end">
-
-                                                                                @if ($ii != $events->id)
-                                                                                    <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
-                                                                                        class="btn btn-primary"> Join</a>
-                                                                                @else
-                                                                                    <a class="btn btn-primary bg-green "
-                                                                                        style="border-color:green; color:white">
-                                                                                        Joined</a>
-
-                                                                                @endif
-                                                                            </div>
-
-                                                                        </article>
-                                                                    </div>
+                                                                    ?>
                                                                 @endif
                                                             @endforeach
 
-                                                        </div>
-                                                    </div>
+                                                            <div class="ui-block">
+                                                                <article class="hentry post video">
+                                                                    <div class="post__author author vcard inline-items">
+                                                                        <img loading="lazy"
+                                                                            src="{{ asset("images/$events->image") }}"
+                                                                            alt="author" width="42" height="42">
 
+                                                                        <div class="author-date">
+                                                                            <a class="h6 post__author-name fn"
+                                                                                href="#">{{ $events->Event->User->first_name }}
+                                                                                {{ $events->Event->User->last_name }}</a>
+                                                                            created as <a
+                                                                                href="#">{{ $events->Event_type }}</a>
+                                                                            <div class="post__date">
+                                                                                <time class="published"
+                                                                                    datetime="2004-07-24T18:18">
+                                                                                    {{ $events->datetimepicker }}
+                                                                                    {{ $events->time }}{{ $events->time_type }}
+                                                                                </time>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <p>Hey <a
+                                                                            href="#">{{ $events->Event->User->first_name }}</a>
+                                                                        {{ $events->description }}</p>
+
+                                                                    <div class="col-12 text-end">
+
+                                                                        @if ($ii != $events->id)
+                                                                            <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
+                                                                                class="btn btn-primary"> Join</a>
+                                                                        @else
+                                                                            <a class="btn btn-primary bg-green "
+                                                                                style="border-color:green; color:white">
+                                                                                Joined</a>
+
+                                                                        @endif
+                                                                    </div>
+
+                                                                </article>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+
+                                                </div>
                                             </div>
 
-                                            <div class="tab-pane fade" id="meeting" role="tabpanel"
-                                                aria-labelledby="meeting-tab">
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                            @foreach ($eventtime as $events)
+                                        </div>
+
+                                        <div class="tab-pane fade" id="meeting" role="tabpanel"
+                                            aria-labelledby="meeting-tab">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        @if(isset($eventtime))
+                                                        @foreach ($eventtime as $events)
                                                             {{-- @dd($events) --}}
-                                                            @if ($events->Event->cluster_id == $id )
+                                                            @if ($events->Event->cluster_id == $id)
 
 
 
@@ -436,7 +565,8 @@
                                                                                 <a class="h6 post__author-name fn"
                                                                                     href="#">{{ $events->Event->User->first_name }}
                                                                                     {{ $events->Event->User->last_name }}</a>
-                                                                                created as <a href="#">{{$events->Event_type}}</a>
+                                                                                created as <a
+                                                                                    href="#">{{ $events->Event_type }}</a>
                                                                                 <div class="post__date">
                                                                                     <time class="published"
                                                                                         datetime="2004-07-24T18:18">
@@ -470,18 +600,19 @@
                                                                 </div>
                                                             @endif
                                                         @endforeach
-                                                        </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                         </div>
+
 
                                     </div>
 
-
                                 </div>
+
+
+                            </div>
 
 
 
@@ -763,14 +894,14 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ url("$role/upd/cluster/$clust->id") }}" method="post" enctype="multipart/form-data">
+                    <form @if(isset($clust->id)) action="{{ url("$role/upd/cluster/$clust->id") }}" @endif method="post" enctype="multipart/form-data">
                         @csrf
 
 
                         <div class="form-group ">
                             <label for="exampleFormControlInput1">Select Cluster Image</label>
                             <input type="file" name="image[]" class="form-control" id="Cluster-Name" required>
-                            <input type="hidden" style="border: none;" required value="{{ $clust->detail }}"
+                            <input type="hidden" style="border: none;" required @if(isset($clust->detail)) value="{{ $clust->detail }}" @endif
                                 name="detail" id="">
                         </div>
 
@@ -1099,6 +1230,34 @@
 
     <script>
         $(document).click(function() {
+
+            $('.heartt').css('display', 'none');
+
+        });
+
+
+        $(".heartt").click(function(event) {
+
+            event.stopPropagation();
+
+        });
+
+
+        $(".cls_description1").click(function(event) {
+
+            event.stopPropagation();
+
+        });
+        $(".cls_description1").focusin(function() {
+            $('.heartt').css('display', 'block');
+
+
+        });
+
+
+
+        $(document).click(function() {
+
             $('.submitbtn').css('display', 'none');
 
         });
@@ -1118,26 +1277,27 @@
 
         $(".cls_description").focusin(function() {
             $('.submitbtn').css('display', 'block');
-            // event.stopPropagation();
 
 
         });
-
-
-        // $(document).ready(function() {
-        //     $(".cls_description").focusin(function() {
-        //         $('.submitbtn').css('display', 'block');
-
-        //     });
-
-        //     $(".cls_description").focusout(function() {
-        //         $('.submitbtn').css('display', 'none');
-
-        //     });
-        // });
     </script>
     <script>
         $(document).ready(function() {
+
+            $(".submitbtn").click(function() {
+                // alert(12);
+
+                $('.formsub').click();
+
+            });
+
+            $(".heartt").click(function() {
+                // alert(12);
+
+                $('.formsum1').click();
+
+            });
+
             var counter = 1;
 
 
