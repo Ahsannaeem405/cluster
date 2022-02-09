@@ -1,0 +1,1 @@
+<?php /**PATH C:\xampp\htdocs\cluster\cluster\resources\views\admin\view_event.blade.php ENDPATH**/ ?>
