@@ -256,7 +256,16 @@ class ClusterController extends Controller
 
         // @dd(count($count_clus)  );
         $get = JoinCluster::Where('cluster_id', $id)->Where('user_id', Auth::user()->id)->count();
-        $event = Event::all();
+        @dd( $get);
+        if($get >0)
+        {
+            $event = Event::all();
+        }
+        else
+        {
+            $event = Event::where('Event_type', 'Public');
+        }
+
         $eventtime = Event::WhereDate('datetimepicker', '>', $date)->get();
 
 
