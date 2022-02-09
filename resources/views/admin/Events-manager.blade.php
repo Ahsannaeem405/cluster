@@ -439,7 +439,7 @@
 
 
                             <div class="row">
-                                <div class=" col-12 responsive-display-none">
+                                <div class=" col-12 responsive-display-none" style="">
                                     <div class="ui-block responsive-flex">
                                         <div class="ui-block-title">
 
