@@ -113,6 +113,7 @@ Route::post('/addService', [ServiceController::class,'addService']);
 Route::post('/updateService/{id}', [ServiceController::class,'updateService']);
 Route::get('/deleteService/{id}', [ServiceController::class,'deleteService']);
 
+Route::post('upd/cluster_overview/{id}', [ClusterController::class, 'cluster_overview']);
 
 ////////////////////////services end
 
@@ -131,7 +132,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('createCluster', [ClusterController::class, 'createCluster']);
         Route::post('updateCluster/{id}', [ClusterController::class, 'updateCluster']);
 
-        Route::post(' upd/cluster/{id}', [ClusterController::class, ' upd_cluster']);
+        Route::post('upd/cluster/{id}', [ClusterController::class, 'upd_cluster']);
+
+        Route::post('upd/cluster_overview/{id}', [ClusterController::class, 'cluster_overview']);
 
 
 
