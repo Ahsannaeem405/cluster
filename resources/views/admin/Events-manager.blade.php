@@ -439,7 +439,7 @@
 
 
                             <div class="row">
-                                <div class=" col-12 responsive-display-none">
+                                <div class=" col-12 responsive-display-none" style="">
                                     <div class="ui-block responsive-flex">
                                         <div class="ui-block-title">
 
@@ -497,18 +497,16 @@
 
                                                             <div class="ui-block">
                                                                 <article class="hentry post video">
-                                                                    <div class="post__author author vcard inline-items">
-                                                                        <img loading="lazy"
-                                                                            src="{{ asset("images/$events->image") }}"
-                                                                            alt="author" width="42" height="42">
+                                                                    <div class="post__author author vcard inline-items text-center">
+
 
                                                                         <div class="author-date">
                                                                             <a class="h6 post__author-name fn"
-                                                                                href="#">{{ $events->Event->User->first_name }}
-                                                                                {{ $events->Event->User->last_name }}</a>
-                                                                            created as <a
-                                                                                href="#">{{ $events->Event_type }}</a>
-                                                                            <div class="post__date">
+                                                                                href="#" style="font-size: 26px;">{{ $events->name }}
+                                                                                </a>
+                                                                            {{-- created as <a
+                                                                                href="#">{{ $events->Event_type }}</a> --}}
+                                                                            <div class="post__date" style="font-size: 18px;">
                                                                                 <time class="published"
                                                                                     datetime="2004-07-24T18:18">
                                                                                     {{ $events->datetimepicker }}
@@ -519,10 +517,16 @@
 
                                                                     </div>
 
-                                                                    <p>Hey <a
+                                                                    <p style="font-size: 18px;">Hey <a
                                                                             href="#">{{ $events->Event->User->first_name }}</a>
                                                                         {{ $events->description }}</p>
 
+                                                                        <div class="col-12 text-center">
+
+                                                                        <img style="width: 34%" loading="lazy"
+                                                                         src="{{ asset("images/$events->image") }}"
+                                                                        alt="author" width="100" height="100">
+                                                                        </div>
                                                                     <div class="col-12 text-end">
 
                                                                         @if ($ii != $events->id)
