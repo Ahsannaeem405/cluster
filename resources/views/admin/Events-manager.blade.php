@@ -218,7 +218,7 @@
 
                                             @foreach ($event_3 as $events)
 
-                                            @if ($events->Event->cluster_id == $id && $events->Event->user_id == Auth::user()->id )
+                                            {{-- @if ($events->Event->cluster_id == $id && $events->Event->user_id == Auth::user()->id ) --}}
 
                                                 <div class="accordion-item">
                                                     <div class="accordion-header" id="heading{{ $events->id }}">
@@ -273,7 +273,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                @endif
+                                                {{-- @endif --}}
                                             @endforeach
 
                                         @endif
@@ -482,7 +482,7 @@
                                                     {{-- @dd($event) --}}
                                                     @foreach ($event as $events)
 
-                                                        @if ($events->Event->cluster_id == $id && $events->Event->user_id == Auth::user()->id )
+                                                        {{-- @if ($events->Event->cluster_id == $id && $events->Event->user_id == Auth::user()->id ) --}}
 
 
 
@@ -538,7 +538,7 @@
 
                                                                 </article>
                                                             </div>
-                                                        @endif
+                                                        {{-- @endif --}}
                                                     @endforeach
 
                                                 </div>
@@ -553,8 +553,7 @@
                                                     <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                         @if (isset($eventtime))
                                                             @foreach ($eventtime as $events)
-                                                                {{-- @dd($events) --}}
-                                                                @if ($events->Event->cluster_id == $id)
+                                                                {{-- @if ($events->Event->cluster_id == $id) --}}
 
 
 
@@ -613,7 +612,7 @@
 
                                                                         </article>
                                                                     </div>
-                                                                @endif
+                                                                {{-- @endif --}}
                                                             @endforeach
                                                         @endif
                                                     </div>
@@ -741,7 +740,8 @@
 
                             <ul class="widget w-friend-pages-added notification-list friend-requests">
 
-                                @foreach ($user as $users)
+                                @if(isset($pending_user))
+                                @foreach ($pending_user as $pending_users)
 
                                     <li class="inline-items">
                                         <div class="author-thumb">
@@ -749,21 +749,19 @@
                                                 width="36" height="36">
                                         </div>
                                         <div class="notification-event">
-                                            <a href="#" class="h6 notification-friend">{{ $users->User->first_name }}
-                                                {{ $users->User->last_name }}</a>
+                                            <a href="#" class="h6 notification-friend">{{ $pending_users->User->first_name }}
+                                                {{ $pending_users->User->last_name }}</a>
                                             {{-- <span class="chat-message-item">8 Friends in Common</span> --}}
                                         </div>
                                         <span class="notification-icon">
-                                            <a href="#" class="accept-request">
-                                                <span class="icon-add without-text">
-                                                    <svg class="olymp-happy-face-icon">
-                                                        <use xlink:href="#olymp-happy-face-icon"></use>
-                                                    </svg>
-                                                </span>
+
+                                            <a @if(auth::user()->role == 'admin') href="{{ url("$role/aprroved",[$pending_users->id]) }}" @endif class="accept-request">
+                                                <i class="fas fa-check"></i>
                                             </a>
                                         </span>
                                     </li>
                                 @endforeach
+                                @endif
 
                             </ul>
 
@@ -811,8 +809,12 @@
                             <input class="form-control" name="name" placeholder=""
                                 value="Take Querty to the Veterinarian" type="text">
                         </div>
-                        {{-- @dd($mang) --}}
+                        {{-- @dd($mang->cluster_id) --}}
                         <input type="hidden" value="@if (isset($mang->id)) {{ $mang->id }} @endif" name="mangerID" id="">
+
+                        <input type="hidden" value="@if (isset($mang->cluster_id)) {{ $mang->cluster_id }} @endif" name="cluster_id" id="">
+
+
 
                         <div class="form-group label-floating is-empty">
                             <label class="control-label">Event Location</label>

@@ -112,64 +112,12 @@
             @endif
             {{-- @dd($viewCluster) --}}
 
-
+{{-- @dd($viewCluster->Cluster) --}}
             @foreach ($viewCluster as $list)
-                {{-- <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
-
-                    <div class="ui-block h-100 mb-0">
-                        <a href="{{ url("$role/view/cluster", $list->id) }}">
-
-                            <div class="friend-item clusotr-groups">
-
-                                <div class="friend-item-content">
-                                    <div class="friend-avatar">
-                                        <div class="author-thumb">
-                                            <img loading="lazy" src="{{ asset('images') }}/{{ $list->image }}"
-                                                alt="Olympus">
-                                        </div>
-                                        <div class="author-content">
-                                            <a href="#" class="h5 author-name">{{ $list->name }}</a>
-                                            <div class="country">Manager:<span> Faizan</span></div>
-                                            <p>{{ $list->detail }}</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="control-block-button">
-
-
-                                        @if (Auth::user()->role == 'user')
-                                            <a href="{{ url('/user/Join/cluster', $list->id) }}" class="btn btn-control "
-                                                style="background:#ff5e3a">
-                                                <i class="fa fa-plus"></i>
-                                            </a>
-
-                                        @else
-                                            <a href="{{ url('user/deleteCluster') }}/{{ $list->id }}"
-                                                class=" btn btn-control bg-blue">
-                                                <i class="fa fa-trash olymp-happy-faces-icon" aria-hidden="true"></i>
-                                            </a>
-
-                                            <a href="#" class="btn btn-control bg-green" data-bs-toggle="modal"
-                                                data-bs-target="#edit-cluster{{ $list->id }}">
-                                                <i class="fa fa-edit" aria-hidden="true"></i>
-                                            </a>
-
-                                        @endif
-
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <!-- ... end Friend Item -->
-                    </div>
-
-                </div> --}}
 
 
 
-
-
-
+            {{-- @foreach ($list->Cluster as $lists) --}}
 
 
                 <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
@@ -209,10 +157,16 @@
 
                                 <div class="control-block-button">
                                     @if (Auth::user()->role == 'user')
+                                  @if( isset($list->join) )
+
+                                    <button class="btn btn-primary"> Pending</button>
+                                    @else
                                     <a href="{{ url('/user/Join/cluster', $list->id) }}" class="btn btn-control "
                                         style="background:#ff5e3a;    color: white; ">
                                         <i class="fa fa-plus"></i>
                                     </a>
+                                    @endif
+
 
                                 @else
                                     <a style="    color: white;" href="{{ url('user/deleteCluster') }}/{{ $list->id }}"
@@ -336,6 +290,7 @@
                         </div>
                     </div>
                 </div>
+                {{-- @endforeach --}}
             @endforeach
 
         </div>

@@ -13,7 +13,6 @@ class ServiceController extends Controller
     {
         $service['services']=Service::get();
         $service['clusters']=Cluster::get();
-        $service['apply_services']=Cluster::get();
         return view('admin.view_services', $service);
     }
 
@@ -24,7 +23,6 @@ class ServiceController extends Controller
             'title' => 'required',
             'description' => 'required',
             'cluster_id' => 'required',
-               
         ]);
         $title=$request->title;
         $description=$request->description;
@@ -36,7 +34,6 @@ class ServiceController extends Controller
         $service->status=0;
         $service->save();
         return redirect()->back()->with('success', 'Service Added Sucessfully!');
-    
     }
     ////////////addService end
     ////////////updateService start
@@ -46,7 +43,6 @@ class ServiceController extends Controller
             'title' => 'required',
             'description' => 'required',
             'cluster_id' => 'required',
-               
         ]);
         $title=$request->title;
         $description=$request->description;
@@ -58,7 +54,6 @@ class ServiceController extends Controller
         $service->status=0;
         $service->save();
         return redirect()->back()->with('success', 'Service Updated Sucessfully!');
-    
     }
 
     ////////////updateService end
@@ -96,11 +91,11 @@ class ServiceController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-               
+
         ]);
         $title=$request->title;
         $description=$request->description;
-        $company=new Company();
+        $company=new Service();
         $company->title=$title;
         $company->description=$description;
         $company->user_id=Auth::user()->id;
