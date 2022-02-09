@@ -99,7 +99,7 @@ class ServiceController extends Controller
         ]);
         $title=$request->title;
         $description=$request->description;
-        $company=new Service();
+        $company=new Company();
         $company->title=$title;
         $company->description=$description;
         $company->user_id=Auth::user()->id;
