@@ -13,8 +13,6 @@ class ServiceController extends Controller
     public function view_service()
     {
         $service['services']=Service::get();
-        $user_id=Auth::user()->id;
-        $service['services_user']=Service::where()->get();
         $service['clusters']=Cluster::get();
         return view('admin.view_services', $service);
     }

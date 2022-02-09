@@ -119,8 +119,6 @@ Route::post('/addService', [ServiceController::class,'addService']);
 Route::post('/updateService/{id}', [ServiceController::class,'updateService']);
 Route::get('/deleteService/{id}', [ServiceController::class,'deleteService']);
 Route::get('/applyServiceView/{id}', [ServiceController::class,'applyServiceView']);
-        Route::post('upd/cluster_overview/{id}', [ClusterController::class, 'cluster_overview']);
-        Route::get('aprroved/{id}', [ClusterController::class, 'aprroved']);
 
 
 
