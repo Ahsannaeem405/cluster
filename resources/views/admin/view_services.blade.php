@@ -26,6 +26,16 @@
 
 
 <div class="container py-5">
+	@if ($message = Session::get('success'))
+	<div class="alert alert-success ">    
+		<strong>{{ $message }}</strong>
+	</div>
+	@endif
+	@if ($message = Session::get('error'))
+	<div class="alert alert-danger ">    
+		<strong>{{ $message }}</strong>
+	</div>
+	@endif
 		{{-- Admin page add service and view only start --}}
 
 	@if(Auth::user()->role == 'admin')
@@ -100,21 +110,17 @@
 			</div>
 		</div>
 	</div>
-		@if ($message = Session::get('success'))
-		<div class="alert alert-success ">
-			<strong>{{ $message }}</strong>
-		</div>
-	@endif
-	@if ($message = Session::get('error'))
-	<div class="alert alert-danger ">
-		<strong>{{ $message }}</strong>
-	</div>
-	@endif
+	
 
 @if(count($services) > 0)
 	<div class="row ">
 
 		@foreach($services as $serviceslist)
+		@php
+			$apply_services=App\Models\ApplyService::where('service_id',$serviceslist->id)->get();
+			$service_id=$apply_services[0]->service_id;
+
+		@endphp
 		<div class="col-lg-4 col-md-6 col-sm-6 mt-5 ">
 			<div class="servies-card text-center mx-xl-5 mx-lg-2 mx-md-3 p-2">
 				<div class="servies-card-hard position-relative">
@@ -138,8 +144,9 @@
 							</a>
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4  ">
-							<a class="btn btn-warning serviceBtn">
+							<a href="{{url('admin/applyServiceView')}}/{{$service_id}}" class="btn btn-warning serviceBtn">
 								<i class="fas fa-file text-white"></i>
+								<span class="badge bg-secondary">{{count($apply_services)}}</span>
 							</a>
 						</div>
 					</div>
@@ -260,6 +267,7 @@
 					</div>
 				
 				</div></center>
+				<input type="hidden" name="service_id" value="{{$serviceslist->id}}">
 				<button type="submit" class="btn  w-100 mb-0">
 					<small>	Apply Now</small>	
 				</button>
