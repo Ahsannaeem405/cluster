@@ -6,6 +6,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\frontController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\install;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -100,13 +101,20 @@ Route::post('/updateUser/{id}', [ClusterController::class, 'updateUser']);
 Route::post('/deleteUser/{id}', [ClusterController::class, 'deleteUser']);
 //////////////////members
 Route::view('/members','admin/view_members');
-Route::view('/services','admin/view_services');
+
 Route::view('/setting','admin/view_setting');
 Route::view('/profile_setting','admin/profile_setting');
 Route::view('/cluster_manager','admin/cluster_manager');
 Route::get('/view/{id}', [ClusterController::class, 'view']);
 
+////////////////////////services start
+Route::get('/services', [ServiceController::class,'view_service']);
+Route::post('/addService', [ServiceController::class,'addService']);
+Route::post('/updateService/{id}', [ServiceController::class,'updateService']);
+Route::get('/deleteService/{id}', [ServiceController::class,'deleteService']);
 
+
+////////////////////////services end
 
 });
 
@@ -148,11 +156,18 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/view/join/{id}/{idd}', [ClusterController::class, 'view_join']);
 
         Route::view('/members','admin/view_members');
-        Route::view('/services','admin/view_services');
+        // Route::view('/services','admin/view_services');
+        Route::get('/services/', [ServiceController::class, 'view_service']);
         Route::view('/setting','admin/view_setting');
         Route::view('/profile_setting','admin/profile_setting');
         Route::view('/cluster_manager','admin/cluster_manager');
 
+
+         ////////////////////////services start
+        Route::get('/services', [ServiceController::class,'view_service']);   
+        Route::post('/applyService', [ServiceController::class,'applyService']);
+        Route::post('/AddCompany', [ServiceController::class,'AddCompany']);
+        ////////////////////////services end
 
     });
 });

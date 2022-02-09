@@ -250,6 +250,11 @@
 											@endforeach
 										  </select>
 										</div>
+										@if ($message = Session::get('error'))
+										<div class=" text-danger ">    
+											<strong>{{ $message }}</strong>
+										</div>
+										@endif
 									{{-- <div class="remember">
 										<div class="checkbox">
 											<label>

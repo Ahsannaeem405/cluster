@@ -26,6 +26,11 @@
 <!-- Your Account Personal Information -->
 
 <div class="container">
+	@if ($message = Session::get('success'))
+	<div class="alert alert-success ">    
+		<strong>{{ $message }}</strong>
+	</div>
+	@endif
 	<div class="row">
 		<div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
 			<div class="tab-content" id="calendar-events-tabs-content">
@@ -205,6 +210,56 @@
 													<button type="submit" class="btn btn-primary btn-lg full-width">Save all Changes</button>
 												</div>
 											</div>
+										</form>
+										
+										<!-- ... end Personal Information Form  -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="tab-pane fade" id="company" role="tabpanel" aria-labelledby="company-tab">
+					<div class="container">
+						<div class="row">
+							<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="ui-block">
+									<div class="ui-block-title">
+										<h6 class="title">company Settings</h6>
+									</div>
+									<div class="ui-block-content">	
+										<!-- Personal Information Form  -->
+										<form method="post" action="{{url('user/AddCompany')}}">
+											@csrf
+												<div class="col col-lg-12 col-md-6 col-sm-12 col-12">
+													<div class="form-group label-floating">
+														<label class="control-label">Company Name</label>
+														<input type="text"  name="title" class="form-control" >
+														@error('title')
+                                                  <span class="invalid-feedback" role="alert">
+                                                  <strong>{{ $message }}</strong>
+                                                  </span>
+                                                  @enderror 
+													</div>
+												</div>
+											
+												<div class="col col-lg-12 col-md-6 col-sm-12 col-12">
+													<div class="form-group label-floating">
+														<label class="control-label">Company Description</label>
+														<input type="text"  name="description" class="form-control"  >
+														@error('description')
+														<span class="invalid-feedback" role="alert">
+														<strong>{{ $message }}</strong>
+														</span>
+														@enderror
+													</div>
+												</div>
+											
+												
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<button type="submit" class="btn btn-primary  full-width">Save Now</button>
+												</div>
 										</form>
 										
 										<!-- ... end Personal Information Form  -->
@@ -578,6 +633,12 @@
 										<li class="" role="presentation">
 											<a class="nav-link" id="notifications-tab" data-bs-toggle="tab" href="#notifications" role="tab" aria-controls="home" aria-selected="false">
 												Website Settings
+											</a>
+										</li>
+
+										<li class="" role="presentation">
+											<a class="nav-link" id="company-tab" data-bs-toggle="tab" href="#company" role="tab" aria-controls="home" aria-selected="false">
+												User Company
 											</a>
 										</li>
 
