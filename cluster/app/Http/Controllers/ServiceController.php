@@ -23,7 +23,6 @@ class ServiceController extends Controller
             'title' => 'required',
             'description' => 'required',
             'cluster_id' => 'required',
-
         ]);
         $title=$request->title;
         $description=$request->description;
@@ -35,7 +34,6 @@ class ServiceController extends Controller
         $service->status=0;
         $service->save();
         return redirect()->back()->with('success', 'Service Added Sucessfully!');
-
     }
     ////////////addService end
     ////////////updateService start
@@ -45,7 +43,6 @@ class ServiceController extends Controller
             'title' => 'required',
             'description' => 'required',
             'cluster_id' => 'required',
-
         ]);
         $title=$request->title;
         $description=$request->description;
@@ -57,7 +54,6 @@ class ServiceController extends Controller
         $service->status=0;
         $service->save();
         return redirect()->back()->with('success', 'Service Updated Sucessfully!');
-
     }
 
     ////////////updateService end
