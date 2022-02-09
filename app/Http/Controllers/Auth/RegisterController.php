@@ -82,7 +82,8 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         //dd($data);
-
+        // if(isset($data['cluster']) != null || isset($data['event']) != null)
+        // {
           $user=User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -102,6 +103,7 @@ class RegisterController extends Controller
         if($data['post_role'] == 'member')
         {
             $clusters=$data['cluster'];
+         
             foreach( $clusters as $row_cluster)
             {
                
@@ -112,11 +114,13 @@ class RegisterController extends Controller
                 $cluster->status='0';
                 $cluster->save();
             }
+       
         }
   
         if($data['post_role'] == 'user')
         {   
             $events=$data['event'];
+          
             foreach( $events as $row_event)
             {
                 $get_cluster=Event::where('id',$row_event)->first();
@@ -127,7 +131,12 @@ class RegisterController extends Controller
                 $event->status=0;
                 $event->save();
             }
+        
         }
+    // }else{
+    //     return redirect()->back()->with('error', 'Cluster and Event select!');
+
+    // }
         return $user;
 
     }
