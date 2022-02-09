@@ -167,7 +167,7 @@ Route::middleware(['auth'])->group(function () {
 
 
          ////////////////////////services start
-        Route::get('/services', [ServiceController::class,'view_service']);   
+        Route::get('/services', [ServiceController::class,'view_service']);
         Route::post('/applyService', [ServiceController::class,'applyService']);
         Route::post('/AddCompany', [ServiceController::class,'AddCompany']);
         ////////////////////////services end
