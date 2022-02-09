@@ -84,7 +84,7 @@ class ServiceController extends Controller
             }else{
                 return view('admin.view_setting');
             }
-           // dd($user_comp);
+            dd($user_comp);
         }
     }
     ////////////applyService end
