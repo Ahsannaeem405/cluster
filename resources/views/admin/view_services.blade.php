@@ -117,9 +117,10 @@
 
 		@foreach($services as $serviceslist)
 		@php
-			$apply_services=App\Models\ApplyService::where('service_id',$serviceslist->id)->get();
-			$service_id=$apply_services[0]->service_id;
-
+			$apply_services=App\Models\ApplyService::where('service_id',$serviceslist->id)->first();
+			
+		
+			
 		@endphp
 		<div class="col-lg-4 col-md-6 col-sm-6 mt-5 ">
 			<div class="servies-card text-center mx-xl-5 mx-lg-2 mx-md-3 p-2">
@@ -144,9 +145,9 @@
 							</a>
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4  ">
-							<a href="{{url('admin/applyServiceView')}}/{{$service_id}}" class="btn btn-warning serviceBtn">
+							<a href="{{url('admin/applyServiceView')}}/{{$serviceslist->id}}" class="btn btn-warning serviceBtn">
 								<i class="fas fa-file text-white"></i>
-								<span class="badge bg-secondary">{{count($apply_services)}}</span>
+								<span class="badge bg-secondary">1</span>
 							</a>
 						</div>
 					</div>
@@ -156,7 +157,6 @@
 		</div>
 
 
-		{{-- edit service start --}}
 		<div class="modal fade" id="edit-new-servies{{$serviceslist->id}}" tabindex="-1" role="dialog"
 		aria-labelledby="create-friend-group-1" aria-hidden="true">
 		<div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">

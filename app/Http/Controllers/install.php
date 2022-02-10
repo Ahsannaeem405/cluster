@@ -35,7 +35,7 @@ class install extends Controller
         LOG_DEPRECATIONS_CHANNEL=null\n
         LOG_LEVEL=debug\n
         DB_CONNECTION=mysql\n
-        DB_HOST=127.0.0.1\n";
+        DB_HOST=92.249.44.207\n";
         $txt11 = "DB_PORT=3306\n";
         $txt12 = "DB_DATABASE=".$dbname."\n";
         $txt13 = "DB_USERNAME=".$dbusername."\n";
