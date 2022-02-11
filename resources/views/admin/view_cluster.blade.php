@@ -424,8 +424,8 @@
     </div>
 
 
-
-    <div class="modal fade" id="delete-new-member{{ $list->id }}" tabindex="-1"
+    @if(isset($list->id))
+    <div class="modal fade"  id="delete-new-member{{ $list->id }}"  tabindex="-1"
         role="dialog" aria-labelledby="create-friend-group-1" aria-hidden="true">
         <div class="modal-dialog window-popup create-friend-group create-friend-group-1"
             role="document">
@@ -466,6 +466,7 @@
             </div>
         </div>
     </div>
+    @endif
 
     <!-- ... end Window-popup Create Friends Group -->
 
