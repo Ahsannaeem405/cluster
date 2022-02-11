@@ -469,12 +469,8 @@ $ser = Service::all()->count();
 
         $cat = null;
         $clustor = Cluster::find($id);
-        // if (isset($request->image)) {
-        //     $image = $request->file('image');
-        //     $imageName = $image->getClientOriginalName();
-        //     $clustor->image = $imageName;
-        //     $path = $image->move(public_path('images/'), $imageName);
-        // }
+
+        dd($request);
 
 
 

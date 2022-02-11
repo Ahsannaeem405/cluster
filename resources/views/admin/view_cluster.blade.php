@@ -348,7 +348,7 @@
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Cluster Details</label>
                             <textarea name="detail" required class="form-control @error('detail') is-invalid @enderror"
-                                id="exampleFormControlTextarea1" rows="3" required>Enter details here</textarea>
+                                id="exampleFormControlTextarea1" rows="3" required ></textarea>
                             @error('detail')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
