@@ -137,8 +137,8 @@
 													<select  name="married_status" class="form-control   @error('married_status') is-invalid @enderror">
 														<option value="">Select Marriege Status</option>
 
-														<option value="Married" @if($user_data->gender == 'Married') selected @endif>Married</option>
-														<option value="Unmarried"  @if($user_data->gender == 'Unmarried') selected @endif>Unmarried</option>
+														<option value="Married" @if($user_data->married_status == 'Married') selected @endif>Married</option>
+														<option value="Unmarried"  @if($user_data->married_status == 'Unmarried') selected @endif>Unmarried</option>
 													</select>
 													@error('married_status')
 														<span class="invalid-feedback" role="alert">
