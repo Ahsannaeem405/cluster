@@ -262,6 +262,8 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Cluster Type</label>
+
                                         <select class="form-select" name="cluster_type">
                                             <option value="Public">Public </option>
                                             <option value="Private">Private </option>
@@ -278,7 +280,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1">Select Cluster Image</label>
                                         <input type="file" name="image[]"
-                                            class="form-control @error('image') is-invalid @enderror" id="Cluster-Name"
+                                            class="form-control @error('image') is-invalid @enderror" value="{{ asset('images') }}/{{ $clus_img1[0] }}" id="Cluster-Name"
                                             placeholder="Enter Cluster Image">
                                         <img src="{{ asset('images') }}/{{ $clus_img1[0] }}" width="100" height="100">
                                         @error('image')
