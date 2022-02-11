@@ -2,7 +2,6 @@
 @section('page_title', 'Home Page')
 @section('content')
 
-<div class="header-spacer header-spacer-small"></div>
 
 <!-- Main Header Account -->
 
@@ -25,7 +24,7 @@
 
 <!-- Your Account Personal Information -->
 
-<div class="container">
+<div class="container-fluid">
 	@if ($message = Session::get('success'))
 	<div class="alert alert-success ">    
 		<strong>{{ $message }}</strong>
@@ -45,100 +44,132 @@
 									<div class="ui-block-content">
 										<!-- Personal Information Form  -->
 				
-										<form>
+										<form method="post" action="{{url('profileSetting')}}/{{$user_data->id}}">
+											@csrf
 											<div class="row">
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-													<div class="form-group label-floating">
-														<label class="control-label">First Name</label>
-														<input class="form-control" placeholder="" type="text" value="Abu">
-													</div>
-				
-													<div class="form-group label-floating">
-														<label class="control-label">Your Email</label>
-														<input class="form-control" placeholder="" type="email"
-															value="abc@yourmail.com">
-													</div>
-				
-													<div class="form-group date-time-picker label-floating">
-														<label class="control-label">Your Birthday</label>
-														<input name="datetimepicker" value="10/24/1984" />
-														<span class="input-group-addon">
-															<svg class="olymp-month-calendar-icon icon">
-																<use xlink:href="#olymp-month-calendar-icon"></use>
-															</svg>
-														</span>
-													</div>
-												</div>
-				
-												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-													<div class="form-group label-floating">
-														<label class="control-label">Last Name</label>
-														<input class="form-control" placeholder="" type="text" value="Sufian">
-													</div>
-				
-				
-				
-													<div class="form-group label-floating is-empty">
-														<label class="control-label">Your Phone Number</label>
-														<input class="form-control" placeholder="" type="text">
-													</div>
-												</div>
-				
-												<div class="col col-lg-4 col-md-4 col-sm-12 col-12">
-													<div class="form-group label-floating is-select">
-														<label class="control-label">Your Country</label>
-														<select class="form-select">
-															<option value="US">United States</option>
-															<option value="AU">Australia</option>
-														</select>
-													</div>
-												</div>
-												<div class="col col-lg-4 col-md-4 col-sm-12 col-12">
-													<div class="form-group label-floating is-select">
-														<label class="control-label">Your State / Province</label>
-														<select class="form-select">
-															<option value="CA">California</option>
-															<option value="TE">Texas</option>
-														</select>
-													</div>
-												</div>
-												<div class="col col-lg-4 col-md-4 col-sm-12 col-12">
-													<div class="form-group label-floating is-select">
-														<label class="control-label">Your City</label>
-														<select class="form-select">
-															<option value="SF">San Francisco</option>
-															<option value="NY">New York</option>
-														</select>
-													</div>
-												</div>
-												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 													<div class="form-group">
-														<textarea class="form-control"
-															placeholder="Write a little description about you">Hi, I’m James, I’m 36 and I work as a Digital Designer for the  “Daydreams” Agency in Pier 56</textarea>
+														<label class="control-label">First Name</label>
+														<input name="first_name" class="form-control @error('first_name') is-invalid @enderror" placeholder="First Name" type="text" value="{{$user_data->first_name}}">
+
+														@error('first_name')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+
+													<div class="form-group ">
+														<label class="control-label">Last Name</label>
+														<input name="last_name" class="form-control  @error('last_name') is-invalid @enderror" placeholder="Last Name" type="text" value="{{$user_data->last_name}}">
+														@error('last_name')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+													</div>
+												</div>
+				
+												<div class="row">
+													<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group">
+														<label class="control-label">Your Email</label>
+														<input name="email" class="form-control  @error('email') is-invalid @enderror" placeholder="Your Email" type="email"
+															value="{{$user_data->email}}">
+															@error('email')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
 													</div>
 				
-													<div class="form-group label-floating is-select">
+												</div>
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+
+													<div class="form-group ">
+														<label class="control-label">Your Birthday</label>
+														<input type="date" class="form-control  @error('dob') is-invalid @enderror" name="dob" value="{{$user_data->dob}}" />
+														@error('dob')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
 														<label class="control-label">Your Gender</label>
-														<select class="form-select">
-															<option value="MA">Male</option>
-															<option value="FE">Female</option>
+														<select class="form-control  @error('gender') is-invalid @enderror" name="gender">
+															<option value="">Select gender</option>
+															<option value="Male" @if($user_data->gender == 'Male') selected @endif>Male</option>
+															<option value="Female"  @if($user_data->gender == 'Female') selected @endif>Female</option>
 														</select>
+														@error('gender')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
 													</div>
-												</div>
-												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-													<div class="form-group label-floating is-select">
-														<label class="control-label">Status</label>
-														<select class="form-select">
-															<option value="MA">Married</option>
-															<option value="FE">Not Married</option>
-														</select>
-													</div>
-												</div>
-												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-													<button class="btn btn-primary full-width">Save all Changes</button>
 												</div>
 				
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													
+													<div class="form-group ">
+														<label class="control-label">Your Phone Number</label>
+														<input name="number" class="form-control  @error('number') is-invalid @enderror" placeholder="Your Phone Number" type="text" value="{{$user_data->number}}">
+														@error('number')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
 											</div>
+											<div class="row">
+												<div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+													<div class="form-group ">
+													<label class="control-label">Marriege Status</label>
+													<select  name="married_status" class="form-control   @error('married_status') is-invalid @enderror">
+														<option value="">Select Marriege Status</option>
+
+														<option value="Married" @if($user_data->married_status == 'Married') selected @endif>Married</option>
+														<option value="Unmarried"  @if($user_data->married_status == 'Unmarried') selected @endif>Unmarried</option>
+													</select>
+													@error('married_status')
+														<span class="invalid-feedback" role="alert">
+															<strong>{{ $message }}</strong>
+														</span>
+													@enderror
+												</div>
+											</div>					
+											</div>					
+											<div class="row">
+												<div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+													<div class="form-group">
+														<label class="control-label">Your Description</label>
+
+														<textarea rows="4" cols="4" class="form-control  @error('description') is-invalid @enderror" placeholder="Enter Your Description" name="description"
+														>{{$user_data->description}}</textarea>
+															@error('description')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+														</div>
+				
+												
+												</div>
+												</div>
+										
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<button type="submit" class="btn btn-primary full-width">Update all Changes</button>
+												</div>
+				
 										</form>
 				
 										<!-- ... end Personal Information Form  -->
@@ -159,59 +190,139 @@
 									</div>
 									<div class="ui-block-content">	
 										<!-- Personal Information Form  -->
-										<form>
+										@if($setting_data == null)
+										<form method="POST" action="{{url('admin/websiteSetting')}}" enctype="multipart/form-data">
+											@csrf
 											<div class="row">
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-													<div class="form-group label-floating">
+													<div class="form-group ">
 														<label class="control-label">Website Name</label>
-														<input class="form-control" placeholder="" type="text" value="Cluster">
+														<input class="form-control @error('website_name') is-invalid @enderror" name="website_name" placeholder="Website Name" type="text" >
+														@error('website_name')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
 													</div>
 												</div>
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-													<div class="form-group label-floating d-flex upload-logo align-items-center">
+													<div class="form-group  d-flex upload-logo align-items-center">
 														<div class="w-50">
 															<h6>Website Logo</h6>
-															<label type="button" class="btn btn-primary w-50"> upload
-																<input class="form-control" placeholder="" type="file" value="Cluster" hidden id="logo-upload">
+															<label type="button" class="btn btn-primary w-50"> Upload Logo
+																<input class="form-control @error('website_logo') is-invalid @enderror" name="website_logo" placeholder="" type="file"  hidden id="logo-upload">
 															</label>
-															<input class="form-control" placeholder="" type="file" value="Cluster" hidden id="logo-upload">
+															<input class="form-control "  placeholder="" type="file"  hidden id="logo-upload">
+															@error('website_logo')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
 														</div>
-														<div class="site-img"><img src="{{asset('img/logo.png')}}"></div>
+														@if($setting_data != null)
+														<div class="site-img"><img src="{{asset('images')}}/"></div>
+														@endif
 													</div>
 												</div>
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-													<div class="form-group label-floating">
+													<div class="form-group ">
 														<label class="control-label">Home page header</label>
-														<input class="form-control" placeholder="" type="text" value="Find The Perfect Cluster for Yourself
-														">
+														<input class="form-control @error('header_name') is-invalid @enderror"  name="header_name" placeholder="Home page header" type="text" >
+														@error('header_name')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
 													</div>
 												</div>
+											
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-													<div class="form-group label-floating d-flex upload-logo align-items-center">
-														<div class="w-50">
-															<h6>Primary Logo</h6>
-															<label type="button" class="btn btn-primary w-50"> upload
-																<input class="form-control" placeholder="" type="file" value="Cluster" hidden id="logo-upload">
-															</label>
-															<input class="form-control" placeholder="" type="file" value="Cluster" hidden id="logo-upload">
-														</div>
-														<div class="site-img" style="background-color: gray;"><img src="{{asset('img/logo.png')}}"></div>
-													</div>
-												</div>
-												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-													<div class="form-group label-floating">
+													<div class="form-group ">
 														<label class="control-label">Footer Text</label>
-														<input class="form-control" placeholder="" type="text" value="Thank You for Visiting Our website">
+														<input class="form-control @error('footer_name') is-invalid @enderror"  name="footer_name" placeholder="Footer Text" type="text">
+														@error('footer_name')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
 													</div>
 												</div>
 											</div>
 											<div class="row">
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-													<button type="submit" class="btn btn-primary btn-lg full-width">Save all Changes</button>
+												
+													<button type="submit" class="btn btn-primary full-width">Save Setting</button>
+
+												
 												</div>
 											</div>
 										</form>
-										
+										@else
+										<form method="POST" action="{{url('admin/updateWebsiteSetting')}}/{{$setting_data->id}}" enctype="multipart/form-data">
+											@csrf
+											<div class="row">
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
+														<label class="control-label">Website Name</label>
+														<input class="form-control @error('website_name') is-invalid @enderror" value="{{$setting_data->website_name}}" name="website_name" placeholder="Website Name" type="text" >
+														@error('website_name')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group  d-flex upload-logo align-items-center">
+														<div class="w-50">
+															<h6>Website Logo</h6>
+															<label type="button" class="btn btn-primary w-50"> Upload Logo
+																<input class="form-control @error('website_logo') is-invalid @enderror" name="website_logo" placeholder="" type="file"  hidden id="logo-upload">
+															</label>
+															<input class="form-control "  placeholder="" type="file"  hidden id="logo-upload">
+															@error('website_logo')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+														</div>
+														<div class="site-img"><img src="{{asset('images')}}/{{$setting_data->website_logo}}"></div>
+													</div>
+												</div>
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
+														<label class="control-label">Home page header</label>
+														<input class="form-control @error('header_name') is-invalid @enderror" value="{{$setting_data->header_name}}" name="header_name" placeholder="Home page header" type="text" >
+														@error('header_name')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
+											
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
+														<label class="control-label">Footer Text</label>
+														<input class="form-control @error('footer_name') is-invalid @enderror" value="{{$setting_data->footer_name}}" name="footer_name" placeholder="Footer Text" type="text">
+														@error('footer_name')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+												
+													<button type="submit" class="btn btn-primary full-width">Update Setting</button>
+
+												
+												</div>
+											</div>
+										</form>
+										@endif
 										<!-- ... end Personal Information Form  -->
 									</div>
 								</div>
@@ -219,7 +330,8 @@
 						</div>
 					</div>
 				</div>
-
+				@if(Auth::user()->role == 'user')
+				
 				<div class="tab-pane fade" id="company" role="tabpanel" aria-labelledby="company-tab">
 					<div class="container">
 						<div class="row">
@@ -230,12 +342,13 @@
 									</div>
 									<div class="ui-block-content">	
 										<!-- Personal Information Form  -->
+										@if($company_data == null)
 										<form method="post" action="{{url('user/AddCompany')}}">
 											@csrf
 												<div class="col col-lg-12 col-md-6 col-sm-12 col-12">
-													<div class="form-group label-floating">
+													<div class="form-group ">
 														<label class="control-label">Company Name</label>
-														<input type="text"  name="title" class="form-control" >
+														<input type="text"  name="title" class="form-control"  >
 														@error('title')
                                                   <span class="invalid-feedback" role="alert">
                                                   <strong>{{ $message }}</strong>
@@ -245,9 +358,9 @@
 												</div>
 											
 												<div class="col col-lg-12 col-md-6 col-sm-12 col-12">
-													<div class="form-group label-floating">
+													<div class="form-group ">
 														<label class="control-label">Company Description</label>
-														<input type="text"  name="description" class="form-control"  >
+														<input type="text"  name="description" class="form-control">
 														@error('description')
 														<span class="invalid-feedback" role="alert">
 														<strong>{{ $message }}</strong>
@@ -261,7 +374,39 @@
 													<button type="submit" class="btn btn-primary  full-width">Save Now</button>
 												</div>
 										</form>
-										
+										@else
+										<form method="post" action="{{url('user/updateCompany')}}/{{$company_data->id}}">
+											@csrf
+												<div class="col col-lg-12 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
+														<label class="control-label">Company Name</label>
+														<input type="text"  name="title" class="form-control" value="{{$company_data->title}}" >
+														@error('title')
+                                                  <span class="invalid-feedback" role="alert">
+                                                  <strong>{{ $message }}</strong>
+                                                  </span>
+                                                  @enderror 
+													</div>
+												</div>
+											
+												<div class="col col-lg-12 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
+														<label class="control-label">Company Description</label>
+														<input type="text"  name="description" class="form-control" value="{{$company_data->description}}" >
+														@error('description')
+														<span class="invalid-feedback" role="alert">
+														<strong>{{ $message }}</strong>
+														</span>
+														@enderror
+													</div>
+												</div>
+											
+												
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<button type="submit" class="btn btn-primary  full-width">Update Company</button>
+												</div>
+										</form>
+										@endif
 										<!-- ... end Personal Information Form  -->
 									</div>
 								</div>
@@ -269,6 +414,8 @@
 						</div>
 					</div>
 				</div>
+				@endif
+
 			</div>
 			<!-- <div class="modal fade" id="public-event" tabindex="-1" role="dialog" aria-labelledby="public-event" aria-hidden="true">
 				<div class="modal-dialog window-popup event-private-public public-event" role="document">
@@ -630,18 +777,20 @@
 												Personel Setttings
 											</a>
 										</li>
+										@if(Auth::user()->role == 'admin')
 										<li class="" role="presentation">
 											<a class="nav-link" id="notifications-tab" data-bs-toggle="tab" href="#notifications" role="tab" aria-controls="home" aria-selected="false">
 												Website Settings
 											</a>
 										</li>
-
+										@endif
+										@if(Auth::user()->role == 'user')
 										<li class="" role="presentation">
 											<a class="nav-link" id="company-tab" data-bs-toggle="tab" href="#company" role="tab" aria-controls="home" aria-selected="false">
 												User Company
 											</a>
 										</li>
-
+										@endif
 									</ul>
 								</div>
 							</div>

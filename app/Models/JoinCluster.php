@@ -24,5 +24,10 @@ class JoinCluster extends Model
     {
         return $this->belongsTo('App\Models\Cluster', 'cluster_id');
     }
+    public function serviceClusterMember()
+    {
+        return $this->hasMany('App\Models\Service', 'cluster_id','cluster_id');
+    }
+
 
 }

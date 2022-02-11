@@ -181,10 +181,8 @@
 
 									<div class="form-group date-time-picker label-floating">
 										<label class="control-label">Your Birthday</label>
-										<input name="datetimepicker" value="10/24/1984"  class="form-control @error('password') is-invalid @enderror"  required autocomplete="new-password" />
-										<span class="input-group-addon">
-										<svg class="olymp-calendar-icon"><use xlink:href="#olymp-calendar-icon"></use></svg>
-										</span>
+										<input type="date" name="datetimepicker" value="10/24/1984"  class="form-control @error('password') is-invalid @enderror"  required autocomplete="new-password" />
+										
 
                                         @error('datetimepicker')
                                         <span class="invalid-feedback" role="alert">
@@ -313,7 +311,11 @@
                                                 {{ __('Remember Me') }}
                                             </label>
 										</div>
-										<a href="#" class="forgot" data-bs-toggle="modal" data-bs-target="#restore-password">Forgot my Password</a>
+										@if (Route::has('password.request'))
+										<a class="btn btn-link forgot" href="{{ route('password.request') }}">
+											{{ __('Forgot Your Password?') }}
+										</a>
+									@endif
 									</div>
 
 
@@ -321,7 +323,7 @@
                                         {{ __('Login') }}
                                     </button>
 
-									<p>Don’t you have an account? <a href="login.php">Register Now!</a> it’s really simple and you can start enjoing all the benefits!</p>
+									<p>Don’t you have an account? <a href="{{ route('login') }}">Register Now!</a> it’s really simple and you can start enjoing all the benefits!</p>
 								</div>
 							</div>
 						</form>
@@ -420,21 +422,28 @@
 		{
 			$('#event').show();
 			$('#cluster').hide();
+			$(".eventMultiple").attr("required", "true");
+
 
 
 		}else{
 			$('#event').hide();
+			$(".clusterMultiple").attr("required", "true");
+
 
 		}
 	
 		$('#member').click(function(){
 		$('#cluster').show();
 		$('#event').hide();
+		$(".clusterMultiple").attr("required", "true");
 		});
 		
 		$('#user').click(function(){
 		$('#cluster').hide();
 		$('#event').show();
+		$(".eventMultiple").attr("required", "true");
+
 		});
 
     $('.clusterMultiple').select2();

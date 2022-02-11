@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page_title', 'Home Page')
+@section('page_title', 'User Page')
 @section('content')
 
 
@@ -9,7 +9,6 @@
     $role = Auth::user()->role;
 
     ?>
-  	<div class="header-spacer header-spacer-small"></div>
 
 
       <!-- Main Header Groups -->
@@ -33,7 +32,7 @@
 
       <!-- Main Content Groups -->
 
-      <div class="container">
+      <div class="container-fluid">
           <div class="row">
             <div class="col-12" style="padding: 7px;">
                 @if ($message = Session::get('success'))
@@ -65,6 +64,9 @@
                                   <th scope="col" class="text-center">#</th>
                                   <th scope="col">Name</th>
                                   <th scope="col">Email</th>
+                                  <th scope="col">Number</th>
+                                  <th scope="col">Gender</th>
+                                  <th scope="col">Role</th>
                                   <th scope="col"></th>
                               </tr>
                           </thead>
@@ -77,18 +79,21 @@
                                   <td class="text-center">{{$i++}}</td>
                                   <td class="py-2">{{$list->first_name}} {{$list->last_name}}</td>
                                   <td>{{$list->email}}</td>
+                                  <td>{{$list->number}}</td>
+                                  <td>{{$list->gender}}</td>
+                                  <td>{{$list->role}}</td>
 
                                   <td>
                                       <div class="d-flex justify-content-end">
                                           <a data-bs-toggle="modal"  data-bs-toggle="modal" data-bs-target="#delete-new-member{{$list->id}}">
                                               <button class="mx-2 members-btns btn-danger">
-                                                  <span>Delete </span><i class="fas fa-trash-alt"></i>
+                                              <i class="fas fa-trash-alt"></i>
                                               </button>
                                           </a>
 
                                           <a data-bs-toggle="modal"  data-bs-toggle="modal" data-bs-target="#edit-new-member{{$list->id}}">
                                               <button class="mx-2 members-btns btn-secondary">
-                                                  <span>Edit</span> <i class="fas fa-edit"></i>
+                                                 <i class="fas fa-edit"></i>
                                               </button>
                                           </a>
                                       </div>
@@ -106,7 +111,7 @@
                                           </svg>
                                       </a>
                                       <div class="modal-header">
-                                          <h6 class="title">Edit Member</h6>
+                                          <h6 class="title">Edit User</h6>
                                       </div>
 
                                       <div class="modal-body">
@@ -114,7 +119,7 @@
                                             @csrf
                                             <div class="form-group">
                                                   <label for="exampleFormControlInput1">Name</label>
-                                                  <input type="text" name="first_name" value="{{$list->first_name}}" class="form-control" id="Cluster-Name" Value="Francine Smith">
+                                                  <input type="text" name="first_name" value="{{$list->first_name}}" class="form-control" id="Cluster-Name">
                                                   @error('first_name')
                                                   <span class="invalid-feedback" role="alert">
                                                       <strong>{{ $message }}</strong>
@@ -123,7 +128,7 @@
                                                 </div>
                                               <div class="form-group">
                                                   <label for="exampleFormControlInput1">Email</label>
-                                                  <input type="email"  name="email" value="{{$list->email}}" class="form-control" id="Cluster-Name" Value="abc@xyz.com">
+                                                  <input type="email"  name="email" value="{{$list->email}}" class="form-control" id="Cluster-Name" >
                                                   @error('email')
                                                   <span class="invalid-feedback" role="alert">
                                                       <strong>{{ $message }}</strong>
@@ -153,7 +158,7 @@
                                                 <input type="password" name="confirm_password" class="form-control" id="Cluster-Name" placeholder="Enter Confirm Password">
                                             </div>
 
-                                              <button type="submit" class="btn btn-blue full-width">Edit Now</button>
+                                              <button type="submit" class="btn btn-blue full-width">Update</button>
                                           </form>
                                       </div>
                                   </div>
@@ -171,12 +176,12 @@
                                           </svg>
                                       </a>
                                       <div class="modal-header">
-                                          <h6 class="title">Delete User{{$list->id}}</h6>
+                                          <h6 class="title">Delete User</h6>
                                       </div>
 
                                       <div class="modal-body">
                                           <div class="">
-                                              <p>Are you sure you want to delete this user <span class="font-weight-bold text-danger">Francine Smith</span></p>
+                                              <p>Are you sure you want to delete this user <span class="font-weight-bold text-danger">{{$list->first_name}}</span></p>
                                           </div>
                                           <div class="row">
                                               <div class="col-6">
@@ -228,7 +233,7 @@
                         @csrf
                           <div class="form-group">
                               <label for="exampleFormControlInput1">Name</label>
-                              <input type="text" name="first_name" class="form-control" id="Cluster-Name" placeholder="enter Name">
+                              <input type="text" name="first_name" class="form-control" id="Cluster-Name" placeholder="Enter Name">
                               @error('first_name')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
@@ -237,7 +242,7 @@
                             </div>
                           <div class="form-group">
                               <label for="exampleFormControlInput1">Email</label>
-                              <input type="email" name="email" class="form-control" id="Cluster-Name" placeholder="enter email">
+                              <input type="email" name="email" class="form-control" id="Cluster-Name" placeholder="Enter Email">
                               @error('email')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
@@ -246,14 +251,14 @@
                             </div>
                           <div class="form-group">
                               <label for="exampleFormControlInput1">Password</label>
-                              <input type="password" name="password" class="form-control" id="Cluster-Name" placeholder="enter passowrd">
+                              <input type="password" name="password" class="form-control" id="Cluster-Name" placeholder="Enter Passowrd">
                               @error('password')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
                           @enderror
                             </div>
-                          <button type="submit" class="btn btn-blue btn-lg full-width">Add Now</button>
+                          <button type="submit" class="btn btn-blue full-width">Submit</button>
                       </form>
                   </div>
               </div>
