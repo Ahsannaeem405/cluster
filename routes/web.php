@@ -7,6 +7,7 @@ use App\Http\Controllers\frontController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\install;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -42,6 +43,7 @@ Route::get('migrate', function () {
     return redirect('/admin');
 });
 
+Route::post('/profileSetting/{id}', [SettingController::class, 'profileSetting']);
 
 Route::post('install_saved', [install::class, 'install_script']);
 
@@ -102,8 +104,12 @@ Route::middleware(['auth'])->group(function () {
         //////////////////members
         Route::view('/members', 'admin/view_members');
 
-        Route::view('/setting', 'admin/view_setting');
-        Route::view('/profile_setting', 'admin/profile_setting');
+         Route::view('/profile_setting', 'admin/profile_setting');
+        ///////////////////////////////setting start
+        Route::get('/setting', [SettingController::class, 'settings']);
+
+        
+        ///////////////////////////////setting end
         Route::view('/cluster_manager', 'admin/cluster_manager');
         Route::get('/view/{id}', [ClusterController::class, 'view']);
 
@@ -123,6 +129,8 @@ Route::get('/applyServiceView/{id}', [ServiceController::class,'applyServiceView
 
 
         ////////////////////////services end
+        Route::post('/websiteSetting', [SettingController::class, 'websiteSetting']);
+        Route::post('/updateWebsiteSetting/{id}', [SettingController::class, 'updateWebsiteSetting']);
 
     });
 });
@@ -167,8 +175,12 @@ Route::middleware(['auth'])->group(function () {
         Route::view('/members', 'admin/view_members');
         // Route::view('/services','admin/view_services');
         Route::get('/services/', [ServiceController::class, 'view_service']);
-        Route::view('/setting', 'admin/view_setting');
-        Route::view('/profile_setting', 'admin/profile_setting');
+            Route::view('/profile_setting', 'admin/profile_setting');
+        ///////////////////////////////setting start
+        Route::get('/setting', [SettingController::class, 'settings']);
+
+        
+        ///////////////////////////////setting end
         Route::view('/cluster_manager', 'admin/cluster_manager');
 
 

@@ -133,6 +133,13 @@ $role = Auth::user()->role;
 						</svg>
 					</a>
 				</li>
+				<li>
+					<a href="{{url("$role/setting")}}">
+						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
+							<use xlink:href="#olymp-settings-icon"></use>
+						</svg>
+					</a>
+				</li>
 				@if(Auth::user()->role == 'admin')
 
 				<li>
@@ -163,7 +170,6 @@ $role = Auth::user()->role;
 						</svg>
 					</a>
 				</li>
-
 				<li>
 					<a href="{{url("$role/setting")}}">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
@@ -171,6 +177,7 @@ $role = Auth::user()->role;
 						</svg>
 					</a>
 				</li>
+			
 				@endif
 			</ul>
 		</div>
@@ -228,6 +235,14 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Services</span>
 					</a>
 				</li>
+				<li>
+					<a href="{{url("$role/setting")}}">
+						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
+							<use xlink:href="#olymp-settings-icon"></use>
+						</svg>
+						<span class="left-menu-title">Settings</span>
+					</a>
+				</li>
 				@if(Auth::user()->role == 'admin')
 				<li>
 					<a href="{{url("$role/members")}}">
@@ -261,7 +276,6 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Communication</span>
 					</a>
 				</li>
-
 				<li>
 					<a href="{{url("$role/setting")}}">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
@@ -270,6 +284,7 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Settings</span>
 					</a>
 				</li>
+				
 				@endif
 			</ul>
 		</div>
@@ -366,6 +381,14 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Services</span>
 					</a>
 				</li>
+				<li>
+					<a href="{{url("$role/setting")}}">
+						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
+							<use xlink:href="#olymp-settings-icon"></use>
+						</svg>
+						<span class="left-menu-title">Settings</span>
+					</a>
+				</li>
 				@if(Auth::user()->role == 'admin')
 
 				<li>
@@ -400,7 +423,6 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Communication</span>
 					</a>
 				</li>
-
 				<li>
 					<a href="{{url("$role/setting")}}">
 						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
@@ -409,6 +431,7 @@ $role = Auth::user()->role;
 						<span class="left-menu-title">Settings</span>
 					</a>
 				</li>
+				
 			</ul>
 
 			<div class="ui-block-title ui-block-title-small">
@@ -417,7 +440,7 @@ $role = Auth::user()->role;
 
 			<ul class="account-settings">
 				<li>
-					<a href="{{url("$role/profile_setting")}}">
+					<a href="{{url("$role/setting")}}">
 
 						<svg class="olymp-menu-icon">
 							<use xlink:href="#olymp-menu-icon"></use>
@@ -489,7 +512,7 @@ $role = Auth::user()->role;
 
 							<ul class="account-settings">
 								<li>
-									<a href="{{url("$role/profile_setting")}}">
+									<a href="{{url("$role/setting")}}">
 
 										<svg class="olymp-menu-icon">
 											<use xlink:href="#olymp-menu-icon"></use>

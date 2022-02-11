@@ -6,7 +6,6 @@
 		border-radius:50%;width:80%;height:80%;padding:10px;
 	}
 </style>
-<div class="header-spacer header-spacer-small"></div>
 
 
 <!-- Main Header Groups -->
@@ -25,7 +24,7 @@
 </div>
 
 
-<div class="container py-5">
+<div class="container-fluid py-5">
 	@if ($message = Session::get('success'))
 	<div class="alert alert-success ">    
 		<strong>{{ $message }}</strong>
@@ -61,7 +60,7 @@
 					</svg>
 				</a>
 				<div class="modal-header">
-					<h6 class="title">Add New Service</h6>
+					<h6 class="title">Create New Service</h6>
 				</div>
 
 				<div class="modal-body">
@@ -117,13 +116,12 @@
 
 		@foreach($services as $serviceslist)
 		@php
-			$apply_services=App\Models\ApplyService::where('service_id',$serviceslist->id)->first();
-			
+			$apply_services=App\Models\ApplyService::where('service_id',$serviceslist->id)->get();
 		
 			
 		@endphp
-		<div class="col-lg-4 col-md-6 col-sm-6 mt-5 ">
-			<div class="servies-card text-center mx-xl-5 mx-lg-2 mx-md-3 p-2">
+		<div class="col-lg-3 col-md-6 col-sm-6 mt-5 ">
+			<div class="servies-card text-center mx-xl-3 mx-lg-2 mx-md-3 p-2">
 				<div class="servies-card-hard position-relative">
 					<div class="servies-card-img position-absolute">
 						<i class="fas fa-user-shield"></i>
@@ -132,6 +130,8 @@
 				<div class="servies-card-body mt-5">
 					<h4>{{$serviceslist->title}}</h4>
 					<p>{{$serviceslist->description}}</p>
+					<p>{{$serviceslist->ServiceCluster->name}}</p>
+					<hr>
 					<div class="row ">
 						<div class="col-lg-4 col-md-4 col-sm-4  ">
 							<a href="#" class="btn btn-primary serviceBtn" data-bs-toggle="modal"  data-bs-toggle="modal"
@@ -140,14 +140,22 @@
 							</a>
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4  ">
-							<a href="{{url('admin/deleteService')}}/{{$serviceslist->id}}"  class="btn btn-danger serviceBtn">
+							<a href="#" data-bs-toggle="modal"  data-bs-toggle="modal"
+								data-bs-target="#delete-service{{$serviceslist->id}}"  class="btn btn-danger serviceBtn">
 								<i class="fas fa-trash text-white"></i>
 							</a>
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4  ">
-							<a href="{{url('admin/applyServiceView')}}/{{$serviceslist->id}}" class="btn btn-warning serviceBtn">
+							<a href="{{url('admin/applyServiceView')}}/{{$serviceslist->id}}" class="btn btn-danger serviceBtn">
 								<i class="fas fa-file text-white"></i>
-								<span class="badge bg-secondary">1</span>
+								<span class="badge bg-warning" style="
+								position: absolute;
+								right: -3px;
+								top: -5px;
+								width: 20px;
+								height: 20px;
+								border-radius: 50%;
+							">{{count($apply_services)}}</span>
 							</a>
 						</div>
 					</div>
@@ -196,7 +204,7 @@
 						<div class="form-group">
 							<label for="exampleFormControlInput1">Clusters</label>
 							<select name="cluster_id" class="form-control   @error('cluster_id') is-invalid @enderror" >
-								<option value="">Select Sluster</option>
+								<option value="">Select Clusters</option>
 								@foreach($clusters as $clusterslist)
 								<option value="{{$clusterslist->id}}" @if($serviceslist->cluster_id == $clusterslist->id) selected @endif>{{$clusterslist->name}}</option>
 								@endforeach
@@ -217,6 +225,42 @@
 		</div>
 	</div>
 		{{-- edit service end --}}
+
+		  {{-- delete user start--}}
+		  <div class="modal fade" id="delete-service{{$serviceslist->id}}" tabindex="-1" role="dialog"
+			aria-labelledby="create-friend-group-1" aria-hidden="true">
+			<div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
+				<div class="modal-content">
+					<a href="#" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">
+						<svg class="olymp-close-icon">
+							<use xlink:href="#olymp-close-icon"></use>
+						</svg>
+					</a>
+					<div class="modal-header">
+						<h6 class="title">Delete Service</h6>
+					</div>
+
+					<div class="modal-body">
+						<div class="">
+							<p>Are you sure you want to delete this user <span class="font-weight-bold text-danger">{{$serviceslist->name}}</span></p>
+						</div>
+						<div class="row">
+							<div class="col-6">
+								<form method="get" action="{{url('admin/deleteService')}}/{{$serviceslist->id}}">
+								  @csrf
+								  <button type="submit" class="btn btn-blue full-width" class="close icon-close" >Yes</button>
+						  </form>
+							</div>
+							<div class="col-6">
+							<button href="#" class="btn btn-secondary full-width" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">No</button>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			{{-- delete user end--}}
 		@endforeach
 
 
@@ -237,6 +281,12 @@
 <div class="row ">
 
 	@foreach($services as $serviceslist)
+	@php
+		     $service_get=App\Models\JoinCluster::where('cluster_id',$serviceslist->cluster_id)->where('user_id',Auth::user()->id)->where('status',2)->get();
+	$service_member= $serviceslist->serviceClusterMember;
+	@endphp
+	@foreach($service_member as $list)
+	@if(count($service_get) > 0)
 	<div class="col-lg-4 col-md-6 col-sm-6 mt-5 ">
 		<div class="servies-card text-center mx-xl-5 mx-lg-2 mx-md-3 p-2">
 			<div class="servies-card-hard position-relative">
@@ -245,8 +295,8 @@
 				</div>
 			</div>
 			<div class="servies-card-body mt-5">
-				<h4>{{$serviceslist->title}}</h4>
-				<p>{{$serviceslist->description}}</p>
+				<h4>{{$list->title}}</h4>
+				<p>{{$list->description}}</p>
 				<form method="post" action="{{url('user/applyService')}}">
 					@csrf
 				<center>
@@ -267,7 +317,7 @@
 					</div>
 				
 				</div></center>
-				<input type="hidden" name="service_id" value="{{$serviceslist->id}}">
+				<input type="hidden" name="service_id" value="{{$list->id}}">
 				<button type="submit" class="btn  w-100 mb-0">
 					<small>	Apply Now</small>	
 				</button>
@@ -276,7 +326,8 @@
 		</div>
 	</div>
 
-
+@endif
+	@endforeach
 	@endforeach
 
 

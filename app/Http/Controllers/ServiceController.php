@@ -6,14 +6,25 @@ use App\Models\ApplyService;
 use App\Models\Cluster;
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\JoinCluster;
 use App\Models\Company;
 use Illuminate\Support\Facades\Auth;
 class ServiceController extends Controller
 {
     public function view_service()
     {
-        $service['services']=Service::get();
-        $service['clusters']=Cluster::get();
+
+
+        if(Auth::user()->role == 'admin'){
+            $service['clusters']=Cluster::get();
+            $service['services']=Service::get();
+
+
+        }
+        else{
+            $service['services']=JoinCluster::where('user_id',Auth::user()->id)->where('status',2)->get();
+            
+        }
         return view('admin.view_services', $service);
     }
 
@@ -116,14 +127,21 @@ class ServiceController extends Controller
     ////////////applyServiceView start
     public function applyServiceView($id)
     {   
+        
         $apply_service['Applyservices']=ApplyService::where('service_id',$id)->get();
+        if(count( $apply_service['Applyservices']) > 0)
+        {
         $apply_service['service_data']=Service::where('id',$id)->get();
         //$user_id=$services[0]->user_id;
             //////userdata get relation start
            $apply_service['user_data']= $apply_service['Applyservices'][0]->ServiceUsers;
            $apply_service['cluster_data']= $apply_service['service_data'][0]->ServiceCluster;
           // dd($apply_service['cluster_data']);
-            //////userdata get relation end
+        }else{  
+            return redirect()->back()->with('error', 'No Record Found!');     
+            
+        }
+          //////userdata get relation end
         return view('admin.apply_service_view',$apply_service);
     }
     ////////////applyServiceView end
