@@ -7,12 +7,7 @@
     $post_role = Auth::user()->post_role;
     ?>
 
-    <!-- ... end Responsive Header-BP -->
 
-    <div class="header-spacer header-spacer-small"></div>
-
-
-    <!-- Main Header Groups -->
 
     <div class="main-header">
         <div class="content-bg-wrap bg-group event-manager-bg"
@@ -33,7 +28,7 @@
 
     <!-- ... end Main Header Groups -->
 
-    <div class="container">
+    <div class="container-fluid" style="padding-left: 47px;padding-right: 47px;">
         <div class="row">
             <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="ui-block responsive-flex">
@@ -55,17 +50,7 @@
 
 
                         </ul>
-                        @if ((isset($mang->status) && $mang->status == 2) || Auth::user()->role == 'admin')
 
-                        <li class="nav-item">
-                            <a style="    height: 36px;" class="btn btn-control bg-green" data-bs-toggle="modal"
-                                data-bs-target="#create-event">
-                                <svg class="olymp-plus-icon">
-                                    <use xlink:href="#olymp-plus-icon"></use>
-                                </svg>
-                            </a>
-                        </li>
-                        @endif
 
 
                     </div>
@@ -213,7 +198,7 @@
         </div>
 
 
-        <div class="container">
+        <div class="container-fluid" style="padding-right: 47px;padding-left: 47px;">
             <div class="row">
                 <div class="col-12">
 
@@ -281,21 +266,7 @@
 
 
 
-                                            <div class="control-block-button post-control-button">
 
-                                                <a href="#" class="btn btn-control">
-                                                    <svg class="olymp-like-post-icon">
-                                                        <use xlink:href="#olymp-like-post-icon"></use>
-                                                    </svg>
-                                                </a>
-
-                                                <a href="#" class="btn btn-control">
-                                                    <svg class="olymp-comments-post-icon">
-                                                        <use xlink:href="#olymp-comments-post-icon"></use>
-                                                    </svg>
-                                                </a>
-
-                                            </div>
 
                                         </article>
 
@@ -447,7 +418,7 @@
         </div>
 
 
-        <div class="container">
+        <div class="container-fluid" style="padding-left:47px;padding-right:47px;">
             <div class="row">
                 <div class="col-12">
 

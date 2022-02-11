@@ -249,6 +249,7 @@ $ser = Service::all()->count();
         if (isset($clust)) {
 
 
+
             $clus_img2 = explode(',', $clust->image);
 
 

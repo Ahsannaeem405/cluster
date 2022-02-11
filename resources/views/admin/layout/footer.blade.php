@@ -27,7 +27,6 @@
 <script src="{{asset('js/libs/ajax-pagination.min.js')}}"></script>
 <script src="{{asset('js/libs/jquery.magnific-popup.min.js')}}"></script>
 
-<!-- JS-libs and init for charts -->
 <script src="{{asset('js/libs/moment.min.js')}}"></script>
 <script src="{{asset('js/libs/jquery.appear.min.js')}}"></script>
 <script src="{{asset('js/libs/Chart.min.js')}}"></script>
@@ -35,16 +34,13 @@
 <script src="{{asset('js/libs/circle-progress.min.js')}}"></script>
 <script src="{{asset('js/libs/loader.min.js')}}"></script>
 <script src="{{asset('js/libs/run-chart.min.js')}}"></script>
-<!-- ... end JS-libs and init for charts -->
 
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/libs-init/libs-init.js')}}"></script>
 
 <script src="{{asset('Bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 
-<!-- SVG icons loader -->
 <script src="{{asset('js/svg-loader.js')}}"></script>
-<!-- /SVG icons loader -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </body>
 
