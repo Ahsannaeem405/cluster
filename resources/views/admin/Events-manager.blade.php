@@ -80,11 +80,11 @@
 
                                     <form @if (isset($clust->id)) action="{{ url("$role/upd/cluster/$clust->id") }}" @endif method="post">
                                         @csrf
-
+{{--
                                         <div class="col-12">
                                             <img class="" loading="lazy" @if (isset($clus_img1[0]))  src="{{ asset("images/$clus_img1[0]") }}" @endif alt="author"
                                                 style="    border-radius: 28%;" width="100" height="100">
-                                        </div>
+                                        </div> --}}
 
 
                                         <div class="col-12">
