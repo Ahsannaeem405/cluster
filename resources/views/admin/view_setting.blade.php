@@ -375,9 +375,9 @@
 												</div>
 										</form>
 										@else
-										<form method="post" action="{{url('user/updateCompany')}}/{{$company_data->id}}">
+										<form method="post" action="{{url('user/UpdateCompany')}}/{{$company_data->id}}">
 											@csrf
-												<div class="col col-lg-12 col-md-6 col-sm-12 col-12">
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 													<div class="form-group ">
 														<label class="control-label">Company Name</label>
 														<input type="text"  name="title" class="form-control" value="{{$company_data->title}}" >
@@ -389,7 +389,7 @@
 													</div>
 												</div>
 											
-												<div class="col col-lg-12 col-md-6 col-sm-12 col-12">
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 													<div class="form-group ">
 														<label class="control-label">Company Description</label>
 														<input type="text"  name="description" class="form-control" value="{{$company_data->description}}" >

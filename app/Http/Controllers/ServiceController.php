@@ -164,4 +164,18 @@ class ServiceController extends Controller
         return redirect()->back()->with('success', 'Company Added Sucessfully!');
     }
     //////////////////add user company end
+
+    public function UpdateCompany(Request $request,$id)
+    {
+     
+        $title=$request->title;
+        $description=$request->description;
+        $company=Company::find($id);
+        $company->title=$title;
+        $company->description=$description;
+        $company->user_id=Auth::user()->id;
+        $company->save();
+        return redirect()->back()->with('success', 'Company Updated Sucessfully!');
+    }
+    
 }
