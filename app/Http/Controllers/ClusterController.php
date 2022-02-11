@@ -119,13 +119,9 @@ class ClusterController extends Controller
     }
     public function add_event(Request $request)
     {
+
+        // dd($request);
         $cat = null;
-
-
-
-
-
-
             // dd($request);
 
         $event = new Event();
@@ -342,7 +338,6 @@ $ser = Service::all()->count();
 
         date_default_timezone_set("Asia/Karachi");
         $date =   date("Y-m-d H:i:s");
-        // @dd( $date);
         $clust = Cluster::find($id);
 
         $clus_img2 = explode(',', $clust->image);
@@ -353,7 +348,6 @@ $ser = Service::all()->count();
         $clus_img = array_slice($clus_img2, 1, 2);
 
         $count_clus = array_slice($clus_img2, 0, 3);
-        // @dd(count($clus_img2), count($count_clus));
 
         if (count($clus_img2) >  3) {
             $count_clus =   count($clus_img2) - count($count_clus);
@@ -363,7 +357,6 @@ $ser = Service::all()->count();
 
         $get = JoinCluster::Where('cluster_id', $id)->where('status', '!=' , 0)->Where('user_id', Auth::user()->id)->count();
         $eventtime = Event::Where('datetimepicker', '>', $date)->get();
-        // @dd($eventtime, $date , '2022-02-11 12:52:00');
         $pending_user = JoinCluster::Where('cluster_id', $id)->where('status',  0)->take(6)->get();
 
 
@@ -389,10 +382,8 @@ $ser = Service::all()->count();
             $join->user_id = Auth::user()->id;
             $join->save();
             $manager = JoinCluster::Where('cluster_id', $id)->where('status', 2)->take(6)->get();
-            // $mang = JoinCluster::Where('cluster_id', $id)->where('status', '!=' , 0)->Where('user_id', Auth::user()->id)->first();
             $user = JoinCluster::Where('cluster_id', $id)->where('status', '!=' , 0)->take(6)->get();
 
-            // $user = User::where('role', 'user')->take(6)->get();
 
             return view('admin.Events-manager', compact('user', 'manager', 'mang', 'event', 'id', 'joinn', 'clust', 'clus_img', 'clus_img1', 'event_3', 'clus_img2', 'eventtime', 'count_clus'));
         } else {
@@ -470,7 +461,7 @@ $ser = Service::all()->count();
         $cat = null;
         $clustor = Cluster::find($id);
 
-        dd($request);
+        // dd($request);
 
 
 

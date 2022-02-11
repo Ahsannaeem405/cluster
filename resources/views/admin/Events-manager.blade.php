@@ -596,6 +596,7 @@
                                                                                 alt="author" width="100" height="100">
                                                                         </div>
                                                                         <div class="col-12 text-end">
+                                                                            {{-- @dd($events) --}}
 
                                                                             @if ($ii != $events->id)
                                                                                 <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
@@ -885,7 +886,7 @@
                             <label class="control-label">Event Name</label>
                             <input class="form-control" name="name" placeholder="Enter Event Name" type="text">
                         </div>
-                        {{-- @dd($mang->cluster_id) --}}
+                        {{-- @dd($mang->id) --}}
                         <input type="hidden" value="@if (isset($mang->id)) {{ $mang->id }} @endif" name="mangerID" id="">
 
                         <input type="hidden" value="@if (isset($mang->cluster_id)) {{ $mang->cluster_id }} @endif" name="cluster_id" id="">
