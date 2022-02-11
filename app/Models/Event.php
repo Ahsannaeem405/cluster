@@ -14,4 +14,10 @@ class Event extends Model
     {
         return $this->belongsTo('App\Models\JoinCluster', 'join_cluster_ID');
     }
+
+
+    public function User()
+{
+        return $this->belongsTo('App\Models\User', 'userid');
+    }
 }

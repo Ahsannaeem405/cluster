@@ -77,6 +77,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('createCluster', [ClusterController::class, 'createCluster']);
         Route::post('updateCluster/{id}', [ClusterController::class, 'updateCluster']);
 
+
+
+        Route::get('aprroved/{id}', [ClusterController::class, 'aprroved']);
+
         Route::post('upd/cluster/{id}', [ClusterController::class, 'upd_cluster']);
 
         Route::get('deleteCluster/{id}', [ClusterController::class, 'deleteCluster']);
@@ -133,6 +137,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Route::view('/user','admin/index');
     Route::prefix('/user')->group(function () {
+        Route::get('aprroved/{id}', [ClusterController::class, 'aprroved']);
 
         Route::get('/', [ClusterController::class, 'user_index']);
         Route::post('createCluster', [ClusterController::class, 'createCluster']);

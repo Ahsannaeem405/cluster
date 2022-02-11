@@ -1,5 +1,6 @@
 
 
+
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
 			var webpMachine = new webpHero.WebpMachine()
@@ -12,10 +13,6 @@
 {{-- <script src="js/jQuery/jquery-3.5.1.min.js"></script> --}}
 
 	<script src="{{asset('js/libs/daterangepicker.min.js')}}"></script>
-
-
-
-
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

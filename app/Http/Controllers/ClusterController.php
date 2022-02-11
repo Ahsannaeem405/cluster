@@ -6,6 +6,7 @@ use App\Models\Cluster;
 use App\Models\Event;
 use App\Models\EventJoin;
 use App\Models\JoinCluster;
+use App\Models\Service;
 use App\Models\User;
 use GuzzleHttp\Psr7\Request as Psr7Request;
 use Illuminate\Http\Request;
@@ -95,6 +96,9 @@ class ClusterController extends Controller
 
         $event['clustor'] = Cluster::all();
         $event['event'] = Event::where('userid', Auth::user()->id)->get();
+
+        $event['event_3'] = Event::where('userid', Auth::user()->id)->take(3)->get();
+
         $event['event_join'] = EventJoin::where('user_id', Auth::user()->id)->get();
 
 
@@ -116,7 +120,13 @@ class ClusterController extends Controller
     public function add_event(Request $request)
     {
         $cat = null;
-        //   dd($request);
+
+
+
+
+
+
+            // dd($request);
 
         $event = new Event();
 
@@ -186,7 +196,11 @@ class ClusterController extends Controller
     public function index()
     {
 
-        return view('admin.index');
+$clus = Cluster::all()->count();
+$eve = Event::all()->count();
+$ser = Service::all()->count();
+
+        return view('admin.index', compact('clus', 'eve', 'ser'));
     }
 
 
@@ -231,7 +245,9 @@ class ClusterController extends Controller
          $count_clus = null;
 
 
-        $date =   date("Y/m/d");
+         date_default_timezone_set("Asia/Karachi");
+         $date =   date("Y-m-d H:i:s");
+
         $clust = Cluster::find($id);
         // dd($clust);
         if (isset($clust)) {
@@ -261,7 +277,6 @@ class ClusterController extends Controller
 
         $get = JoinCluster::Where('cluster_id', $id)->where('status', '!=' , 0)->Where('user_id', Auth::user()->id)->count();
 
-        // @dd($id);
         if($get >0)
         {
 
@@ -280,7 +295,7 @@ class ClusterController extends Controller
 
         }
 
-        $eventtime = Event::WhereDate('datetimepicker', '>', $date)->get();
+        $eventtime = Event::Where('datetimepicker', '>', $date)->get();
 
 
         // $event_3 = Event::Where('join_cluster_ID', $id)->take(3)->get();
@@ -325,7 +340,9 @@ class ClusterController extends Controller
     function join_cluster($id)
     {
 
-        $date =   date("Y/m/d");
+        date_default_timezone_set("Asia/Karachi");
+        $date =   date("Y-m-d H:i:s");
+        // @dd( $date);
         $clust = Cluster::find($id);
 
         $clus_img2 = explode(',', $clust->image);
@@ -339,23 +356,19 @@ class ClusterController extends Controller
         // @dd(count($clus_img2), count($count_clus));
 
         if (count($clus_img2) >  3) {
-
-
             $count_clus =   count($clus_img2) - count($count_clus);
         } else {
-            $count_clus = 1;
+            $count_clus = 100;
         }
 
-        // @dd(count($count_clus)  );
         $get = JoinCluster::Where('cluster_id', $id)->where('status', '!=' , 0)->Where('user_id', Auth::user()->id)->count();
-        // $event = Event::all();
-        $eventtime = Event::WhereDate('datetimepicker', '>', $date)->get();
+        $eventtime = Event::Where('datetimepicker', '>', $date)->get();
+        // @dd($eventtime, $date , '2022-02-11 12:52:00');
         $pending_user = JoinCluster::Where('cluster_id', $id)->where('status',  0)->take(6)->get();
 
 
-
-
         $joinn = EventJoin::Where('user_id', Auth::user()->id)->where('cluster_id', $id)->get();
+        $mang = JoinCluster::Where('cluster_id', $id)->where('status', '!=' , 0)->Where('user_id', Auth::user()->id)->first();
 
 
         if ($get == 0) {
@@ -376,7 +389,7 @@ class ClusterController extends Controller
             $join->user_id = Auth::user()->id;
             $join->save();
             $manager = JoinCluster::Where('cluster_id', $id)->where('status', 2)->take(6)->get();
-            $mang = JoinCluster::Where('cluster_id', $id)->where('status', '!=' , 0)->Where('user_id', Auth::user()->id)->first();
+            // $mang = JoinCluster::Where('cluster_id', $id)->where('status', '!=' , 0)->Where('user_id', Auth::user()->id)->first();
             $user = JoinCluster::Where('cluster_id', $id)->where('status', '!=' , 0)->take(6)->get();
 
             // $user = User::where('role', 'user')->take(6)->get();
@@ -394,7 +407,7 @@ class ClusterController extends Controller
             $user = JoinCluster::Where('cluster_id', $id)->where('status', '!=' , 0)->take(6)->get();
 
 
-            $mang = JoinCluster::Where('cluster_id', $id)->where('status', '!=' , 0)->Where('user_id', Auth::user()->id)->first();
+            // $mang = JoinCluster::Where('cluster_id', $id)->where('status', '!=' , 0)->Where('user_id', Auth::user()->id)->first();
 
             return view('admin.Events-manager', compact('user', 'manager', 'mang', 'event', 'id', 'joinn', 'clust', 'clus_img', 'clus_img1', 'event_3','pending_user' , 'clus_img2', 'eventtime', 'count_clus'));
 
@@ -441,7 +454,7 @@ class ClusterController extends Controller
     {
         $viewCluster['viewCluster'] = Cluster::all();
         $manager['manager'] = User::where('role', 'user')->get();
-        // dd($manager);
+
         return view('admin.view_cluster', $viewCluster, $manager);
     }
 
@@ -453,13 +466,30 @@ class ClusterController extends Controller
             'detail' => 'required',
 
         ]);
+
+        $cat = null;
         $clustor = Cluster::find($id);
+        // if (isset($request->image)) {
+        //     $image = $request->file('image');
+        //     $imageName = $image->getClientOriginalName();
+        //     $clustor->image = $imageName;
+        //     $path = $image->move(public_path('images/'), $imageName);
+        // }
+
+
+
+
         if (isset($request->image)) {
-            $image = $request->file('image');
-            $imageName = $image->getClientOriginalName();
-            $clustor->image = $imageName;
-            $path = $image->move(public_path('images/'), $imageName);
+            foreach ($request->image as $image) {
+                $imageName = $image->getClientOriginalName();
+                $path = $image->move(public_path('images/'), $imageName);
+                $cat .= $imageName . ",";
+            }
         }
+        $clustor->image = $cat;
+
+
+
         $clustor->name = $request->name;
         $clustor->detail = $request->detail;
         $clustor->manager_id = $request->manager_id;

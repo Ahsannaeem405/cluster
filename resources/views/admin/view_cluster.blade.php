@@ -5,7 +5,11 @@
     <?php
     $role = Auth::user()->role;
     ?>
-    <div class="header-spacer header-spacer-small"></div>
+    <style>
+        .serviceBtn{
+		border-radius:50%;width:80%;height:80%;padding:10px;
+	}
+    </style>
 
 
     <!-- Main Header Groups -->
@@ -74,32 +78,32 @@
 
 
             @if (Auth::user()->role == 'admin')
-
                 <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
 
                     <!-- Friend Item -->
 
-                    <div class="friend-item friend-groups create-group h-75 mb-3">
+
+                    <div class="friend-item friend-groups create-group h-75 mb-3" @if (count($viewCluster) == 0) style="min-height:275px" @endif>
 
                         <a href="#" class="  full-block" data-bs-toggle="modal"
                             data-bs-target="#create-friend-group-1"></a>
-                        <div class="content">
+                        <div class="content" data-bs-toggle="modal"
+                        data-bs-target="#create-friend-group-1">
 
-                            <div class="friend-item-content" style="padding-bottom: 0px;">
+                            <div class="friend-item-content"  style="padding-bottom: 0px;">
 
-                            <div class="control-block-button" style="margin-bottom: 0px;">
+                                <div class="control-block-button" style="margin-bottom: 0px;">
 
 
-                            <a href="#" class="btn btn-control bg-green" data-bs-toggle="modal"
-                                data-bs-target="#create-friend-group-1">
-                                <svg class="olymp-plus-icon">
-                                    <use xlink:href="#olymp-plus-icon"></use>
-                                </svg>
-                            </a>
+                                    <a href="#" class="btn btn-control bg-green" >
+                                        <svg class="olymp-plus-icon">
+                                            <use xlink:href="#olymp-plus-icon"></use>
+                                        </svg>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
                             <div class="author-content">
-                                <a href="#" class="h5 author-name" style="    ">Create New</a>
+                         <p>Create New</p>
                                 <div class="country"></div>
                             </div>
 
@@ -112,83 +116,98 @@
             @endif
             {{-- @dd($viewCluster) --}}
 
-{{-- @dd($viewCluster->Cluster) --}}
+            {{-- @dd($viewCluster->Cluster) --}}
             @foreach ($viewCluster as $list)
-
-
-
-            {{-- @foreach ($list->Cluster as $lists) --}}
+                {{-- @foreach ($list->Cluster as $lists) --}}
 
 
                 <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
                     <div class="ui-block h-100 mb-0">
 
                         <!-- Friend Item -->
+                        <a @if (Auth::user()->role == 'admin') href="{{ url("$role/Join/cluster", $list->id) }}" @else  href="{{ url("$role/view/cluster", $list->id) }}" @endif>
 
                         <div class="friend-item friend-groups">
 
 
-                            <a  @if(Auth::user()->role == 'admin') href="{{ url("$role/Join/cluster", $list->id) }}" @else  href="{{ url("$role/view/cluster", $list->id) }}" @endif>
 
 
-                                {{-- <a  href="{{ url("$role/Join/cluster", $list->id) }}" > --}}
+
+                                <?php
+                                $clus_img2 = explode(',', $list->image);
+                                $clus_img1 = array_slice($clus_img2, 0, 1);
+                                ?>
+                                <div class="friend-item-content">
 
 
-                            <div class="friend-item-content">
+                                    <div class="friend-avatar">
+                                        <div class="author-thumb">
+                                            <img loading="lazy" src="{{ asset('images') }}/{{ $clus_img1[0] }}"
+                                                alt="Olympus" width="34" height="34">
+                                        </div>
+                                        <div class="author-content">
+                                            {{-- @dd($list) --}}
+
+                                            <a class="h5 author-name">{{ $list->name }}</a>
+                                            @if (isset($list->joindetail))
+                                                @foreach ($list->joindetail as $listss)
+                                                    <div class="country">Manager:<span>
+                                                            {{ $listss->User->first_name }}
+                                                            {{ $listss->User->last_name }}</span></div>
+                                                @endforeach
+                                            @endif
+                                            <p>{{ $list->detail }}</p>
 
 
-                                <div class="friend-avatar">
-                                    <div class="author-thumb">
-                                        <img loading="lazy" src="{{ asset('images') }}/{{ $list->image }}" alt="Olympus" width="34" height="34">
+
+                                        </div>
                                     </div>
-                                    <div class="author-content">
-
-                                        <a  class="h5 author-name">{{ $list->name }}</a>
-                                        <div class="country">Manager:<span> Faizan</span></div>
-                                        <p>{{ $list->detail }}</p>
-
-
-
-                                    </div>
-                                </div>
 
 
 
 
-                                <div class="control-block-button">
-                                    @if (Auth::user()->role == 'user')
-                                  @if( isset($list->join) )
+                                    <div class="control-block-button" style="margin-top:-6px">
+                                        @if (Auth::user()->role == 'user')
+                                            @if (isset($list->join))
 
-                                    <button class="btn btn-primary"> Pending</button>
-                                    @else
-                                    <a href="{{ url('/user/Join/cluster', $list->id) }}" class="btn btn-control "
-                                        style="background:#ff5e3a;    color: white; ">
-                                        <i class="fa fa-plus"></i>
-                                    </a>
-                                    @endif
+                                                <button class="btn btn-primary"> Pending</button>
+                                            @else
+                                                <a href="{{ url('/user/Join/cluster', $list->id) }}"
+                                                    class="btn btn-control " style="background:#ff5e3a;    color: white; ">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                            @endif
 
 
-                                @else
-                                    <a style="    color: white;" href="{{ url('user/deleteCluster') }}/{{ $list->id }}"
-                                        class=" btn btn-control bg-blue">
-                                        <i class="fa fa-trash olymp-happy-faces-icon" aria-hidden="true"></i>
-                                    </a>
-
-                                    <a style="    color: white;" href="#" class="btn btn-control bg-green" data-bs-toggle="modal"
-                                        data-bs-target="#edit-cluster{{ $list->id }}">
+                                        @else
+                                        <a style="    color: white;border-radius: 50%;    margin-right: 7px;" href="#" class="btn btn-control bg-green "
+                                        data-bs-toggle="modal" data-bs-target="#edit-cluster{{ $list->id }}">
                                         <i class="fa fa-edit" aria-hidden="true"></i>
                                     </a>
 
-                                @endif
+                                            <a style="    color: white;border-radius: 50%;"
+                                                href="{{ url('user/deleteCluster') }}/{{ $list->id }}"
+                                                class=" btn btn-control bg-blue " >
+                                                <i class="fa fa-trash olymp-happy-faces-icon " aria-hidden="true"></i>
+                                            </a>
+                                            {{-- <i class="fa fa-trash"></i> --}}
+
+
+
+
+
+
+                                        @endif
+
+                                    </div>
 
                                 </div>
 
-                            </div>
-                        </a>
                         </div>
+                    </a>
 
-
-                        <!-- ... end Friend Item -->			</div>
+                        <!-- ... end Friend Item -->
+                    </div>
                 </div>
 
 
@@ -210,7 +229,7 @@
                                 </svg>
                             </a>
                             <div class="modal-header">
-                                <h6 class="title">Create New Cluster</h6>
+                                <h6 class="title">Edit Cluster</h6>
                             </div>
 
                             <div class="modal-body">
@@ -221,7 +240,7 @@
                                         <label for="exampleFormControlInput1">Cluster Name</label>
                                         <input type="text" name="name"
                                             class="form-control @error('name') is-invalid @enderror"
-                                            value="{{ $list->name }}" id="Cluster-Name" placeholder="Enter Cluster Name"
+                                            value="{{ $list->name }}"  id="Cluster-Name" placeholder="Enter Cluster Name"
                                             required>
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -250,14 +269,18 @@
                                     </div>
 
 
+                                    <?php
+                                    $clus_img2 = explode(',', $list->image);
+                                    $clus_img1 = array_slice($clus_img2, 0, 1);
+                                    ?>
 
 
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1">Select Cluster Image</label>
-                                        <input type="file" name="image"
+                                        <input type="file" name="image[]"
                                             class="form-control @error('image') is-invalid @enderror" id="Cluster-Name"
                                             placeholder="Enter Cluster Image">
-                                        <img src="{{ asset('images') }}/{{ $list->image }}" width="100" height="100">
+                                        <img src="{{ asset('images') }}/{{ $clus_img1[0] }}" width="100" height="100">
                                         @error('image')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -265,26 +288,17 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1">manager</label>
-                                        <input list="browsers" name="manager_id" value="{{ $list->manager_id }}"
-                                            placeholder="Select Manager"
-                                            class="form-control @error('manager_id') is-invalid @enderror">
-                                        <datalist id="browsers">
-                                            @foreach ($manager as $list)
-                                                <option value="{{ $list->id }}">{{ $list->first_name }}</option>
-                                            @endforeach
-                                        </datalist>
+                                    <div id="values" class="mb-2">
 
-                                        @error('manager_id')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                    </div>
+                                    <div class="form-group" style="text-align: end">
+                                        <button class="btn btn-primary" id="btnn" style="    padding: 7px;"> <i class="fa fa-plus-circle"></i> Add Image </button>
                                     </div>
 
 
-                                    <button type="submit" class="btn btn-blue btn-lg full-width">Create Cluster</button>
+
+
+                                    <button type="submit" class="btn btn-blue btn-sm full-width">Update Cluster</button>
                                 </form>
                             </div>
                         </div>
@@ -320,7 +334,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Cluster Name</label>
-                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
+                            <input type="text" name="name" required class="form-control @error('name') is-invalid @enderror"
                                 id="Cluster-Name" placeholder="Enter Cluster Name" required>
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -331,7 +345,7 @@
 
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Cluster Details</label>
-                            <textarea name="detail" class="form-control @error('detail') is-invalid @enderror"
+                            <textarea name="detail" required class="form-control @error('detail') is-invalid @enderror"
                                 id="exampleFormControlTextarea1" rows="3" required>Enter details here</textarea>
                             @error('detail')
                                 <span class="invalid-feedback" role="alert">
@@ -341,7 +355,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Select Cluster Image</label>
-                            <input type="file" name="image[]" class="form-control @error('image') is-invalid @enderror"
+                            <input type="file" required name="image[]" class="form-control @error('image') is-invalid @enderror"
                                 id="Cluster-Name" placeholder="Enter Cluster Name" required>
 
                             @error('image')
@@ -356,8 +370,8 @@
                         <div class="form-group" style="text-align: end">
 
 
-<button class="btn btn-primary" id="btnn"> <i class="fa fa-plus-circle"></i> Add Image </button>
-</div>
+                            <button class="btn btn-primary" id="btnn" style="    padding: 7px;"> <i class="fa fa-plus-circle"></i> Add Image </button>
+                        </div>
                         <div class="form-group">
                             <select class="form-select" name="cluster_type">
                                 <option value="Public">Public </option>
@@ -366,7 +380,7 @@
                         </div>
 
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="exampleFormControlInput1">manager</label>
                             <input list="browsers" name="manager_id" placeholder="Select Manager"
                                 class="form-control @error('manager_id') is-invalid @enderror">
@@ -381,8 +395,8 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>
-                        <button type="submit" class="btn btn-blue btn-lg full-width">Create Cluster</button>
+                        </div> --}}
+                        <button type="submit" class="btn btn-blue btn-sm     full-width">Create Cluster</button>
                     </form>
                 </div>
             </div>
@@ -653,13 +667,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             var counter = 1;
 
 
-            $("#btnn").on("click", function () {
+            $("#btnn").on("click", function() {
 
-   $("#values").append("<div class='form-group'> <input type='file' name='image[]' class='form-control' id='Cluster-Name' required> </div>");
+                $("#values").append(
+                    "<div class='form-group'> <input type='file' name='image[]' class='form-control' id='Cluster-Name' required> </div>"
+                    );
                 // $("#rem-var-div").removeClass("d-none");
                 // $("#count").val(counter);
 

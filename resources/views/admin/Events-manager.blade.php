@@ -80,8 +80,7 @@
 
                                     <form @if (isset($clust->id)) action="{{ url("$role/upd/cluster/$clust->id") }}" @endif method="post">
                                         @csrf
-{{--
-                                        <div class="col-12">
+                                        {{-- <div class="col-12">
                                             <img class="" loading="lazy" @if (isset($clus_img1[0]))  src="{{ asset("images/$clus_img1[0]") }}" @endif alt="author"
                                                 style="    border-radius: 28%;" width="100" height="100">
                                         </div> --}}
@@ -92,7 +91,8 @@
 
 
                                             <div class="wethear-now inline-items">
-                                                <div class="temperature-sensor"> @if (isset($clust->name)) {{ $clust->name }} @endif </div>
+                                                <div class="temperature-sensor" style="font-size: 38px">
+                                                    @if (isset($clust->name)) {{ $clust->name }} @endif </div>
 
 
                                             </div>
@@ -102,13 +102,12 @@
 
 
                                                 @if ((isset($mang->status) && $mang->status == 2) || Auth::user()->role == 'admin')
-
                                                     <div class="climate cls_description">
                                                         <textarea name="detail"
-                                                            style="      margin-top: -10px;  border: none;    color: white;    font-weight: 400;background-color: rgba(0, 0, 0, 0);"
+                                                            style="  font-size: 16px;       margin-top: 15px;  border: none;    color: white;    font-weight: 400;background-color: rgba(0, 0, 0, 0);"
                                                             name="" id="" cols="30" rows="2">
-                                                            @if (isset($clust->detail))  {{ $clust->detail }} @endif
-                                                        </textarea>
+                                                                    @if (isset($clust->detail))  {{ $clust->detail }} @endif
+                                                                </textarea>
 
                                                     </div>
 
@@ -198,11 +197,6 @@
                                                     <use xlink:href="#olymp-plus-icon"></use>
                                                 </svg>
                                             </a>
-
-
-
-
-
                                         @endif
 
                                     </div>
@@ -212,13 +206,12 @@
 
 
                                         @if (isset($event_3))
-{{--
-                                        @if($event_3->id) --}}
+                                            {{-- @if ($event_3->id) --}}
 
 
                                             @foreach ($event_3 as $events)
 
-                                            {{-- @if ($events->Event->cluster_id == $id && $events->Event->user_id == Auth::user()->id ) --}}
+                                                {{-- @if ($events->Event->cluster_id == $id && $events->Event->user_id == Auth::user()->id) --}}
 
                                                 <div class="accordion-item">
                                                     <div class="accordion-header" id="heading{{ $events->id }}">
@@ -336,8 +329,6 @@
                                         @csrf
                                         <p class="user-description position-relative">
                                             @if ((isset($mang->status) && $mang->status == 2) || Auth::user()->role == 'admin')
-
-
                                                 <input class="cls_description1" type="text" style="border: none;"
                                                     @if (isset($clust->cluster_overview)) value="{{ $clust->cluster_overview }}" @endif placeholder="Enter Overview Detail"
                                                     name="cluster_overview" id="">
@@ -346,7 +337,6 @@
 
                                                 <input type="text" style="border: none;" required @if (isset($clust->cluster_overview))   value="{{ $clust->cluster_overview }}" @endif
                                                     placeholder="Enter Overview Detail" id="">
-
                                             @endif
 
 
@@ -396,7 +386,8 @@
                                         <a @if (isset($clus_img1[0]))  href="{{ asset("images/$clus_img1[0]") }}" @endif class="more-photos col col-3-width">
                                             <img loading="lazy" @if (isset($clus_img1[0])) src="{{ asset("images/$clus_img1[0]") }}" @endif alt="photo" width="600"
                                                 height="600">
-                                            <span class="h2"> @if (isset($count_clus)) +{{ $count_clus - 1 }} @endif</span>
+
+                                            <span class="h2"> @if ($count_clus != 100)  {{ $count_clus - 1 }}  @endif</span>
                                         </a>
                                     </div>
 
@@ -481,67 +472,66 @@
 
                                                     {{-- @dd($event) --}}
                                                     @foreach ($event as $events)
-
-                                                        {{-- @if ($events->Event->cluster_id == $id && $events->Event->user_id == Auth::user()->id ) --}}
-
+                                                        {{-- @if ($events->Event->cluster_id == $id && $events->Event->user_id == Auth::user()->id) --}}
 
 
-                                                            @foreach ($joinn as $item)
-                                                                @if ($item->event_id == $events->id)
-                                                                    <?php
-                                                                    $ii = $events->id;
 
-                                                                    ?>
-                                                                @endif
-                                                            @endforeach
+                                                        @foreach ($joinn as $item)
+                                                            @if ($item->event_id == $events->id)
+                                                                <?php
+                                                                $ii = $events->id;
 
-                                                            <div class="ui-block">
-                                                                <article class="hentry post video">
-                                                                    <div class="post__author author vcard inline-items text-center">
+                                                                ?>
+                                                            @endif
+                                                        @endforeach
+
+                                                        <div class="ui-block">
+                                                            <article class="hentry post video">
+                                                                <div
+                                                                    class="post__author author vcard inline-items text-center">
 
 
-                                                                        <div class="author-date">
-                                                                            <a class="h6 post__author-name fn"
-                                                                                href="#" style="font-size: 26px;">{{ $events->name }}
-                                                                                </a>
-                                                                            {{-- created as <a
+                                                                    <div class="author-date">
+                                                                        <a class="h6 post__author-name fn" href="#"
+                                                                            style="font-size: 26px;">{{ $events->name }}
+                                                                        </a>
+                                                                        {{-- created as <a
                                                                                 href="#">{{ $events->Event_type }}</a> --}}
-                                                                            <div class="post__date" style="font-size: 18px;">
-                                                                                <time class="published"
-                                                                                    datetime="2004-07-24T18:18">
-                                                                                    {{ $events->datetimepicker }}
-                                                                                    {{ $events->time }}{{ $events->time_type }}
-                                                                                </time>
-                                                                            </div>
+                                                                        <div class="post__date"
+                                                                            style="font-size: 18px;">
+                                                                            <time class="published"
+                                                                                datetime="2004-07-24T18:18">
+                                                                                {{ $events->datetimepicker }}
+                                                                                {{-- {{ date('h:i A', strtotime($events->time)) }} --}}
+                                                                            </time>
                                                                         </div>
-
                                                                     </div>
 
-                                                                    <p style="font-size: 18px;">Hey <a
-                                                                            href="#">{{ $events->Event->User->first_name }}</a>
-                                                                        {{ $events->description }}</p>
+                                                                </div>
 
-                                                                        <div class="col-12 text-center">
+                                                                <p style="font-size: 18px;">
+                                                                    {{ $events->description }}</p>
 
-                                                                        <img style="width: 34%" loading="lazy"
-                                                                         src="{{ asset("images/$events->image") }}"
+                                                                <div class="col-12 text-center">
+
+                                                                    <img style="width: 34%" loading="lazy"
+                                                                        src="{{ asset("images/$events->image") }}"
                                                                         alt="author" width="100" height="100">
-                                                                        </div>
-                                                                    <div class="col-12 text-end">
+                                                                </div>
+                                                                <div class="col-12 text-end">
 
-                                                                        @if ($ii != $events->id)
-                                                                            <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
-                                                                                class="btn btn-primary"> Join</a>
-                                                                        @else
-                                                                            <a class="btn btn-primary bg-green "
-                                                                                style="border-color:green; color:white">
-                                                                                Joined</a>
+                                                                    @if ($ii != $events->id)
+                                                                        <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
+                                                                            class="btn btn-primary"> Join</a>
+                                                                    @else
+                                                                        <a class="btn btn-primary bg-green "
+                                                                            style="border-color:green; color:white">
+                                                                            Joined</a>
+                                                                    @endif
+                                                                </div>
 
-                                                                        @endif
-                                                                    </div>
-
-                                                                </article>
-                                                            </div>
+                                                            </article>
+                                                        </div>
                                                         {{-- @endif --}}
                                                     @endforeach
 
@@ -554,7 +544,7 @@
                                             aria-labelledby="meeting-tab">
                                             <div class="container">
                                                 <div class="row">
-                                                    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="padding: unset">
                                                         @if (isset($eventtime))
                                                             @foreach ($eventtime as $events)
                                                                 {{-- @if ($events->Event->cluster_id == $id) --}}
@@ -562,61 +552,107 @@
 
 
 
-                                                                    @foreach ($joinn as $item)
-                                                                        @if ($item->event_id == $events->id)
-                                                                            <?php
-                                                                            $ii = $events->id;
+                                                                @foreach ($joinn as $item)
+                                                                    @if ($item->event_id == $events->id)
+                                                                        <?php
+                                                                        $ii = $events->id;
 
-                                                                            ?>
-                                                                        @endif
-                                                                    @endforeach
+                                                                        ?>
+                                                                    @endif
+                                                                @endforeach
 
-                                                                    <div class="ui-block">
-                                                                        <article class="hentry post video">
-                                                                            <div
-                                                                                class="post__author author vcard inline-items">
-                                                                                <img loading="lazy"
-                                                                                    src="{{ asset('img/avatar7-sm.html') }}"
-                                                                                    alt="author" width="42" height="42">
 
-                                                                                <div class="author-date">
-                                                                                    <a class="h6 post__author-name fn"
-                                                                                        href="#">{{ $events->Event->User->first_name }}
-                                                                                        {{ $events->Event->User->last_name }}</a>
-                                                                                    created as <a
-                                                                                        href="#">{{ $events->Event_type }}</a>
-                                                                                    <div class="post__date">
-                                                                                        <time class="published"
-                                                                                            datetime="2004-07-24T18:18">
-                                                                                            {{ $events->datetimepicker }}
-                                                                                            {{ $events->time }}{{ $events->time_type }}
-                                                                                        </time>
-                                                                                    </div>
+
+                                                                <div class="ui-block">
+                                                                    <article class="hentry post video">
+                                                                        <div
+                                                                            class="post__author author vcard inline-items text-center">
+
+
+                                                                            <div class="author-date">
+                                                                                <a class="h6 post__author-name fn" href="#"
+                                                                                    style="font-size: 26px;">{{ $events->name }}
+                                                                                </a>
+                                                                                {{-- created as <a
+                                                                                        href="#">{{ $events->Event_type }}</a> --}}
+                                                                                <div class="post__date"
+                                                                                    style="font-size: 18px;">
+                                                                                    <time class="published"
+                                                                                        datetime="2004-07-24T18:18">
+                                                                                        {{ $events->datetimepicker }}
+                                                                                    </time>
                                                                                 </div>
-
-
                                                                             </div>
 
-                                                                            <p>Hey <a
-                                                                                    href="#">{{ $events->Event->User->first_name }}</a>
-                                                                                {{ $events->description }}</p>
+                                                                        </div>
 
-                                                                            <div class="col-12 text-end">
+                                                                        <p style="font-size: 18px;">
+                                                                            {{ $events->description }}</p>
 
-                                                                                @if ($ii != $events->id)
-                                                                                    <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
-                                                                                        class="btn btn-primary"> Join</a>
-                                                                                @else
-                                                                                    <a class="btn btn-primary bg-green "
-                                                                                        style="border-color:green; color:white">
-                                                                                        Joined</a>
+                                                                        <div class="col-12 text-center">
 
-                                                                                @endif
+                                                                            <img style="width: 34%" loading="lazy"
+                                                                                src="{{ asset("images/$events->image") }}"
+                                                                                alt="author" width="100" height="100">
+                                                                        </div>
+                                                                        <div class="col-12 text-end">
+
+                                                                            @if ($ii != $events->id)
+                                                                                <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
+                                                                                    class="btn btn-primary"> Join</a>
+                                                                            @else
+                                                                                <a class="btn btn-primary bg-green "
+                                                                                    style="border-color:green; color:white">
+                                                                                    Joined</a>
+                                                                            @endif
+                                                                        </div>
+
+                                                                    </article>
+                                                                </div>
+                                                                {{-- <div class="ui-block">
+                                                                    <article class="hentry post video">
+                                                                        <div
+                                                                            class="post__author author vcard inline-items">
+                                                                            <img loading="lazy"
+                                                                                src="{{ asset('img/avatar7-sm.html') }}"
+                                                                                alt="author" width="42" height="42">
+
+                                                                            <div class="author-date">
+                                                                                <a class="h6 post__author-name fn"
+                                                                                    href="#">{{ $events->Event->User->first_name }}
+                                                                                    {{ $events->Event->User->last_name }}</a>
+                                                                                created as <a
+                                                                                    href="#">{{ $events->Event_type }}</a>
+                                                                                <div class="post__date">
+                                                                                    <time class="published"
+                                                                                        datetime="2004-07-24T18:18">
+                                                                                        {{ $events->datetimepicker }}
+                                                                                        {{ $events->time }}{{ $events->time_type }}
+                                                                                    </time>
+                                                                                </div>
                                                                             </div>
 
-                                                                        </article>
-                                                                    </div>
-                                                                {{-- @endif --}}
+
+                                                                        </div>
+
+                                                                        <p>Hey <a
+                                                                                href="#">{{ $events->Event->User->first_name }}</a>
+                                                                            {{ $events->description }}</p>
+
+                                                                        <div class="col-12 text-end">
+
+                                                                            @if ($ii != $events->id)
+                                                                                <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
+                                                                                    class="btn btn-primary"> Join</a>
+                                                                            @else
+                                                                                <a class="btn btn-primary bg-green "
+                                                                                    style="border-color:green; color:white">
+                                                                                    Joined</a>
+                                                                            @endif
+                                                                        </div>
+
+                                                                    </article>
+                                                                </div> --}}
                                                             @endforeach
                                                         @endif
                                                     </div>
@@ -652,7 +688,7 @@
 
                         <div class="ui-block">
                             <div class="ui-block-title">
-                                <h6 class="title">Event Managers</h6>
+                                <h6 class="title">Cluster Managers</h6>
                             </div>
 
 
@@ -661,20 +697,31 @@
 
                             <ul class="widget w-friend-pages-added notification-list friend-requests">
 
-                                @foreach ($manager as $managers)
-
-
+                                @if (isset($manager) && count($manager) > 0)
+                                    {{-- @dd($manager) --}}
+                                    @foreach ($manager as $managers)
+                                        <li class="inline-items">
+                                            <div class="author-thumb">
+                                                <img loading="lazy" src="{{ asset('/img/avatar38-sm.html') }}"
+                                                    alt="author" width="36" height="36">
+                                            </div>
+                                            <div class="notification-event">
+                                                <a href="#"
+                                                    class="h6 notification-friend">{{ $managers->User->first_name }}
+                                                    {{ $managers->User->last_name }}</a>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                @else
                                     <li class="inline-items">
-                                        <div class="author-thumb">
-                                            <img loading="lazy" src="{{ asset('/img/avatar38-sm.html') }}" alt="author"
-                                                width="36" height="36">
+                                        <div class="col-12 text-center">
+                                            <span>
+                                                No data available
+                                            </span>
                                         </div>
-                                        <div class="notification-event">
-                                            <a href="#" class="h6 notification-friend">{{ $managers->User->first_name }}
-                                                {{ $managers->User->last_name }}</a>
-                                        </div>
+
                                     </li>
-                                @endforeach
+                                @endif
 
                             </ul>
 
@@ -691,23 +738,37 @@
                             <!-- W-Activity-Feed -->
 
                             <ul class="widget w-activity-feed notification-list">
-                                @foreach ($user as $users)
+                                {{-- @dd(count($user)) --}}
+                                @if (count($user) > 1)
+                                    @foreach ($user as $users)
+                                        @if ($users->User->role != 'admin')
 
-                                    <li>
-                                        <div class="author-thumb">
-                                            <img loading="lazy" src="{{ asset('img/avatar49-sm.html') }}" alt="author"
-                                                width="28" height="28">
+                                            <li>
+                                                <div class="author-thumb">
+                                                    <img loading="lazy" src="{{ asset('img/avatar49-sm.html') }}"
+                                                        alt="author" width="28" height="28">
+                                                </div>
+                                                <div class="notification-event">
+                                                    <b style="    font-size: 14px;"> {{ $users->User->first_name }}
+                                                        {{ $users->User->last_name }}</b>
+                                                </div>
+                                            </li>
+                                        @endif
+                                    @endforeach
+
+                                @else
+                                    <li class="inline-items">
+                                        <div class="col-12 text-center">
+                                            <span>
+                                                No data available
+                                            </span>
                                         </div>
-                                        <div class="notification-event">
-                                            <b style="    font-size: 14px;"> {{ $users->User->first_name }}
-                                                {{ $users->User->last_name }}</b>
-                                        </div>
+
                                     </li>
+                                @endif
 
-                                @endforeach
 
-
-                                @if ($user->count() > 0 && Auth::user()->role == 'admin')
+                                @if ($user->count() > 3 && Auth::user()->role == 'admin')
                                     <li style=" background: #2d2d2d; padding: 7px;">
                                         <div class="col-12">
                                             <a href="{{ url("$role/view", [$id]) }}"
@@ -734,7 +795,7 @@
 
                         <div class="ui-block">
                             <div class="ui-block-title">
-                                <h6 class="title">Approval Users</h6>
+                                <h6 class="title">Approved Users</h6>
                                 {{-- <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a> --}}
                             </div>
 
@@ -744,27 +805,38 @@
 
                             <ul class="widget w-friend-pages-added notification-list friend-requests">
 
-                                @if(isset($pending_user))
-                                @foreach ($pending_user as $pending_users)
 
+                                @if (isset($pending_user) && count($pending_user) > 0)
+                                    @foreach ($pending_user as $pending_users)
+
+                                        <li class="inline-items">
+                                            <div class="author-thumb">
+                                                <img loading="lazy" src="{{ asset('img/avatar49-sm.html') }}"
+                                                    alt="author" width="36" height="36">
+                                            </div>
+                                            <div class="notification-event">
+                                                <a href="#"
+                                                    class="h6 notification-friend">{{ $pending_users->User->first_name }}
+                                                    {{ $pending_users->User->last_name }}</a>
+                                                {{-- <span class="chat-message-item">8 Friends in Common</span> --}}
+                                            </div>
+                                            <span class="notification-icon">
+
+                                                <a @if (auth::user()->role == 'admin') href="{{ url("$role/aprroved", [$pending_users->id]) }}" @endif class="accept-request">
+                                                    <i class="fas fa-check"></i>
+                                                </a>
+                                            </span>
+                                        </li>
+                                    @endforeach
+                                @else
                                     <li class="inline-items">
-                                        <div class="author-thumb">
-                                            <img loading="lazy" src="{{ asset('img/avatar49-sm.html') }}" alt="author"
-                                                width="36" height="36">
+                                        <div class="col-12 text-center">
+                                            <span>
+                                                No data available
+                                            </span>
                                         </div>
-                                        <div class="notification-event">
-                                            <a href="#" class="h6 notification-friend">{{ $pending_users->User->first_name }}
-                                                {{ $pending_users->User->last_name }}</a>
-                                            {{-- <span class="chat-message-item">8 Friends in Common</span> --}}
-                                        </div>
-                                        <span class="notification-icon">
 
-                                            <a @if(auth::user()->role == 'admin') href="{{ url("$role/aprroved",[$pending_users->id]) }}" @endif class="accept-request">
-                                                <i class="fas fa-check"></i>
-                                            </a>
-                                        </span>
                                     </li>
-                                @endforeach
                                 @endif
 
                             </ul>
@@ -800,7 +872,8 @@
                 <div class="modal-body">
                     <form action="{{ url("$role/add/event") }}" enctype="multipart/form-data" method="POST">
                         @csrf
-                        <div class="form-group label-floating is-select">
+
+                        <div class="form-group  is-select">
                             <label class="control-label">Personal Event</label>
                             <select class="form-select" name="Event_type">
                                 <option value="Public">Public Event</option>
@@ -808,10 +881,9 @@
                             </select>
                         </div>
 
-                        <div class="form-group label-floating">
+                        <div class="form-group">
                             <label class="control-label">Event Name</label>
-                            <input class="form-control" name="name" placeholder=""
-                                value="Take Querty to the Veterinarian" type="text">
+                            <input class="form-control" name="name" placeholder="Enter Event Name" type="text">
                         </div>
                         {{-- @dd($mang->cluster_id) --}}
                         <input type="hidden" value="@if (isset($mang->id)) {{ $mang->id }} @endif" name="mangerID" id="">
@@ -820,78 +892,46 @@
 
 
 
-                        <div class="form-group label-floating is-empty">
+                        <div class="form-group  is-empty">
                             <label class="control-label">Event Location</label>
-                            <input class="form-control" placeholder="" name="location" value="" type="text">
+                            <input class="form-control" required placeholder="Enter Event Location" name="location" value=""
+                                type="text">
                         </div>
 
-                        <div class="form-group date-time-picker label-floating">
-                            <label class="control-label">Event Date</label>
-                            <input type="date" name="datetimepicker" name="date" value="26/03/2016">
-                            {{-- <span class="input-group-addon">
-                                <svg class="olymp-calendar-icon icon">
-                                    <use xlink:href="#olymp-calendar-icon"></use>
-                                </svg>
-                            </span> --}}
-                        </div>
 
-                        <div class="form-group date-time-picker label-floating">
+
+                        <div class="form-group date-time-picker">
                             <label class="control-label">Image</label>
-                            <input type="file" name="image" value="">
+                            <input type="file" required name="image" class="form-control" value="">
 
                         </div>
 
                         <div class="row">
-                            <div class="col col-lg-3 col-md-3 col-sm-12 col-12">
-                                <div class="form-group label-floating">
+                            {{-- <div class=" col-lg-6 col-md-6 col-sm-12 col-6">
+                                <div class="form-group ">
                                     <label class="control-label">Event Time</label>
-                                    <input class="form-control" name="time" placeholder="" value="09:00" type="text">
+                                    <input class="form-control" style="height: 40px;" name="time" class="form-control"
+                                        type="datetime-local">
+                                </div>
+                            </div> --}}
+
+                            <div class=" col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="form-group date-time-picker">
+                                    <label class="control-label">Event Date</label>
+                                    <input required  type="datetime-local" style="height: 40px;" name="datetimepicker" class="form-control"
+                                        name="date">
+
                                 </div>
                             </div>
-                            <div class="col col-lg-3 col-md-3 col-sm-12 col-12">
-                                <div class="form-group label-floating is-select">
-                                    <label class="control-label">AM-PM</label>
-                                    <select class="form-select" name="time_type">
-                                        <option value="AM">AM</option>
-                                        <option value="PM">PM</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="form-group label-floating is-select">
-                                    <label class="control-label">Timezone</label>
-                                    <select class="form-select" name="timezone">
-                                        <option value="US">US (UTC-8)</option>
-                                        <option value="UK">UK (UTC-0)</option>
-                                    </select>
-                                </div>
-                            </div>
+
 
                         </div>
 
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Event Description"
-                                name="description">I need to take Querty for a check up and ask the doctor if he needs a new tank.</textarea>
+                            <textarea class="form-control" required placeholder="Event Description" name="description"></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <svg class="olymp-happy-face-icon">
-                                <use xlink:href="#olymp-happy-face-icon"></use>
-                            </svg>
 
-                            <select class="form-select" name="type_Emj">
-                                <option value="Green" title="Green Goo Rock">Green Goo Rock</option>
-
-                                <option value="Mathilda" title="Mathilda Brinker">Mathilda Brinker</option>
-
-                                <option value="Marina" title="Marina Valentine">Marina Valentine</option>
-
-                                <option value="Dave" title="Dave Marinara">Dave Marinara</option>
-
-                                <option value="Rachel" title="Rachel Howlett">Rachel Howlett</option>
-
-                            </select>
-                        </div>
 
                         <input type="submit" class="btn btn-primary " value="Create Event" name="" id="">
                         {{-- <button>Create Event</button> --}}
@@ -936,7 +976,6 @@
                             </button>
                         </div>
                         @if ((isset($mang->status) && $mang->status == 2) || Auth::user()->role == 'admin')
-
                             <input type="submit" class="btn btn-primary " value="Update" name="" id="">
                         @endif
                         {{-- <button>Create Event</button> --}}

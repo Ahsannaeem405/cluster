@@ -291,8 +291,7 @@ $role = Auth::user()->role;
 			<div class="control-block">
 				<div class="author-page author vcard inline-items">
 					<div class="author-thumb">
-						<img alt="author" src="{{asset('img/author-page.html')}}" width="36" height="36" class="avatar">
-						<span class="icon-status online"></span>
+                        <i class="fa fa-icon"></i>
 					</div>
 					<a href="#" class="author-name fn">
 						<div class="author-title">
@@ -460,13 +459,13 @@ $role = Auth::user()->role;
 
 			<div class="author-page author vcard inline-items more">
 				<div class="author-thumb">
-					<img alt="author" src="{{asset('img/author-page.html')}}" width="36" height="36" class="avatar">
-					<span class="icon-status online"></span>
+                    <i class="fa fa-icon"></i>
 					<div class="more-dropdown more-with-triangle">
 						<div class="mCustomScrollbar" data-mcs-theme="dark">
 							<div class="ui-block-title ui-block-title-small">
-								<h6 class="title">Your Account</h6>
+
 							</div>
+
 
 							<ul class="account-settings">
 								<li>
@@ -516,85 +515,12 @@ $role = Auth::user()->role;
 							<use xlink:href="#olymp-dropdown-arrow-icon"></use>
 						</svg>
 					</div>
-					<span class="author-subtitle">web developer</span>
 				</a>
 			</div>
 			<div class="control-icon more has-items mr-5">
-				<i class="far fa-bell text-white">
-					<!-- <use xlink:href="#olymp-thunder-icon"></use> -->
-				</i>
-
-				<div class="label-avatar bg-primary">8</div>
-
-				<div class="more-dropdown more-with-triangle triangle-top-center">
-					<div class="ui-block-title ui-block-title-small">
-						<h6 class="title">Notifications</h6>
-						<a href="#">Mark all as read</a>
-					</div>
-
-					<div class="mCustomScrollbar" data-mcs-theme="dark">
-						<ul class="notification-list">
-							<li>
-								<div class="author-thumb">
-									<img loading="lazy" src="img/avatar62-sm.html" width="34" height="34" alt="author">
-								</div>
-								<div class="notification-event">
-									<div>
-										<a href="#" class="h6 notification-friend">Mathilda Brinker</a>
-										add new event
-										<!-- <a href="#" class="notification-link">profile status</a>. -->
-									</div>
-									<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
-								</div>
-								<span class="notification-icon">
-										<!-- <svg class="olymp-comments-post-icon"><use xlink:href="#olymp-comments-post-icon"></use></svg> -->
-										<i class="fas fa-ellipsis-v"></i>
-									</span>
-							</li>
-							<li>
-								<div class="author-thumb">
-									<img loading="lazy" src="img/avatar62-sm.html" width="34" height="34" alt="author">
-								</div>
-								<div class="notification-event">
-									<div>
-										<a href="#" class="h6 notification-friend">Mathilda Brinker</a>
-										add new event
-										<!-- <a href="#" class="notification-link">profile status</a>. -->
-									</div>
-									<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
-								</div>
-								<span class="notification-icon">
-										<!-- <svg class="olymp-comments-post-icon"><use xlink:href="#olymp-comments-post-icon"></use></svg> -->
-										<i class="fas fa-ellipsis-v"></i>
-									</span>
-							</li>
-
-							<li>
-								<div class="author-thumb">
-									<img loading="lazy" src="img/avatar62-sm.html" width="34" height="34" alt="author">
-								</div>
-								<div class="notification-event">
-									<div>
-										<a href="#" class="h6 notification-friend">Mathilda Brinker</a>
-										add new event
-										<!-- <a href="#" class="notification-link">profile status</a>. -->
-									</div>
-									<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
-								</div>
-								<span class="notification-icon">
-										<!-- <svg class="olymp-comments-post-icon"><use xlink:href="#olymp-comments-post-icon"></use></svg> -->
-										<i class="fas fa-ellipsis-v"></i>
-									</span>
-							</li>
 
 
 
-
-						</ul>
-					</div>
-
-					<a href="#" class="view-all bg-primary">View All Notifications</a>
-				</div>
 			</div>
 
 		</div>
@@ -612,15 +538,7 @@ $role = Auth::user()->role;
 	<div class="header-content-wrapper float-end">
 		<ul class="nav nav-tabs mobile-notification-tabs" id="mobile-notification-tabs" role="tablist">
 
-			<li class="nav-item" role="presentation">
-				<a class="nav-link" id="notification-tab" data-bs-toggle="tab" href="#notification" role="tab" aria-controls="notification" aria-selected="false">
-					<div class="control-icon has-items">
-						<i class="far fa-bell text-white">
-						</i>
-						<div class="label-avatar bg-primary">8</div>
-					</div>
-				</a>
-			</li>
+
 		</ul>
 	</div>
 
