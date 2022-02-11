@@ -521,7 +521,7 @@ $i = 0;
                                                         </div>
                                                     @endforeach
                                                     @else
-                                                    <div class="jumbotron jumbotron-fluid">
+                                                    <div class="jumbotron jumbotron-fluid" style="    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
                                                         <div class="container">
                                                             <h5 class="text-center">No Event Available</h5>
                                                         </div>
@@ -646,7 +646,7 @@ $i = 0;
                                                                 </div> --}}
                                                             @endforeach
                                                             @else
-                                                            <div class="jumbotron jumbotron-fluid">
+                                                            <div class="jumbotron jumbotron-fluid" style="    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
                                                                 <div class="container">
                                                                     <h5 class="text-center">No Event Available</h5>
                                                                 </div>
