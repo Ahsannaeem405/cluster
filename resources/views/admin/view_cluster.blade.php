@@ -143,7 +143,7 @@
                                     <div class="friend-avatar">
                                         <div class="author-thumb">
                                             <img loading="lazy" src="{{ asset('images') }}/{{ $clus_img1[0] }}"
-                                                alt="Olympus" width="34" height="34">
+                                                alt="" width="34" height="34">
                                         </div>
                                         <div class="author-content">
                                             {{-- @dd($list) --}}
