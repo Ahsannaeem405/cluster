@@ -20,9 +20,9 @@ $role = Auth::user()->role;
 	</div>
 </div>
 	<!-- Your Account Personal Information -->
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
-			<div class=" col-12 responsive-display-none">
+			<div class=" col-12 responsive-display-none px-4">
 				<div class="ui-block responsive-flex">
 					<div class="ui-block-title">
 
@@ -62,7 +62,6 @@ $role = Auth::user()->role;
 					</div>
 				</div>
 			</div>
-			<div class=" col-12">
                 @if(session()->has('message'))
                 <div class="alert alert-success">
                     {{ session()->get('message') }}
@@ -71,7 +70,7 @@ $role = Auth::user()->role;
 				<div class="tab-content" id="calendar-events-tabs-content">
 					<div class="tab-pane fade show active" id="news-letter" role="tabpanel"
 						aria-labelledby="news-letter-tab">
-						<div class="container">
+						<div class="container-fluid">
 							<div class="row">
 								<div class="col-12">
 									<div class="ui-block">
@@ -142,7 +141,7 @@ $role = Auth::user()->role;
 					</div>
 
 					<div class="tab-pane fade" id="meeting" role="tabpanel" aria-labelledby="meeting-tab">
-						<div class="container">
+						<div class="container-fluid">
 							<div class="row">
 								<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 									<div class="ui-block">
@@ -211,7 +210,7 @@ $role = Auth::user()->role;
 						</div>
 					</div>
 					<div class="tab-pane fade" id="offer" role="tabpanel" aria-labelledby="offer-tab">
-						<div class="container">
+						<div class="container-fluid">
 							<div class="row">
 								<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 									<div class="ui-block">
@@ -281,7 +280,7 @@ $role = Auth::user()->role;
 						</div>
 					</div>
 					<div class="tab-pane fade" id="marketing" role="tabpanel" aria-labelledby="marketing-tab">
-						<div class="container">
+						<div class="container-fluid">
 							<div class="row">
 								<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 									<div class="ui-block">

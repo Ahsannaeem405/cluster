@@ -593,6 +593,12 @@ class ClusterController extends Controller
     public function addUser(Request $request)
     {
         //dd($request->input());
+        $request->validate([
+            'first_name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+               
+        ]);
         $user = new User();
         $user->first_name = $request->first_name;
         $user->email = $request->email;
@@ -605,7 +611,10 @@ class ClusterController extends Controller
     public function updateUser(Request $request, $id)
     {
         // dd($id);
-
+        $request->validate([
+            'first_name' => 'required',
+            'email' => 'required',               
+        ]);
         $user = User::find($id);
 
         $user->update([

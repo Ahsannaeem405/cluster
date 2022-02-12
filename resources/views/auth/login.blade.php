@@ -1,6 +1,6 @@
 
 @php
-	//@dd($cluster_id);
+// @dd($event_id, $_SERVER['REQUEST_URI'] == "/register/event/$event_id");
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -104,7 +104,7 @@
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs d-flex justify-content-between" id="registration-form-tabs" role="tablist">
 					<li class="nav-item w-50" role="presentation">
-						<a class="nav-link active d-flex justify-content-center align-items-center" id="login-tab" data-bs-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">
+						<a class="nav-link @if($_SERVER['REQUEST_URI'] == '/login?signup') active  @endif  @if(isset($cluster_id)) @if($_SERVER['REQUEST_URI'] == "/login/cluster/$cluster_id") active @endif @endif  @if(isset($event_id)) @if($_SERVER['REQUEST_URI'] == "/register/event/$event_id") active @endif @endif d-flex justify-content-center align-items-center" id="login-tab" data-bs-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">
 							 <svg class="olymp-login-icon mx-2">
 								 <use xlink:href="#olymp-login-icon"></use> 
 								 
@@ -113,15 +113,17 @@
 						</a>
 					</li>
 					<li class="nav-item w-50" role="presentation">
-						<a class="nav-link  d-flex justify-content-center align-items-center" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+						<a class="nav-link  @if($_SERVER['REQUEST_URI'] == '/login?signin' ) active @endif d-flex justify-content-center align-items-center" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
 							<svg class="olymp-register-icon mx-2"><use xlink:href="#olymp-register-icon"></use></svg> Login
 						</a>
 					</li>
 				</ul>
 
 				<!-- Tab panes -->
+				@php
+				@endphp
 				<div class="tab-content" id="registration-form-tabs-content">
-					<div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+					<div class="tab-pane fade  @if($_SERVER['REQUEST_URI'] == '/login?signup' ) show active  @endif @if(isset($cluster_id)) @if($_SERVER['REQUEST_URI'] == "/login/cluster/$cluster_id" ) show active  @endif @endif @if(isset($event_id)) @if($_SERVER['REQUEST_URI'] == "/register/event/$event_id") show active @endif @endif" id="login" role="tabpanel" aria-labelledby="login-tab">
 						<div class="title h6">Register to new account</div>
                             <form class="content" method="POST" action="{{ route('register') }}">
                                 @csrf
@@ -230,37 +232,26 @@
 
 										</div>
 									</div>
-									<div class="form-group label-floating is-select "  id="cluster">
+									<div class="form-group"  id="cluster">
 									<label class="control-label">Cluster</label>
-									<select class="clusterMultiple" name="cluster[]" multiple="multiple">
+									<select class="clusterMultiple" name="cluster[]" multiple="multiple" >
+
 										@foreach($cluster as $list)
 										<option value="{{$list->id}}" @if(isset($cluster_id)) @if($cluster_id == $list->id) selected @endif @endif>{{$list->name}}</option>
 							
 										@endforeach
 									  </select>
 									</div>
-									<div class="form-group label-floating is-select "  id="event"  >
+									<div class="form-group "  id="event"  >
 										<label class="control-label">Event</label>
 										<select class="eventMultiple" name="event[]" multiple="multiple">
 											@foreach($event as $listE)
-											<option value="{{$listE->id}}" @if(isset($event_id)) @if($event_id == $listE->id) selected @endif @endif>{{$listE->name}}</option>
+											<option value="{{$listE->id}}"  @if(isset($event_id)) @if($event_id == $listE->id) selected @endif @endif>{{$listE->name}}</option>
 								
 											@endforeach
 										  </select>
 										</div>
-										@if ($message = Session::get('error'))
-										<div class=" text-danger ">    
-											<strong>{{ $message }}</strong>
-										</div>
-										@endif
-									{{-- <div class="remember">
-										<div class="checkbox">
-											<label>
-												<input name="optionsCheckboxes" type="checkbox" required 
-												I accept the <a href="#">Terms and Conditions</a> of the website
-											</label>
-										</div>
-									</div> --}}
+										
 
                                     <button type="submit" class="btn btn-blue btn-lg full-width">
                                         {{ __('Complete Registration!') }}
@@ -273,7 +264,7 @@
 						@endif
 					</div>
 
-					<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+					<div class="tab-pane fade  @if($_SERVER['REQUEST_URI'] == '/login?signin') show active @endif" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 						<div class="title h6">Login to your Account</div>
 						{{-- //<form class="content"> --}}
                             <form class="content" method="POST" action="{{ route('login') }}">
@@ -304,13 +295,7 @@
 
 									<div class="remember">
 
-										<div class="checkbox">
-                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                            <label class="form-check-label" for="remember">
-                                                {{ __('Remember Me') }}
-                                            </label>
-										</div>
+									
 										@if (Route::has('password.request'))
 										<a class="btn btn-link forgot" href="{{ route('password.request') }}">
 											{{ __('Forgot Your Password?') }}
@@ -323,7 +308,7 @@
                                         {{ __('Login') }}
                                     </button>
 
-									<p>Don’t you have an account? <a href="{{ route('login') }}">Register Now!</a> it’s really simple and you can start enjoing all the benefits!</p>
+									<p>Don’t you have an account? <a href="{{ route('login') }}?signup">Register Now!</a> it’s really simple and you can start enjoing all the benefits!</p>
 								</div>
 							</div>
 						</form>
@@ -422,13 +407,13 @@
 		{
 			$('#event').show();
 			$('#cluster').hide();
-			$(".eventMultiple").attr("required", "true");
+			$(".eventMultiple").attr("required", true);
 
 
 
 		}else{
 			$('#event').hide();
-			$(".clusterMultiple").attr("required", "true");
+			$(".clusterMultiple").attr("required", true);
 
 
 		}
@@ -436,13 +421,17 @@
 		$('#member').click(function(){
 		$('#cluster').show();
 		$('#event').hide();
-		$(".clusterMultiple").attr("required", "true");
+		$(".clusterMultiple").attr("required", true);
+		$(".eventMultiple").attr("required", false);
+
 		});
 		
 		$('#user').click(function(){
 		$('#cluster').hide();
 		$('#event').show();
-		$(".eventMultiple").attr("required", "true");
+		 $(".eventMultiple").attr("required", true);
+		$(".clusterMultiple").attr("required", false);
+
 
 		});
 

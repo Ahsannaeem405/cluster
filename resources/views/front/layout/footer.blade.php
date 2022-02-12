@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-lg-3 col-6">
                     <div class="footer-logo text-lg-center text-start">
-                        <img loading="lazy" src="img/white-logo.png" alt="footer-logo">
+                        <img loading="lazy" src="{{asset('img/white-logo.png')}}" alt="footer-logo">
                     </div>
 
                     <h2>Thank You for Visiting Our website</h2>
@@ -35,12 +35,12 @@
                         <div class="d-flex " style="gap:10px;">
                             <a href="#">
                                 <div class="footer-links">
-                                    <i class="fas fa-envelope"></i>
+                                    <i class="fa fa-envelope"></i>
                                 </div>
                             </a>
                             <a href="#">
                                 <div class="footer-links">
-                                    <i class="fas fa-phone-alt"></i>
+                                    <i class="fa fa-phone"></i>
                                 </div>
                             </a>
                         </div>
@@ -52,7 +52,9 @@
             <div class="row footer-buttom">
                 <div class="col-12">
                     <p class="text-center text-white">
-                        Copyrights © 2022-2023 All Rights Reserved by website.
+                        @if(isset($setting)){{$setting->footer_name}} 
+							@else  Copyrights © 2022-2023 All Rights Reserved by website.
+                            @endif
                     </p>
                 </div>
             </div>

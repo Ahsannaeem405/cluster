@@ -31,7 +31,7 @@ $role = Auth::user()->role;
 
     <!-- Main Content Groups -->
 
-    <div class="container">
+    <div class="container-fluid">
         @if ($message = Session::get('success'))
             <div class="alert alert-success ">
                 <strong>{{ $message }}</strong>

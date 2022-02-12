@@ -40,7 +40,11 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    public function memberCluster()
+    {
+        return $this->hasMany('App\Models\JoinCluster', 'user_id');
+    }
+ 
     /**
      * The attributes that should be cast.
      *
