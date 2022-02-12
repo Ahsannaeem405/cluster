@@ -87,7 +87,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::post('upd/cluster/{id}', [ClusterController::class, 'upd_cluster']);
 
-        Route::get('deleteCluster/{id}', [ClusterController::class, 'deleteCluster']);
+        Route::post('deleteCluster/{id}', [ClusterController::class, 'deleteCluster']);
         Route::get('/view_cluster', [ClusterController::class, 'viewCluster']);
         // Route::get('/view/{id}', [ClusterController::class, 'view']);
 
@@ -117,7 +117,8 @@ Route::middleware(['auth'])->group(function () {
         ///////////////////////////////setting start
         Route::get('/setting', [SettingController::class, 'settings']);
 
-        
+        Route::post('upd/cluster_overview/{id}', [ClusterController::class, 'cluster_overview']);
+
         ///////////////////////////////setting end
         Route::view('/cluster_manager', 'admin/cluster_manager');
         Route::get('/view/{id}', [ClusterController::class, 'view']);
@@ -162,7 +163,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-        Route::get('deleteCluster/{id}', [ClusterController::class, 'deleteCluster']);
+        Route::post('deleteCluster/{id}', [ClusterController::class, 'deleteCluster']);
         Route::get('/admin/view_cluster', [ClusterController::class, 'viewCluster']);
         Route::get('/view/cluster/{id}', [ClusterController::class, 'view_cluster']);
         Route::post('/add/event/', [ClusterController::class, 'add_event']);
@@ -189,7 +190,7 @@ Route::middleware(['auth'])->group(function () {
         ///////////////////////////////setting start
         Route::get('/setting', [SettingController::class, 'settings']);
 
-        
+
         ///////////////////////////////setting end
         Route::view('/cluster_manager', 'admin/cluster_manager');
 
@@ -197,7 +198,7 @@ Route::middleware(['auth'])->group(function () {
         ////////////////////////services start
         Route::get('/services', [ServiceController::class, 'view_service']);
         Route::post('/applyService', [ServiceController::class, 'applyService']);
-     
+
         ////////////////////////services end
         Route::post('/AddCompany', [ServiceController::class, 'AddCompany']);
         Route::post('/UpdateCompany/{id}', [ServiceController::class, 'UpdateCompany']);

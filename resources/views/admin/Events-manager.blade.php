@@ -106,8 +106,8 @@
                                                         <textarea name="detail"
                                                             style="  font-size: 16px;       margin-top: 15px;  border: none;    color: white;    font-weight: 400;background-color: rgba(0, 0, 0, 0);"
                                                             name="" id="" cols="30" rows="2">
-                                                                    @if (isset($clust->detail))  {{ $clust->detail }} @endif
-                                                                </textarea>
+                                                                        @if (isset($clust->detail))  {{ $clust->detail }} @endif
+                                                                    </textarea>
 
                                                     </div>
 
@@ -203,20 +203,28 @@
 
                                     <div class="accordion day-event" id="accordionExample" data-month="12" data-day="2">
 
+<?php
 
+$i = 0;
+?>
 
                                         @if (isset($event_3))
                                             {{-- @if ($event_3->id) --}}
 
 
                                             @foreach ($event_3 as $events)
+                                            <?php
+                                           $i = $i + 1;
+
+
+?>
 
                                                 {{-- @if ($events->Event->cluster_id == $id && $events->Event->user_id == Auth::user()->id) --}}
 
                                                 <div class="accordion-item">
                                                     <div class="accordion-header" id="heading{{ $events->id }}">
                                                         <div class="event-time">
-                                                            <time datetime="2004-07-24T18:18">{{ $events->time }}
+                                                            <time datetime="2004-07-24T18:18">{{ date('H:i A', strtotime($events->datetimepicker) )   }}
                                                                 {{ $events->time_type }}</time>
 
                                                         </div>
@@ -229,18 +237,12 @@
                                                             <svg width="8" height="8">
                                                                 <use xlink:href="#olymp-dropdown-arrow-icon"></use>
                                                             </svg>
-                                                            <span class="event-status-icon" data-bs-toggle="modal"
-                                                                data-bs-target="#public-event">
-                                                                <svg class="olymp-calendar-icon" data-bs-toggle="tooltip"
-                                                                    data-bs-placement="top"
-                                                                    data-bs-original-title="UNCOMPLETED">
-                                                                    <use xlink:href="#olymp-calendar-icon"></use>
-                                                                </svg>
-                                                            </span>
+
                                                         </button>
                                                     </div>
                                                     <div id="collapse{{ $events->id }}"
-                                                        class="accordion-collapse collapse"
+                                                        {{-- @dd($ii) --}}
+                                                     @if($i == 1)   class="accordion-collapse collapse show" @else class="accordion-collapse collapse" @endif
                                                         aria-labelledby="heading{{ $events->id }}"
                                                         data-bs-parent="#accordionExample">
                                                         <div class="accordion-body">
@@ -251,18 +253,6 @@
                                                                 </svg>
                                                                 <span> {{ $events->location }}</span>
                                                             </div>
-
-                                                            <ul class="friends-harmonic inline-items">
-
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <img loading="lazy"
-                                                                            src="{{ asset("images/$events->image") }}"
-                                                                            alt="friend" width="28" height="28">
-                                                                    </a>
-                                                                </li>
-
-                                                            </ul>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -383,11 +373,11 @@
                                                 @endif
                                             @endforeach
                                         @endif
-                                        <a @if (isset($clus_img1[0]))  href="{{ asset("images/$clus_img1[0]") }}" @endif class="more-photos col col-3-width">
+                                        <a @if (isset($clus_img1[0]))  href="{{ asset("images/$clus_img1[0]") }}" @endif   class="more-photos col col-3-width" >
                                             <img loading="lazy" @if (isset($clus_img1[0])) src="{{ asset("images/$clus_img1[0]") }}" @endif alt="photo" width="600"
                                                 height="600">
 
-                                            <span class="h2"> @if ($count_clus != 100)  {{ $count_clus - 1 }}  @endif</span>
+                                            <span class="h2"> @if ($count_clus != 100 && $count_clus != 1)  {{ $count_clus - 1 }}  @endif</span>
                                         </a>
                                     </div>
 
@@ -470,11 +460,9 @@
                                                 <div class="col-12">
 
 
-                                                    {{-- @dd($event) --}}
+                                                 @if(count($event) > 0)
+
                                                     @foreach ($event as $events)
-                                                        {{-- @if ($events->Event->cluster_id == $id && $events->Event->user_id == Auth::user()->id) --}}
-
-
 
                                                         @foreach ($joinn as $item)
                                                             @if ($item->event_id == $events->id)
@@ -495,8 +483,7 @@
                                                                         <a class="h6 post__author-name fn" href="#"
                                                                             style="font-size: 26px;">{{ $events->name }}
                                                                         </a>
-                                                                        {{-- created as <a
-                                                                                href="#">{{ $events->Event_type }}</a> --}}
+
                                                                         <div class="post__date"
                                                                             style="font-size: 18px;">
                                                                             <time class="published"
@@ -532,8 +519,15 @@
 
                                                             </article>
                                                         </div>
-                                                        {{-- @endif --}}
                                                     @endforeach
+                                                    @else
+                                                    <div class="jumbotron jumbotron-fluid" style="    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
+                                                        <div class="container">
+                                                            <h5 class="text-center">No Event Available</h5>
+                                                        </div>
+                                                      </div>
+
+                                                    @endif
 
                                                 </div>
                                             </div>
@@ -544,14 +538,10 @@
                                             aria-labelledby="meeting-tab">
                                             <div class="container">
                                                 <div class="row">
-                                                    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="padding: unset">
-                                                        @if (isset($eventtime))
+                                                    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
+                                                        style="padding: unset">
+                                                        @if (isset($eventtime) && count($eventtime) >0)
                                                             @foreach ($eventtime as $events)
-                                                                {{-- @if ($events->Event->cluster_id == $id) --}}
-
-
-
-
                                                                 @foreach ($joinn as $item)
                                                                     @if ($item->event_id == $events->id)
                                                                         <?php
@@ -596,6 +586,7 @@
                                                                                 alt="author" width="100" height="100">
                                                                         </div>
                                                                         <div class="col-12 text-end">
+                                                                            {{-- @dd($events) --}}
 
                                                                             @if ($ii != $events->id)
                                                                                 <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
@@ -654,6 +645,12 @@
                                                                     </article>
                                                                 </div> --}}
                                                             @endforeach
+                                                            @else
+                                                            <div class="jumbotron jumbotron-fluid" style="    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
+                                                                <div class="container">
+                                                                    <h5 class="text-center">No Event Available</h5>
+                                                                </div>
+                                                              </div>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -731,7 +728,7 @@
                         <div class="ui-block text-center">
 
                             <div class="ui-block-title">
-                                <h6 class="title " style="text-align: start">Activity Users</h6>
+                                <h6 class="title " style="text-align: start"> Member</h6>
                             </div>
 
 
@@ -741,6 +738,7 @@
                                 {{-- @dd(count($user)) --}}
                                 @if (count($user) > 1)
                                     @foreach ($user as $users)
+                                        {{-- @dd($users) --}}
                                         @if ($users->User->role != 'admin')
 
                                             <li>
@@ -793,16 +791,10 @@
 
 
 
-                        <div class="ui-block">
+                        {{-- <div class="ui-block">
                             <div class="ui-block-title">
                                 <h6 class="title">Approved Users</h6>
-                                {{-- <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="#olymp-three-dots-icon"></use></svg></a> --}}
                             </div>
-
-
-
-                            <!-- W-Action -->
-
                             <ul class="widget w-friend-pages-added notification-list friend-requests">
 
 
@@ -818,7 +810,6 @@
                                                 <a href="#"
                                                     class="h6 notification-friend">{{ $pending_users->User->first_name }}
                                                     {{ $pending_users->User->last_name }}</a>
-                                                {{-- <span class="chat-message-item">8 Friends in Common</span> --}}
                                             </div>
                                             <span class="notification-icon">
 
@@ -841,8 +832,7 @@
 
                             </ul>
 
-                            <!-- ... end W-Action -->
-                        </div>
+                        </div> --}}
 
                     </aside>
 
@@ -885,7 +875,7 @@
                             <label class="control-label">Event Name</label>
                             <input class="form-control" name="name" placeholder="Enter Event Name" type="text">
                         </div>
-                        {{-- @dd($mang->cluster_id) --}}
+                        {{-- @dd($mang->id) --}}
                         <input type="hidden" value="@if (isset($mang->id)) {{ $mang->id }} @endif" name="mangerID" id="">
 
                         <input type="hidden" value="@if (isset($mang->cluster_id)) {{ $mang->cluster_id }} @endif" name="cluster_id" id="">
@@ -894,8 +884,8 @@
 
                         <div class="form-group  is-empty">
                             <label class="control-label">Event Location</label>
-                            <input class="form-control" required placeholder="Enter Event Location" name="location" value=""
-                                type="text">
+                            <input class="form-control" required placeholder="Enter Event Location" name="location"
+                                value="" type="text">
                         </div>
 
 
@@ -918,8 +908,8 @@
                             <div class=" col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="form-group date-time-picker">
                                     <label class="control-label">Event Date</label>
-                                    <input required  type="datetime-local" style="height: 40px;" name="datetimepicker" class="form-control"
-                                        name="date">
+                                    <input required type="datetime-local" style="height: 40px;" name="datetimepicker"
+                                        class="form-control" name="date">
 
                                 </div>
                             </div>
@@ -928,7 +918,8 @@
                         </div>
 
                         <div class="form-group">
-                            <textarea class="form-control" required placeholder="Event Description" name="description"></textarea>
+                            <textarea class="form-control" required placeholder="Event Description"
+                                name="description"></textarea>
                         </div>
 
 

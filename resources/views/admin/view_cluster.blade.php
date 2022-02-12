@@ -9,6 +9,10 @@
         .serviceBtn{
 		border-radius:50%;width:80%;height:80%;padding:10px;
 	}
+
+    .pppp:hover{
+    text-decoration: none !important;
+    }
     </style>
 
 
@@ -122,10 +126,11 @@
 
 
                 <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
+                    <a style="text-decoration: none;" @if (Auth::user()->role == 'admin') href="{{ url("$role/Join/cluster", $list->id) }}" @else  href="{{ url("$role/view/cluster", $list->id) }}" @endif>
+
                     <div class="ui-block h-100 mb-0">
 
                         <!-- Friend Item -->
-                        <a @if (Auth::user()->role == 'admin') href="{{ url("$role/Join/cluster", $list->id) }}" @else  href="{{ url("$role/view/cluster", $list->id) }}" @endif>
 
                         <div class="friend-item friend-groups">
 
@@ -148,7 +153,7 @@
                                         <div class="author-content">
                                             {{-- @dd($list) --}}
 
-                                            <a class="h5 author-name">{{ $list->name }}</a>
+                                      <span class="pppp" style="    font-size: 20px;      color: black;text-decoration: none;">  {{ $list->name }}</span>
                                             @if (isset($list->joindetail))
                                                 @foreach ($list->joindetail as $listss)
                                                     <div class="country">Manager:<span>
@@ -156,7 +161,7 @@
                                                             {{ $listss->User->last_name }}</span></div>
                                                 @endforeach
                                             @endif
-                                            <p>{{ $list->detail }}</p>
+                                            <p  class="pppp" style="    color: black;">{{ $list->detail }}</p>
 
 
 
@@ -180,16 +185,28 @@
 
 
                                         @else
+
+
+
+
                                         <a style="    color: white;border-radius: 50%;    margin-right: 7px;" href="#" class="btn btn-control bg-green "
                                         data-bs-toggle="modal" data-bs-target="#edit-cluster{{ $list->id }}">
                                         <i class="fa fa-edit" aria-hidden="true"></i>
                                     </a>
 
-                                            <a style="    color: white;border-radius: 50%;"
+                                            {{-- <a style="    color: white;border-radius: 50%;"
                                                 href="{{ url('user/deleteCluster') }}/{{ $list->id }}"
                                                 class=" btn btn-control bg-blue " >
                                                 <i class="fa fa-trash olymp-happy-faces-icon " aria-hidden="true"></i>
+                                            </a> --}}
+
+                                            <a style="    color: white;border-radius: 50%;"
+                                            data-bs-toggle="modal"  data-bs-toggle="modal" data-bs-target="#delete-new-member{{$list->id}}"
+                                                class=" btn btn-control bg-blue " >
+                                                <i class="fa fa-trash olymp-happy-faces-icon " aria-hidden="true"></i>
                                             </a>
+
+
                                             {{-- <i class="fa fa-trash"></i> --}}
 
 
@@ -204,10 +221,11 @@
                                 </div>
 
                         </div>
-                    </a>
 
                         <!-- ... end Friend Item -->
                     </div>
+                </a>
+
                 </div>
 
 
@@ -262,6 +280,8 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Cluster Type</label>
+
                                         <select class="form-select" name="cluster_type">
                                             <option value="Public">Public </option>
                                             <option value="Private">Private </option>
@@ -278,9 +298,9 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1">Select Cluster Image</label>
                                         <input type="file" name="image[]"
-                                            class="form-control @error('image') is-invalid @enderror" id="Cluster-Name"
+                                            class="form-control @error('image') is-invalid @enderror" value="" id="Cluster-Name"
                                             placeholder="Enter Cluster Image">
-                                        <img src="{{ asset('images') }}/{{ $clus_img1[0] }}" width="100" height="100">
+                                        <img src="{{ asset('images') }}/{{ $clus_img1[0] }}" name="imgg" width="100" height="100">
                                         @error('image')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -346,7 +366,7 @@
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Cluster Details</label>
                             <textarea name="detail" required class="form-control @error('detail') is-invalid @enderror"
-                                id="exampleFormControlTextarea1" rows="3" required>Enter details here</textarea>
+                                id="exampleFormControlTextarea1" rows="3" required ></textarea>
                             @error('detail')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -402,6 +422,51 @@
             </div>
         </div>
     </div>
+
+
+    @if(isset($list->id))
+    <div class="modal fade"  id="delete-new-member{{ $list->id }}"  tabindex="-1"
+        role="dialog" aria-labelledby="create-friend-group-1" aria-hidden="true">
+        <div class="modal-dialog window-popup create-friend-group create-friend-group-1"
+            role="document">
+            <div class="modal-content">
+                <a href="#" class="close icon-close" data-bs-dismiss="modal"
+                    aria-label="Close">
+                    <svg class="olymp-close-icon">
+                        <use xlink:href="#olymp-close-icon"></use>
+                    </svg>
+                </a>
+                <div class="modal-header">
+                    <h6 class="title">Delete Cluster</h6>
+                </div>
+
+                <div class="modal-body">
+                    <div class="">
+                        <p>Are you sure you want to delete this cluster <span
+                                class="font-weight-bold text-danger">{{ $list->name }}</span>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <form method="post"
+                                action="{{ url("$role/deleteCluster") }}/{{ $list->id }}">
+                                @csrf
+                                <button type="submit" class="btn btn-blue full-width"
+                                    class="close icon-close">Yes</button>
+                            </form>
+                        </div>
+                        <div class="col-6">
+                            <button href="#" class="btn btn-secondary full-width"
+                                class="close icon-close" data-bs-dismiss="modal"
+                                aria-label="Close">No</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
 
     <!-- ... end Window-popup Create Friends Group -->
 
