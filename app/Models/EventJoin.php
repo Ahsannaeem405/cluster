@@ -12,4 +12,9 @@ class EventJoin extends Model
     {
         return $this->belongsTo('App\Models\Event', 'event_id');
     }
+
+    public function User()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
 }
