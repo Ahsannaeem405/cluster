@@ -7,6 +7,7 @@ use App\Models\Cluster;
 use App\Models\Event;
 use App\Models\EventJoin;
 use App\Models\JoinCluster;
+use App\Models\Setting;
 use App\Models\User;
 use GuzzleHttp\Psr7\Request as Psr7Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,17 @@ class frontController extends Controller
     {
         $viewCluster['viewCluster']=Cluster::where('cluster_type','Public')->get();
         $viewCluster['viewEvent']=Event::where('Event_type','Public')->get();
+        $viewCluster['setting']=Setting::first();
+        //dd($viewCluster['setting']);
         return view('front.index',$viewCluster);
+
+    }
+    public function cluster_details($id)
+    {
+       
+        $viewCluster['viewEvent']=Event::where('cluster_id',$id)->get();
+        
+        return view('front.cluster_details',$viewCluster);
 
     }
 

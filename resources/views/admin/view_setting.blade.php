@@ -4,7 +4,28 @@
 
 
 <!-- Main Header Account -->
-
+<!-- some CSS styling changes and overrides -->
+<style>
+	.kv-avatar .krajee-default.file-preview-frame,.kv-avatar .krajee-default.file-preview-frame:hover {
+		margin: 0;
+		padding: 0;
+		border: none;
+		box-shadow: none;
+		text-align: center;
+	}
+	.kv-avatar {
+		display: inline-block;
+	}
+	.kv-avatar .file-input {
+		display: table-cell;
+		width: 213px;
+	}
+	.kv-reqd {
+		color: red;
+		font-family: monospace;
+		font-weight: normal;
+	}
+	</style>
 <div class="main-header">
 	<div class="content-bg-wrap setting-bg"></div>
 	<div class="container">
@@ -44,8 +65,16 @@
 									<div class="ui-block-content">
 										<!-- Personal Information Form  -->
 				
-										<form method="post" action="{{url('profileSetting')}}/{{$user_data->id}}">
+										<form method="post" action="{{url('profileSetting')}}/{{$user_data->id}}" enctype="multipart/form-data">
 											@csrf
+											<div class="col-md-6 offset-md-3 text-center">
+												<div class="kv-avatar">
+													<div class="file-loading">
+														<input id="avatar-2" name="image" type="file" required>
+													</div>
+												</div>
+												
+											</div>
 											<div class="row">
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 													<div class="form-group">
@@ -130,43 +159,10 @@
 													</div>
 												</div>
 											</div>
-											<div class="row">
-												<div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-													<div class="form-group ">
-													<label class="control-label">Marriege Status</label>
-													<select  name="married_status" class="form-control   @error('married_status') is-invalid @enderror">
-														<option value="">Select Marriege Status</option>
-
-														<option value="Married" @if($user_data->married_status == 'Married') selected @endif>Married</option>
-														<option value="Unmarried"  @if($user_data->married_status == 'Unmarried') selected @endif>Unmarried</option>
-													</select>
-													@error('married_status')
-														<span class="invalid-feedback" role="alert">
-															<strong>{{ $message }}</strong>
-														</span>
-													@enderror
-												</div>
-											</div>					
-											</div>					
-											<div class="row">
-												<div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-													<div class="form-group">
-														<label class="control-label">Your Description</label>
-
-														<textarea rows="4" cols="4" class="form-control  @error('description') is-invalid @enderror" placeholder="Enter Your Description" name="description"
-														>{{$user_data->description}}</textarea>
-															@error('description')
-															<span class="invalid-feedback" role="alert">
-																<strong>{{ $message }}</strong>
-															</span>
-														@enderror
-														</div>
-				
-												
-												</div>
-												</div>
+															
 										
-												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+										
+												<div class="col-lg-6 col-md-6 offset-md-3 mt-5">
 													<button type="submit" class="btn btn-primary full-width">Update all Changes</button>
 												</div>
 				
@@ -209,7 +205,7 @@
 													<div class="form-group  d-flex upload-logo align-items-center">
 														<div class="w-50">
 															<h6>Website Logo</h6>
-															<label type="button" class="btn btn-primary w-50"> Upload Logo
+															<label type="button" class="btn btn-primary w-75"> Upload Logo
 																<input class="form-control @error('website_logo') is-invalid @enderror" name="website_logo" placeholder="" type="file"  hidden id="logo-upload">
 															</label>
 															<input class="form-control "  placeholder="" type="file"  hidden id="logo-upload">
@@ -247,6 +243,50 @@
 														@enderror
 													</div>
 												</div>
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
+														<label class="control-label">Heading</label>
+														<input class="form-control @error('heading') is-invalid @enderror"  name="heading" placeholder="Heading" type="text">
+														@error('heading')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
+														<label class="control-label">Sub Heading</label>
+														<input class="form-control @error('sub_heading') is-invalid @enderror"  name="sub_heading" placeholder="Sub Heading" type="text">
+														@error('sub_heading')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
+														<label class="control-label">Home Description</label>
+														<textarea rows="4" cols="4" class="form-control @error('home_description') is-invalid @enderror"  name="home_description" placeholder="Home Description" ></textarea>
+														@error('home_description')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
+														<label class="control-label">Video Link</label>
+														<input class="form-control @error('video_link') is-invalid @enderror"  name="video_link" placeholder="Video Link" type="text">
+														@error('video_link')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
 											</div>
 											<div class="row">
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
@@ -276,7 +316,7 @@
 													<div class="form-group  d-flex upload-logo align-items-center">
 														<div class="w-50">
 															<h6>Website Logo</h6>
-															<label type="button" class="btn btn-primary w-50"> Upload Logo
+															<label type="button" class="btn btn-primary w-75"> Upload Logo
 																<input class="form-control @error('website_logo') is-invalid @enderror" name="website_logo" placeholder="" type="file"  hidden id="logo-upload">
 															</label>
 															<input class="form-control "  placeholder="" type="file"  hidden id="logo-upload">
@@ -306,6 +346,50 @@
 														<label class="control-label">Footer Text</label>
 														<input class="form-control @error('footer_name') is-invalid @enderror" value="{{$setting_data->footer_name}}" name="footer_name" placeholder="Footer Text" type="text">
 														@error('footer_name')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
+														<label class="control-label">Heading</label>
+														<input class="form-control @error('heading') is-invalid @enderror" value="{{$setting_data->heading}}" name="heading" placeholder="Heading" type="text">
+														@error('heading')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
+														<label class="control-label">Sub Heading</label>
+														<input class="form-control @error('sub_heading') is-invalid @enderror" value="{{$setting_data->sub_heading}}" name="sub_heading" placeholder="Sub Heading" type="text">
+														@error('sub_heading')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
+														<label class="control-label">Home Description</label>
+														<textarea rows="4" cols="4" class="form-control @error('home_description') is-invalid @enderror"  name="home_description" placeholder="Home Description" >{{$setting_data->home_description}}</textarea>
+														@error('home_description')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
+														<label class="control-label">Video Link</label>
+														<input class="form-control @error('video_link') is-invalid @enderror"  name="video_link" value="{{$setting_data->video_link}}" placeholder="Video Link" type="text">
+														@error('video_link')
 															<span class="invalid-feedback" role="alert">
 																<strong>{{ $message }}</strong>
 															</span>
@@ -818,4 +902,33 @@
 	</svg>
 </a>
 
+<!-- the fileinput plugin initialization -->
+<script>
+	var btnCust = ''; 
+	$("#avatar-2").fileinput({
+		overwriteInitial: true,
+		maxFileSize: 1500,
+		showClose: false,
+		showCaption: false,
+		showBrowse: false,
+		browseOnZoneClick: true,
+		removeLabel: '',
+		removeIcon: '<i class="bi-x-lg"></i>',
+		removeTitle: 'Cancel or reset changes',
+		elErrorContainer: '#kv-avatar-errors-2',
+		msgErrorClass: 'alert alert-block alert-danger',
+	
+		@if(Auth::user()->image != null)
+		
+			defaultPreviewContent: '<img src="{{asset('images')}}/{{Auth::user()->image}}" alt="Your Avatar"><h6 class="text-muted">Click to select</h6>',
+		
+		@else
+			defaultPreviewContent: '<img src="{{asset('images/default-avatar-male.png')}}" alt="Your Avatar"><h6 class="text-muted">Click to select</h6>',
+	
+			@endif
+	
+		layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
+		allowedFileExtensions: ["jpg", "png", "gif"]
+	});
+	</script>
 @endsection

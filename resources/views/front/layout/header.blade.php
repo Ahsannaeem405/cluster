@@ -22,6 +22,7 @@
 
 	<!-- Main RTL CSS -->
 	<!--<link rel="stylesheet" type="text/css" href="{{asset('css/rtl.min.css')}}">-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- WebP Safari Support -->
 	<script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/polyfills.js"></script>
@@ -73,11 +74,19 @@
 
 				<a href="#" class="logo">
 					<div class="img-wrap">
-						<img loading="lazy" src="{{asset('img/logo.png')}}" alt="header-white-log" width="34" height="34">
+						@if(isset($setting))
+						<img loading="lazy" src="{{asset('images')}}/{{$setting->website_logo}}" alt="cluster logo" width="100" height="100">
 
-						<img loading="lazy" src="{{asset('img/logo.png')}}" width="34" height="34" alt="header-color-logo"
+						<img loading="lazy" src="{{asset('images')}}/{{$setting->website_logo}}"  width="100" height="100" alt="cluster logo"
 							class="logo-colored">
 
+						@else  
+						<img loading="lazy" src="{{asset('img/logo.png')}}" alt="cluster logo"  width="100" height="100">
+
+						<img loading="lazy" src="{{asset('img/logo.png')}}"  width="100" height="100" alt="cluster logo"
+							class="logo-colored">
+						@endif
+						
 					</div>
 				</a>
 
@@ -97,11 +106,11 @@
 							<a href="#" class="nav-link">Terms & Conditions</a>
 						</li> -->
 							<li class="nav-item">
-								<a href="{{ route('login') }}" class="nav-link">Sign up</a>
+								<a href="{{ route('login') }}?signup" class="nav-link">Sign up</a>
 							</li>
 							@if(!Auth::check())
 							<li class="nav-item ">
-								<a href="{{ route('login') }}" class="nav-link join-us ">Log in</a>
+								<a href="{{ route('login') }}?signin" class="nav-link join-us ">Log in</a>
 							</li>
 							@else
 							<li class="nav-item ">

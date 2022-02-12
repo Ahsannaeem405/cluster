@@ -268,7 +268,12 @@
 
 	</div>
 	@else
-	<h6 class="text-center">No Active Service</h6>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h4 class="text-center">No Data Available</h4>
+		</div>
+	  </div>
+
 	@endif
 
 	@endif
@@ -335,7 +340,11 @@
 
 </div>
 @else
-<h6 class="text-center">No Active Service</h6>
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h4 class="text-center">No Data Available</h4>
+	</div>
+  </div>
 @endif
 
 			@endif

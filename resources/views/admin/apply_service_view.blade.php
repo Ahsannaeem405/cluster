@@ -9,12 +9,8 @@
     $role = Auth::user()->role;
 
     ?>
-  	<div class="header-spacer header-spacer-small"></div>
 
-
-      <!-- Main Header Groups -->
-
-      <div class="main-header">
+      <div class="main-header" style="margin: -1px;"> 
           <div class="content-bg-wrap bg-group clusterbg"></div>
           <div class="container">
               <div class="row">
@@ -33,7 +29,7 @@
 
       <!-- Main Content Groups -->
 
-      <div class="container">
+      <div class="container-fluid">
           <div class="row">
             <div class="col-12" style="padding: 7px;">
                 @if ($message = Session::get('success'))
@@ -49,7 +45,6 @@
               <div class="col-12">
                   <div class="add-new-member my-3">
                    
-
                   </div>
               </div>
           </div>
@@ -68,10 +63,13 @@
                               </tr>
                           </thead>
                           <tbody>
+                              @php
+                                  $i=1;
+                              @endphp
                              @foreach($Applyservices as $list)
                          
                               <tr>
-                                  <td class="text-center">1</td>
+                                  <td class="text-center">{{$i++}}</td>
                                   <td class="py-2">{{$list->ServiceUsers->first_name}}</td>
                                   <td class="py-2">{{$list->ServiceUsers->email}}</td>
                                   <td class="py-2">{{$list->service->title}}</td>

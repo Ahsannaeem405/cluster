@@ -22,28 +22,34 @@ class SettingController extends Controller
     }
     public function profileSetting(Request $request, $id)
     {
-    
+       
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required',
             'dob' => 'required',
             'number' => 'required',
-            'description' => 'required',
             'gender' => 'required',
-            'married_status' => 'required',
+            'image' => 'required',
+        
 
         ]);
 
         $user_update=User::find($id);
+        
         $user_update->first_name=$request->first_name;
         $user_update->last_name=$request->last_name;
         $user_update->email=$request->email;
         $user_update->dob=$request->dob;
         $user_update->number=$request->number;
-        $user_update->description=$request->description;
         $user_update->gender=$request->gender;
-        $user_update->married_status=$request->married_status;
+        if (isset($request->image)) {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $user_update->image = $imageName;
+            $path = $image->move(public_path('images'), $imageName);
+        }
+
         $user_update->save();
         return redirect()->back()->with('success', 'Profile Updated Sucessfully!');
 
@@ -58,6 +64,10 @@ class SettingController extends Controller
             'header_name' => 'required',
             'website_name' => 'required',
             'website_logo' => 'required',
+            'heading' => 'required',
+            'sub_heading' => 'required',
+            'home_description' => 'required',
+            'video_link' => 'required',
 
         ]);
 
@@ -65,6 +75,10 @@ class SettingController extends Controller
         $setting->website_name=$request->website_name;
         $setting->header_name=$request->header_name;
         $setting->footer_name=$request->footer_name;
+        $setting->heading=$request->heading;
+        $setting->sub_heading=$request->sub_heading;
+        $setting->home_description=$request->home_description;
+        $setting->video_link=$request->video_link;
         if (isset($request->website_logo)) {
             $image = $request->file('website_logo');
             $imageName = $image->getClientOriginalName();
@@ -82,6 +96,10 @@ class SettingController extends Controller
         $setting->website_name=$request->website_name;
         $setting->header_name=$request->header_name;
         $setting->footer_name=$request->footer_name;
+        $setting->heading=$request->heading;
+        $setting->sub_heading=$request->sub_heading;
+        $setting->home_description=$request->home_description;
+        $setting->video_link=$request->video_link;
         if (isset($request->website_logo)) {
             $image = $request->file('website_logo');
             $imageName = $image->getClientOriginalName();

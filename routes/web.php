@@ -6,6 +6,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\frontController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\install;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Auth;
@@ -54,6 +55,7 @@ Route::group(['middleware' => 'install'], function () {
 
 Route::get('/login/{cluster}/{id}', [frontController::class, 'login']);
 Route::get('/register/{event}/{id}', [frontController::class, 'login_event']);
+Route::get('/cluster_details/{id}', [frontController::class, 'cluster_details']);
 
 Route::middleware(['auth'])->group(function () {
 
@@ -100,13 +102,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/manager/status/{id}/{userID}', [ClusterController::class, 'manger']);
 
         Route::get('/events', [EventController::class, 'events']);
-        /////////////////////////////
+        /////////////////////////////user
         Route::get('/users', [ClusterController::class, 'users']);
         Route::post('/addUser', [ClusterController::class, 'addUser']);
         Route::post('/updateUser/{id}', [ClusterController::class, 'updateUser']);
         Route::post('/deleteUser/{id}', [ClusterController::class, 'deleteUser']);
         //////////////////members
-        Route::view('/members', 'admin/view_members');
+        Route::get('/members', [MemberController::class, 'members']);
+        Route::post('/addMember', [MemberController::class, 'addMember']);
+        Route::post('/updateMembers/{id}', [MemberController::class, 'updateUser']);
+        Route::post('/deleteMembers/{id}', [MemberController::class, 'deleteMembers']);
 
          Route::view('/profile_setting', 'admin/profile_setting');
         ///////////////////////////////setting start

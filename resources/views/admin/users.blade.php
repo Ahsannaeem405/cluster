@@ -61,13 +61,13 @@
                       <table class="table table-striped">
                           <thead>
                               <tr>
-                                  <th scope="col" class="text-center">#</th>
-                                  <th scope="col">Name</th>
-                                  <th scope="col">Email</th>
-                                  <th scope="col">Number</th>
-                                  <th scope="col">Gender</th>
-                                  <th scope="col">Role</th>
-                                  <th scope="col"></th>
+                                  <th scope="col" class="text-center text-dark">#</th>
+                                  <th class="text-dark" scope="col">Name</th>
+                                  <th class="text-dark" scope="col">Email</th>
+                                  <th class="text-dark" scope="col">Number</th>
+                                  <th class="text-dark" scope="col">Gender</th>
+                                  <th class="text-dark" scope="col">Role</th>
+                                  <th class="text-dark" scope="col"></th>
                               </tr>
                           </thead>
                           <tbody>
@@ -119,7 +119,7 @@
                                             @csrf
                                             <div class="form-group">
                                                   <label for="exampleFormControlInput1">Name</label>
-                                                  <input type="text" name="first_name" value="{{$list->first_name}}" class="form-control" id="Cluster-Name">
+                                                  <input type="text" name="first_name" value="{{$list->first_name}}" class="form-control @error('first_name') is-invalid @enderror" id="Cluster-Name">
                                                   @error('first_name')
                                                   <span class="invalid-feedback" role="alert">
                                                       <strong>{{ $message }}</strong>
@@ -128,7 +128,7 @@
                                                 </div>
                                               <div class="form-group">
                                                   <label for="exampleFormControlInput1">Email</label>
-                                                  <input type="email"  name="email" value="{{$list->email}}" class="form-control" id="Cluster-Name" >
+                                                  <input type="email"  name="email" value="{{$list->email}}" class="form-control @error('email') is-invalid @enderror" id="Cluster-Name" >
                                                   @error('email')
                                                   <span class="invalid-feedback" role="alert">
                                                       <strong>{{ $message }}</strong>
@@ -137,7 +137,7 @@
                                                 </div>
                                               <div class="form-group">
                                                   <label for="exampleFormControlInput1">Old Password</label>
-                                                  <input type="password"  name="c_password"  class="form-control" id="Cluster-Name" placeholder="Enter Old Password">
+                                                  <input type="password"  name="c_password"  class="form-control @error('c_password') is-invalid @enderror" id="Cluster-Name" placeholder="Enter Old Password">
                                                   @error('c_password')
                                                   <span class="invalid-feedback" role="alert">
                                                       <strong>{{ $message }}</strong>
@@ -146,7 +146,7 @@
                                                 </div>
                                               <div class="form-group">
                                                   <label for="exampleFormControlInput1">New Password</label>
-                                                  <input type="password" name="new_password" class="form-control" id="Cluster-Name" placeholder="Enter New Password">
+                                                  <input type="password" name="new_password" class="form-control @error('new_password') is-invalid @enderror" id="Cluster-Name" placeholder="Enter New Password">
                                                   @error('new_password')
                                                   <span class="invalid-feedback" role="alert">
                                                       <strong>{{ $message }}</strong>
@@ -155,10 +155,10 @@
                                                 </div>
                                               <div class="form-group">
                                                 <label for="exampleFormControlInput1">Confirm Password</label>
-                                                <input type="password" name="confirm_password" class="form-control" id="Cluster-Name" placeholder="Enter Confirm Password">
+                                                <input type="password" name="confirm_password" class="form-control @error('confirm_password') is-invalid @enderror" id="Cluster-Name" placeholder="Enter Confirm Password">
                                             </div>
 
-                                              <button type="submit" class="btn btn-blue full-width">Update</button>
+                                              <button type="submit" class="btn btn-primary  full-width">Update</button>
                                           </form>
                                       </div>
                                   </div>
@@ -233,7 +233,7 @@
                         @csrf
                           <div class="form-group">
                               <label for="exampleFormControlInput1">Name</label>
-                              <input type="text" name="first_name" class="form-control" id="Cluster-Name" placeholder="Enter Name">
+                              <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror" id="Cluster-Name" placeholder="Enter Name">
                               @error('first_name')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
@@ -242,7 +242,7 @@
                             </div>
                           <div class="form-group">
                               <label for="exampleFormControlInput1">Email</label>
-                              <input type="email" name="email" class="form-control" id="Cluster-Name" placeholder="Enter Email">
+                              <input type="email" name="email" class="form-control  @error('email') is-invalid @enderror" id="Cluster-Name" placeholder="Enter Email">
                               @error('email')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
@@ -251,14 +251,14 @@
                             </div>
                           <div class="form-group">
                               <label for="exampleFormControlInput1">Password</label>
-                              <input type="password" name="password" class="form-control" id="Cluster-Name" placeholder="Enter Passowrd">
+                              <input type="password" name="password" class="form-control  @error('password') is-invalid @enderror" id="Cluster-Name" placeholder="Enter Passowrd">
                               @error('password')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
                           @enderror
                             </div>
-                          <button type="submit" class="btn btn-blue full-width">Submit</button>
+                          <button type="submit" class="btn btn-primary  full-width">Submit</button>
                       </form>
                   </div>
               </div>
