@@ -704,8 +704,8 @@
                                     @foreach ($manager as $managers)
                                         <li class="inline-items">
                                             <div class="author-thumb">
-                                                @if(isset(Auth::user()->image))
-                                                <img alt="author"  src="{{asset('images')}}/ {{Auth::user()->image}}" width="36" height="36" class="avatar">
+                                                @if(isset($managers->User->image))
+                                                <img alt="author"  src="{{asset('images')}}/{{$managers->User->image}}" width="36" height="36" class="avatar">
 
                                                     @else
                                                     <i style="font-size: 25px;margin-top: 5px;" class="fa fa-user"></i>
@@ -750,8 +750,8 @@
                                         @if ($users->User->role != 'admin')
                                             <li>
                                                 <div class="author-thumb">
-                                                    @if(isset(Auth::user()->image))
-                                                    <img alt="author"  src="{{asset('images')}}/ {{Auth::user()->image}}" width="36" height="36" class="avatar">
+                                                    @if(isset($users->User->image))
+                                                    <img alt="author"  src="{{asset('images')}}/{{$users->User->image}}" width="36" height="36" class="avatar">
 
                                                         @else
                                                         <i style="font-size: 25px;margin-top: 5px;" class="fa fa-user"></i>
@@ -815,8 +815,8 @@
 
                                             <li>
                                                 <div class="author-thumb">
-                                                    @if(isset(Auth::user()->image))
-                                                    <img alt="author"  src="{{asset('images')}}/ {{Auth::user()->image}}" width="36" height="36" class="avatar">
+                                                    @if(isset($joinns->User->image))
+                                                    <img alt="author"  src="{{asset('images')}}/{{$joinns->User->image}}" width="36" height="36" class="avatar">
 
                                                         @else
                                                         <i style="font-size: 25px;margin-top: 5px;" class="fa fa-user"></i>

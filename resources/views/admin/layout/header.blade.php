@@ -613,7 +613,7 @@
                         <div class="author-title">
                             <div class="author-thumb">
                                 @if(isset(Auth::user()->image))
-                                <img alt="author"  src="{{asset('images')}}/ {{Auth::user()->image}}" width="36" height="36" class="avatar">
+                                <img alt="author"  src="{{asset('images')}}/{{Auth::user()->image}}" width="36" height="36" class="avatar">
                                 @else
                                 <i style="font-size: 21px;" class="fa fa-user"></i>
                                 @endif
