@@ -9,14 +9,11 @@
     $role = Auth::user()->role;
 
     ?>
-  	<div class="header-spacer header-spacer-small"></div>
-
-
       <!-- Main Header Groups -->
   
-      <div class="main-header">
-          <div class="content-bg-wrap bg-group clusterbg"></div>
-          <div class="container">
+      <div class="main-header ">
+          <div class="content-bg-wrap bg-group clusterbg mb-2"></div>
+          <div class="container ">
               <div class="row">
                   <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
                       <div class="main-header-content">
@@ -37,7 +34,7 @@
   
       <!-- Main Content Groups -->
   
-      <div class="container">
+      <div class="container-fluid">
           <div class="row">
             <div class="col-12" style="padding: 7px;">
                 @if ($message = Session::get('success'))
@@ -66,17 +63,20 @@
                       <table class="table table-striped">
                           <thead>
                               <tr>
-                                  <th scope="col" class="text-center">#</th>
-                                  <th scope="col">Name</th>
-                                  <th scope="col">Cluster Name</th>
-                                  <th scope="col"></th>
+                                <th class="text-center" scope="col">#</th>
+								<th class="" scope="col">Name</th>
+								<th class="" scope="col">Cluster Name</th>
+								<th class=" text-center" scope="col">Action</th>
                               </tr>
                           </thead>
                           <tbody>
-                           
+                           @php
+                               $i=1;
+                           @endphp
+                            @foreach($manager_list as $listM)
                               <tr>
-                                  <td class="text-center">1</td>
-                                  <td class="py-2">cluster</td>
+                                  <td class="text-center">{{$i++}}</td>
+                                  <td class="py-2">{{$listM->first_name}}</td>
                                   <td>cluster name</td>
                                   
                                   <td>
@@ -95,7 +95,7 @@
                                       </div>
                                   </td>
                               </tr>
-
+                              @endforeach
                               {{-- edit user start--}}
                               <div class="modal fade" id="edit-new-member" tabindex="-1" role="dialog"
                               aria-labelledby="create-friend-group-1" aria-hidden="true">
@@ -220,40 +220,48 @@
                       </svg>
                   </a>
                   <div class="modal-header">
-                      <h6 class="title">Add New User</h6>
+                      <h6 class="title">Add Cluster Manager</h6>
                   </div>
   
                   <div class="modal-body">
-                      <form method="post" action="{{url('admin/addUser')}}">
+                      <form method="post" action="{{url('admin/addClusterManager')}}">
                         @csrf
-                          <div class="form-group">
-                              <label for="exampleFormControlInput1">Name</label>
-                              <input type="text" name="first_name" class="form-control" id="Cluster-Name" placeholder="enter Name">
-                              @error('first_name')
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                          @enderror
-                            </div>
-                          <div class="form-group">
-                              <label for="exampleFormControlInput1">Email</label>
-                              <input type="email" name="email" class="form-control" id="Cluster-Name" placeholder="enter email">
-                              @error('email')
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                          @enderror
-                            </div>
-                          <div class="form-group">
-                              <label for="exampleFormControlInput1">Password</label>
-                              <input type="password" name="password" class="form-control" id="Cluster-Name" placeholder="enter passowrd">
-                              @error('password')
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                          @enderror
-                            </div>
-                          <button type="submit" class="btn btn-blue btn-lg full-width">Add Now</button>
+                        <div class="form-group"  id="cluster">
+							<label class="control-label">Users</label>
+							<select class="clusterMemberMultiple disabled @error('users') is-invalid @enderror" name="users[]" multiple="multiple" >
+	
+                                @foreach($user_list as $listU)
+								<option value="{{$listU->id}}" >{{$listU->first_name}}</option>
+					
+								@endforeach
+							  </select>
+							  @error('users')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+						@enderror	
+							  </select>
+							
+							</div>
+                            <div class="form-group"  id="cluster">
+                                <label class="control-label">Clusters</label>
+                                <select class="clusterMemberMultiple disabled @error('cluster') is-invalid @enderror" name="cluster[]" multiple="multiple" >
+                                    @foreach($cluster as $list)
+                                    <option value="{{$list->id}}" >{{$list->name}}</option>
+                        
+                                    @endforeach
+                                  </select>
+                                  @error('cluster')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror	
+                                  </select>
+                                
+                                </div>
+                     
+                        
+                          <button type="submit" class="btn btn-blue  full-width">Add Now</button>
                       </form>
                   </div>
               </div>
