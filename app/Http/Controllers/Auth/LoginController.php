@@ -44,7 +44,7 @@ class LoginController extends Controller
 
                $msg="Your Account has been Suspended!";
                     session()->flash('message',$msg);
-                return '/login';
+                return '/login?signin';
             }
         }
 

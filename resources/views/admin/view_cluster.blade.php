@@ -211,11 +211,6 @@
                                         <i class="fa fa-edit" aria-hidden="true"></i>
                                     </a>
 
-                                            {{-- <a style="    color: white;border-radius: 50%;"
-                                                href="{{ url('user/deleteCluster') }}/{{ $list->id }}"
-                                                class=" btn btn-control bg-blue " >
-                                                <i class="fa fa-trash olymp-happy-faces-icon " aria-hidden="true"></i>
-                                            </a> --}}
 
                                             <a style="    color: white;border-radius: 50%;"
                                             data-bs-toggle="modal"  data-bs-toggle="modal" data-bs-target="#delete-new-member{{$list->id}}"
@@ -224,7 +219,6 @@
                                             </a>
 
 
-                                            {{-- <i class="fa fa-trash"></i> --}}
 
 
 

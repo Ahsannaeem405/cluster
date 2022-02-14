@@ -200,7 +200,7 @@ $role = Auth::user()->role;
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
 							<use xlink:href="#olymp-star-icon"></use>
 						</svg>
-						<span class="left-menu-title">Clustors</span>
+						<span class="left-menu-title">Clusters</span>
 					</a>
 				</li>
 				<li>
@@ -331,7 +331,7 @@ $role = Auth::user()->role;
 						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
 							<use xlink:href="#olymp-star-icon"></use>
 						</svg>
-						<span class="left-menu-title">Clustors</span>
+						<span class="left-menu-title">Clusters</span>
 					</a>
 				</li>
 				<li>

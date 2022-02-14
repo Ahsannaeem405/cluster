@@ -132,23 +132,29 @@
 					<p>{{$serviceslist->description}}</p>
 					<p>{{$serviceslist->ServiceCluster->name}}</p>
 					<hr>
+
 					<div class="row ">
-						<div class="col-lg-4 col-md-4 col-sm-4  ">
-							<a href="#" class="btn btn-primary serviceBtn" data-bs-toggle="modal"  data-bs-toggle="modal"
+
+                        <div class="col-12">
+
+                            <a style="    color: white;border-radius: 50%;    margin-right: 7px;" href="#" class="btn btn-control bg-green "
+                            data-bs-toggle="modal"  data-bs-toggle="modal"
 							data-bs-target="#edit-new-servies{{$serviceslist->id}}">
-								<i class="fas fa-edit"></i>
-							</a>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-4  ">
-							<a href="#" data-bs-toggle="modal"  data-bs-toggle="modal"
-								data-bs-target="#delete-service{{$serviceslist->id}}"  class="btn btn-danger serviceBtn">
-								<i class="fas fa-trash text-white"></i>
-							</a>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-4  ">
-							<a href="{{url('admin/applyServiceView')}}/{{$serviceslist->id}}" class="btn btn-danger serviceBtn">
-								<i class="fas fa-file text-white"></i>
-								<span class="badge bg-warning" style="
+                            <i class="fa fa-edit" style="margin-top: 6px;" aria-hidden="true"></i>
+                        </a>
+
+                        <a  style="    color: white;border-radius: 50%;    margin-right: 7px;" href="#" class="btn btn-control bg-green "
+                        data-bs-toggle="modal"  data-bs-toggle="modal"
+                        data-bs-target="#delete-service{{$serviceslist->id}}" >
+                        <i class="fas fa-trash text-white" style="margin-top: 6px;"></i>
+
+                    </a>
+
+
+                            <a href="{{url('admin/applyServiceView')}}/{{$serviceslist->id}}" style="    color: white;border-radius: 50%;" class=" btn btn-control bg-blue " >
+
+                                <i class="fas fa-file text-white"  style="margin-top: 6px;"></i>
+                                <span class="badge bg-warning" style="
 								position: absolute;
 								right: -3px;
 								top: -5px;
@@ -156,8 +162,10 @@
 								height: 20px;
 								border-radius: 50%;
 							">{{count($apply_services)}}</span>
-							</a>
-						</div>
+                            </a>
+
+                        </div>
+
 					</div>
 
 				</div>
