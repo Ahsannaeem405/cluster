@@ -708,7 +708,7 @@
                                                 <img alt="author"  src="{{asset('images')}}/ {{Auth::user()->image}}" width="36" height="36" class="avatar">
 
                                                     @else
-                                                    <i style="font-size: 21px;" class="fa fa-user"></i>
+                                                    <i style="font-size: 25px;margin-top: 5px;" class="fa fa-user"></i>
 
 
                                                     @endif
@@ -754,7 +754,7 @@
                                                     <img alt="author"  src="{{asset('images')}}/ {{Auth::user()->image}}" width="36" height="36" class="avatar">
 
                                                         @else
-                                                        <i style="font-size: 21px;" class="fa fa-user"></i>
+                                                        <i style="font-size: 25px;margin-top: 5px;" class="fa fa-user"></i>
 
 
                                                         @endif
@@ -819,7 +819,7 @@
                                                     <img alt="author"  src="{{asset('images')}}/ {{Auth::user()->image}}" width="36" height="36" class="avatar">
 
                                                         @else
-                                                        <i style="font-size: 21px;" class="fa fa-user"></i>
+                                                        <i style="font-size: 25px;margin-top: 5px;" class="fa fa-user"></i>
 
 
                                                         @endif
