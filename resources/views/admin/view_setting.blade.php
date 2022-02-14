@@ -304,6 +304,28 @@
 												</div>
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 													<div class="form-group ">
+														<label class="control-label">Email</label>
+														<input class="form-control @error('email') is-invalid @enderror"  name="email" placeholder="Email" type="text">
+														@error('email')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
+														<label class="control-label">Phone</label>
+														<input class="form-control @error('phone') is-invalid @enderror"  name="phone" placeholder="Phone" type="text">
+														@error('phone')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
 														<label class="control-label">Home Description</label>
 														<textarea rows="4" cols="4" class="form-control @error('home_description') is-invalid @enderror"  name="home_description" placeholder="Home Description" ></textarea>
 														@error('home_description')
@@ -405,6 +427,28 @@
 														<label class="control-label">Sub Heading</label>
 														<input class="form-control @error('sub_heading') is-invalid @enderror" value="{{$setting_data->sub_heading}}" name="sub_heading" placeholder="Sub Heading" type="text">
 														@error('sub_heading')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
+														<label class="control-label">Email</label>
+														<input class="form-control @error('email') is-invalid @enderror" value="{{$setting_data->email}}" name="email" placeholder="Email" type="text">
+														@error('email')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
+												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+													<div class="form-group ">
+														<label class="control-label">Phone</label>
+														<input class="form-control @error('phone') is-invalid @enderror" value="{{$setting_data->phone}}" name="phone" placeholder="Phone" type="text">
+														@error('phone')
 															<span class="invalid-feedback" role="alert">
 																<strong>{{ $message }}</strong>
 															</span>
@@ -929,7 +973,11 @@
 
 <!-- ... end Your Account Personal Information -->
 
-
+<style>
+	.kv-file-zoom,.file-upload-indicator{
+		display: none;
+	}
+</style>
 
 
 

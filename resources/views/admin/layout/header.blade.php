@@ -3,80 +3,110 @@
 
 <head>
 
-    <title>@yield('page_title')</title>
+	<title>@yield('page_title')</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <link rel="preload" type="text/css" href="{{ asset('css/theme-font.min.css') }}" as="style">
+	<link rel="preload" type="text/css" href="{{asset('css/theme-font.min.css')}}" as="style">
 
-    <!-- Bootstrap CSS -->
+	<!-- Bootstrap CSS -->
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('Bootstrap/dist/css/bootstrap.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{asset('Bootstrap/dist/css/bootstrap.css')}}">
 
-    <!-- Main Styles CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.min.css') }}">
-
-
-    <!--<link rel="stylesheet" type="text/css" href="{{ asset('css/rtl.min.css') }}">-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- WebP Safari Support -->
-    <script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/polyfills.js"></script>
-    <script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/webp-hero.bundle.js"></script>
+	<!-- Main Styles CSS -->
+	<link rel="stylesheet" type="text/css" href="{{asset('css/main.min.css')}}">
 
 
-    <!-- optionally if you need translation for your language then include the locale file as mentioned below (replace LANG.js with your language locale) -->
-    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/js/locales/LANG.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<!--<link rel="stylesheet" type="text/css" href="{{asset('css/rtl.min.css')}}">-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- WebP Safari Support -->
+	<script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/polyfills.js"></script>
+	<script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/webp-hero.bundle.js"></script>
+
+<!-- bootstrap 5.x or 4.x is supported. You can also use the bootstrap css 3.3.x versions -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
+ 
+<!-- default icons used in the plugin are from Bootstrap 5.x icon library (which can be enabled by loading CSS below) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css" crossorigin="anonymous">
+ 
+<!-- alternatively you can use the font awesome icon library if using with `fas` theme (or Bootstrap 4.x) by uncommenting below. -->
+<!-- link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" crossorigin="anonymous" -->
+ 
+<!-- the fileinput plugin styling CSS file -->
+<link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+ 
+<!-- if using RTL (Right-To-Left) orientation, load the RTL CSS file after fileinput.css by uncommenting below -->
+<!-- link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/css/fileinput-rtl.min.css" media="all" rel="stylesheet" type="text/css" /-->
+ 
+<!-- the jQuery Library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+ 
+<!-- piexif.min.js is needed for auto orienting image files OR when restoring exif data in resized images and when you
+    wish to resize images before upload. This must be loaded before fileinput.min.js -->
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/js/plugins/piexif.min.js" type="text/javascript"></script>
+ 
+<!-- sortable.min.js is only needed if you wish to sort / rearrange files in initial preview. 
+    This must be loaded before fileinput.min.js -->
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/js/plugins/sortable.min.js" type="text/javascript"></script>
+ 
+<!-- bootstrap.bundle.min.js below is needed if you wish to zoom and preview file content in a detail modal
+    dialog. bootstrap 5.x or 4.x is supported. You can also use the bootstrap js 3.3.x versions. -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+ 
+<!-- the main fileinput plugin script JS file -->
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/js/fileinput.min.js"></script>
+ 
+<!-- following theme script is needed to use the Font Awesome 5.x theme (`fas`). Uncomment if needed. -->
+<!-- script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/themes/fas/theme.min.js"></script -->
+ 
+<!-- optionally if you need translation for your language then include the locale file as mentioned below (replace LANG.js with your language locale) -->
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/js/locales/LANG.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 
-    <!-- Bootstrap CSS -->
+	<!-- Bootstrap CSS -->
 
-    <!-- Main Styles CSS -->
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-
-
-    <script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/polyfills.js"></script>
-    <script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/webp-hero.bundle.js"></script>
-    <script src="https://kit.fontawesome.com/9838783293.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.tiny.cloud/1/qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc/tinymce/5/tinymce.min.js">
-    </script>
+	<!-- Main Styles CSS -->
+	<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
 
 
-    <style>
-        .select2-container--default.select2-container .select2-selection--multiple {
-            border: solid #e6ecf5 1px !important;
-            outline: 0;
-            height: 39px !important;
-        }
+	<script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/polyfills.js"></script>
+	<script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/webp-hero.bundle.js"></script>
+	<script src="https://kit.fontawesome.com/9838783293.js" crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.tiny.cloud/1/qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc/tinymce/5/tinymce.min.js"></script>
 
-        .select2-container .select2-selection--multiple .select2-selection__rendered {
-            display: block !important;
-            /* list-style: none; */
-            padding: 4px !important;
-        }
 
-        .select2-container {
-            box-sizing: border-box;
-            display: inline-block;
-            margin: 0;
-            position: relative;
-            vertical-align: middle;
-            width: 100% !important;
-        }
-
-        .select2-container--default.select2-container--focus .select2-selection--multiple {
-            border: solid #e6ecf5 1px !important;
-            outline: 0;
-        }
-
-        textarea.select2-search__field {
+		<style>
+			.select2-container--default.select2-container .select2-selection--multiple {
+			border: solid #e6ecf5  1px !important;
+			outline: 0;
+			height: 39px !important;
+		}
+		.select2-container .select2-selection--multiple .select2-selection__rendered {
+			 display: block !important; 
+			/* list-style: none; */
+			padding: 4px !important;
+		}
+		.select2-container {
+			box-sizing: border-box;
+			display: inline-block;
+			margin: 0;
+			position: relative;
+			vertical-align: middle;
+			width: 100% !important;
+		}
+		.select2-container--default.select2-container--focus .select2-selection--multiple {
+			border: solid #e6ecf5 1px !important;
+			outline: 0;
+		}
+		textarea.select2-search__field {
             display: none;
         }
-
-    </style>
+		</style>
 
 </head>
 

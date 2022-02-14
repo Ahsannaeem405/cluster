@@ -60,7 +60,7 @@
 								<th class="text-dark" scope="col">First Name</th>
 								<th class="text-dark" scope="col">Email</th>
 								<th class="text-dark" scope="col">Cluster</th>
-								<th class="text-dark" scope="col">Action</th>
+								<th class="text-dark text-center" scope="col">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -72,14 +72,20 @@
 								<td class="text-center">{{$i++}}</td>
 								<td class="py-2">{{$list->first_name}}</td>
 								<td class="py-2">{{$list->email}}</td>
-								<td class="py-2">{{$list->email}}</td>
-								<td class="py-2"></td>
+								<td class="py-2">
+															
+									@foreach($list->memberCluster as $listc)
+										{{$listc->Clusterr->name.','}}
+									
+									@endforeach
+									
+								</td>
 								
 								<td>
 									<div class="d-flex justify-content-end">
-										<a data-bs-toggle="modal"  data-bs-toggle="modal" data-bs-target="#delete-new-member">
+										<a data-bs-toggle="modal"  data-bs-toggle="modal" data-bs-target="#assign-manger{{$list->id}}">
 											<button class="mx-2 members-btns btn-warning" >
-												<span>Assign </span><i class="fas fa-trash-alt"></i>
+												<i class="fa fa-check-double"></i>
 											</button>
 										</a>
 										<a data-bs-toggle="modal"  data-bs-toggle="modal" data-bs-target="#delete-new-member{{$list->id}}">
@@ -96,7 +102,54 @@
 									</div>
 								</td>
 
-									
+								{{-- assign cluster manger start --}}
+																
+	<div class="modal fade" id="assign-manger{{$list->id}}" tabindex="-1" role="dialog"
+		aria-labelledby="create-friend-group-1" aria-hidden="true">
+		<div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
+			<div class="modal-content">
+				<a href="#" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">
+					<svg class="olymp-close-icon">
+						<use xlink:href="#olymp-close-icon"></use>
+					</svg>
+				</a>
+				<div class="modal-header">
+					<h6 class="title">Assign Cluster Manager</h6>
+				</div>
+	
+				<div class="modal-body">
+					<form method="post" action="{{url('admin/assignManager')}}/{{$list->id}}">
+						@csrf
+						<div class="form-group">
+							<label for="exampleFormControlInput1">Name</label>
+							<input type="text" name="first_name" disabled class="form-control" value="{{$list->first_name}}" id="Cluster-Name" placeholder="Enter Name">
+						
+						</div>
+					
+					
+				
+						<div class="form-group"  id="cluster">
+							<label class="control-label">Cluster</label>
+							<select class="clusterMemberMultiple disabled @error('password') is-invalid @enderror" name="cluster[]" multiple="multiple" >
+	
+								@foreach($list->memberCluster as $listc)
+								<option value="{{$listc->Clusterr->id}}" @if( $listc->cluster_id == $listc->Clusterr->id) selected  @endif>{{$listc->Clusterr->name}}</option>
+					
+							@endforeach
+							  </select>
+							
+							</div>
+	
+						<button type="submit"  class="btn btn-primary  full-width">Assign Now</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+								{{-- assign cluster manger end --}}
+
+											{{-- edit member start --}}
 	<div class="modal fade" id="edit-new-member{{$list->id}}" tabindex="-1" role="dialog"
 	aria-labelledby="create-friend-group-1" aria-hidden="true">
 	<div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
@@ -111,7 +164,7 @@
 			</div>
 
 			<div class="modal-body">
-				<form method="post" action="{{url('admin/addMember')}}">
+				<form method="post" action="{{url('admin/updateMember')}}/{{$list->id}}">
 					@csrf
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Name</label>
@@ -131,24 +184,25 @@
 						</span>
 					@enderror
 					</div>
-					{{-- <div class="form-group">
-						<label for="exampleFormControlInput1">Password</label>
-						<input type="password" name="password" class="form-control  @error('password') is-invalid @enderror" id="Cluster-Name" placeholder="Enter Passowrd">
-						@error('password')
-						<span class="invalid-feedback" role="alert">
-							<strong>{{ $message }}</strong>
-						</span>
-					@enderror						
-				</div> --}}
 			
+				
+					
+
 					<div class="form-group"  id="cluster">
 						<label class="control-label">Cluster</label>
 						<select class="clusterMemberMultiple  @error('password') is-invalid @enderror" name="cluster[]" multiple="multiple" >
+						
 
-							@foreach($cluster as $listc)
-								<option value="{{$listc->id}}" >{{$listc->name}}</option>
+							@foreach($list->memberCluster as $listc)
+								<option value="{{$listc->Clusterr->id}}" @if( $listc->cluster_id == $listc->Clusterr->id) selected  @endif>{{$listc->Clusterr->name}}</option>
 					
-								@endforeach
+							@endforeach
+							@foreach($cluster as $listcMain)
+
+
+							<option value="{{$listcMain->id}}" @if( $listcMain->id == $listcMain->join) selected  @endif>{{$listcMain->name}}</option>
+
+							@endforeach
 						  </select>
 						  @error('cluster')
 						<span class="invalid-feedback" role="alert">
@@ -163,6 +217,7 @@
 		</div>
 	</div>
 </div>
+											{{-- edit member end --}}
 
 
 

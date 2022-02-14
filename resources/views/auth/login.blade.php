@@ -58,6 +58,9 @@
     border: solid #e6ecf5 1px !important;
     outline: 0;
 }
+textarea.select2-search__field {
+            display: none;
+        }
 </style>
 <!-- Preloader -->
 

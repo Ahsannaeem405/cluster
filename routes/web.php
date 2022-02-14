@@ -114,7 +114,8 @@ Route::middleware(['auth'])->group(function () {
         //////////////////members
         Route::get('/members', [MemberController::class, 'members']);
         Route::post('/addMember', [MemberController::class, 'addMember']);
-        Route::post('/updateMembers/{id}', [MemberController::class, 'updateUser']);
+        Route::post('/updateMember/{id}', [MemberController::class, 'updateMember']);
+        Route::post('/assignManager/{id}', [MemberController::class, 'assignManager']);
         Route::post('/deleteMembers/{id}', [MemberController::class, 'deleteMembers']);
 
          Route::view('/profile_setting', 'admin/profile_setting');
