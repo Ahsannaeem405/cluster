@@ -33,12 +33,20 @@
                             Contact Us
                         </h4>
                         <div class="d-flex " style="gap:10px;">
-                            <a href="#">
+                            <a href="mailto:
+                            @if(isset($setting)){{$setting->email}} 
+							@else  Example@gmail.com
+                            @endif
+                            ">
                                 <div class="footer-links">
                                     <i class="fa fa-envelope"></i>
                                 </div>
                             </a>
-                            <a href="#">
+                            <a href="tel:
+                            @if(isset($setting)){{$setting->phone}} 
+							@else 1234456788
+                            @endif
+                            ">
                                 <div class="footer-links">
                                     <i class="fa fa-phone"></i>
                                 </div>

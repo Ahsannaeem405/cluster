@@ -15,7 +15,7 @@ class MemberController extends Controller
     public function members()
     {
         $user['cluster'] = Cluster::get();
-        $user['user_list'] = User::where('post_role', 'member')->get();
+        $user['user_list'] = User::where('post_role', 'member')->Orwhere('post_role', 'manager')->get();
 
         return view('admin.view_members',$user);
     }
@@ -53,6 +53,63 @@ class MemberController extends Controller
 
         
     }
+    public function updateMember(Request $request,$id)
+    {
+        // $request->validate([
+        //     'first_name' => 'required',
+        //     'email' => 'required|email|unique:users',
+               
+        // ]);
+        $user=User::find($id);
+    
+
+        $user->first_name=$request->first_name;
+        $user->email=$request->email;
+        $user->post_role='member';
+        $user->save();
+   
+        $cluster=JoinCluster::where('user_id',$id);
+        $cluster_get=JoinCluster::where('user_id',$id)->get();
+        foreach( $cluster_get as $row_cluster_d)
+    {
+        $clusterDelete=JoinCluster::find($row_cluster_d->id);
+        $clusterDelete->delete();
+     
+    }
+            $clusters=$request->cluster;
+            foreach( $clusters as $row_cluster)
+            {
+                           
+                $clusteradd=new JoinCluster();
+                $clusteradd->cluster_id=$row_cluster;
+                $clusteradd->user_id=$id;
+                $clusteradd->status=2;
+                $clusteradd->save();
+            }
+            return redirect()->back()->with('success', 'Member Updated Sucessfully!');
+
+        
+    }
+    public function assignManager(Request $request,$id)
+    {
+      
+        $user=User::find($id);
+        $user->post_role='manager';
+        $user->save();
+            $clusters=$request->cluster;
+         
+            foreach( $clusters as $row_cluster)
+            {
+                $cluster=new JoinCluster();
+                $cluster->cluster_id=$row_cluster;
+                $cluster->user_id=$id;
+                $cluster->status=2;
+                $cluster->save();
+            }
+            return redirect()->back()->with('success', 'Member Added Sucessfully!');
+
+    }
+    
     public function deleteMembers($id)
     {
         $member=User::find($id);

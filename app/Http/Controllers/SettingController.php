@@ -68,6 +68,8 @@ class SettingController extends Controller
             'sub_heading' => 'required',
             'home_description' => 'required',
             'video_link' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
 
         ]);
 
@@ -79,6 +81,8 @@ class SettingController extends Controller
         $setting->sub_heading=$request->sub_heading;
         $setting->home_description=$request->home_description;
         $setting->video_link=$request->video_link;
+        $setting->phone=$request->phone;
+        $setting->email=$request->email;
         if (isset($request->website_logo)) {
             $image = $request->file('website_logo');
             $imageName = $image->getClientOriginalName();
@@ -100,6 +104,8 @@ class SettingController extends Controller
         $setting->sub_heading=$request->sub_heading;
         $setting->home_description=$request->home_description;
         $setting->video_link=$request->video_link;
+        $setting->phone=$request->phone;
+        $setting->email=$request->email;
         if (isset($request->website_logo)) {
             $image = $request->file('website_logo');
             $imageName = $image->getClientOriginalName();
