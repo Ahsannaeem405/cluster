@@ -239,7 +239,7 @@ class ClusterController extends Controller
         for($i = 01 ; $i <= 12; $i++){
 
             $date = date("Y-$i-d");
-            $cluster[] = Cluster::whereDate('created_at',$date)->get();
+            $cluster = Cluster::whereDate('created_at',$date)->get();
             $arr[] = $date;
 
         }
