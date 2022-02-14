@@ -154,12 +154,29 @@
                                             {{-- @dd($list) --}}
 
                                       <span class="pppp" style="    font-size: 20px;      color: black;text-decoration: none;">  {{ $list->name }}</span>
-                                            @if (isset($list->joindetail))
+                                            @if (isset($list->joindetail) && count($list->joindetail) > 0)
+                                            @php
+                                            $manager=0;
+                                             @endphp
                                                 @foreach ($list->joindetail as $listss)
+                                                @php
+                                                    $manager++;
+                                                    if($manager > 1)
+                                                    {
+                                                        break;
+                                                    }
+                                                    @endphp
                                                     <div class="country">Manager:<span>
                                                             {{ $listss->User->first_name }}
-                                                            {{ $listss->User->last_name }}</span></div>
+                                                          </span></div>
                                                 @endforeach
+
+											@else
+											<div class="country">Manager:<span>
+												N\A
+
+												</span></div>
+
                                             @endif
                                             <p  class="pppp" style="    color: black;">{{ $list->detail }}</p>
 
