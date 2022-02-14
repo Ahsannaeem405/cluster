@@ -313,7 +313,7 @@ aria-labelledby="create-friend-group-1" aria-hidden="true">
 					</div>
 						<div class="form-group"  id="cluster">
 							<label class="control-label">Cluster</label>
-							<select class="clusterMemberMultiple  @error('password') is-invalid @enderror" name="cluster[]" multiple="multiple" >
+							<select class="clusterMemberMultiple form-control  @error('cluster') is-invalid @enderror" name="cluster[]" multiple="multiple" >
 
 								@foreach($cluster as $list)
 								<option value="{{$list->id}}" >{{$list->name}}</option>

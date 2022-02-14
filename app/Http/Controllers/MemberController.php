@@ -26,17 +26,19 @@ class MemberController extends Controller
             'first_name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required',
+            'cluster' => 'required',
                
         ]);
+    
         $user=new User();
         $user->first_name=$request->first_name;
         $user->email=$request->email;
         $user->password=$request->password;
         $user->post_role='member';
+        $user->status='1';
         $user->save();
-        $get_user=User::where('status','1')->orderBy('id','DESC')->first();
+        $get_user=User::where('post_role','member')->orderBy('id','DESC')->first();
         $user_id=$get_user->id;
-       
             $clusters=$request->cluster;
          
             foreach( $clusters as $row_cluster)
@@ -50,6 +52,8 @@ class MemberController extends Controller
                 $cluster->save();
             }
             return redirect()->back()->with('success', 'Member Added Sucessfully!');
+
+        
 
         
     }
