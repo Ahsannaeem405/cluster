@@ -11,6 +11,11 @@
             display: none;
         }
 
+        .author-thumb img {
+    border-radius: 9px !important;
+    overflow: hidden;
+}
+
     </style>
     <!-- Main Header Groups -->
 
