@@ -438,7 +438,7 @@
                                             </div>
 
                                             <div class="post-thumb">
-                                                <img loading="lazy" @if (isset($events->EventJoin->image)) src="{{ asset('images/') }}/{{ $events->EventJoin->image }}"  @endif alt="photo" width="770"
+                                                <img loading="lazy" style="    min-height: 339px;max-height: 339px;" @if (isset($events->EventJoin->image)) src="{{ asset('images/') }}/{{ $events->EventJoin->image }}"  @endif alt="photo" width="770"
                                                     height="379">
                                             </div>
 
@@ -474,12 +474,24 @@
                                                     <div>
                                                         <form method="post" action="{{url("$role/invite/user")}}">
                                                             @csrf
-                                                        <select name="userid" id="">
+
+                                                            <label class="control-label">Invite User</label>
+                                                            <select class="clusterMultiple" name="userid[]"  size="1" multiple >
+
+                                                                @foreach($user as $users)
+                                                                <option value="{{$users->id}}">{{$users->first_name}} {{$users->last_name}}</option>
+
+                                                                @endforeach
+                                                              </select>
+
+
+
+                                                        {{-- <select name="userid" id="">
                                                             @foreach ($user as $users )
 
                                                                     <option value="{{$users->id}}">{{$users->first_name}} {{$users->last_name}}</option>
                                                                     @endforeach
-                                                        </select>
+                                                        </select> --}}
                                                         <input type="hidden" value="{{ $events->id }}" name="eventID" id="">
 
                                                         <input style="margin-top: 18px;" type="submit" class="btn btn-primary" value="Invite User">
