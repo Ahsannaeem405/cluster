@@ -307,7 +307,7 @@
                     <form action="{{ url("$role/add/event") }}" method="POST">
                         @csrf
                         <div class="form-group label-floating is-select">
-                            <label class="control-label">Personal Event</label>
+                            <label class="control-label">Event Type</label>
                             <select class="form-select" name="Event_type">
                                 <option value="Public">Public Event</option>
                                 <option value="Private">Private Event</option>

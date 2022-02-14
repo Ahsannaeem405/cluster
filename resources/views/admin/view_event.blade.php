@@ -151,107 +151,10 @@
                                 </div>
                             </div>
 
-                            <!-- ... end Today Events -->
-                        </div>
-
-
-
-                        {{-- <div class="ui-block">
-                            <div class="today-events calendar">
-                                <div class="today-events-thumb">
-                                    <div class="date">
-                                        <div class="day-number">{{ date('d') }} </div>
-                                        <div class="day-week">{{ date('D') }}</div>
-                                        <div class="month-year">{{ date('M, Y') }}</div>
-                                    </div>
-                                </div>
-
-                                <div class="list">
-                                    <div class="control-block-button">
-
-                                        @if ((isset($mang->status) && $mang->status == 2) || Auth::user()->role == 'admin')
-                                            <a style="height: 100%;" class="btn btn-control bg-green" data-bs-toggle="modal"
-                                                data-bs-target="#create-event">
-                                                <svg class="olymp-plus-icon">
-                                                    <use xlink:href="#olymp-plus-icon"></use>
-                                                </svg>
-                                            </a>
-                                        @endif
-
-                                    </div>
-
-                                    <div class="accordion day-event" id="accordionExample" data-month="12" data-day="2">
-
-
-
-                                        @if (isset($event))
-
-
-                                            @foreach ($event as $events)
-
-
-                                                <div class="accordion-item">
-                                                    <div class="accordion-header" id="heading{{ $events->id }}">
-                                                        <div class="event-time">
-                                                            <time datetime="2004-07-24T18:18">{{ $events->time }}
-                                                                {{ $events->time_type }}</time>
-
-                                                        </div>
-                                                        <button class="accordion-button" type="button"
-                                                            data-bs-toggle="collapse"
-                                                            data-bs-target="#collapse{{ $events->id }}"
-                                                            aria-expanded="true"
-                                                            aria-controls="collapse{{ $events->id }}">
-                                                            {{ $events->name }}
-                                                            <svg width="8" height="8">
-                                                                <use xlink:href="#olymp-dropdown-arrow-icon"></use>
-                                                            </svg>
-                                                            <span class="event-status-icon" data-bs-toggle="modal"
-                                                                data-bs-target="#public-event">
-                                                                <svg class="olymp-calendar-icon" data-bs-toggle="tooltip"
-                                                                    data-bs-placement="top"
-                                                                    data-bs-original-title="UNCOMPLETED">
-                                                                    <use xlink:href="#olymp-calendar-icon"></use>
-                                                                </svg>
-                                                            </span>
-                                                        </button>
-                                                    </div>
-                                                    <div id="collapse{{ $events->id }}"
-                                                        class="accordion-collapse collapse"
-                                                        aria-labelledby="heading{{ $events->id }}"
-                                                        data-bs-parent="#accordionExample">
-                                                        <div class="accordion-body">
-                                                            {{ $events->description }}
-                                                            <div class="place inline-items">
-                                                                <svg class="olymp-add-a-place-icon">
-                                                                    <use xlink:href="#olymp-add-a-place-icon"></use>
-                                                                </svg>
-                                                                <span> {{ $events->location }}</span>
-                                                            </div>
-
-                                                            <ul class="friends-harmonic inline-items">
-
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <img loading="lazy"
-                                                                            src="{{ asset("images/$events->image") }}"
-                                                                            alt="friend" width="28" height="28">
-                                                                    </a>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-
-                                        @endif
-
-                                    </div>
-
-                                </div>
                             </div>
-                        </div> --}}
+
+
+
                     </div>
                     <div class="col col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
                         <div class="ui-block">
@@ -309,7 +212,7 @@
                                             </div>
 
                                             <div class="post-thumb">
-                                                <img loading="lazy" @if (isset($events->image)) src="{{ asset("images/$events->image") }}"  @endif alt="photo" width="770"
+                                                <img loading="lazy" @if (isset($events->image)) src="{{ asset("images/$events->image") }}"  @endif style="min-height: 339px; max-height: 339px;" style="min-height: 339px; max-height: 339px;"  alt="photo" width="770"
                                                     height="379">
                                             </div>
 
@@ -342,12 +245,22 @@
                                                     <div>
                                                         <form method="post" action="{{url("$role/invite/user")}}">
                                                             @csrf
-                                                        <select name="userid" id="">
-                                                            @foreach ($user as $users )
 
-                                                                    <option value="{{$users->id}}">{{$users->first_name}} {{$users->last_name}}</option>
-                                                                    @endforeach
-                                                        </select>
+
+
+                                                            <label class="control-label">Invite User</label>
+                                                            <select class="clusterMultiple" name="userid[]"  size="1" multiple >
+
+                                                                @foreach($user as $users)
+                                                                <option value="{{$users->id}}">{{$users->first_name}} {{$users->last_name}}</option>
+
+                                                                @endforeach
+                                                              </select>
+
+                                                            {{-- </div> --}}
+
+
+
                                                         <input type="hidden" value="{{ $events->id }}" name="eventID" id="">
 
                                                         <input style="margin-top: 18px;" type="submit" class="btn btn-primary" value="Invite User">
@@ -622,7 +535,7 @@
                             @csrf
 
                             <div class="form-group  is-select">
-                                <label class="control-label">Personal Event</label>
+                                <label class="control-label"> Event Type</label>
                                 <select class="form-select" name="Event_type">
                                     <option value="Public">Public Event</option>
                                     <option value="Private">Private Event</option>
@@ -765,6 +678,15 @@
                         url: 'modal:#{{ $events->id }}'
                         },
                     @endforeach
+
+                    @foreach ($event_join as $eventss)
+                        {
+                        title: '{{  $eventss->EventJoin->name  }}',
+                        start: '{{ $eventss->EventJoin->datetimepicker }}',
+                        url: 'modal:#{{ $eventss->EventJoin->id }}'
+                        },
+                    @endforeach
+
 
 
                 ]
@@ -921,6 +843,13 @@
 
             });
 
+        });
+    </script>
+
+    <script>
+          $(document).ready(function() {
+
+            $('.clusterMultiple').select2();
         });
     </script>
 

@@ -185,12 +185,13 @@ class ServiceController extends Controller
     {
 
 
+        for($i = 0; $i< count($request->userid); $i++){
+            $noti = new Notifica();
 
-
-        $noti = new Notifica();
-        $noti->userid = $request->userid;
-        $noti->eventID = $request->eventID;
-        $noti->save();
+            $noti->userid = $request->userid[$i];
+            $noti->eventID = $request->eventID;
+            $noti->save();
+        }
 
         return redirect()->back()->with('success', 'Invited Sucessfully!');
     }

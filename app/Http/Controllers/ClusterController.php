@@ -236,10 +236,34 @@ class ClusterController extends Controller
     {
 
         $clus = Cluster::all()->count();
+        for($i = 01 ; $i <= 12; $i++){
+
+            $date = date("Y-$i-d");
+            $cluster[] = Cluster::whereDate('created_at',$date)->get();
+            $arr[] = $date;
+
+        }
+       $clusterr[] =  count($cluster[0]);
+       $clusterr[] =  count($cluster[1]);
+       $clusterr[] =  count($cluster[2]);
+       $clusterr[] =  count($cluster[3]);
+       $clusterr[] =  count($cluster[4]);
+       $clusterr[] =  count($cluster[5]);
+       $clusterr[] =  count($cluster[6]);
+       $clusterr[] =  count($cluster[7]);
+       $clusterr[] =  count($cluster[8]);
+       $clusterr[] =  count($cluster[9]);
+       $clusterr[] =  count($cluster[10]);
+       $clusterr[] =  count($cluster[11]);
+
+
+
+        // @dd($clusterr);
+
         $eve = Event::all()->count();
         $ser = Service::all()->count();
 
-        return view('admin.index', compact('clus', 'eve', 'ser'));
+        return view('admin.index', compact('clus', 'eve', 'ser','cluster', 'clusterr'));
     }
 
 
@@ -316,6 +340,7 @@ class ClusterController extends Controller
 
         $get = JoinCluster::Where('cluster_id', $id)->where('status', '!=', 0)->Where('user_id', Auth::user()->id)->count();
 
+        // @dd( $get);
         if ($get > 0) {
 
 
@@ -393,13 +418,12 @@ class ClusterController extends Controller
         }
 
         $get = JoinCluster::Where('cluster_id', $id)->where('status', '!=', 0)->Where('user_id', Auth::user()->id)->count();
-        $eventtime = Event::Where('datetimepicker', '>', $date)->get();
+        $eventtime = Event::Where('datetimepicker', '>', $date)->where('cluster_id', $id)->get();
         $pending_user = JoinCluster::Where('cluster_id', $id)->where('status',  0)->take(6)->get();
 
 
         $joinn = EventJoin::Where('user_id', Auth::user()->id)->where('cluster_id', $id)->get();
         $joinn1 = EventJoin::Where('cluster_id', $id)->get();
-
 
         if ($get == 0) {
 
@@ -597,7 +621,7 @@ class ClusterController extends Controller
             'first_name' => 'required',
             'email' => 'required',
             'password' => 'required',
-               
+
         ]);
         $user = new User();
         $user->first_name = $request->first_name;
@@ -613,7 +637,7 @@ class ClusterController extends Controller
         // dd($id);
         $request->validate([
             'first_name' => 'required',
-            'email' => 'required',               
+            'email' => 'required',
         ]);
         $user = User::find($id);
 

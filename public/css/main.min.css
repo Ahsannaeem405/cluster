@@ -253,14 +253,14 @@
         }
         .registration-login-form{
             border:1px solid #e6ecf5;
-            border:1px solid 
+            border:1px solid
             var(--theme-border-color);
             border-radius:8px;
             background-color:#fff;
             background-color:var(--theme-white-color);
             overflow:hidden;
             position:relative;
-            
+
             margin-bottom:20px;
             min-height:520px
         }
@@ -283,7 +283,7 @@
             vertical-align:middle}
         .registration-login-form .nav-link.active
         {
-        
+
             color: var(--theme-color);
             fill:var(--theme-color);
             background-color:var(--theme-white-color);
@@ -464,7 +464,7 @@ Docs & License: https://fullcalendar.io/
     overflow: hidden;
     z-index: 5;
     box-shadow: 0px 0px 12px rgba(0,0,0, 0.9);
-   
+
 }
 .clustor-card::after{
     position: absolute;
@@ -476,7 +476,7 @@ Docs & License: https://fullcalendar.io/
     left: 50%;
     height: 50px;
     background-color: transparent;
-    
+
 }
 .clustor-card:hover::after1{
     transform: scale(40);
@@ -554,7 +554,7 @@ Docs & License: https://fullcalendar.io/
 /* upcoming card */
 .upcoming-card{
     border: 3px solid white;
-    border-radius: 8px;  
+    border-radius: 8px;
     background-color: #fafafa;
     box-shadow: 0px 0px 20px rgba(255,255,255, 0.4);
 }
@@ -600,7 +600,7 @@ Docs & License: https://fullcalendar.io/
 .upcoming-card-body p{
     font-size: 18px;
     color: black;
-    
+
 }
 .upcoming-card-body a{
     color: var(--theme-color);
@@ -770,7 +770,7 @@ padding: 10px;
     color: black;
 }
 .group-card-body p{
-    font-size: 16px; 
+    font-size: 16px;
 }
 .group-card-body p i{
     color: var(--theme-primary-color);

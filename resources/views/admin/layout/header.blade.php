@@ -26,9 +26,9 @@
     <script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/webp-hero.bundle.js"></script>
 
 
-<!-- optionally if you need translation for your language then include the locale file as mentioned below (replace LANG.js with your language locale) -->
-<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/js/locales/LANG.js"></script>
-	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- optionally if you need translation for your language then include the locale file as mentioned below (replace LANG.js with your language locale) -->
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/js/locales/LANG.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 
     <!-- Bootstrap CSS -->
@@ -45,424 +45,463 @@
     </script>
 
 
-		<style>
-			.select2-container--default.select2-container .select2-selection--multiple {
-			border: solid #e6ecf5  1px !important;
-			outline: 0;
-			height: 39px !important;
-		}
-		.select2-container .select2-selection--multiple .select2-selection__rendered {
-			 display: block !important;
-			/* list-style: none; */
-			padding: 4px !important;
-		}
-		.select2-container {
-			box-sizing: border-box;
-			display: inline-block;
-			margin: 0;
-			position: relative;
-			vertical-align: middle;
-			width: 100% !important;
-		}
-		.select2-container--default.select2-container--focus .select2-selection--multiple {
-			border: solid #e6ecf5 1px !important;
-			outline: 0;
-		}
-		</style>
+    <style>
+        .select2-container--default.select2-container .select2-selection--multiple {
+            border: solid #e6ecf5 1px !important;
+            outline: 0;
+            height: 39px !important;
+        }
+
+        .select2-container .select2-selection--multiple .select2-selection__rendered {
+            display: block !important;
+            /* list-style: none; */
+            padding: 4px !important;
+        }
+
+        .select2-container {
+            box-sizing: border-box;
+            display: inline-block;
+            margin: 0;
+            position: relative;
+            vertical-align: middle;
+            width: 100% !important;
+        }
+
+        .select2-container--default.select2-container--focus .select2-selection--multiple {
+            border: solid #e6ecf5 1px !important;
+            outline: 0;
+        }
+
+        textarea.select2-search__field {
+            display: none;
+        }
+
+    </style>
 
 </head>
 
 <body class="page-has-left-panels page-has-right-panels">
-<?php
-$role = Auth::user()->role;
+    <?php
+    $role = Auth::user()->role;
 
-?>
+    ?>
 
-<!-- Preloader -->
+    <!-- Preloader -->
 
-<div id="hellopreloader">
-	<div class="preloader">
-		<svg width="45" height="45" stroke="#fff">
-			<g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(1 1)">
-				<circle cx="22" cy="22" r="6" stroke="none">
-					<animate attributeName="r" begin="1.5s" calcMode="linear" dur="3s" repeatCount="indefinite" values="6;22"/>
-					<animate attributeName="stroke-opacity" begin="1.5s" calcMode="linear" dur="3s" repeatCount="indefinite" values="1;0"/>
-					<animate attributeName="stroke-width" begin="1.5s" calcMode="linear" dur="3s" repeatCount="indefinite" values="2;0"/>
-				</circle>
-				<circle cx="22" cy="22" r="6" stroke="none">
-					<animate attributeName="r" begin="3s" calcMode="linear" dur="3s" repeatCount="indefinite" values="6;22"/>
-					<animate attributeName="stroke-opacity" begin="3s" calcMode="linear" dur="3s" repeatCount="indefinite" values="1;0"/>
-					<animate attributeName="stroke-width" begin="3s" calcMode="linear" dur="3s" repeatCount="indefinite" values="2;0"/>
-				</circle>
-				<circle cx="22" cy="22" r="8">
-					<animate attributeName="r" begin="0s" calcMode="linear" dur="1.5s" repeatCount="indefinite" values="6;1;2;3;4;5;6"/>
-				</circle>
-			</g>
-		</svg>
+    <div id="hellopreloader">
+        <div class="preloader">
+            <svg width="45" height="45" stroke="#fff">
+                <g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(1 1)">
+                    <circle cx="22" cy="22" r="6" stroke="none">
+                        <animate attributeName="r" begin="1.5s" calcMode="linear" dur="3s" repeatCount="indefinite"
+                            values="6;22" />
+                        <animate attributeName="stroke-opacity" begin="1.5s" calcMode="linear" dur="3s"
+                            repeatCount="indefinite" values="1;0" />
+                        <animate attributeName="stroke-width" begin="1.5s" calcMode="linear" dur="3s"
+                            repeatCount="indefinite" values="2;0" />
+                    </circle>
+                    <circle cx="22" cy="22" r="6" stroke="none">
+                        <animate attributeName="r" begin="3s" calcMode="linear" dur="3s" repeatCount="indefinite"
+                            values="6;22" />
+                        <animate attributeName="stroke-opacity" begin="3s" calcMode="linear" dur="3s"
+                            repeatCount="indefinite" values="1;0" />
+                        <animate attributeName="stroke-width" begin="3s" calcMode="linear" dur="3s"
+                            repeatCount="indefinite" values="2;0" />
+                    </circle>
+                    <circle cx="22" cy="22" r="8">
+                        <animate attributeName="r" begin="0s" calcMode="linear" dur="1.5s" repeatCount="indefinite"
+                            values="6;1;2;3;4;5;6" />
+                    </circle>
+                </g>
+            </svg>
 
-		<div class="text">Loading ...</div>
-	</div>
-</div>
+            <div class="text">Loading ...</div>
+        </div>
+    </div>
 
-<!-- ... end Preloader -->
-
-
-<!-- Fixed Sidebar Left -->
-<div class="fixed-sidebar left">
-	<div class="fixed-sidebar-left sidebar--small" id="sidebar-left">
-
-		<a href="{{url('admin')}}" class="logo">
-			<div class="img-wrap">
-				<img loading="lazy" src="{{asset('img/white-logo.png')}}" alt="logo-tital" width="50" height="50">
-			</div>
-		</a>
-
-		<div class="mCustomScrollbar" data-mcs-theme="dark">
-			<ul class="left-menu">
-				<li>
-					<a href="#" class="js-sidebar-open">
-						<svg class="olymp-menu-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="OPEN MENU">
-							<use xlink:href="#olymp-menu-icon"></use>
-						</svg>
-					</a>
-				</li>
-				<li>
-					<a href="{{url("$role")}}">
-						<svg class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="NEWSFEED">
-							<use xlink:href="#olymp-newsfeed-icon"></use>
-						</svg>
-					</a>
-				</li>
-				@if(Auth::user()->role == 'admin')
-
-				<li>
-					<a href="{{url("$role/view_cluster")}}">
-						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
-							<use xlink:href="#olymp-star-icon"></use>
-						</svg>
-					</a>
-				</li>
-				@endif
-				<li>
-					<a href="{{url("$role/view/event")}}">
-						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
-							<use xlink:href="#olymp-manage-widgets-icon"></use>
-						</svg>
-					</a>
-				</li>
-				<li>
-					<a href="{{url("$role/services")}}">
-						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
-							<use xlink:href="#olymp-status-icon"></use>
-						</svg>
-					</a>
-				</li>
+    <!-- ... end Preloader -->
 
 
-				@if(Auth::user()->role == 'admin')
+    <!-- Fixed Sidebar Left -->
+    <div class="fixed-sidebar left">
+        <div class="fixed-sidebar-left sidebar--small" id="sidebar-left">
 
-				<li>
-					<a href="{{url("$role/members")}}">
-						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
-							<use xlink:href="#olymp-happy-faces-icon"></use>
-						</svg>
-					</a>
-				</li>
-				<li>
-					<a href="{{url("$role/users")}}">
-						<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
-							<use xlink:href="#olymp-happy-sticker-icon"></use>
-						</svg>
-					</a>
-				</li>
-				<li>
-					<a href="{{url("$role/cluster_manager")}}">
-						<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="WEATHER APP">
-							<use xlink:href="#olymp-music-shuffle-icon"></use>
-						</svg>
-					</a>
-				</li>
-				<li>
-					<a href="{{url("$role/communication")}}">
-						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
-							<use xlink:href="#olymp-badge-icon"></use>
-						</svg>
-					</a>
-				</li>
+            <a href="{{ url('admin') }}" class="logo">
+                <div class="img-wrap">
+                    <img loading="lazy" src="{{ asset('img/white-logo.png') }}" alt="logo-tital" width="50" height="50">
+                </div>
+            </a>
 
-
-				@endif
-				<li>
-					<a href="{{url("$role/setting")}}">
-						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
-							<use xlink:href="#olymp-settings-icon"></use>
-						</svg>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-
-	<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1">
-		<a href="#" class="logo">
-			<div class="img-wrap">
-				<img loading="lazy" src="{{asset('img/white-logo.png')}}" alt="logo-tital" width="34" height="34">
-			</div>
-			<div class="title-block">
-				<h6 class="logo-title">Cluster</h6>
-			</div>
-		</a>
-
-		<div class="mCustomScrollbar" data-mcs-theme="dark">
-			<ul class="left-menu">
-				<li>
-					<a href="#" class="js-sidebar-open">
-						<svg class="olymp-close-icon left-menu-icon">
-							<use xlink:href="#olymp-close-icon"></use>
-						</svg>
-						<span class="left-menu-title">Main Menu</span>
-					</a>
-				</li>
-				<li>
-					<a href="{{url("$role")}}">
-						<svg  class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="NEWSFEED"><use xlink:href="#olymp-status-icon"></use></svg>
-						<span class="left-menu-title">Dashboard</span>
-					</a>
-				</li>
-				@if(Auth::user()->role == 'admin')
-				<li>
-					<a href="{{url("$role/view_cluster")}}">
-						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
-							<use xlink:href="#olymp-star-icon"></use>
-						</svg>
-						<span class="left-menu-title">Clustors</span>
-					</a>
-				</li>
-				@endif
-				<li>
-					<a href="{{url("$role/view/event/")}}">
-						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
-							<use xlink:href="#olymp-manage-widgets-icon"></use>
-						</svg>
-						<span class="left-menu-title">Events</span>
-					</a>
-				</li>
-				<li>
-					<a href="{{url("$role/services")}}">
-						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
-							<use xlink:href="#olymp-status-icon"></use>
-						</svg>
-						<span class="left-menu-title">Services</span>
-					</a>
-				</li>
-
-				@if(Auth::user()->role == 'admin')
-				<li>
-					<a href="{{url("$role/members")}}">
-						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
-							<use xlink:href="#olymp-happy-faces-icon"></use>
-						</svg>
-						<span class="left-menu-title">Members</span>
-					</a>
-				</li>
-				<li>
-					<a href="{{url("$role/users")}}">
-						<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
-							<use xlink:href="#olymp-happy-sticker-icon"></use>
-						</svg>
-						<span class="left-menu-title">Users</span>
-					</a>
-				</li>
-				<li>
-					<a href="{{url("$role/cluster_manager")}}">
-						<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="WEATHER APP">
-							<use xlink:href="#olymp-music-shuffle-icon"></use>
-						</svg>
-						<span class="left-menu-title">Cluster Manager</span>
-					</a>
-				</li>
-				<li>
-					<a href="{{url("$role/communication")}}">
-						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
-							<use xlink:href="#olymp-badge-icon"></use>
-						</svg>
-						<span class="left-menu-title">Communication</span>
-					</a>
-				</li>
+            <div class="mCustomScrollbar" data-mcs-theme="dark">
+                <ul class="left-menu">
+                    <li>
+                        <a href="#" class="js-sidebar-open">
+                            <svg class="olymp-menu-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="OPEN MENU">
+                                <use xlink:href="#olymp-menu-icon"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url("$role") }}">
+                            <svg class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="NEWSFEED">
+                                <use xlink:href="#olymp-newsfeed-icon"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    @if (Auth::user()->role == 'admin')
+                        <li>
+                            <a href="{{ url("$role/view_cluster") }}">
+                                <svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="FAV PAGE">
+                                    <use xlink:href="#olymp-star-icon"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    @endif
+                    <li>
+                        <a href="{{ url("$role/view/event") }}">
+                            <svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Manage Widgets">
+                                <use xlink:href="#olymp-manage-widgets-icon"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url("$role/services") }}">
+                            <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Community Badges">
+                                <use xlink:href="#olymp-status-icon"></use>
+                            </svg>
+                        </a>
+                    </li>
 
 
-				@endif
-				<li>
-					<a href="{{url("$role/setting")}}">
-						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
-							<use xlink:href="#olymp-settings-icon"></use>
-						</svg>
-						<span class="left-menu-title">Settings</span>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-</div>
-<!-- ... end Fixed Sidebar Left -->
+                    @if (Auth::user()->role == 'admin')
+                        <li>
+                            <a href="{{ url("$role/members") }}">
+                                <svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
+                                    <use xlink:href="#olymp-happy-faces-icon"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url("$role/users") }}">
+                                <svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
+                                    <use xlink:href="#olymp-happy-sticker-icon"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url("$role/cluster_manager") }}">
+                                <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="WEATHER APP">
+                                    <use xlink:href="#olymp-music-shuffle-icon"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url("$role/communication") }}">
+                                <svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
+                                    <use xlink:href="#olymp-badge-icon"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    @endif
+                    <li>
+                        <a href="{{ url("$role/setting") }}">
+                            <svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Friends Birthdays">
+                                <use xlink:href="#olymp-settings-icon"></use>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1">
+            <a href="#" class="logo">
+                <div class="img-wrap">
+                    <img loading="lazy" src="{{ asset('img/white-logo.png') }}" alt="logo-tital" width="34"
+                        height="34">
+                </div>
+                <div class="title-block">
+                    <h6 class="logo-title">Cluster</h6>
+                </div>
+            </a>
+
+            <div class="mCustomScrollbar" data-mcs-theme="dark">
+                <ul class="left-menu">
+                    <li>
+                        <a href="#" class="js-sidebar-open">
+                            <svg class="olymp-close-icon left-menu-icon">
+                                <use xlink:href="#olymp-close-icon"></use>
+                            </svg>
+                            <span class="left-menu-title">Main Menu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url("$role") }}">
+                            <svg class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="NEWSFEED">
+                                <use xlink:href="#olymp-status-icon"></use>
+                            </svg>
+                            <span class="left-menu-title">Dashboard</span>
+                        </a>
+                    </li>
+                    @if (Auth::user()->role == 'admin')
+                        <li>
+                            <a href="{{ url("$role/view_cluster") }}">
+                                <svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="FAV PAGE">
+                                    <use xlink:href="#olymp-star-icon"></use>
+                                </svg>
+                                <span class="left-menu-title">Clustors</span>
+                            </a>
+                        </li>
+                    @endif
+                    <li>
+                        <a href="{{ url("$role/view/event/") }}">
+                            <svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Manage Widgets">
+                                <use xlink:href="#olymp-manage-widgets-icon"></use>
+                            </svg>
+                            <span class="left-menu-title">Events</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url("$role/services") }}">
+                            <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Community Badges">
+                                <use xlink:href="#olymp-status-icon"></use>
+                            </svg>
+                            <span class="left-menu-title">Services</span>
+                        </a>
+                    </li>
+
+                    @if (Auth::user()->role == 'admin')
+                        <li>
+                            <a href="{{ url("$role/members") }}">
+                                <svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
+                                    <use xlink:href="#olymp-happy-faces-icon"></use>
+                                </svg>
+                                <span class="left-menu-title">Members</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url("$role/users") }}">
+                                <svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
+                                    <use xlink:href="#olymp-happy-sticker-icon"></use>
+                                </svg>
+                                <span class="left-menu-title">Users</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url("$role/cluster_manager") }}">
+                                <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="WEATHER APP">
+                                    <use xlink:href="#olymp-music-shuffle-icon"></use>
+                                </svg>
+                                <span class="left-menu-title">Cluster Manager</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url("$role/communication") }}">
+                                <svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
+                                    <use xlink:href="#olymp-badge-icon"></use>
+                                </svg>
+                                <span class="left-menu-title">Communication</span>
+                            </a>
+                        </li>
+                    @endif
+                    <li>
+                        <a href="{{ url("$role/setting") }}">
+                            <svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Friends Birthdays">
+                                <use xlink:href="#olymp-settings-icon"></use>
+                            </svg>
+                            <span class="left-menu-title">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- ... end Fixed Sidebar Left -->
 
 
-<!-- Fixed Sidebar Left -->
-<div class="fixed-sidebar left fixed-sidebar-responsive">
+    <!-- Fixed Sidebar Left -->
+    <div class="fixed-sidebar left fixed-sidebar-responsive">
 
-	<div class="fixed-sidebar-left sidebar--small" id="sidebar-left-responsive">
-		<a href="#" class="logo js-sidebar-open">
-			<img loading="lazy" src="{{asset('img/white-logo.png')}}" alt="white-logo" width="34" height="34">
-		</a>
+        <div class="fixed-sidebar-left sidebar--small" id="sidebar-left-responsive">
+            <a href="#" class="logo js-sidebar-open">
+                <img loading="lazy" src="{{ asset('img/white-logo.png') }}" alt="white-logo" width="34" height="34">
+            </a>
 
-	</div>
+        </div>
 
-	<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1-responsive">
-		<a href="#" class="logo">
-			<div class="img-wrap">
-				<img loading="lazy" src="{{asset('img/logo.png')}}" alt="white-logo" width="34" height="34">
-			</div>
-			<div class="title-block">
-				<h6 class="logo-title">Clusters</h6>
-			</div>
-		</a>
+        <div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1-responsive">
+            <a href="#" class="logo">
+                <div class="img-wrap">
+                    <img loading="lazy" src="{{ asset('img/logo.png') }}" alt="white-logo" width="34" height="34">
+                </div>
+                <div class="title-block">
+                    <h6 class="logo-title">Clusters</h6>
+                </div>
+            </a>
 
-		<div class="mCustomScrollbar" data-mcs-theme="dark">
+            <div class="mCustomScrollbar" data-mcs-theme="dark">
 
-			<div class="control-block">
-				<div class="author-page author vcard inline-items">
+                <div class="control-block">
+                    <div class="author-page author vcard inline-items">
 
-					<a href="#" class="author-name fn">
-						<div class="author-title">
-							@if(Auth::check())
-							{{ Auth::user()->first_name }}
-							@endif
-							<svg class="olymp-dropdown-arrow-icon">
-								<use xlink:href="#olymp-dropdown-arrow-icon"></use>
-							</svg>
-						</div>
-						<span class="author-subtitle">SPACE COWBOY</span>
-					</a>
-				</div>
-			</div>
+                        <a href="#" class="author-name fn">
+                            <div class="author-title">
+                                @if (Auth::check())
+                                    {{ Auth::user()->first_name }}
+                                @endif
+                                <svg class="olymp-dropdown-arrow-icon">
+                                    <use xlink:href="#olymp-dropdown-arrow-icon"></use>
+                                </svg>
+                            </div>
+                            <span class="author-subtitle">SPACE COWBOY</span>
+                        </a>
+                    </div>
+                </div>
 
-			<div class="ui-block-title ui-block-title-small">
-				<h6 class="title">MAIN SECTIONS</h6>
-			</div>
+                <div class="ui-block-title ui-block-title-small">
+                    <h6 class="title">MAIN SECTIONS</h6>
+                </div>
 
-			<ul class="left-menu">
-				<li>
-					<a href="#" class="js-sidebar-open">
-						<svg class="olymp-close-icon left-menu-icon">
-							<use xlink:href="#olymp-close-icon"></use>
-						</svg>
-						<span class="left-menu-title">Main Menu</span>
-					</a>
-				</li>
-				<li>
-					<a href="{{url("$role")}}">
-						<svg  class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="NEWSFEED"><use xlink:href="#olymp-status-icon"></use></svg>
-						<span class="left-menu-title">Dashboard</span>
-					</a>
-				</li>
-				@if(Auth::user()->role == 'admin')
+                <ul class="left-menu">
+                    <li>
+                        <a href="#" class="js-sidebar-open">
+                            <svg class="olymp-close-icon left-menu-icon">
+                                <use xlink:href="#olymp-close-icon"></use>
+                            </svg>
+                            <span class="left-menu-title">Main Menu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url("$role") }}">
+                            <svg class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="NEWSFEED">
+                                <use xlink:href="#olymp-status-icon"></use>
+                            </svg>
+                            <span class="left-menu-title">Dashboard</span>
+                        </a>
+                    </li>
+                    @if (Auth::user()->role == 'admin')
+                        <li>
+                            <a href="{{ url("$role/view_cluster") }}">
+                                <svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="FAV PAGE">
+                                    <use xlink:href="#olymp-star-icon"></use>
+                                </svg>
+                                <span class="left-menu-title">Clustors</span>
+                            </a>
+                        </li>
+                    @endif
+                    <li>
+                        <a href="{{ url("$role/view/event") }}">
+                            <svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Manage Widgets">
+                                <use xlink:href="#olymp-manage-widgets-icon"></use>
+                            </svg>
+                            <span class="left-menu-title">Events</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url("$role/services") }}">
+                            <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Community Badges">
+                                <use xlink:href="#olymp-status-icon"></use>
+                            </svg>
+                            <span class="left-menu-title">Services</span>
+                        </a>
+                    </li>
 
-				<li>
-					<a href="{{url("$role/view_cluster")}}">
-						<svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
-							<use xlink:href="#olymp-star-icon"></use>
-						</svg>
-						<span class="left-menu-title">Clustors</span>
-					</a>
-				</li>
-				@endif
-				<li>
-					<a href="{{url("$role/view/event")}}">
-						<svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Manage Widgets">
-							<use xlink:href="#olymp-manage-widgets-icon"></use>
-						</svg>
-						<span class="left-menu-title">Events</span>
-					</a>
-				</li>
-				<li>
-					<a href="{{url("$role/services")}}">
-						<svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community Badges">
-							<use xlink:href="#olymp-status-icon"></use>
-						</svg>
-						<span class="left-menu-title">Services</span>
-					</a>
-				</li>
+                    @if (Auth::user()->role == 'admin')
+                        <li>
+                            <a href="{{ url('admin/members') }}">
+                                <svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
+                                    <use xlink:href="#olymp-happy-faces-icon"></use>
+                                </svg>
+                                <span class="left-menu-title">Members</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('admin/users') }}">
+                                <svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
+                                    <use xlink:href="#olymp-happy-sticker-icon"></use>
+                                </svg>
+                                <span class="left-menu-title">Users</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url("$role/cluster_manager") }}">
+                                <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="WEATHER APP">
+                                    <use xlink:href="#olymp-music-shuffle-icon"></use>
+                                </svg>
+                                <span class="left-menu-title">Cluster Manager</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url("$role/communication") }}">
+                                <svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
+                                    <use xlink:href="#olymp-badge-icon"></use>
+                                </svg>
+                                <span class="left-menu-title">Communication</span>
+                            </a>
+                        </li>
+                    @endif
+                    <li>
+                        <a href="{{ url("$role/setting") }}">
+                            <svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Friends Birthdays">
+                                <use xlink:href="#olymp-settings-icon"></use>
+                            </svg>
+                            <span class="left-menu-title">Settings</span>
+                        </a>
+                    </li>
+                </ul>
 
-				@if(Auth::user()->role == 'admin')
+                <div class="ui-block-title ui-block-title-small">
+                    <h6 class="title">YOUR ACCOUNT</h6>
+                </div>
 
-				<li>
-					<a href="{{url("admin/members")}}">
-						<svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
-							<use xlink:href="#olymp-happy-faces-icon"></use>
-						</svg>
-						<span class="left-menu-title">Members</span>
-					</a>
-				</li>
-				<li>
-					<a href="{{url('admin/users')}}">
-						<svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
-							<use xlink:href="#olymp-happy-sticker-icon"></use>
-						</svg>
-						<span class="left-menu-title">Users</span>
-					</a>
-				</li>
-				<li>
-					<a href="{{url("$role/cluster_manager")}}">
-						<svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="WEATHER APP">
-							<use xlink:href="#olymp-music-shuffle-icon"></use>
-						</svg>
-						<span class="left-menu-title">Cluster Manager</span>
-					</a>
-				</li>
-				<li>
-					<a href="{{url("$role/communication")}}">
-						<svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
-							<use xlink:href="#olymp-badge-icon"></use>
-						</svg>
-						<span class="left-menu-title">Communication</span>
-					</a>
-				</li>
-				@endif
-				<li>
-					<a href="{{url("$role/setting")}}">
-						<svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Friends Birthdays">
-							<use xlink:href="#olymp-settings-icon"></use>
-						</svg>
-						<span class="left-menu-title">Settings</span>
-					</a>
-				</li>
-			</ul>
+                <ul class="account-settings">
+                    <li>
+                        <a href="{{ url("$role/setting") }}">
 
-			<div class="ui-block-title ui-block-title-small">
-				<h6 class="title">YOUR ACCOUNT</h6>
-			</div>
+                            <svg class="olymp-menu-icon">
+                                <use xlink:href="#olymp-menu-icon"></use>
+                            </svg>
 
-			<ul class="account-settings">
-				<li>
-					<a href="{{url("$role/setting")}}">
-
-						<svg class="olymp-menu-icon">
-							<use xlink:href="#olymp-menu-icon"></use>
-						</svg>
-
-						<span>Profile Settings</span>
-					</a>
-				</li>
-				<li>
-					{{-- <a href="#">
+                            <span>Profile Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        {{-- <a href="#">
 						<svg class="olymp-logout-icon">
 							<use xlink:href="#olymp-logout-icon"></use>
 						</svg>
 
 						<span>Log Out</span>
 					</a> --}}
-					<a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>

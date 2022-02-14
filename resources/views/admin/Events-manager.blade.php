@@ -41,23 +41,7 @@
                     {{ session()->get('sucess') }}
                 </div>
             @endif
-            {{-- <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="ui-block responsive-flex">
-                    <div class="ui-block-title">
-                        <ul class="nav nav-tabs calendar-events-tabs" id="calendar-events-tabs" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link active" id="events-tab" data-bs-toggle="tab" href="#events" role="tab"
-                                    aria-controls="home" aria-selected="true">
-                                    Calendar and Events
-                                </a>
-                            </li>
 
-
-                        </ul>
-
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </div>
     <!-- Tab panes -->
@@ -78,7 +62,9 @@
 
                                 <div class="row">
 
-                                    <form @if (isset($clust->id)) action="{{ url("$role/upd/cluster/$clust->id") }}" @endif method="post">
+                                    <form
+                                        @if (isset($clust->id)) action="{{ url("$role/upd/cluster/$clust->id") }}" @endif
+                                        method="post">
                                         @csrf
                                         {{-- <div class="col-12">
                                             <img class="" loading="lazy" @if (isset($clus_img1[0]))  src="{{ asset("images/$clus_img1[0]") }}" @endif alt="author"
@@ -92,7 +78,10 @@
 
                                             <div class="wethear-now inline-items">
                                                 <div class="temperature-sensor" style="font-size: 38px">
-                                                    @if (isset($clust->name)) {{ $clust->name }} @endif </div>
+                                                    @if (isset($clust->name))
+                                                        {{ $clust->name }}
+                                                    @endif
+                                                </div>
 
 
                                             </div>
@@ -106,14 +95,18 @@
                                                         <textarea name="detail"
                                                             style="  font-size: 16px;       margin-top: 15px;  border: none;    color: white;    font-weight: 400;background-color: rgba(0, 0, 0, 0);"
                                                             name="" id="" cols="30" rows="2">
-                                                                            @if (isset($clust->detail))  {{ $clust->detail }} @endif
-                                                                        </textarea>
+                                                                                @if (isset($clust->detail))
+    {{ $clust->detail }}
+    @endif
+                                                                            </textarea>
 
                                                     </div>
 
                                                 @else
                                                     <div class="climate mt-2">
-                                                        @if (isset($clust->detail))  {{ $clust->detail }} @endif
+                                                        @if (isset($clust->detail))
+                                                            {{ $clust->detail }}
+                                                        @endif
                                                     </div>
                                                 @endif
 
@@ -203,7 +196,7 @@
                                         $i = 0;
                                         ?>
 
-                                        @if (isset($event_3))
+                                        @if (isset($event_3) && count($event_3) > 0)
 
 
                                             @foreach ($event_3 as $events)
@@ -231,7 +224,7 @@
                                                         </button>
                                                     </div>
                                                     <div id="collapse{{ $events->id }}"
-                                                        @if ($i == 1)   class="accordion-collapse collapse show" @else class="accordion-collapse collapse" @endif
+                                                        @if ($i == 1) class="accordion-collapse collapse show" @else class="accordion-collapse collapse" @endif
                                                         aria-labelledby="heading{{ $events->id }}"
                                                         data-bs-parent="#accordionExample">
                                                         <div class="accordion-body">
@@ -246,6 +239,19 @@
                                                     </div>
                                                 </div>
                                             @endforeach
+
+                                        @else
+
+                                            <div class="accordion-item" style="    padding: unset;">
+                                                <div class="jumbotron jumbotron-fluid"
+                                                    style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
+                                                    <div class="container">
+                                                        <h5 class="text-center">No Event Available</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
 
                                         @endif
 
@@ -303,17 +309,20 @@
 
                                     </div>
 
-                                    <form @if (isset($clust->id)) action="{{ url("$role/upd/cluster_overview/$clust->id") }}" @endif method="post">
+                                    <form
+                                        @if (isset($clust->id)) action="{{ url("$role/upd/cluster_overview/$clust->id") }}" @endif
+                                        method="post">
                                         @csrf
                                         <p class="user-description position-relative">
                                             @if ((isset($mang->status) && $mang->status == 2) || Auth::user()->role == 'admin')
                                                 <input class="cls_description1" type="text" style="border: none;"
-                                                    @if (isset($clust->cluster_overview)) value="{{ $clust->cluster_overview }}" @endif placeholder="Enter Overview Detail"
-                                                    name="cluster_overview" id="">
+                                                    @if (isset($clust->cluster_overview)) value="{{ $clust->cluster_overview }}" @endif
+                                                    placeholder="Enter Overview Detail" name="cluster_overview" id="">
                                             @else
 
 
-                                                <input type="text" style="border: none;" required @if (isset($clust->cluster_overview))   value="{{ $clust->cluster_overview }}" @endif
+                                                <input type="text" style="border: none;" required
+                                                    @if (isset($clust->cluster_overview)) value="{{ $clust->cluster_overview }}" @endif
                                                     placeholder="Enter Overview Detail" id="">
                                             @endif
 
@@ -348,7 +357,6 @@
 
                                         @if (isset($clus_img))
                                             @foreach ($clus_img as $clus_imgs)
-
                                                 @if ($clus_imgs != null)
                                                     <?php
                                                     $i++;
@@ -361,11 +369,17 @@
                                                 @endif
                                             @endforeach
                                         @endif
-                                        <a @if (isset($clus_img1[0]))  href="{{ asset("images/$clus_img1[0]") }}" @endif class="more-photos col col-3-width">
-                                            <img loading="lazy" @if (isset($clus_img1[0])) src="{{ asset("images/$clus_img1[0]") }}" @endif alt="photo" width="600"
-                                                height="600">
+                                        <a @if (isset($clus_img1[0])) href="{{ asset("images/$clus_img1[0]") }}" @endif
+                                            @if ($count_clus != 100 && $count_clus != 1) class="more-photos col col-3-width" @else class=" col col-3-width" @endif>
+                                            <img loading="lazy"
+                                                @if (isset($clus_img1[0])) src="{{ asset("images/$clus_img1[0]") }}" @endif
+                                                alt="photo" width="600" height="600">
 
-                                            <span class="h2"> @if ($count_clus != 100 && $count_clus != 1)  {{ $count_clus - 1 }}  @endif</span>
+                                            <span class="h2">
+                                                @if ($count_clus != 100 && $count_clus != 1)
+                                                    {{ $count_clus - 1 }}
+                                                @endif
+                                            </span>
                                         </a>
                                     </div>
 
@@ -450,8 +464,10 @@
 
                                                     @if (count($event) > 0)
                                                         @foreach ($event as $events)
-
                                                             @foreach ($joinn as $item)
+                                                                {{-- @dd( $item) --}}
+
+
                                                                 @if ($item->event_id == $events->id)
                                                                     <?php
                                                                     $ii = $events->id;
@@ -493,16 +509,15 @@
                                                                             alt="author" width="100" height="100">
                                                                     </div>
                                                                     <div class="col-12 text-end">
-                                                                        @if(isset($events->Event->cluster_id))
-
-                                                                        @if ($ii != $events->id)
-                                                                            <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
-                                                                                class="btn btn-primary"> Join</a>
-                                                                        @else
-                                                                            <a class="btn btn-primary bg-green "
-                                                                                style="border-color:green; color:white">
-                                                                                Joined</a>
-                                                                        @endif
+                                                                        @if (isset($events->Event->cluster_id))
+                                                                            @if ($ii != $events->id)
+                                                                                <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
+                                                                                    class="btn btn-primary"> Join</a>
+                                                                            @else
+                                                                                <a class="btn btn-primary bg-green "
+                                                                                    style="border-color:green; color:white">
+                                                                                    Joined</a>
+                                                                            @endif
                                                                         @endif
                                                                     </div>
 
@@ -530,6 +545,7 @@
                                                 <div class="row">
                                                     <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
                                                         style="padding: unset">
+
                                                         @if (isset($eventtime) && count($eventtime) > 0)
                                                             @foreach ($eventtime as $events)
                                                                 @foreach ($joinn as $item)
@@ -540,7 +556,6 @@
                                                                         ?>
                                                                     @endif
                                                                 @endforeach
-
 
 
                                                                 <div class="ui-block">
@@ -577,15 +592,15 @@
                                                                         </div>
                                                                         <div class="col-12 text-end">
                                                                             {{-- @dd($events) --}}
-@if(isset($events->Event->cluster_id))
-                                                                            @if ($ii != $events->id)
-                                                                                <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
-                                                                                    class="btn btn-primary"> Join</a>
-                                                                            @else
-                                                                                <a class="btn btn-primary bg-green "
-                                                                                    style="border-color:green; color:white">
-                                                                                    Joined</a>
-                                                                            @endif
+                                                                            @if (isset($events->Event->cluster_id))
+                                                                                @if ($ii != $events->id)
+                                                                                    <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
+                                                                                        class="btn btn-primary"> Join</a>
+                                                                                @else
+                                                                                    <a class="btn btn-primary bg-green "
+                                                                                        style="border-color:green; color:white">
+                                                                                        Joined</a>
+                                                                                @endif
                                                                             @endif
                                                                         </div>
 
@@ -729,7 +744,6 @@
                                 @if (count($user) > 1)
                                     @foreach ($user as $users)
                                         @if ($users->User->role != 'admin')
-
                                             <li>
                                                 <div class="author-thumb">
                                                     <img loading="lazy" src="{{ asset('img/avatar49-sm.html') }}"
@@ -755,7 +769,7 @@
                                 @endif
 
 
-                                @if ($user->count() > 3 && Auth::user()->role == 'admin')
+                                @if ($user->count() > 0 && Auth::user()->role == 'admin')
                                     <li style=" background: #2d2d2d; padding: 7px;">
                                         <div class="col-12">
                                             <a href="{{ url("$role/view", [$id]) }}"
@@ -783,11 +797,10 @@
 
                             <ul class="widget w-activity-feed notification-list">
 
-                                @if (isset($joinn1))
+                                @if (isset($joinn1) && count($joinn1) > 0)
                                     @foreach ($joinn1 as $joinns)
                                         @if ($joinns->User->role != 'admin')
-
-                                        {{-- @dd($joinns->User) --}}
+                                            {{-- @dd($joinns->User) --}}
                                             <li>
                                                 <div class="author-thumb">
                                                     <img loading="lazy" src="{{ asset('img/avatar49-sm.html') }}"
@@ -910,7 +923,7 @@
                         @csrf
 
                         <div class="form-group  is-select">
-                            <label class="control-label">Personal Event</label>
+                            <label class="control-label"> Event Type</label>
                             <select class="form-select" name="Event_type">
                                 <option value="Public">Public Event</option>
                                 <option value="Private">Private Event</option>
@@ -922,9 +935,11 @@
                             <input class="form-control" name="name" placeholder="Enter Event Name" type="text">
                         </div>
                         {{-- @dd($mang) --}}
-                        <input type="hidden" value="@if (isset($mang->id)) {{ $mang->id }} @endif" name="mangerID" id="">
+                        <input type="hidden" value="@if (isset($mang->id)) {{ $mang->id }} @endif"
+                            name="mangerID" id="">
 
-                        <input type="hidden" value="@if (isset($mang->cluster_id)) {{ $mang->cluster_id }} @endif" name="cluster_id" id="">
+                        <input type="hidden" value="@if (isset($mang->cluster_id)) {{ $mang->cluster_id }} @endif"
+                            name="cluster_id" id="">
 
 
 
@@ -992,14 +1007,16 @@
                 </div>
 
                 <div class="modal-body">
-                    <form @if (isset($clust->id)) action="{{ url("$role/upd/cluster/$clust->id") }}" @endif method="post" enctype="multipart/form-data">
+                    <form @if (isset($clust->id)) action="{{ url("$role/upd/cluster/$clust->id") }}" @endif
+                        method="post" enctype="multipart/form-data">
                         @csrf
 
 
                         <div class="form-group ">
                             <label for="exampleFormControlInput1">Select Cluster Image</label>
                             <input type="file" name="image[]" class="form-control" id="Cluster-Name" required>
-                            <input type="hidden" style="border: none;" required @if (isset($clust->detail)) value="{{ $clust->detail }}" @endif name="detail"
+                            <input type="hidden" style="border: none;" required
+                                @if (isset($clust->detail)) value="{{ $clust->detail }}" @endif name="detail"
                                 id="">
                         </div>
 
