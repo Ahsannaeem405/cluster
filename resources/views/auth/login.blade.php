@@ -107,7 +107,7 @@ textarea.select2-search__field {
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs d-flex justify-content-between" id="registration-form-tabs" role="tablist">
 					<li class="nav-item w-50" role="presentation">
-						<a class="nav-link @if($_SERVER['REQUEST_URI'] == '/login?signup') active  @endif  @if(isset($cluster_id)) @if($_SERVER['REQUEST_URI'] == "/public/login/cluster/$cluster_id") active @endif @endif  @if(isset($event_id)) @if($_SERVER['REQUEST_URI'] == "/register/event/$event_id") active @endif @endif d-flex justify-content-center align-items-center" id="login-tab" data-bs-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">
+						<a class="nav-link @if($_SERVER['REQUEST_URI'] == '/public/login?signup') active  @endif  @if(isset($cluster_id)) @if($_SERVER['REQUEST_URI'] == "/public/login/cluster/$cluster_id") active @endif @endif  @if(isset($event_id)) @if($_SERVER['REQUEST_URI'] == "/register/event/$event_id") active @endif @endif d-flex justify-content-center align-items-center" id="login-tab" data-bs-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">
 							 <svg class="olymp-login-icon mx-2">
 								 <use xlink:href="#olymp-login-icon"></use>
 
@@ -116,7 +116,7 @@ textarea.select2-search__field {
 						</a>
 					</li>
 					<li class="nav-item w-50" role="presentation">
-						<a class="nav-link  @if($_SERVER['REQUEST_URI'] == '/login?signin' ) active @endif d-flex justify-content-center align-items-center" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+						<a class="nav-link  @if($_SERVER['REQUEST_URI'] == '/public/login?signin' ) active @endif d-flex justify-content-center align-items-center" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
 							<svg class="olymp-register-icon mx-2"><use xlink:href="#olymp-register-icon"></use></svg> Login
 						</a>
 					</li>
@@ -126,7 +126,7 @@ textarea.select2-search__field {
 				@php
 				@endphp
 				<div class="tab-content" id="registration-form-tabs-content">
-					<div class="tab-pane fade  @if($_SERVER['REQUEST_URI'] == '/login?signup' ) show active  @endif @if(isset($cluster_id)) @if($_SERVER['REQUEST_URI'] == "/login/cluster/$cluster_id" ) show active  @endif @endif @if(isset($event_id)) @if($_SERVER['REQUEST_URI'] == "/register/event/$event_id") show active @endif @endif" id="login" role="tabpanel" aria-labelledby="login-tab">
+					<div class="tab-pane fade  @if($_SERVER['REQUEST_URI'] == '/public/login?signup' ) show active  @endif @if(isset($cluster_id)) @if($_SERVER['REQUEST_URI'] == "/public/login/cluster/$cluster_id" ) show active  @endif @endif @if(isset($event_id)) @if($_SERVER['REQUEST_URI'] == "/register/event/$event_id") show active @endif @endif" id="login" role="tabpanel" aria-labelledby="login-tab">
 						<div class="title h6">Register to new account</div>
                             <form class="content" method="POST" action="{{ route('register') }}">
                                 @csrf
@@ -267,7 +267,7 @@ textarea.select2-search__field {
 						@endif
 					</div>
 
-					<div class="tab-pane fade  @if($_SERVER['REQUEST_URI'] == '/login?signin') show active @endif" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+					<div class="tab-pane fade  @if($_SERVER['REQUEST_URI'] == '/public/login?signin') show active @endif" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 						<div class="title h6">Login to your Account</div>
 						{{-- //<form class="content"> --}}
                             <form class="content" method="POST" action="{{ route('login') }}">
