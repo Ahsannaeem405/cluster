@@ -42,7 +42,7 @@
     height: 39px !important;
 }
 .select2-container .select2-selection--multiple .select2-selection__rendered {
-     display: block !important;
+     display: block !important; 
     /* list-style: none; */
     padding: 4px !important;
 }
@@ -58,7 +58,7 @@
     border: solid #e6ecf5 1px !important;
     outline: 0;
 }
-textarea.select2-search__field {
+  textarea.select2-search__field {
             display: none;
         }
 </style>
@@ -99,7 +99,7 @@ textarea.select2-search__field {
 <div class="container">
 	<div class="row display-flex d-flex justify-content-center mt-5">
 		<div class="col col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12">
-
+			
 			<!-- Login-Registration Form  -->
 
 			<div class="registration-login-form">
@@ -107,16 +107,16 @@ textarea.select2-search__field {
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs d-flex justify-content-between" id="registration-form-tabs" role="tablist">
 					<li class="nav-item w-50" role="presentation">
-						<a class="nav-link @if($_SERVER['REQUEST_URI'] == '/public/login?signup') active  @endif  @if(isset($cluster_id)) @if($_SERVER['REQUEST_URI'] == "/public/login/cluster/$cluster_id") active @endif @endif  @if(isset($event_id)) @if($_SERVER['REQUEST_URI'] == "/register/event/$event_id") active @endif @endif d-flex justify-content-center align-items-center" id="login-tab" data-bs-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">
+						<a class="nav-link @if($_SERVER['REQUEST_URI'] == '/login?signup') active  @endif  @if(isset($cluster_id)) @if($_SERVER['REQUEST_URI'] == "/login/cluster/$cluster_id") active @endif @endif  @if(isset($event_id)) @if($_SERVER['REQUEST_URI'] == "/register/event/$event_id") active @endif @endif d-flex justify-content-center align-items-center" id="login-tab" data-bs-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">
 							 <svg class="olymp-login-icon mx-2">
-								 <use xlink:href="#olymp-login-icon"></use>
-
+								 <use xlink:href="#olymp-login-icon"></use> 
+								 
 								</svg>
 								Sign Up
 						</a>
 					</li>
 					<li class="nav-item w-50" role="presentation">
-						<a class="nav-link  @if($_SERVER['REQUEST_URI'] == '/public/login?signin' ) active @endif d-flex justify-content-center align-items-center" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+						<a class="nav-link  @if($_SERVER['REQUEST_URI'] == '/login?signin' ) active @endif d-flex justify-content-center align-items-center" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
 							<svg class="olymp-register-icon mx-2"><use xlink:href="#olymp-register-icon"></use></svg> Login
 						</a>
 					</li>
@@ -126,7 +126,7 @@ textarea.select2-search__field {
 				@php
 				@endphp
 				<div class="tab-content" id="registration-form-tabs-content">
-					<div class="tab-pane fade  @if($_SERVER['REQUEST_URI'] == '/public/login?signup' ) show active  @endif @if(isset($cluster_id)) @if($_SERVER['REQUEST_URI'] == "/public/login/cluster/$cluster_id" ) show active  @endif @endif @if(isset($event_id)) @if($_SERVER['REQUEST_URI'] == "/register/event/$event_id") show active @endif @endif" id="login" role="tabpanel" aria-labelledby="login-tab">
+					<div class="tab-pane fade  @if($_SERVER['REQUEST_URI'] == '/login?signup' ) show active  @endif @if(isset($cluster_id)) @if($_SERVER['REQUEST_URI'] == "/login/cluster/$cluster_id" ) show active  @endif @endif @if(isset($event_id)) @if($_SERVER['REQUEST_URI'] == "/register/event/$event_id") show active @endif @endif" id="login" role="tabpanel" aria-labelledby="login-tab">
 						<div class="title h6">Register to new account</div>
                             <form class="content" method="POST" action="{{ route('register') }}">
                                 @csrf
@@ -164,7 +164,7 @@ textarea.select2-search__field {
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
-                                        @enderror
+                                        @enderror		
                                     </div>
 									<div class="form-group label-floating">
 										<label class="control-label">Your Password</label>
@@ -181,13 +181,13 @@ textarea.select2-search__field {
 										<label class="control-label">Confirm Password</label>
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
 
-
+                                       
                                     </div>
 
 									<div class="form-group date-time-picker label-floating">
 										<label class="control-label">Your Birthday</label>
 										<input type="date" name="datetimepicker" value="10/24/1984"  class="form-control @error('password') is-invalid @enderror"  required autocomplete="new-password" />
-
+										
 
                                         @error('datetimepicker')
                                         <span class="invalid-feedback" role="alert">
@@ -218,7 +218,7 @@ textarea.select2-search__field {
 
 												</div>
 											</div>
-
+												
 
 										</div>
 										<div class="col-md-6 col-lg-6 col-sm-6">
@@ -231,7 +231,7 @@ textarea.select2-search__field {
 
 												</div>
 											</div>
-
+														
 
 										</div>
 									</div>
@@ -241,7 +241,7 @@ textarea.select2-search__field {
 
 										@foreach($cluster as $list)
 										<option value="{{$list->id}}" @if(isset($cluster_id)) @if($cluster_id == $list->id) selected @endif @endif>{{$list->name}}</option>
-
+							
 										@endforeach
 									  </select>
 									</div>
@@ -250,11 +250,11 @@ textarea.select2-search__field {
 										<select class="eventMultiple" name="event[]" multiple="multiple">
 											@foreach($event as $listE)
 											<option value="{{$listE->id}}"  @if(isset($event_id)) @if($event_id == $listE->id) selected @endif @endif>{{$listE->name}}</option>
-
+								
 											@endforeach
 										  </select>
 										</div>
-
+										
 
                                     <button type="submit" class="btn btn-blue btn-lg full-width">
                                         {{ __('Complete Registration!') }}
@@ -267,12 +267,12 @@ textarea.select2-search__field {
 						@endif
 					</div>
 
-					<div class="tab-pane fade  @if($_SERVER['REQUEST_URI'] == '/public/login?signin') show active @endif" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+					<div class="tab-pane fade  @if($_SERVER['REQUEST_URI'] == '/login?signin') show active @endif" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 						<div class="title h6">Login to your Account</div>
 						{{-- //<form class="content"> --}}
                             <form class="content" method="POST" action="{{ route('login') }}">
                                 @csrf
-
+        
 							<div class="row">
 								<div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
 									<div class="form-group label-floating">
@@ -298,7 +298,7 @@ textarea.select2-search__field {
 
 									<div class="remember">
 
-
+									
 										@if (Route::has('password.request'))
 										<a class="btn btn-link forgot" href="{{ route('password.request') }}">
 											{{ __('Forgot Your Password?') }}
@@ -315,11 +315,11 @@ textarea.select2-search__field {
 								</div>
 							</div>
 						</form>
-
+						
 					</div>
 				</div>
 			</div>
-
+			
 			<!-- ... end Login-Registration Form  -->		</div>
 	</div>
 </div>
@@ -420,7 +420,7 @@ textarea.select2-search__field {
 
 
 		}
-
+	
 		$('#member').click(function(){
 		$('#cluster').show();
 		$('#event').hide();
@@ -428,7 +428,7 @@ textarea.select2-search__field {
 		$(".eventMultiple").attr("required", false);
 
 		});
-
+		
 		$('#user').click(function(){
 		$('#cluster').hide();
 		$('#event').show();
@@ -442,7 +442,7 @@ textarea.select2-search__field {
     $('.eventMultiple').select2();
 });
 </script>
-{{--
+{{-- 
 @extends('layouts.app')
 
 @section('content')
