@@ -94,6 +94,7 @@ class RegisterController extends Controller
             'role' => 'user',
             'status' => 1,
             'register_role' =>$data['post_role'],
+            'post_role' =>$data['post_role'],
         ]);
         // $user_id=$user->id;
      
