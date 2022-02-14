@@ -144,6 +144,7 @@ Route::middleware(['auth'])->group(function () {
         //////////////////////cluster manager
         Route::get('/cluster_manager', [CManagerController::class,'cluster_manager']);
         Route::post('/addClusterManager', [CManagerController::class,'addClusterManager']);
+        Route::post('/deleteClusterM/{id}', [CManagerController::class,'deleteClusterM']);
 
         // Route::view('/cluster_manager', 'admin/cluster_manager');
 
