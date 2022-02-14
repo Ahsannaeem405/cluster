@@ -9,6 +9,7 @@ use App\Http\Controllers\install;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\CManagerController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -125,7 +126,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('upd/cluster_overview/{id}', [ClusterController::class, 'cluster_overview']);
 
         ///////////////////////////////setting end
-        Route::view('/cluster_manager', 'admin/cluster_manager');
+  
         Route::get('/view/{id}', [ClusterController::class, 'view']);
 
         ////////////////////////services start
@@ -134,13 +135,17 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/updateService/{id}', [ServiceController::class, 'updateService']);
         Route::get('/deleteService/{id}', [ServiceController::class, 'deleteService']);
 
-////////////////////////services start
-Route::get('/services', [ServiceController::class,'view_service']);
-Route::post('/addService', [ServiceController::class,'addService']);
-Route::post('/updateService/{id}', [ServiceController::class,'updateService']);
-Route::get('/deleteService/{id}', [ServiceController::class,'deleteService']);
-Route::get('/applyServiceView/{id}', [ServiceController::class,'applyServiceView']);
+        ////////////////////////services start
+        Route::get('/services', [ServiceController::class,'view_service']);
+        Route::post('/addService', [ServiceController::class,'addService']);
+        Route::post('/updateService/{id}', [ServiceController::class,'updateService']);
+        Route::get('/deleteService/{id}', [ServiceController::class,'deleteService']);
+        Route::get('/applyServiceView/{id}', [ServiceController::class,'applyServiceView']);
+        //////////////////////cluster manager
+        Route::get('/cluster_manager', [CManagerController::class,'cluster_manager']);
+        Route::post('/addClusterManager', [CManagerController::class,'addClusterManager']);
 
+        // Route::view('/cluster_manager', 'admin/cluster_manager');
 
 
         ////////////////////////services end

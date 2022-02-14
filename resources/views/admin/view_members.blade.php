@@ -130,7 +130,7 @@
 				
 						<div class="form-group"  id="cluster">
 							<label class="control-label">Cluster</label>
-							<select class="clusterMemberMultiple disabled @error('password') is-invalid @enderror" name="cluster[]" multiple="multiple" >
+							<select class="clusterMemberMultiple disabled @error('cluster') is-invalid @enderror" name="cluster[]" multiple="multiple" >
 	
 								@foreach($list->memberCluster as $listc)
 								<option value="{{$listc->Clusterr->id}}" @if( $listc->cluster_id == $listc->Clusterr->id) selected  @endif>{{$listc->Clusterr->name}}</option>
