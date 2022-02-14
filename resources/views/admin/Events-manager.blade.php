@@ -697,12 +697,10 @@
 
 
 
-                            <!-- W-Action -->
 
                             <ul class="widget w-friend-pages-added notification-list friend-requests">
 
                                 @if (isset($manager) && count($manager) > 0)
-                                    {{-- @dd($manager) --}}
                                     @foreach ($manager as $managers)
                                         <li class="inline-items">
                                             <div class="author-thumb">
@@ -797,10 +795,12 @@
 
                             <ul class="widget w-activity-feed notification-list">
 
+
                                 @if (isset($joinn1) && count($joinn1) > 0)
                                     @foreach ($joinn1 as $joinns)
+
                                         @if ($joinns->User->role != 'admin')
-                                            {{-- @dd($joinns->User) --}}
+
                                             <li>
                                                 <div class="author-thumb">
                                                     <img loading="lazy" src="{{ asset('img/avatar49-sm.html') }}"
