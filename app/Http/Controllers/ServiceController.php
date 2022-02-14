@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\JoinCluster;
 use App\Models\Company;
+use App\Models\Notifica;
+use App\Models\Notificationn;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 class ServiceController extends Controller
 {
@@ -23,7 +26,7 @@ class ServiceController extends Controller
         }
         else{
             $service['services']=JoinCluster::where('user_id',Auth::user()->id)->where('status',2)->get();
-            
+
         }
         return view('admin.view_services', $service);
     }
@@ -35,7 +38,7 @@ class ServiceController extends Controller
             'title' => 'required',
             'description' => 'required',
             'cluster_id' => 'required',
-               
+
         ]);
         $title=$request->title;
         $description=$request->description;
@@ -47,7 +50,7 @@ class ServiceController extends Controller
         $service->status=0;
         $service->save();
         return redirect()->back()->with('success', 'Service Added Sucessfully!');
-    
+
     }
     ////////////addService end
     ////////////updateService start
@@ -57,7 +60,7 @@ class ServiceController extends Controller
             'title' => 'required',
             'description' => 'required',
             'cluster_id' => 'required',
-               
+
         ]);
         $title=$request->title;
         $description=$request->description;
@@ -69,7 +72,7 @@ class ServiceController extends Controller
         $service->status=0;
         $service->save();
         return redirect()->back()->with('success', 'Service Updated Sucessfully!');
-    
+
     }
 
     ////////////updateService end
@@ -104,7 +107,7 @@ class ServiceController extends Controller
                     $apply_service->apply_type=$apply_type;
                     $apply_service->save();
                     return redirect()->back()->with('success', 'Apply Service Sucessfully!');
-    
+
             }else{
                 return view('admin.view_setting');
             }
@@ -116,18 +119,18 @@ class ServiceController extends Controller
             $apply_service->service_id=$service_id;
             $apply_service->apply_type=$apply_type;
             $apply_service->save();
-            return redirect()->back()->with('success', 'Apply Service Sucessfully!');     
+            return redirect()->back()->with('success', 'Apply Service Sucessfully!');
         }
     }else{
-        return redirect()->back()->with('error', 'Already Apply Service!');     
+        return redirect()->back()->with('error', 'Already Apply Service!');
 
     }
     }
     ////////////applyService end
     ////////////applyServiceView start
     public function applyServiceView($id)
-    {   
-        
+    {
+
         $apply_service['Applyservices']=ApplyService::where('service_id',$id)->get();
         if(count( $apply_service['Applyservices']) > 0)
         {
@@ -137,9 +140,9 @@ class ServiceController extends Controller
            $apply_service['user_data']= $apply_service['Applyservices'][0]->ServiceUsers;
            $apply_service['cluster_data']= $apply_service['service_data'][0]->ServiceCluster;
           // dd($apply_service['cluster_data']);
-        }else{  
-            return redirect()->back()->with('error', 'No Record Found!');     
-            
+        }else{
+            return redirect()->back()->with('error', 'No Record Found!');
+
         }
           //////userdata get relation end
         return view('admin.apply_service_view',$apply_service);
@@ -152,7 +155,7 @@ class ServiceController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-               
+
         ]);
         $title=$request->title;
         $description=$request->description;
@@ -167,7 +170,7 @@ class ServiceController extends Controller
 
     public function UpdateCompany(Request $request,$id)
     {
-     
+
         $title=$request->title;
         $description=$request->description;
         $company=Company::find($id);
@@ -177,5 +180,24 @@ class ServiceController extends Controller
         $company->save();
         return redirect()->back()->with('success', 'Company Updated Sucessfully!');
     }
-    
+
+    public function invite_user(Request $request)
+    {
+
+
+        for($i = 0; $i< count($request->userid); $i++){
+            $noti = new Notifica();
+
+            $noti->userid = $request->userid[$i];
+            $noti->eventID = $request->eventID;
+            $noti->save();
+        }
+
+        return redirect()->back()->with('success', 'Invited Sucessfully!');
+    }
+
+
+
+
+
 }

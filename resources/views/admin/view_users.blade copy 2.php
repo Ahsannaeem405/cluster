@@ -46,12 +46,12 @@
                     <li class="nav-item" role="presentation">
                       <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Join Event</button>
                     </li>
-                  
+
                   </ul>
                   <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                         <div class="table-responsive">
-                     
+
 							<table class="event-item-table event-item-table-fixed-width">
 
 								<thead>
@@ -78,7 +78,7 @@
                                             Action
 										</th>
                                         <th class="add-event">
-                                            
+
 										</th>
 									</tr>
 								</thead>
@@ -87,7 +87,7 @@
                                         $i = 1;
                                         ?>
                                     @foreach ($event as $events)
-                                  
+
 									<tr class="event-item">
                                         <td>{{$i++}}</td>
 										<td class="author">
@@ -145,29 +145,29 @@
                                             <div class="modal-header">
                                                 <h6 class="title">Create an Event</h6>
                                             </div>
-                                
+
                                             <div class="modal-body">
                                                 <form action="{{url("$role/update/event")}}/{{$events->id}}" method="POST">
                                                     @csrf
                                                 <div class="form-group label-floating is-select">
-                                                    <label class="control-label">Personal Event</label>
+                                                    <label class="control-label"> Event Name</label>
                                                     <select class="form-select" name="Event_type">
                                                         <option value="Public" @if($events->Event_type == 'Public') selected @endif>Public Event</option>
                                                         <option value="Private" @if($events->Event_type == 'Private') selected @endif>Private Event</option>
                                                     </select>
                                                 </div>
-                                
+
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Event Name</label>
                                                     <input class="form-control" name="name" placeholder="Event Name" value="{{$events->name}}" type="text">
                                                 </div>
                                                 <input type="hidden" value="@if(isset($mang->id)) {{$mang->id}} @endif" name="mangerID" id="">
-                                
+
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label">Event Location</label>
                                                     <input class="form-control" placeholder="Event Location" name="location" value="{{$events->location}}" type="text">
                                                 </div>
-                                
+
                                                 <div class="form-group date-time-picker label-floating">
                                                     <label class="control-label">Event Date</label>
                                                     <input name="datetimepicker" value="{{$events->datetimepicker}}">
@@ -177,7 +177,7 @@
                                                         </svg>
                                                     </span>
                                                 </div>
-                                
+
                                                 <div class="row">
                                                     <div class="col col-lg-3 col-md-3 col-sm-12 col-12">
                                                         <div class="form-group label-floating">
@@ -203,30 +203,30 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                
+
                                                 </div>
-                                
+
                                                 <div class="form-group">
                                                     <textarea class="form-control"
                                                         placeholder="Event Description" name="description">{{$events->description}}</textarea>
                                                 </div>
-                                
+
                                                 <div class="form-group">
                                                     <svg class="olymp-happy-face-icon">
                                                         <use xlink:href="#olymp-happy-face-icon"></use>
                                                     </svg>
-                                
+
                                                     <select class="form-select" name="type_Emj">
                                                         <option value="Green" title="Green Goo Rock">Green Goo Rock</option>
-                                
+
                                                         <option value="Mathilda" title="Mathilda Brinker">Mathilda Brinker</option>
-                                
+
                                                         <option value="Marina" title="Marina Valentine">Marina Valentine</option>
-                                
+
                                                         <option value="Dave" title="Dave Marinara">Dave Marinara</option>
-                                
+
                                                         <option value="Rachel" title="Rachel Howlett">Rachel Howlett</option>
-                                
+
                                                     </select>
                                                 </div>
 
@@ -238,23 +238,23 @@
                                                     $user_id=Auth::user()->id;
                                             $manager = App\Models\JoinCluster::where('status', 2)->take(6)->get();
                                             @endphp
-                                       
-                                                  
+
+
                                                     <select class="form-select" name="manager_cluster">
-                                                      
+
                                                         <option>Select Cluster</option>
                                                         @foreach( $manager as $list)
                                                         @php
-                                                            
+
                                                             $cluster=App\Models\cluster::where('id', $list->cluster_id)->first();
                                                         @endphp
-                                
+
                                                         <option value="{{ $cluster->name}}" >{{ $cluster->name}}</option>
                                                         @endforeach
-                                                       
+
                                                     </select>
                                                 </div>
-                                
+
                                                 <input type="submit"  class="btn btn-primary "  value="Create Event" name="" id="">
                                                 {{-- <button>Create Event</button> --}}
                                             </form>
@@ -269,7 +269,7 @@
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                         <div class="table-responsive">
-                     
+
 							<table class="event-item-table event-item-table-fixed-width">
 
 								<thead>
@@ -345,19 +345,19 @@
 
 									</tr>
 
-                                  
+
                                     @endforeach
 								</tbody>
 							</table>
                         </div>
                     </div>
                   </div>
-                  
+
 
 </div>
 
 
-              
+
             </div>
         </div>
 
@@ -379,7 +379,7 @@
                 <form action="{{url("$role/add/event")}}" method="POST">
                     @csrf
                 <div class="form-group label-floating is-select">
-                    <label class="control-label">Personal Event</label>
+                    <label class="control-label"> Event Type</label>
                     <select class="form-select" name="Event_type">
                         <option value="Public">Public Event</option>
                         <option value="Private">Private Event</option>
@@ -466,20 +466,20 @@
                     $user_id=Auth::user()->id;
             $manager = App\Models\JoinCluster::where('status', 2)->take(6)->get();
             @endphp
-       
-                  
+
+
                     <select class="form-select" name="manager_cluster">
-                      
+
                         <option>Select Cluster</option>
                         @foreach( $manager as $list)
                         @php
-                            
+
                             $cluster=App\Models\cluster::where('id', $list->cluster_id)->first();
                         @endphp
 
                         <option value="{{ $cluster->name}}" title="Green Goo Rock">{{ $cluster->name}}</option>
                         @endforeach
-                       
+
                     </select>
                 </div>
 

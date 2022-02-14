@@ -3,6 +3,43 @@
 @section('content')
 
 
+<!-- bootstrap 5.x or 4.x is supported. You can also use the bootstrap css 3.3.x versions -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
+
+<!-- default icons used in the plugin are from Bootstrap 5.x icon library (which can be enabled by loading CSS below) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css" crossorigin="anonymous">
+
+<!-- alternatively you can use the font awesome icon library if using with `fas` theme (or Bootstrap 4.x) by uncommenting below. -->
+<!-- link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" crossorigin="anonymous" -->
+
+<!-- the fileinput plugin styling CSS file -->
+<link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+
+<!-- if using RTL (Right-To-Left) orientation, load the RTL CSS file after fileinput.css by uncommenting below -->
+<!-- link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/css/fileinput-rtl.min.css" media="all" rel="stylesheet" type="text/css" /-->
+
+<!-- the jQuery Library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+
+<!-- piexif.min.js is needed for auto orienting image files OR when restoring exif data in resized images and when you
+    wish to resize images before upload. This must be loaded before fileinput.min.js -->
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/js/plugins/piexif.min.js" type="text/javascript"></script>
+
+<!-- sortable.min.js is only needed if you wish to sort / rearrange files in initial preview.
+    This must be loaded before fileinput.min.js -->
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/js/plugins/sortable.min.js" type="text/javascript"></script>
+
+<!-- bootstrap.bundle.min.js below is needed if you wish to zoom and preview file content in a detail modal
+    dialog. bootstrap 5.x or 4.x is supported. You can also use the bootstrap js 3.3.x versions. -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<!-- the main fileinput plugin script JS file -->
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/js/fileinput.min.js"></script>
+
+<!-- following theme script is needed to use the Font Awesome 5.x theme (`fas`). Uncomment if needed. -->
+<!-- script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/themes/fas/theme.min.js"></script -->
+
+
 <!-- Main Header Account -->
 <!-- some CSS styling changes and overrides -->
 <style>
@@ -47,7 +84,7 @@
 
 <div class="container-fluid">
 	@if ($message = Session::get('success'))
-	<div class="alert alert-success ">    
+	<div class="alert alert-success ">
 		<strong>{{ $message }}</strong>
 	</div>
 	@endif
@@ -64,7 +101,7 @@
 									</div>
 									<div class="ui-block-content">
 										<!-- Personal Information Form  -->
-				
+
 										<form method="post" action="{{url('profileSetting')}}/{{$user_data->id}}" enctype="multipart/form-data">
 											@csrf
 											<div class="col-md-6 offset-md-3 text-center">
@@ -73,7 +110,7 @@
 														<input id="avatar-2" name="image" type="file" required>
 													</div>
 												</div>
-												
+
 											</div>
 											<div class="row">
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
@@ -101,7 +138,7 @@
 													</div>
 													</div>
 												</div>
-				
+
 												<div class="row">
 													<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 													<div class="form-group">
@@ -114,7 +151,7 @@
 															</span>
 														@enderror
 													</div>
-				
+
 												</div>
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 
@@ -145,9 +182,9 @@
 														@enderror
 													</div>
 												</div>
-				
+
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-													
+
 													<div class="form-group ">
 														<label class="control-label">Your Phone Number</label>
 														<input name="number" class="form-control  @error('number') is-invalid @enderror" placeholder="Your Phone Number" type="text" value="{{$user_data->number}}">
@@ -159,15 +196,15 @@
 													</div>
 												</div>
 											</div>
-															
-										
-										
+
+
+
 												<div class="col-lg-6 col-md-6 offset-md-3 mt-5">
 													<button type="submit" class="btn btn-primary full-width">Update all Changes</button>
 												</div>
-				
+
 										</form>
-				
+
 										<!-- ... end Personal Information Form  -->
 									</div>
 								</div>
@@ -175,7 +212,7 @@
 						</div>
 					</div>
 				</div>
-			
+
 				<div class="tab-pane fade" id="notifications" role="tabpanel" aria-labelledby="notifications-tab">
 					<div class="container">
 						<div class="row">
@@ -184,7 +221,7 @@
 									<div class="ui-block-title">
 										<h6 class="title">Website Settings</h6>
 									</div>
-									<div class="ui-block-content">	
+									<div class="ui-block-content">
 										<!-- Personal Information Form  -->
 										@if($setting_data == null)
 										<form method="POST" action="{{url('admin/websiteSetting')}}" enctype="multipart/form-data">
@@ -231,7 +268,7 @@
 														@enderror
 													</div>
 												</div>
-											
+
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 													<div class="form-group ">
 														<label class="control-label">Footer Text</label>
@@ -312,10 +349,10 @@
 											</div>
 											<div class="row">
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-												
+
 													<button type="submit" class="btn btn-primary full-width">Save Setting</button>
 
-												
+
 												</div>
 											</div>
 										</form>
@@ -362,7 +399,7 @@
 														@enderror
 													</div>
 												</div>
-											
+
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 													<div class="form-group ">
 														<label class="control-label">Footer Text</label>
@@ -443,10 +480,10 @@
 											</div>
 											<div class="row">
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-												
+
 													<button type="submit" class="btn btn-primary full-width">Update Setting</button>
 
-												
+
 												</div>
 											</div>
 										</form>
@@ -459,7 +496,7 @@
 					</div>
 				</div>
 				@if(Auth::user()->role == 'user')
-				
+
 				<div class="tab-pane fade" id="company" role="tabpanel" aria-labelledby="company-tab">
 					<div class="container">
 						<div class="row">
@@ -468,7 +505,7 @@
 									<div class="ui-block-title">
 										<h6 class="title">company Settings</h6>
 									</div>
-									<div class="ui-block-content">	
+									<div class="ui-block-content">
 										<!-- Personal Information Form  -->
 										@if($company_data == null)
 										<form method="post" action="{{url('user/AddCompany')}}">
@@ -481,10 +518,10 @@
                                                   <span class="invalid-feedback" role="alert">
                                                   <strong>{{ $message }}</strong>
                                                   </span>
-                                                  @enderror 
+                                                  @enderror
 													</div>
 												</div>
-											
+
 												<div class="col col-lg-12 col-md-6 col-sm-12 col-12">
 													<div class="form-group ">
 														<label class="control-label">Company Description</label>
@@ -496,8 +533,8 @@
 														@enderror
 													</div>
 												</div>
-											
-												
+
+
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 													<button type="submit" class="btn btn-primary  full-width">Save Now</button>
 												</div>
@@ -513,10 +550,10 @@
                                                   <span class="invalid-feedback" role="alert">
                                                   <strong>{{ $message }}</strong>
                                                   </span>
-                                                  @enderror 
+                                                  @enderror
 													</div>
 												</div>
-											
+
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 													<div class="form-group ">
 														<label class="control-label">Company Description</label>
@@ -528,8 +565,8 @@
 														@enderror
 													</div>
 												</div>
-											
-												
+
+
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 													<button type="submit" class="btn btn-primary  full-width">Update Company</button>
 												</div>
@@ -555,10 +592,10 @@
 						</a>
 						<div class="modal-body">
 							<article class="hentry post has-post-thumbnail thumb-full-width private-event">
-			
+
 								<div class="private-event-head inline-items">
 									<img loading="lazy" src="img/avatar77-sm.html" alt="author" width="40" height="40">
-			
+
 									<div class="author-date">
 										<a class="h3 event-title" href="#">Green Goo in Gotham</a>
 										<div class="event__date">
@@ -567,7 +604,7 @@
 											</time>
 										</div>
 									</div>
-			
+
 									<div class="more">
 										<svg class="olymp-three-dots-icon">
 											<use xlink:href="#olymp-three-dots-icon"></use>
@@ -585,16 +622,16 @@
 										</ul>
 									</div>
 								</div>
-			
+
 								<div class="post-thumb">
 									<img loading="lazy" src="img/event-public.html" alt="photo" width="769" height="380">
 								</div>
-			
+
 								<div class="row">
 									<div class="col col-lg-7 col-md-7 col-sm-12 col-12">
 										<div class="post__author author vcard inline-items">
 											<img loading="lazy" src="img/avatar5-sm.html" alt="author" width="42" height="42">
-			
+
 											<div class="author-date">
 												<a class="h6 post__author-name fn" href="#">Green Goo Rock</a> created the
 												<a href="#">Event</a>
@@ -604,9 +641,9 @@
 													</time>
 												</div>
 											</div>
-			
+
 										</div>
-			
+
 										<p>
 											We’ll be playing in the Gotham Bar in May. Come and have a great time with us! Entry: $12
 										</p>
@@ -620,14 +657,14 @@
 												</svg>
 												<span>Gotham Bar</span>
 											</div>
-			
+
 											<div class="place inline-items">
 												<svg class="olymp-add-a-place-icon">
 													<use xlink:href="#olymp-add-a-place-icon"></use>
 												</svg>
 												<span>Mar 26, 2016 at 9:00am UTC-8</span>
 											</div>
-			
+
 											<ul class="friends-harmonic">
 												<li>
 													<a href="#">
@@ -657,29 +694,29 @@
 												<li>
 													<a href="#" class="all-users bg-breez">+24</a>
 												</li>
-			
+
 												<li class="with-text">
 													Will Assist
 												</li>
 											</ul>
-			
+
 											<a href="#" class="btn btn-blue btn-sm full-width">Invite Friends</a>
-			
+
 											<a href="#" class="btn btn-breez btn-sm full-width">Add to Calendar / Assist</a>
 										</div>
 									</div>
 								</div>
-			
-			
+
+
 								<div class="post-additional-info inline-items">
-			
+
 									<a href="#" class="post-add-icon inline-items">
 										<svg class="olymp-heart-icon">
 											<use xlink:href="#olymp-heart-icon"></use>
 										</svg>
 										<span>8</span>
 									</a>
-			
+
 									<ul class="friends-harmonic">
 										<li>
 											<a href="#">
@@ -707,13 +744,13 @@
 											</a>
 										</li>
 									</ul>
-			
+
 									<div class="names-people-likes">
 										<a href="#">Diana </a>, <a href="#">Nicholas</a> and
 										<br>15 more liked this
 									</div>
-			
-			
+
+
 									<div class="comments-shared">
 										<a href="#" class="post-add-icon inline-items">
 											<svg class="olymp-speech-balloon-icon">
@@ -722,41 +759,41 @@
 											<span>16 Comments</span>
 										</a>
 									</div>
-			
-			
+
+
 								</div>
-			
+
 								<div class="control-block-button post-control-button">
-			
+
 									<a href="#" class="btn btn-control">
 										<svg class="olymp-like-post-icon">
 											<use xlink:href="#olymp-like-post-icon"></use>
 										</svg>
 									</a>
-			
+
 									<a href="#" class="btn btn-control">
 										<svg class="olymp-comments-post-icon">
 											<use xlink:href="#olymp-comments-post-icon"></use>
 										</svg>
 									</a>
-			
+
 									<a href="#" class="btn btn-control">
 										<svg class="olymp-share-icon">
 											<use xlink:href="#olymp-share-icon"></use>
 										</svg>
 									</a>
-			
+
 								</div>
-			
+
 							</article>
-			
+
 							<div class="mCustomScrollbar" data-mcs-theme="dark">
-			
+
 								<ul class="comments-list">
 									<li class="comment-item">
 										<div class="post__author author vcard inline-items">
 											<img loading="lazy" src="img/author-page.html" width="36" height="36" alt="author">
-			
+
 											<div class="author-date">
 												<a class="h6 post__author-name fn" href="02-ProfilePage.html">James Spiegel</a>
 												<div class="post__date">
@@ -765,17 +802,17 @@
 													</time>
 												</div>
 											</div>
-			
+
 											<a href="#" class="more">
 												<svg class="olymp-three-dots-icon">
 													<use xlink:href="#olymp-three-dots-icon"></use>
 												</svg>
 											</a>
-			
+
 										</div>
-			
+
 										<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium der doloremque laudantium.</p>
-			
+
 										<a href="#" class="post-add-icon inline-items">
 											<svg class="olymp-heart-icon">
 												<use xlink:href="#olymp-heart-icon"></use>
@@ -787,7 +824,7 @@
 									<li class="comment-item">
 										<div class="post__author author vcard inline-items">
 											<img loading="lazy" src="img/avatar1-sm.html" alt="author" width="42" height="42">
-			
+
 											<div class="author-date">
 												<a class="h6 post__author-name fn" href="#">Mathilda Brinker</a>
 												<div class="post__date">
@@ -796,19 +833,19 @@
 													</time>
 												</div>
 											</div>
-			
+
 											<a href="#" class="more">
 												<svg class="olymp-three-dots-icon">
 													<use xlink:href="#olymp-three-dots-icon"></use>
 												</svg>
 											</a>
-			
+
 										</div>
-			
+
 										<p>Ratione voluptatem sequi en lod nesciunt. Neque porro quisquam est, quinder dolorem ipsum
 											quia dolor sit amet, consectetur adipisci velit en lorem ipsum duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 										</p>
-			
+
 										<a href="#" class="post-add-icon inline-items">
 											<svg class="olymp-heart-icon">
 												<use xlink:href="#olymp-heart-icon"></use>
@@ -820,7 +857,7 @@
 									<li class="comment-item">
 										<div class="post__author author vcard inline-items">
 											<img loading="lazy" src="img/avatar10-sm.html" alt="author" width="36" height="36">
-			
+
 											<div class="author-date">
 												<a class="h6 post__author-name fn" href="#">Elaine Dreyfuss</a>
 												<div class="post__date">
@@ -829,17 +866,17 @@
 													</time>
 												</div>
 											</div>
-			
+
 											<a href="#" class="more">
 												<svg class="olymp-three-dots-icon">
 													<use xlink:href="#olymp-three-dots-icon"></use>
 												</svg>
 											</a>
-			
+
 										</div>
-			
+
 										<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium der doloremque laudantium.</p>
-			
+
 										<a href="#" class="post-add-icon inline-items">
 											<svg class="olymp-heart-icon">
 												<use xlink:href="#olymp-heart-icon"></use>
@@ -849,14 +886,14 @@
 										<a href="#" class="reply">Reply</a>
 									</li>
 								</ul>
-			
+
 							</div>
-			
+
 							<form class="comment-form inline-items">
-			
+
 								<div class="post__author author vcard inline-items">
 									<img loading="lazy" src="img/author-page.html" width="36" height="36" alt="author">
-			
+
 									<div class="form-group with-icon-right">
 										<textarea class="form-control" placeholder=""></textarea>
 										<div class="add-options-message">
@@ -868,13 +905,13 @@
 										</div>
 									</div>
 								</div>
-			
+
 							</form>
 						</div>
 					</div>
 				</div>
 			</div> -->
-			
+
 		</div>
 
 		<div
@@ -952,7 +989,7 @@
 
 <!-- the fileinput plugin initialization -->
 <script>
-	var btnCust = ''; 
+	var btnCust = '';
 	$("#avatar-2").fileinput({
 		overwriteInitial: true,
 		maxFileSize: 1500,
@@ -965,16 +1002,16 @@
 		removeTitle: 'Cancel or reset changes',
 		elErrorContainer: '#kv-avatar-errors-2',
 		msgErrorClass: 'alert alert-block alert-danger',
-	
+
 		@if(Auth::user()->image != null)
-		
+
 			defaultPreviewContent: '<img src="{{asset('images')}}/{{Auth::user()->image}}" alt="Your Avatar"><h6 class="text-muted">Click to select</h6>',
-		
+
 		@else
 			defaultPreviewContent: '<img src="{{asset('images/default-avatar-male.png')}}" alt="Your Avatar"><h6 class="text-muted">Click to select</h6>',
-	
+
 			@endif
-	
+
 		layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
 		allowedFileExtensions: ["jpg", "png", "gif"]
 	});
