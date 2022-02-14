@@ -26,7 +26,6 @@
 	<script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/webp-hero.bundle.js"></script>
 
 
-
 	<!-- Bootstrap CSS -->
 
 	<!-- Main Styles CSS -->
@@ -48,7 +47,7 @@
 			height: 39px !important;
 		}
 		.select2-container .select2-selection--multiple .select2-selection__rendered {
-			 display: block !important; 
+			 display: block !important;
 			/* list-style: none; */
 			padding: 4px !important;
 		}
@@ -352,10 +351,19 @@
             <div class="mCustomScrollbar" data-mcs-theme="dark">
 
                 <div class="control-block">
+                    <div class="author-thumb">
+                        <img alt="author" src="img/author-page.html" width="36" height="36" class="avatar">
+                        <span class="icon-status online"></span>
+                    </div>
                     <div class="author-page author vcard inline-items">
+
 
                         <a href="#" class="author-name fn">
                             <div class="author-title">
+                                <div class="author-thumb">
+                                    <img alt="author" src="img/author-page.html" width="36" height="36" class="avatar">
+                                    <span class="icon-status online"></span>
+                                </div>
                                 @if (Auth::check())
                                     {{ Auth::user()->first_name }}
                                 @endif
@@ -601,7 +609,16 @@
                         </div>
                     </div>
                     <a href="#" class="author-name fn">
+
                         <div class="author-title">
+                            <div class="author-thumb">
+                                @if(isset(Auth::user()->image))
+                                <img alt="author"  src="{{asset('images')}}/ {{Auth::user()->image}}" width="36" height="36" class="avatar">
+                                @else
+                                <i style="font-size: 21px;" class="fa fa-user"></i>
+                                @endif
+
+                            </div>
                             @if (Auth::check())
                                 {{ Auth::user()->first_name }}
                             @endif

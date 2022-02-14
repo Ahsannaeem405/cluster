@@ -697,17 +697,21 @@
 
 
 
-                            <!-- W-Action -->
 
                             <ul class="widget w-friend-pages-added notification-list friend-requests">
 
                                 @if (isset($manager) && count($manager) > 0)
-                                    {{-- @dd($manager) --}}
                                     @foreach ($manager as $managers)
                                         <li class="inline-items">
                                             <div class="author-thumb">
-                                                <img loading="lazy" src="{{ asset('/img/avatar38-sm.html') }}"
-                                                    alt="author" width="36" height="36">
+                                                @if(isset(Auth::user()->image))
+                                                <img alt="author"  src="{{asset('images')}}/ {{Auth::user()->image}}" width="36" height="36" class="avatar">
+
+                                                    @else
+                                                    <i style="font-size: 25px;margin-top: 5px;" class="fa fa-user"></i>
+
+
+                                                    @endif
                                             </div>
                                             <div class="notification-event">
                                                 <a href="#"
@@ -746,8 +750,14 @@
                                         @if ($users->User->role != 'admin')
                                             <li>
                                                 <div class="author-thumb">
-                                                    <img loading="lazy" src="{{ asset('img/avatar49-sm.html') }}"
-                                                        alt="author" width="28" height="28">
+                                                    @if(isset(Auth::user()->image))
+                                                    <img alt="author"  src="{{asset('images')}}/ {{Auth::user()->image}}" width="36" height="36" class="avatar">
+
+                                                        @else
+                                                        <i style="font-size: 25px;margin-top: 5px;" class="fa fa-user"></i>
+
+
+                                                        @endif
                                                 </div>
                                                 <div class="notification-event">
                                                     <b style="    font-size: 14px;"> {{ $users->User->first_name }}
@@ -769,7 +779,7 @@
                                 @endif
 
 
-                                @if ($user->count() > 0 && Auth::user()->role == 'admin')
+                                @if ($user->count() > 3 && Auth::user()->role == 'admin')
                                     <li style=" background: #2d2d2d; padding: 7px;">
                                         <div class="col-12">
                                             <a href="{{ url("$role/view", [$id]) }}"
@@ -797,14 +807,22 @@
 
                             <ul class="widget w-activity-feed notification-list">
 
+
                                 @if (isset($joinn1) && count($joinn1) > 0)
                                     @foreach ($joinn1 as $joinns)
+
                                         @if ($joinns->User->role != 'admin')
-                                            {{-- @dd($joinns->User) --}}
+
                                             <li>
                                                 <div class="author-thumb">
-                                                    <img loading="lazy" src="{{ asset('img/avatar49-sm.html') }}"
-                                                        alt="author" width="28" height="28">
+                                                    @if(isset(Auth::user()->image))
+                                                    <img alt="author"  src="{{asset('images')}}/ {{Auth::user()->image}}" width="36" height="36" class="avatar">
+
+                                                        @else
+                                                        <i style="font-size: 25px;margin-top: 5px;" class="fa fa-user"></i>
+
+
+                                                        @endif
                                                 </div>
                                                 <div class="notification-event">
                                                     <b style="    font-size: 14px;"> {{ $joinns->User->first_name }}

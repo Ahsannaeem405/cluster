@@ -126,9 +126,6 @@ class ClusterController extends Controller
 
         $event = new Event();
 
-
-        // @dd($request->file('image'));
-
         if (isset($request->image)) {
             $image = $request->file('image');
             $imageName = $image->getClientOriginalName();
@@ -151,6 +148,14 @@ class ClusterController extends Controller
         $event->manager_cluster = $request->manager_cluster;
         $event->userid = Auth::user()->id;
         $event->save();
+
+        $events = new EventJoin();
+        $events->event_id = $event->id;
+        // @dd($event->Event->cluster_id);
+        $events->cluster_id = $event->Event->cluster_id;
+        $events->user_id = Auth::user()->id;
+        $events->save();
+
         return redirect()->back()->with('success', 'Event Added Sucessfully!');
 
         // return view('admin.view_cluster', compact('viewCluster'));
@@ -359,7 +364,9 @@ class ClusterController extends Controller
         // $event_3 = Event::Where('join_cluster_ID', $id)->take(3)->get();
 
         $joinn = EventJoin::Where('user_id', Auth::user()->id)->where('cluster_id', $id)->get();
-        $joinn1  = EventJoin::Where('cluster_id', $id)->get();
+        // $joinn1  = EventJoin::Where('cluster_id', $id)->get();
+
+        $joinn1 = EventJoin::Where('cluster_id', $id)->Where('user_id','!=', 1)->get();
 
         // @dd($joinn);
         // if ($get == 0) {
@@ -423,7 +430,7 @@ class ClusterController extends Controller
 
 
         $joinn = EventJoin::Where('user_id', Auth::user()->id)->where('cluster_id', $id)->get();
-        $joinn1 = EventJoin::Where('cluster_id', $id)->get();
+        $joinn1 = EventJoin::Where('cluster_id', $id)->Where('user_id','!=', 1)->get();
 
         if ($get == 0) {
 

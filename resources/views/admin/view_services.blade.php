@@ -26,12 +26,12 @@
 
 <div class="container-fluid py-5">
 	@if ($message = Session::get('success'))
-	<div class="alert alert-success ">    
+	<div class="alert alert-success ">
 		<strong>{{ $message }}</strong>
 	</div>
 	@endif
 	@if ($message = Session::get('error'))
-	<div class="alert alert-danger ">    
+	<div class="alert alert-danger ">
 		<strong>{{ $message }}</strong>
 	</div>
 	@endif
@@ -45,7 +45,7 @@
 					data-bs-target="#add-new-member">
 						<button><i class="fas fa-plus mx-1"></i> Add New</button>
 					</a>
-					
+
 				</div>
 			</div>
 		</div>
@@ -73,7 +73,7 @@
 							<span class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
 							</span>
-							@enderror                                                
+							@enderror
 
 						</div>
 						<div class="form-group">
@@ -83,7 +83,7 @@
 							<span class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
 							</span>
-							@enderror                                                
+							@enderror
 
 							</div>
 						<div class="form-group">
@@ -98,10 +98,10 @@
 							<span class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
 							</span>
-							@enderror                                                
+							@enderror
 
 						</div>
-					
+
 
 						<button type="submit" class="btn btn-blue full-width">Add Now</button>
 					</form>
@@ -109,7 +109,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 
 @if(count($services) > 0)
 	<div class="row ">
@@ -117,8 +117,8 @@
 		@foreach($services as $serviceslist)
 		@php
 			$apply_services=App\Models\ApplyService::where('service_id',$serviceslist->id)->get();
-		
-			
+
+
 		@endphp
 		<div class="col-lg-3 col-md-6 col-sm-6 mt-5 ">
 			<div class="servies-card text-center mx-xl-3 mx-lg-2 mx-md-3 p-2">
@@ -159,7 +159,7 @@
 							</a>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
@@ -188,7 +188,7 @@
 							<span class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
 							</span>
-							@enderror                                                
+							@enderror
 
 						</div>
 						<div class="form-group">
@@ -198,7 +198,7 @@
 							<span class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
 							</span>
-							@enderror                                                
+							@enderror
 
 							</div>
 						<div class="form-group">
@@ -213,12 +213,12 @@
 							<span class="invalid-feedback" role="alert">
 							<strong>{{ $message }}</strong>
 							</span>
-							@enderror                                                
+							@enderror
 
 						</div>
-					
 
-						<button type="submit" class="btn btn-blue full-width">Add Now</button>
+
+						<button type="submit" class="btn btn-blue full-width">Update Now</button>
 					</form>
 				</div>
 			</div>
@@ -281,7 +281,7 @@
 			{{-- User page add service and view only start --}}
 
 			@if(Auth::user()->role == 'user')
-			
+
 @if(count($services) > 0)
 <div class="row ">
 
@@ -311,20 +311,20 @@
 							<label for="exampleFormControlInput1"><small>Individual</small>
 							<input type="radio" name="apply" checked value="individual" style="width: 25px;height: 25px;"></label>
 						</div>
-						
+
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-6  ">
 						<div class="form-group">
 							<label for="exampleFormControlInput1"><small>Company</small>
 							<input type="radio" name="apply" value="company" style="width: 25px;height: 25px;"></label>
 						</div>
-						
+
 					</div>
-				
+
 				</div></center>
 				<input type="hidden" name="service_id" value="{{$list->id}}">
 				<button type="submit" class="btn  w-100 mb-0">
-					<small>	Apply Now</small>	
+					<small>	Apply Now</small>
 				</button>
 				</form>
 			</div>
