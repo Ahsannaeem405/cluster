@@ -42,7 +42,7 @@
     height: 39px !important;
 }
 .select2-container .select2-selection--multiple .select2-selection__rendered {
-     display: block !important; 
+     display: block !important;
     /* list-style: none; */
     padding: 4px !important;
 }
@@ -58,7 +58,9 @@
     border: solid #e6ecf5 1px !important;
     outline: 0;
 }
-
+textarea.select2-search__field {
+            display: none;
+        }
 </style>
 <!-- Preloader -->
 
@@ -97,7 +99,7 @@
 <div class="container">
 	<div class="row display-flex d-flex justify-content-center mt-5">
 		<div class="col col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12">
-			
+
 			<!-- Login-Registration Form  -->
 
 			<div class="registration-login-form">
@@ -105,10 +107,10 @@
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs d-flex justify-content-between" id="registration-form-tabs" role="tablist">
 					<li class="nav-item w-50" role="presentation">
-						<a class="nav-link @if($_SERVER['REQUEST_URI'] == '/login?signup') active  @endif  @if(isset($cluster_id)) @if($_SERVER['REQUEST_URI'] == "/login/cluster/$cluster_id") active @endif @endif  @if(isset($event_id)) @if($_SERVER['REQUEST_URI'] == "/register/event/$event_id") active @endif @endif d-flex justify-content-center align-items-center" id="login-tab" data-bs-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">
+						<a class="nav-link @if($_SERVER['REQUEST_URI'] == '/login?signup') active  @endif  @if(isset($cluster_id)) @if($_SERVER['REQUEST_URI'] == "/public/login/cluster/$cluster_id") active @endif @endif  @if(isset($event_id)) @if($_SERVER['REQUEST_URI'] == "/register/event/$event_id") active @endif @endif d-flex justify-content-center align-items-center" id="login-tab" data-bs-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">
 							 <svg class="olymp-login-icon mx-2">
-								 <use xlink:href="#olymp-login-icon"></use> 
-								 
+								 <use xlink:href="#olymp-login-icon"></use>
+
 								</svg>
 								Sign Up
 						</a>
@@ -162,7 +164,7 @@
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
-                                        @enderror		
+                                        @enderror
                                     </div>
 									<div class="form-group label-floating">
 										<label class="control-label">Your Password</label>
@@ -179,13 +181,13 @@
 										<label class="control-label">Confirm Password</label>
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
 
-                                       
+
                                     </div>
 
 									<div class="form-group date-time-picker label-floating">
 										<label class="control-label">Your Birthday</label>
 										<input type="date" name="datetimepicker" value="10/24/1984"  class="form-control @error('password') is-invalid @enderror"  required autocomplete="new-password" />
-										
+
 
                                         @error('datetimepicker')
                                         <span class="invalid-feedback" role="alert">
@@ -216,7 +218,7 @@
 
 												</div>
 											</div>
-												
+
 
 										</div>
 										<div class="col-md-6 col-lg-6 col-sm-6">
@@ -229,7 +231,7 @@
 
 												</div>
 											</div>
-														
+
 
 										</div>
 									</div>
@@ -239,7 +241,7 @@
 
 										@foreach($cluster as $list)
 										<option value="{{$list->id}}" @if(isset($cluster_id)) @if($cluster_id == $list->id) selected @endif @endif>{{$list->name}}</option>
-							
+
 										@endforeach
 									  </select>
 									</div>
@@ -248,11 +250,11 @@
 										<select class="eventMultiple" name="event[]" multiple="multiple">
 											@foreach($event as $listE)
 											<option value="{{$listE->id}}"  @if(isset($event_id)) @if($event_id == $listE->id) selected @endif @endif>{{$listE->name}}</option>
-								
+
 											@endforeach
 										  </select>
 										</div>
-										
+
 
                                     <button type="submit" class="btn btn-blue btn-lg full-width">
                                         {{ __('Complete Registration!') }}
@@ -270,7 +272,7 @@
 						{{-- //<form class="content"> --}}
                             <form class="content" method="POST" action="{{ route('login') }}">
                                 @csrf
-        
+
 							<div class="row">
 								<div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
 									<div class="form-group label-floating">
@@ -296,7 +298,7 @@
 
 									<div class="remember">
 
-									
+
 										@if (Route::has('password.request'))
 										<a class="btn btn-link forgot" href="{{ route('password.request') }}">
 											{{ __('Forgot Your Password?') }}
@@ -313,11 +315,11 @@
 								</div>
 							</div>
 						</form>
-						
+
 					</div>
 				</div>
 			</div>
-			
+
 			<!-- ... end Login-Registration Form  -->		</div>
 	</div>
 </div>
@@ -418,7 +420,7 @@
 
 
 		}
-	
+
 		$('#member').click(function(){
 		$('#cluster').show();
 		$('#event').hide();
@@ -426,7 +428,7 @@
 		$(".eventMultiple").attr("required", false);
 
 		});
-		
+
 		$('#user').click(function(){
 		$('#cluster').hide();
 		$('#event').show();
@@ -440,7 +442,7 @@
     $('.eventMultiple').select2();
 });
 </script>
-{{-- 
+{{--
 @extends('layouts.app')
 
 @section('content')
