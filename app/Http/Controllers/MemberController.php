@@ -30,29 +30,36 @@ class MemberController extends Controller
             'first_name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required',
+            'cluster' => 'required',
 
         ]);
-        $user = new User();
-        $user->first_name = $request->first_name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->post_role = 'member';
+
+        $user=new User();
+        $user->first_name=$request->first_name;
+        $user->email=$request->email;
+        $user->password=$request->password;
+        $user->post_role='member';
+        $user->status='1';
         $user->save();
-        $get_user = User::where('status', '1')->orderBy('id', 'DESC')->first();
-        $user_id = $get_user->id;
+        $get_user=User::where('post_role','member')->orderBy('id','DESC')->first();
+        $user_id=$get_user->id;
+            $clusters=$request->cluster;
 
-        $clusters = $request->cluster;
+            foreach( $clusters as $row_cluster)
+            {
 
-        foreach ($clusters as $row_cluster) {
+
+                $cluster=new JoinCluster();
+                $cluster->cluster_id=$row_cluster;
+                $cluster->user_id=$user_id;
+                $cluster->status=2;
+                $cluster->save();
+            }
+            return redirect()->back()->with('success', 'Member Added Sucessfully!');
 
 
-            $cluster = new JoinCluster();
-            $cluster->cluster_id = $row_cluster;
-            $cluster->user_id = $user_id;
-            $cluster->status = 2;
-            $cluster->save();
-        }
-        return redirect()->back()->with('success', 'Member Added Sucessfully!');
+
+
     }
     public function updateMember(Request $request, $id)
     {

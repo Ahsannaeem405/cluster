@@ -121,6 +121,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/applyServiceView/{id}', [ServiceController::class,'applyServiceView']);
         Route::get('/cluster_manager', [CManagerController::class,'cluster_manager']);
         Route::post('/addClusterManager', [CManagerController::class,'addClusterManager']);
+        Route::post('/deleteClusterM/{id}', [CManagerController::class,'deleteClusterM']);
 
         Route::post('/websiteSetting', [SettingController::class, 'websiteSetting']);
         Route::post('/updateWebsiteSetting/{id}', [SettingController::class, 'updateWebsiteSetting']);

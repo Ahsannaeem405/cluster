@@ -16,7 +16,7 @@
 		<div class="row">
 			<div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
 				<div class="main-header-content">
-					<h1>Our Servies</h1>
+					<h1>Our Service</h1>
 				</div>
 			</div>
 		</div>
@@ -89,7 +89,7 @@
 						<div class="form-group">
 							<label for="exampleFormControlInput1">Clusters</label>
 							<select name="cluster_id" class="form-control   @error('cluster_id') is-invalid @enderror" >
-								<option value="">Select Sluster</option>
+								<option value="">Select Cluster</option>
 								@foreach($clusters as $clusterslist)
 								<option value="{{$clusterslist->id}}">{{$clusterslist->name}}</option>
 								@endforeach
@@ -137,13 +137,13 @@
 
                         <div class="col-12">
 
-                            <a style="    color: white;border-radius: 50%;    margin-right: 7px;" href="#" class="btn btn-control bg-green "
+                            <a style="    color: white;border-radius: 50%;    margin-right: 7px;" href="#" class="btn btn-control bg-primary "
                             data-bs-toggle="modal"  data-bs-toggle="modal"
 							data-bs-target="#edit-new-servies{{$serviceslist->id}}">
                             <i class="fa fa-edit" style="margin-top: 6px;" aria-hidden="true"></i>
                         </a>
 
-                        <a  style="    color: white;border-radius: 50%;    margin-right: 7px;" href="#" class="btn btn-control bg-green "
+                        <a  style="    color: white;border-radius: 50%;    margin-right: 7px;" href="#" class="btn btn-control bg-danger "
                         data-bs-toggle="modal"  data-bs-toggle="modal"
                         data-bs-target="#delete-service{{$serviceslist->id}}" >
                         <i class="fas fa-trash text-white" style="margin-top: 6px;"></i>

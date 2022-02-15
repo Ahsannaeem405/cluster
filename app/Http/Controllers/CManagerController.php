@@ -45,4 +45,18 @@ class CManagerController extends Controller
         return redirect()->back()->with('success', 'Cluster Manager Added Sucessfully!');
 
     }
+    public function deleteClusterM(Request $request,$id)
+    {   
+        $cluster_get=JoinCluster::where('user_id',$id)->get();
+        foreach( $cluster_get as $row_cluster_d)
+    {
+        $clusterDelete=JoinCluster::find($row_cluster_d->id);
+        $clusterDelete->delete();
+     
+    }
+        $member=User::find($id);
+        $member->delete();
+
+        return redirect()->back()->with('error', 'Manager Deleted Sucessfully!');
+    }
 }

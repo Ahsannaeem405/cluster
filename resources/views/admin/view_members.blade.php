@@ -2,11 +2,6 @@
 @section('page_title', 'Home Page')
 @section('content')
 
-	<!-- ... end Responsive Header-BP -->
-
-	<div class="header-spacer header-spacer-small"></div>
-	<!-- Main Header Groups -->
-
 	<div class="main-header">
 		<div class="content-bg-wrap bg-group clusterbg"></div>
 		<div class="container">
@@ -56,11 +51,11 @@
 					<table class="table table-striped">
 						<thead>
 							<tr >
-								<th class="text-dark text-center" scope="col">#</th>
-								<th class="text-dark" scope="col">First Name</th>
-								<th class="text-dark" scope="col">Email</th>
-								<th class="text-dark" scope="col">Cluster</th>
-								<th class="text-dark text-center" scope="col">Action</th>
+								<th class=" text-center" scope="col">#</th>
+								<th class="" scope="col">First Name</th>
+								<th class="" scope="col">Email</th>
+								<th class="" scope="col">Cluster</th>
+								<th class=" text-center" scope="col">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -313,7 +308,7 @@ aria-labelledby="create-friend-group-1" aria-hidden="true">
 					</div>
 						<div class="form-group"  id="cluster">
 							<label class="control-label">Cluster</label>
-							<select class="clusterMemberMultiple  @error('password') is-invalid @enderror" name="cluster[]" multiple="multiple" >
+							<select class="clusterMemberMultiple form-control  @error('cluster') is-invalid @enderror" name="cluster[]" multiple="multiple" >
 
 								@foreach($cluster as $list)
 								<option value="{{$list->id}}" >{{$list->name}}</option>
