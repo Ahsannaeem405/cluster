@@ -10,6 +10,7 @@ use App\Models\JoinCluster;
 use App\Models\Company;
 use App\Models\Event;
 use App\Models\EventJoin;
+use App\Models\RequestCluster;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Ui\Presets\React;
@@ -121,8 +122,8 @@ class MemberController extends Controller
     public function member_index(Request $request)
     {
 
-        $date1 = Date('Y-m-d');
-        $clus = Cluster::all()->count();
+        $date1 = Date('Y-m-d H:i:s');
+        $clus = JoinCluster::Where('user_id', Auth::user()->id)->where('status', 1)->count();
 
 
         $i = 01;
@@ -192,6 +193,53 @@ class MemberController extends Controller
 
 
     }
+
+
+    public function request_join($id)
+    {
+
+
+
+        $get = RequestCluster::where('cluster_id', $id)->where('user_id', Auth::user()->id)->count();
+    if($get == 0)
+    {
+        $req = new RequestCluster();
+        $req->cluster_id = $id;
+         $req->user_id = Auth::user()->id;
+         $req->save();
+     }
+         return back()->with('success', 'Request Submitted Sucessfully');
+
+
+    }
+
+
+    public function reject($id){
+
+
+        $req = RequestCluster::find($id);
+        $req->delete();
+        return back()->with('success', 'Rejected Successfully');
+
+    }
+    public function aprroved($id){
+
+            $req = RequestCluster::find($id);
+
+            $clus = new JoinCluster();
+            $clus->cluster_id =   $req->cluster_id;
+            $clus->user_id =  $req->user_id;
+            $clus->status =  1;
+            $clus->save();
+            $req->delete();
+            return back()->with('success', 'Approved Successfully');
+
+
+    }
+
+
+
+
 
 
 

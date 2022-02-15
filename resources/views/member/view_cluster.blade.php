@@ -32,10 +32,13 @@
                         @if (Auth::user()->role == 'admin')
                             <h1>Manage your Clusters</h1>
                         @else
-                            <h1>Join your Clusters</h1>
+                            <h1>Joined Clusters</h1>
                         @endif
-                        <p>Welcome to your Clusters Management page.Here you can easly Add, Delete and Edit you clustors.
-                            Thank you</p>
+                        @if (Auth::user()->role == 'admin')
+                            <p>Welcome to your Clusters Management page.Here you can easly Add, Delete and Edit you
+                                clustors.
+                                Thank you</p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -44,6 +47,33 @@
 
     <!-- ... end Main Header Groups -->
     <!-- Main Content Groups -->
+
+
+    <div class="container-fluid" style="padding-left: 52px;padding-right: 52px;">
+
+
+        <div class="accordion-item" style="    padding: unset;">
+
+            <div class="container-fluid"
+                style="margin-bottom: 15px;padding: 19px;border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
+
+                <div class="row">
+
+                    <div class="col-12">
+                        <h5 class="text-center"> Joined Cluster</h5>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
 
     <div class="container-fluid" style="padding-right: 51px;padding-left: 51px;">
         @if ($message = Session::get('success'))
@@ -57,6 +87,9 @@
                 <strong>{{ $message }}</strong>
             </div>
         @endif
+
+
+
 
 
         <div class="row">
@@ -131,8 +164,7 @@
                                             <button class="btn btn-primary"> Pending</button>
                                         @else
 
-                                            <a href="{{ url('/user/Join/cluster', $list->Event->id) }}"
-                                                style="  ">
+                                            <a href="{{ url('/user/Join/cluster', $list->Event->id) }}" style="  ">
 
                                                 <button class="btn btn-success"> Joined</button>
 
@@ -158,6 +190,8 @@
 
 
     {{-- For member show search --}}
+
+
 
     @if (Auth::user()->post_role)
         <div class="container-fluid" style="padding-left: 52px;padding-right: 52px;">

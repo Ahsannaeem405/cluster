@@ -136,10 +136,10 @@ $i = 0;
                 animationEnabled: true,
                 theme: "light2", // "light1", "light2", "dark1", "dark2"
                 title: {
-                    text: "Upcoming Events of this year"
+                    text: " Events of this year"
                 },
                 axisY: {
-                    title: "Total Upcoming Events"
+                    title: "Total  Events"
                 },
                 data: [{
                     type: "column",

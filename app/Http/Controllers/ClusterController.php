@@ -6,6 +6,7 @@ use App\Models\Cluster;
 use App\Models\Event;
 use App\Models\EventJoin;
 use App\Models\JoinCluster;
+use App\Models\RequestCluster;
 use App\Models\Service;
 use App\Models\User;
 use GuzzleHttp\Psr7\Request as Psr7Request;
@@ -706,10 +707,6 @@ class ClusterController extends Controller
     {
 
         $join = JoinCluster::find($id);
-
-
-
-
         $join->status = 1;
         $join->save();
         return back()->with('success', 'Approved Sucessfully');
@@ -727,6 +724,12 @@ class ClusterController extends Controller
         if (isset($mang)) {
             return response()->json(['joinID' => $mang->id]);
         }
+    }
+
+    public function view_all(){
+
+        $noti = RequestCluster::all();
+        return view('admin.notification', compact('noti'));
     }
 
 

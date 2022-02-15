@@ -62,6 +62,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('/admin')->group(function () {
         Route::get('/', [ClusterController::class, 'index']);
+        Route::get('/view/notifications', [ClusterController::class, 'view_all']);
+
 
         Route::get('/view/cluster/{id}', [ClusterController::class, 'view_cluster']);
         Route::post('/invite/user', [ServiceController::class, 'invite_user']);
@@ -106,8 +108,14 @@ Route::middleware(['auth'])->group(function () {
 
         Route::post('upd/cluster_overview/{id}', [ClusterController::class, 'cluster_overview']);
 
+        Route::get('aprroved/request/{id}', [MemberController::class, 'aprroved']);
+
+        Route::get('reject/request/{id}', [MemberController::class, 'reject']);
+
 
         Route::get('/view/{id}', [ClusterController::class, 'view']);
+
+
 
         Route::get('/services', [ServiceController::class, 'view_service']);
         Route::post('/addService', [ServiceController::class, 'addService']);
@@ -136,9 +144,16 @@ Route::middleware(['auth'])->group(function () {
 Route:: prefix('/member')->middleware(['auth'])->group(function () {
 
     Route::get('/', [MemberController::class, 'member_index']);
+    Route::get('/view/notifications', [ClusterController::class, 'view_all']);
+
 
     Route::get('/view_cluster', [MemberController::class, 'viewCluster']);
     Route::get('/view/event/', [MemberController::class, 'view_event']);
+    Route::get('/request/joinCluster/{id}', [MemberController::class, 'request_join']);
+    Route::get('aprroved/request/{id}', [MemberController::class, 'aprroved']);
+
+
+
     Route::get('/services/', [ServiceController::class, 'view_service']);
     Route::get('/setting', [SettingController::class, 'settings']);
 
@@ -158,7 +173,6 @@ Route:: prefix('/member')->middleware(['auth'])->group(function () {
     Route::post('createCluster', [ClusterController::class, 'createCluster']);
     Route::post('updateCluster/{id}', [ClusterController::class, 'updateCluster']);
 
-    Route::get('aprroved/{id}', [ClusterController::class, 'aprroved']);
 
     Route::post('upd/cluster/{id}', [ClusterController::class, 'upd_cluster']);
 
@@ -219,7 +233,11 @@ Route:: prefix('/member')->middleware(['auth'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
 
+
     Route::prefix('/user')->group(function () {
+
+        Route::get('/view/notifications', [ClusterController::class, 'view_all']);
+
         Route::get('aprroved/{id}', [ClusterController::class, 'aprroved']);
 
         Route::get('/', [ClusterController::class, 'user_index']);
@@ -274,6 +292,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/UpdateCompany/{id}', [ServiceController::class, 'UpdateCompany']);
     });
 });
+
 
 
 

@@ -29,7 +29,7 @@ class Cluster extends Model
 
     public function JoinClust()
     {
-        return $this->hasOne('App\Models\JoinCluster', 'cluster_id','id')->where('user_id',Auth::user()->id)->where('status',1);
+        return $this->hasOne('App\Models\JoinCluster', 'cluster_id','id')->where('user_id',Auth::user()->id);
     }
 
     public function joindetail()
