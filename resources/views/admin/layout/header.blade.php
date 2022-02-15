@@ -3,76 +3,81 @@
 
 <head>
 
-	<title>@yield('page_title')</title>
+    <title>@yield('page_title')</title>
 
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-	<link rel="preload" type="text/css" href="{{asset('css/theme-font.min.css')}}" as="style">
+    <link rel="preload" type="text/css" href="{{ asset('css/theme-font.min.css') }}" as="style">
 
-	<!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
 
-	<link rel="stylesheet" type="text/css" href="{{asset('Bootstrap/dist/css/bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Bootstrap/dist/css/bootstrap.css') }}">
 
-	<!-- Main Styles CSS -->
-	<link rel="stylesheet" type="text/css" href="{{asset('css/main.min.css')}}">
-
-
-	<!--<link rel="stylesheet" type="text/css" href="{{asset('css/rtl.min.css')}}">-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<!-- WebP Safari Support -->
-	<script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/polyfills.js"></script>
-	<script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/webp-hero.bundle.js"></script>
+    <!-- Main Styles CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.min.css') }}">
 
 
-	<!-- Bootstrap CSS -->
-
-	<!-- Main Styles CSS -->
-	<link rel="stylesheet" type="text/css"
-		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-
-
-	<script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/polyfills.js"></script>
-	<script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/webp-hero.bundle.js"></script>
-	<script src="https://kit.fontawesome.com/9838783293.js" crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.tiny.cloud/1/qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc/tinymce/5/tinymce.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="{{ asset('css/rtl.min.css') }}">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- WebP Safari Support -->
+    <script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/polyfills.js"></script>
+    <script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/webp-hero.bundle.js"></script>
 
 
-		<style>
-			.select2-container--default.select2-container .select2-selection--multiple {
-			border: solid #e6ecf5  1px !important;
-			outline: 0;
-			height: 39px !important;
-		}
-		.select2-container .select2-selection--multiple .select2-selection__rendered {
-			 display: block !important;
-			/* list-style: none; */
-			padding: 4px !important;
-		}
-		.select2-container {
-			box-sizing: border-box;
-			display: inline-block;
-			margin: 0;
-			position: relative;
-			vertical-align: middle;
-			width: 100% !important;
-		}
-		.select2-container--default.select2-container--focus .select2-selection--multiple {
-			border: solid #e6ecf5 1px !important;
-			outline: 0;
-		}
-		textarea.select2-search__field {
+    <!-- Bootstrap CSS -->
+
+    <!-- Main Styles CSS -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+
+
+    <script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/polyfills.js"></script>
+    <script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/webp-hero.bundle.js"></script>
+    <script src="https://kit.fontawesome.com/9838783293.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tiny.cloud/1/qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc/tinymce/5/tinymce.min.js">
+    </script>
+
+
+    <style>
+        .select2-container--default.select2-container .select2-selection--multiple {
+            border: solid #e6ecf5 1px !important;
+            outline: 0;
+            height: 39px !important;
+        }
+
+        .select2-container .select2-selection--multiple .select2-selection__rendered {
+            display: block !important;
+            /* list-style: none; */
+            padding: 4px !important;
+        }
+
+        .select2-container {
+            box-sizing: border-box;
+            display: inline-block;
+            margin: 0;
+            position: relative;
+            vertical-align: middle;
+            width: 100% !important;
+        }
+
+        .select2-container--default.select2-container--focus .select2-selection--multiple {
+            border: solid #e6ecf5 1px !important;
+            outline: 0;
+        }
+
+        textarea.select2-search__field {
             display: none;
         }
-		</style>
+
+    </style>
 
 </head>
 
 <body class="page-has-left-panels page-has-right-panels">
     <?php
-    $role = Auth::user()->role;
+    $role = Auth::user()->post_role;
 
     ?>
 
@@ -118,7 +123,8 @@
 
             <a href="{{ url('admin') }}" class="logo">
                 <div class="img-wrap">
-                    <img loading="lazy" src="{{ asset('img/white-logo.png') }}" alt="logo-tital" width="50" height="50">
+                    <img loading="lazy" src="{{ asset('img/white-logo.png') }}" alt="logo-tital" width="50"
+                        height="50">
                 </div>
             </a>
 
@@ -244,7 +250,7 @@
                             <span class="left-menu-title">Dashboard</span>
                         </a>
                     </li>
-                    @if (Auth::user()->role == 'admin')
+                    @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'member')
                         <li>
                             <a href="{{ url("$role/view_cluster") }}">
                                 <svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip"
@@ -361,7 +367,8 @@
                         <a href="#" class="author-name fn">
                             <div class="author-title">
                                 <div class="author-thumb">
-                                    <img alt="author" src="img/author-page.html" width="36" height="36" class="avatar">
+                                    <img alt="author" src="img/author-page.html" width="36" height="36"
+                                        class="avatar">
                                     <span class="icon-status online"></span>
                                 </div>
                                 @if (Auth::check())
@@ -517,6 +524,7 @@
     <?php
 
     $noti = App\Models\Notifica::where('userid', Auth::user()->id)->get();
+    $cluss = App\Models\RequestCluster::get();
 
     ?>
 
@@ -531,8 +539,68 @@
 
             <div class="control-block">
 
-                <div class="author-page author vcard inline-items more" style="padding: unset;
-                margin-right: 18px;">
+                <div class="control-icon more has-items mt-2">
+                    <svg class="olymp-chat---messages-icon">
+
+                        <use xlink:href="#olymp-chat---messages-icon"></use></svg>
+
+                    <div class="more-dropdown more-with-triangle triangle-top-center">
+                        <div class="ui-block-title ui-block-title-small">
+                            <h6 class="title">Notifications</h6>
+
+                        </div>
+
+                        <div class="mCustomScrollbar" data-mcs-theme="dark">
+                            <ul class="notification-list chat-message">
+                                @foreach ($noti as $notif)
+
+                                <li class="message-unread">
+                                    <div class="author-thumb">
+                                        <img loading="lazy"  src=" {{ asset('images/') }}/{{ $notif->Event->image }}" alt="author" width="34" height="34">
+                                    </div>
+                                    <div class="notification-event">
+                                        <a href="#" class="h6 notification-friend">{{ $notif->Event->name }}</a>
+                                        <span class="chat-message-item" style="padding:8px;">{{ $notif->Event->description }}</span>
+                                    </div>
+                                    {{-- <span class="notification-icon">
+                                        <svg class="olymp-chat---messages-icon"><use xlink:href="#olymp-chat---messages-icon"></use></svg>
+                                    </span> --}}
+
+                                </li>
+                                @endforeach
+
+
+                                @foreach ($cluss as $clusss)
+
+                                <?php
+                                $img = explode(',', $clusss->Cluster->image);
+
+                                ?>
+                                <li class="message-unread">
+                                    <div class="author-thumb">
+                                        <img loading="lazy" style="border-radius: 8px;"  src=" {{ asset('images/') }}/{{ $img[0] }}" alt="author" width="34" height="34">
+                                    </div>
+                                    <div class="notification-event">
+                                        <a href="#" class="h6 notification-friend" style="text-decoration: none">{{ $clusss->Cluster->name }}</a>
+                                        <span class="chat-message-item" style="padding:8px;">{{ $clusss->Cluster->detail }}</span>
+                                    </div>
+                                    <span class="notification-icon">
+                                        <a @if (auth::user()->role == 'admin') href="{{ url("$role/aprroved/request",[$clusss->id]) }}" @endif class="accept-request">
+                                            <i class="fas fa-check"></i>
+                                        </a>                                    </span>
+
+                                </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+
+                        <a href="{{url("$role/view/notifications")}}" class="view-all bg-purple">View All Notifications</a>
+                    </div>
+                </div>
+
+{{--
+                <div class="author-page author vcard inline-items more" style="padding: unset;margin-right: 18px;">
                     <div class="author-thumb">
                         <i class="fa fa-icon"></i>
                         <div class="more-dropdown more-with-triangle">
@@ -542,7 +610,6 @@
                                 </div>
 
                                 <ul class="account-settings">
-                                    {{-- @dd($notif) --}}
                                     @foreach ($noti as $notif)
                                         <li>
 
@@ -556,6 +623,22 @@
                                         </li>
                                     @endforeach
 
+
+                                    @foreach ($cluss as $clusss)
+                                        <li>
+
+
+
+                                            <img style="height: 29px;"
+                                                src=" {{ asset('images/') }}/{{ $clusss->User->image }}" alt="">
+                                            &nbsp;
+                                            &nbsp;
+                                            <span>{{ $clusss->User->first_name }}</span>
+
+                                        </li>
+                                    @endforeach
+
+
                                 </ul>
                             </div>
 
@@ -567,7 +650,7 @@
 
                         </div>
                     </a>
-                </div>
+                </div> --}}
 
                 <div class="author-page author vcard inline-items more">
                     <div class="author-thumb">
@@ -612,10 +695,11 @@
 
                         <div class="author-title">
                             <div class="author-thumb">
-                                @if(isset(Auth::user()->image))
-                                <img alt="author"  src="{{asset('images')}}/{{Auth::user()->image}}" width="36" height="36" class="avatar">
+                                @if (isset(Auth::user()->image))
+                                    <img alt="author" src="{{ asset('images') }}/{{ Auth::user()->image }}" width="36"
+                                        height="36" class="avatar">
                                 @else
-                                <i style="font-size: 21px;" class="fa fa-user"></i>
+                                    <i style="font-size: 21px;" class="fa fa-user"></i>
                                 @endif
 
                             </div>

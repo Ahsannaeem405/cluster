@@ -7,6 +7,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\Cluster;
 use App\Models\Event;
+use Illuminate\Support\Facades\Auth;
+
 class LoginController extends Controller
 {
     /*
@@ -29,33 +31,31 @@ class LoginController extends Controller
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
 
-    protected function redirectTo(){
+    protected function redirectTo()
+    {
 
 
-        if (auth()->user()->role == 'admin') {
-            //dd(11);
-        return '/admin';
-        }else{
-            if(auth()->user()->role == 'user' && auth()->user()->status==1 ){
-                return '/user';
-            }
-
-            else if(auth()->user()->role == 'user' && auth()->user()->status==0){
-
-               $msg="Your Account has been Suspended!";
-                    session()->flash('message',$msg);
-                return '/login?signin';
-            }
+        // @dd(auth()->user()->post_role);
+        if (auth()->user()->post_role == 'admin') {
+            return '/admin';
         }
 
-     }
-public function showLoginForm()
-{
-    $cluster =Cluster::where('cluster_type','Public')->get();
-    $event =Event::where('Event_type','Public')->get();
+        elseif (Auth::user()->post_role == 'member') {
 
-    return view('auth.login', compact('cluster','event'));
-}
+            return '/member';
+
+        } else {
+
+            return '/user';
+        }
+    }
+    public function showLoginForm()
+    {
+        $cluster = Cluster::where('cluster_type', 'Public')->get();
+        $event = Event::where('Event_type', 'Public')->get();
+
+        return view('auth.login', compact('cluster', 'event'));
+    }
     /**
      * Create a new controller instance.
      *

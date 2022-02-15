@@ -39,19 +39,23 @@
                                 <a class="nav-link your_evnt1" id="notifications-tab ">
                                     Your Events <span class="items-round-little bg-breez">{{ $event->count() }}</span>
                                 </a>
-                                {{-- <a class="nav-link active" >Your Events</a> --}}
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link join_evnt1">Join Events</a>
+                                <a class="nav-link join_evnt1">Joined Events</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link search_evnt1">Search Events</a>
+                            </li>
+
+
+
+
 
 
 
                         </ul>
-
-
-
                     </div>
                 </div>
             </div>
@@ -146,7 +150,7 @@
                                             @endforeach
 
 
-                                            @else
+                                        @else
 
                                             <div class="accordion-item" style="    padding: unset;">
                                                 <div class="jumbotron jumbotron-fluid"
@@ -416,6 +420,136 @@
             </div>
 
         </div>
+
+
+        <div id="search_evnt" role="tabpanel" aria-labelledby="notifications-tab">
+
+
+            <div class="container-fluid" style="padding-left:47px;padding-right:47px;">
+                <div class="row">
+                    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="ui-block">
+
+                            <div class="col-6 col-sm-12 col-lg-4 col-xl-4 col-md-6     ml-auto" style="margin-top: 8px;">
+                                <div class="input-group md-form form-sm form-2 pl-0">
+                                    <input class="form-control my-0 py-1 amber-border " id="searchh" type="text"
+                                        placeholder="Search" aria-label="Search">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text amber lighten-3"
+                                            style="color: white;background: #2d2d2d;" id="basic-text1"><i
+                                                class="fas fa-search text-grey" aria-hidden="true"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="appSearch">
+                            @if (isset($search_event) && count($event_join) > 0)
+
+
+
+
+
+
+
+                                <table class="event-item-table event-item-table-fixed-width">
+                                    <thead>
+
+                                        <tr>
+
+                                            <th class="author">
+                                                #
+                                            </th>
+
+                                            <th class="location">
+                                                IMAGE
+                                            </th>
+
+                                            <th class="location">
+                                                NAME
+                                            </th>
+
+                                            <th class="upcoming">
+                                                DESCRIPTION
+                                            </th>
+
+                                            <th class="description">
+                                                EVENT DATE </th>
+
+                                            <th class="description">
+                                                ACTION </th>
+
+
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+                                        <?php
+                                        $i = 1;
+
+                                        ?>
+
+
+                                        @foreach ($search_event as $events)
+                                            {{-- @dd($events->EventJoin, Auth::user()->id) --}}
+
+
+                                            <tr class="">
+                                                <td class="author">
+                                                    {{ $i++ }}
+                                                </td>
+
+
+                                                <td class="description event-as" atrr={{ $events->EventJoin->id }}>
+                                                    <img loading="lazy"
+                                                        src="{{ asset('images/') }}/{{ $events->EventJoin->image }}"
+                                                        alt="friend" width="38" height="38">
+                                                </td>
+
+                                                <td class="location event-as" atrr={{ $events->EventJoin->id }}>
+                                                    {{ $events->EventJoin->name }}
+
+                                                </td>
+                                                <td class="upcoming event-as" atrr={{ $events->EventJoin->id }}>
+                                                    {{ $events->EventJoin->description }}
+                                                </td>
+                                                <td class="description event-as" atrr={{ $events->EventJoin->id }}>
+                                                    {{ $events->EventJoin->datetimepicker }}
+
+                                                </td>
+
+                                                <td class="description event-as" atrr={{ $events->EventJoin->id }}>
+                                                    <button class="btn btn-danger"> Joined</button>
+
+                                                </td>
+
+
+                                            </tr>
+                                        @endforeach
+
+
+                                    </tbody>
+                                </table>
+                            @else
+
+
+
+                                <div class="jumbotron jumbotron-fluid" style="    margin-bottom: 0;background: white;">
+                                    <div class="container">
+                                        <h4 class="text-center">No Data Available</h4>
+                                    </div>
+                                </div>
+
+
+                            @endif
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
 
 
 
@@ -797,12 +931,12 @@
 
             $("#join_evnt").css('display', 'none');
             $("#your_evnt").css('display', 'block');
+            $("#search_evnt").css('display', 'none');
 
             $(".your_evnt1").click(function() {
                 $("#join_evnt").css('display', 'none');
                 $("#your_evnt").css('display', 'block');
-                // alert(12);
-
+                $("#search_evnt").css('display', 'none');
             });
 
 
@@ -810,9 +944,16 @@
             $(".join_evnt1").click(function() {
                 $("#join_evnt").css('display', 'block');
                 $("#your_evnt").css('display', 'none');
-                // alert(12);
-
+                $("#search_evnt").css('display', 'none');
             });
+
+            $(".search_evnt1").click(function() {
+                $("#join_evnt").css('display', 'none');
+                $("#your_evnt").css('display', 'none');
+                $("#search_evnt").css('display', 'block');
+            });
+
+
         });
     </script>
 
@@ -868,9 +1009,7 @@
 
             $(".event-as").click(function() {
                 var id = $(this).attr('atrr');
-                // alert(".vieweve" + id);
 
-                // alert("#viewevent" + id);
                 $("#viewevent" + id).modal('show');
 
 
@@ -885,5 +1024,35 @@
             $('.clusterMultiple').select2();
         });
     </script>
+
+
+
+    <script>
+        $(document).ready(function() {
+
+            $("#searchh").keyup(function() {
+
+                var search = $(this).val();
+
+                // alert(search);
+                $.ajax({
+                    type: "GET",
+                    url: "{{ url('member/search/event') }}?name=" + search,
+                    success: function(res) {
+
+
+                        $('.appSearch').empty().append(res);
+
+
+                    }
+                });
+
+
+            });
+
+
+        });
+    </script>
+
 
 @endsection

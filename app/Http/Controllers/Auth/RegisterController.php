@@ -94,34 +94,34 @@ class RegisterController extends Controller
             'role' => 'user',
             'status' => 1,
             'register_role' =>$data['post_role'],
-            'post_role' =>$data['post_role'],
+            // 'post_role' =>$data['post_role'],
         ]);
         // $user_id=$user->id;
-     
+
 
         $get_user=User::where('status','1')->orderBy('id','DESC')->first();
         $user_id=$get_user->id;
         if($data['post_role'] == 'member')
         {
             $clusters=$data['cluster'];
-         
+
             foreach( $clusters as $row_cluster)
             {
-               
-           
+
+
                 $cluster=new JoinCluster();
                 $cluster->cluster_id=$row_cluster;
                 $cluster->user_id=$user_id;
                 $cluster->status='0';
                 $cluster->save();
             }
-       
+
         }
-  
+
         if($data['post_role'] == 'user')
-        {   
+        {
             $events=$data['event'];
-          
+
             foreach( $events as $row_event)
             {
                 $get_cluster=Event::where('id',$row_event)->first();
@@ -132,7 +132,7 @@ class RegisterController extends Controller
                 $event->status=0;
                 $event->save();
             }
-        
+
         }
     // }else{
     //     return redirect()->back()->with('error', 'Cluster and Event select!');
