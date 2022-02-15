@@ -1171,5 +1171,4 @@
 
     </header>
 
-    <!-- ... end Responsive Header-BP -->
-    <div class="header-spacer header-spacer-small"></div>
+ 

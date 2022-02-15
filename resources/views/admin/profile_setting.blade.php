@@ -2,7 +2,6 @@
 @section('page_title', 'Home Page')
 @section('content')
 
-<div class="header-spacer header-spacer-small"></div>
 
 <!-- Main Header Account -->
 

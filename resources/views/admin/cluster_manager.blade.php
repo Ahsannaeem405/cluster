@@ -3,7 +3,6 @@
 @section('content')
 
 
-    <br />
     <?php
 
     $role = Auth::user()->role;
@@ -92,13 +91,13 @@
                                       <div class="d-flex justify-content-end">
                                           <a data-bs-toggle="modal"  data-bs-toggle="modal" data-bs-target="#delete{{$listM->id}}">
                                               <button class="mx-2 members-btns btn-danger">
-                                                  <span>Delete </span><i class="fas fa-trash-alt"></i>
+                                                 <i class="fas fa-trash-alt"></i>
                                               </button>
                                           </a>
                                           
                                           <a data-bs-toggle="modal"  data-bs-toggle="modal" data-bs-target="#edit{{$listM->id}}">
                                               <button class="mx-2 members-btns btn-secondary">
-                                                  <span>Edit</span> <i class="fas fa-edit"></i>
+                                                  <i class="fas fa-edit"></i>
                                               </button>
                                           </a>
                                       </div>

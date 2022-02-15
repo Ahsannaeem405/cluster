@@ -31,6 +31,9 @@ class Cluster extends Model
     {
         return $this->hasMany('App\Models\JoinCluster', 'cluster_id','id')->where('status',2);
     }
-   
+    public function topCluster()
+    {
+        return $this->hasMany('App\Models\JoinCluster', 'cluster_id','id')->where('status',1)->take(4);
+    }
     
 }
