@@ -61,32 +61,18 @@ Route::get('/cluster_details/{id}', [frontController::class, 'cluster_details'])
 Route::middleware(['auth'])->group(function () {
 
     Route::prefix('/admin')->group(function () {
-        // Route::view('/admin', 'admin/index');
         Route::get('/', [ClusterController::class, 'index']);
 
-        // Route::get('/Join/cluster/{id}', [ClusterController::class, 'join_cluster']);
         Route::get('/view/cluster/{id}', [ClusterController::class, 'view_cluster']);
-
-
         Route::post('/invite/user', [ServiceController::class, 'invite_user']);
-
-
-
-
         Route::get('/Join/cluster/{id}', [ClusterController::class, 'join_cluster']);
-
         Route::post('/add/events/', [ClusterController::class, 'add_events']);
-
         Route::post('/add/event/', [ClusterController::class, 'add_event']);
         Route::post('/update/event/{id}', [ClusterController::class, 'update_event']);
         Route::get('/delete/event/{id}', [ClusterController::class, 'delete_event']);
 
-        //////////////////////cluster start
-        //Route::view('/admin/view_cluster','admin/view_cluster');
         Route::post('createCluster', [ClusterController::class, 'createCluster']);
         Route::post('updateCluster/{id}', [ClusterController::class, 'updateCluster']);
-
-
 
         Route::get('aprroved/{id}', [ClusterController::class, 'aprroved']);
 
@@ -94,11 +80,9 @@ Route::middleware(['auth'])->group(function () {
 
         Route::post('deleteCluster/{id}', [ClusterController::class, 'deleteCluster']);
         Route::get('/view_cluster', [ClusterController::class, 'viewCluster']);
-        // Route::get('/view/{id}', [ClusterController::class, 'view']);
 
         Route::get('/view/join/{id}/{idd}', [ClusterController::class, 'view_join']);
 
-        // @dd(123);
         Route::get('/view/event', [ClusterController::class, 'view_event']);
 
 
@@ -107,12 +91,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/manager/status/{id}/{userID}', [ClusterController::class, 'manger']);
 
         Route::get('/events', [EventController::class, 'events']);
-        /////////////////////////////user
         Route::get('/users', [ClusterController::class, 'users']);
         Route::post('/addUser', [ClusterController::class, 'addUser']);
         Route::post('/updateUser/{id}', [ClusterController::class, 'updateUser']);
         Route::post('/deleteUser/{id}', [ClusterController::class, 'deleteUser']);
-        //////////////////members
         Route::get('/members', [MemberController::class, 'members']);
         Route::post('/addMember', [MemberController::class, 'addMember']);
         Route::post('/updateMember/{id}', [MemberController::class, 'updateMember']);
@@ -120,35 +102,26 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/deleteMembers/{id}', [MemberController::class, 'deleteMembers']);
 
          Route::view('/profile_setting', 'admin/profile_setting');
-        ///////////////////////////////setting start
         Route::get('/setting', [SettingController::class, 'settings']);
 
         Route::post('upd/cluster_overview/{id}', [ClusterController::class, 'cluster_overview']);
 
-        ///////////////////////////////setting end
-  
+
         Route::get('/view/{id}', [ClusterController::class, 'view']);
 
-        ////////////////////////services start
         Route::get('/services', [ServiceController::class, 'view_service']);
         Route::post('/addService', [ServiceController::class, 'addService']);
         Route::post('/updateService/{id}', [ServiceController::class, 'updateService']);
         Route::get('/deleteService/{id}', [ServiceController::class, 'deleteService']);
 
-        ////////////////////////services start
         Route::get('/services', [ServiceController::class,'view_service']);
         Route::post('/addService', [ServiceController::class,'addService']);
         Route::post('/updateService/{id}', [ServiceController::class,'updateService']);
         Route::get('/deleteService/{id}', [ServiceController::class,'deleteService']);
         Route::get('/applyServiceView/{id}', [ServiceController::class,'applyServiceView']);
-        //////////////////////cluster manager
         Route::get('/cluster_manager', [CManagerController::class,'cluster_manager']);
         Route::post('/addClusterManager', [CManagerController::class,'addClusterManager']);
 
-        // Route::view('/cluster_manager', 'admin/cluster_manager');
-
-
-        ////////////////////////services end
         Route::post('/websiteSetting', [SettingController::class, 'websiteSetting']);
         Route::post('/updateWebsiteSetting/{id}', [SettingController::class, 'updateWebsiteSetting']);
 
@@ -157,9 +130,94 @@ Route::middleware(['auth'])->group(function () {
 
 
 
+
+
+Route:: prefix('/member')->middleware(['auth'])->group(function () {
+
+    Route::get('/', [MemberController::class, 'member_index']);
+
+    Route::get('/view_cluster', [MemberController::class, 'viewCluster']);
+    Route::get('/view/event/', [MemberController::class, 'view_event']);
+    Route::get('/services/', [ServiceController::class, 'view_service']);
+    Route::get('/setting', [SettingController::class, 'settings']);
+
+    Route::get('/search/cluster', [MemberController::class, 'search_cluster']);
+    Route::get('/search/event', [MemberController::class, 'search_event']);
+
+
+
+    Route::get('/view/cluster/{id}', [ClusterController::class, 'view_cluster']);
+    Route::post('/invite/user', [ServiceController::class, 'invite_user']);
+    Route::get('/Join/cluster/{id}', [ClusterController::class, 'join_cluster']);
+    Route::post('/add/events/', [ClusterController::class, 'add_events']);
+    Route::post('/add/event/', [ClusterController::class, 'add_event']);
+    Route::post('/update/event/{id}', [ClusterController::class, 'update_event']);
+    Route::get('/delete/event/{id}', [ClusterController::class, 'delete_event']);
+
+    Route::post('createCluster', [ClusterController::class, 'createCluster']);
+    Route::post('updateCluster/{id}', [ClusterController::class, 'updateCluster']);
+
+    Route::get('aprroved/{id}', [ClusterController::class, 'aprroved']);
+
+    Route::post('upd/cluster/{id}', [ClusterController::class, 'upd_cluster']);
+
+    Route::post('deleteCluster/{id}', [ClusterController::class, 'deleteCluster']);
+
+    Route::get('/view/join/{id}/{idd}', [ClusterController::class, 'view_join']);
+
+
+
+    Route::get('/communication', [ClusterController::class, 'communication']);
+    Route::post('/send/email', [ClusterController::class, 'send_email']);
+    Route::get('/manager/status/{id}/{userID}', [ClusterController::class, 'manger']);
+
+    Route::get('/events', [EventController::class, 'events']);
+    Route::get('/users', [ClusterController::class, 'users']);
+    Route::post('/addUser', [ClusterController::class, 'addUser']);
+    Route::post('/updateUser/{id}', [ClusterController::class, 'updateUser']);
+    Route::post('/deleteUser/{id}', [ClusterController::class, 'deleteUser']);
+    Route::get('/members', [MemberController::class, 'members']);
+    Route::post('/addMember', [MemberController::class, 'addMember']);
+    Route::post('/updateMember/{id}', [MemberController::class, 'updateMember']);
+    Route::post('/assignManager/{id}', [MemberController::class, 'assignManager']);
+    Route::post('/deleteMembers/{id}', [MemberController::class, 'deleteMembers']);
+
+     Route::view('/profile_setting', 'admin/profile_setting');
+    Route::get('/setting', [SettingController::class, 'settings']);
+
+    Route::post('upd/cluster_overview/{id}', [ClusterController::class, 'cluster_overview']);
+
+
+    Route::get('/view/{id}', [ClusterController::class, 'view']);
+
+    Route::get('/services', [ServiceController::class, 'view_service']);
+    Route::post('/addService', [ServiceController::class, 'addService']);
+    Route::post('/updateService/{id}', [ServiceController::class, 'updateService']);
+    Route::get('/deleteService/{id}', [ServiceController::class, 'deleteService']);
+
+    Route::get('/services', [ServiceController::class,'view_service']);
+    Route::post('/addService', [ServiceController::class,'addService']);
+    Route::post('/updateService/{id}', [ServiceController::class,'updateService']);
+    Route::get('/deleteService/{id}', [ServiceController::class,'deleteService']);
+    Route::get('/applyServiceView/{id}', [ServiceController::class,'applyServiceView']);
+    Route::get('/cluster_manager', [CManagerController::class,'cluster_manager']);
+    Route::post('/addClusterManager', [CManagerController::class,'addClusterManager']);
+
+    Route::post('/websiteSetting', [SettingController::class, 'websiteSetting']);
+    Route::post('/updateWebsiteSetting/{id}', [SettingController::class, 'updateWebsiteSetting']);
+
+
+
+
+
+
+
+
+
+});
+
 Route::middleware(['auth'])->group(function () {
 
-    // Route::view('/user','admin/index');
     Route::prefix('/user')->group(function () {
         Route::get('aprroved/{id}', [ClusterController::class, 'aprroved']);
 

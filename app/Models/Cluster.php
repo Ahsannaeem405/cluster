@@ -27,10 +27,15 @@ class Cluster extends Model
         return $this->hasOne('App\Models\JoinCluster', 'cluster_id','id')->where('user_id',Auth::user()->id)->where('status',0);
     }
 
+    public function JoinClust()
+    {
+        return $this->hasOne('App\Models\JoinCluster', 'cluster_id','id')->where('user_id',Auth::user()->id)->where('status',1);
+    }
+
     public function joindetail()
     {
         return $this->hasMany('App\Models\JoinCluster', 'cluster_id','id')->where('status',2);
     }
-   
-    
+
+
 }

@@ -29,8 +29,8 @@ class CManagerController extends Controller
 
         foreach($users as $userList)
         {
-           
-            $user=User::find($userList);    
+
+            $user=User::find($userList);
             $user->post_role='manager';
             $user->save();
             foreach($cluster as $clusterList)

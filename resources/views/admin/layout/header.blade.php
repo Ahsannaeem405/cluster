@@ -72,7 +72,7 @@
 
 <body class="page-has-left-panels page-has-right-panels">
     <?php
-    $role = Auth::user()->role;
+    $role = Auth::user()->post_role;
 
     ?>
 
@@ -244,7 +244,7 @@
                             <span class="left-menu-title">Dashboard</span>
                         </a>
                     </li>
-                    @if (Auth::user()->role == 'admin')
+                    @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'member' )
                         <li>
                             <a href="{{ url("$role/view_cluster") }}">
                                 <svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip"

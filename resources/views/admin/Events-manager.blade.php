@@ -750,6 +750,7 @@
 
 
                             <ul class="widget w-activity-feed notification-list">
+                                {{-- @dd($user) --}}
                                 @if (count($user) > 1)
                                     @foreach ($user as $users)
                                         @if ($users->User->role != 'admin')
@@ -849,16 +850,6 @@
                                 @endif
 
 
-                                @if ($user->count() > 3 && Auth::user()->role == 'admin')
-                                    <li style=" background: #2d2d2d; padding: 7px;">
-                                        <div class="col-12">
-                                            <a href="{{ url("$role/view", [$id]) }}"
-                                                style="    color: white;font-size: 16px;"> <span> See All </span></a>
-
-                                        </div>
-
-                                    </li>
-                                @endif
 
 
                             </ul>

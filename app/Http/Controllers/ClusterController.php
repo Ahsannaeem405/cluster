@@ -240,14 +240,28 @@ class ClusterController extends Controller
     public function index()
     {
 
-        $clus = Cluster::all()->count();
-        for($i = 01 ; $i <= 12; $i++){
 
-            $date = date("Y-$i-d");
-            $cluster[] = Cluster::whereDate('created_at',$date)->get();
-            $arr[] = $date;
+
+        $clus = Cluster::all()->count();
+
+
+
+        $i = 01;
+        for($i = $i ; $i <= $i; $i++){
+
+            if($i != 13)
+            {
+            $date = date("$i");
+            $cluster[] = Cluster::whereMonth('created_at',$date)->get();
+        }
+        else
+        {
+            break;
 
         }
+
+        }
+
        $clusterr[] =  count($cluster[0]);
        $clusterr[] =  count($cluster[1]);
        $clusterr[] =  count($cluster[2]);
@@ -260,10 +274,6 @@ class ClusterController extends Controller
        $clusterr[] =  count($cluster[9]);
        $clusterr[] =  count($cluster[10]);
        $clusterr[] =  count($cluster[11]);
-
-
-
-        // @dd($clusterr);
 
         $eve = Event::all()->count();
         $ser = Service::all()->count();
@@ -313,10 +323,9 @@ class ClusterController extends Controller
         $count_clus = null;
 
 
-        $date =   date("Y-m-d");
+        $date =   date("Y-m-d H:i:s");
 
         $clust = Cluster::find($id);
-        // dd($clust);
         if (isset($clust)) {
 
 
@@ -358,7 +367,7 @@ class ClusterController extends Controller
             $event_3 = Event::where('Event_type', 'Public')->where('cluster_id', $id)->whereDate('datetimepicker',  $date)->take(3)->get();
         }
 
-        $eventtime = Event::Where('datetimepicker', '>', $date)->get();
+        $eventtime = Event::Where('cluster_id', $id)->where('datetimepicker', '>', $date)->get();
 
 
         // $event_3 = Event::Where('join_cluster_ID', $id)->take(3)->get();
@@ -406,7 +415,7 @@ class ClusterController extends Controller
     function join_cluster($id)
     {
 
-        $date =   date("Y-m-d");
+        $date =   date("Y-m-d H:i:s");
         $clust = Cluster::find($id);
 
         $clus_img2 = explode(',', $clust->image);
@@ -429,8 +438,10 @@ class ClusterController extends Controller
         $pending_user = JoinCluster::Where('cluster_id', $id)->where('status',  0)->take(6)->get();
 
 
+
         $joinn = EventJoin::Where('user_id', Auth::user()->id)->where('cluster_id', $id)->get();
         $joinn1 = EventJoin::Where('cluster_id', $id)->Where('user_id','!=', 1)->get();
+
 
         if ($get == 0) {
 
@@ -462,9 +473,9 @@ class ClusterController extends Controller
 
             $event_3 = Event::where('cluster_id', $id)->take(3)->whereDate('datetimepicker',  $date)->get();
 
+
             $manager = JoinCluster::Where('cluster_id', $id)->where('status', 2)->take(6)->get();
             $user = JoinCluster::Where('cluster_id', $id)->where('status', '!=', 0)->take(6)->get();
-
 
 
             return view('admin.Events-manager', compact('user','joinn1' ,'manager', 'mang', 'event', 'id', 'joinn', 'clust', 'clus_img', 'clus_img1', 'event_3', 'pending_user', 'clus_img2', 'eventtime', 'count_clus'));
@@ -507,9 +518,12 @@ class ClusterController extends Controller
     public function viewCluster()
     {
         $viewCluster['viewCluster'] = Cluster::all();
+        $viewCluster['public_cluster'] = Cluster::where('cluster_type', 'Public')->get();
         $manager['manager'] = User::where('role', 'user')->get();
 
         return view('admin.view_cluster', $viewCluster, $manager);
+
+
     }
 
 
