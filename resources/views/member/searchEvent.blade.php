@@ -76,7 +76,6 @@ $role = Auth::user()->post_role;
 
                 <td class="description event-as" atrr={{ $events->id }}>
 
-                    <button class="btn btn-danger"> Joined</button>
 
 
                     <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}">
