@@ -160,7 +160,7 @@ class MemberController extends Controller
 
     public function search_cluster(Request $request){
 
-        $viewCluster = Cluster::Where('name', $request->name)->where('cluster_type', 'Public')->get();
+        $viewCluster = Cluster::where('name','like','%'.$request->name.'%')->where('cluster_type', 'Public')->get();
 
         return view('member.searchCluseter', compact('viewCluster'));
 
@@ -170,7 +170,9 @@ class MemberController extends Controller
 
     public function search_event(Request $request){
 
-        $search_event = Event::Where('name', $request->name)->where('Event_type', 'Public')->get();
+
+
+        $search_event = Event::where('name','like','%'.$request->name.'%')->where('Event_type', 'Public')->get();
 
         return view('member.searchEvent', compact('search_event'));
 
