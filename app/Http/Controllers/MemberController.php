@@ -255,7 +255,7 @@ class MemberController extends Controller
         $event['clustor'] = Cluster::all();
         $event['event'] = Event::where('userid', Auth::user()->id)->get();
 
-        $event['search_event'] = EventJoin::where('user_id', Auth::user()->id)->take(10)->get();
+        $event['search_event'] = Event::where('Event_type','Public')->take(10)->get();
 
 
         $event['event_3'] = Event::where('userid', Auth::user()->id)->whereDate('datetimepicker',  $date)->take(3)->get();

@@ -493,38 +493,47 @@
                                         @foreach ($search_event as $events)
                                             {{-- @dd($events->EventJoin, Auth::user()->id) --}}
 
-
+                                            @if(!isset($events->Join))
                                             <tr class="">
                                                 <td class="author">
                                                     {{ $i++ }}
                                                 </td>
 
 
-                                                <td class="description event-as" atrr={{ $events->EventJoin->id }}>
+                                                <td class="description event-as" atrr={{ $events->id }}>
                                                     <img loading="lazy"
-                                                        src="{{ asset('images/') }}/{{ $events->EventJoin->image }}"
+                                                        src="{{ asset('images/') }}/{{ $events->image }}"
                                                         alt="friend" width="38" height="38">
                                                 </td>
 
-                                                <td class="location event-as" atrr={{ $events->EventJoin->id }}>
-                                                    {{ $events->EventJoin->name }}
+                                                <td class="location event-as" atrr={{ $events->id }}>
+                                                    {{ $events->name }}
+                                                </td>
+                                                <td class="upcoming event-as" atrr={{ $events->id }}>
+                                                    {{ $events->description }}
+                                                </td>
+                                                <td class="description event-as" atrr={{ $events->id }}>
+                                                    {{ $events->datetimepicker }}
 
                                                 </td>
-                                                <td class="upcoming event-as" atrr={{ $events->EventJoin->id }}>
-                                                    {{ $events->EventJoin->description }}
-                                                </td>
-                                                <td class="description event-as" atrr={{ $events->EventJoin->id }}>
-                                                    {{ $events->EventJoin->datetimepicker }}
 
-                                                </td>
+                                                <td class="description event-as" atrr={{ $events->id }}>
 
-                                                <td class="description event-as" atrr={{ $events->EventJoin->id }}>
-                                                    <button class="btn btn-danger"> Joined</button>
+
+                    <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}">
+                        <button class="btn btn-primary" style="background: #ff5e3a;border-color: #ff5e3a;">
+                            Request to Join
+                        </button>
+
+
+                    </a>
+
 
                                                 </td>
 
 
                                             </tr>
+                                            @endif
                                         @endforeach
 
 
