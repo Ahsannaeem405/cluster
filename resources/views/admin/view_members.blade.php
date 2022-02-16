@@ -21,7 +21,7 @@
 
 	<!-- Main Content Groups -->
 
-	<div class="container">
+	<div class="container-fluid">
 		@if ($message = Session::get('success'))
 		<div class="alert alert-success ">
 			<strong>{{ $message }}</strong>
@@ -63,6 +63,8 @@
 								$i=1;
 							@endphp
 							@foreach($user_list as $list)
+							
+							{{-- //dd($list->memberCluster,) --}}
 							<tr>
 								<td class="text-center">{{$i++}}</td>
 								<td class="py-2">{{$list->first_name}}</td>
@@ -70,6 +72,8 @@
 								<td class="py-2">
 															
 									@foreach($list->memberCluster as $listc)
+										
+									{{-- @dd($listc->selectCluster($listc->user_id)); --}}
 										{{$listc->Clusterr->name.','}}
 									
 									@endforeach
@@ -187,17 +191,29 @@
 						<label class="control-label">Cluster</label>
 						<select class="clusterMemberMultiple  @error('password') is-invalid @enderror" name="cluster[]" multiple="multiple" >
 						
-
-							@foreach($list->memberCluster as $listc)
+							@foreach($cluster as $listcMain)
+							@php
+								$join=App\Models\JoinCluster::where('user_id',$list->id)->where('cluster_id',$listcMain->id)->get();
+							@endphp
+							@foreach($join as $listc)
+							@if($listc->cluster_id == $listcMain->id)
+							<option value="{{$listcMain->id}}" selected >{{$listcMain->name}}</option>
+							@else
+				
+							<option value="{{$listcMain->id}}" >{{$listcMain->name}}</option>
+							@endif
+							@endforeach
+							@endforeach
+							{{-- @foreach($list->memberCluster as $listc)
 								<option value="{{$listc->Clusterr->id}}" @if( $listc->cluster_id == $listc->Clusterr->id) selected  @endif>{{$listc->Clusterr->name}}</option>
 					
-							@endforeach
-							@foreach($cluster as $listcMain)
+							@endforeach --}}
+							{{-- @foreach($cluster as $listcMain)
 
 
 							<option value="{{$listcMain->id}}" @if( $listcMain->id == $listcMain->join) selected  @endif>{{$listcMain->name}}</option>
 
-							@endforeach
+							@endforeach --}}
 						  </select>
 						  @error('cluster')
 						<span class="invalid-feedback" role="alert">

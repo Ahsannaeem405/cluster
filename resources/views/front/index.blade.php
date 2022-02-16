@@ -9,13 +9,13 @@
 				<div class="col-lg-10 col-md-10 col-12 d-flex justify-content-center">
 					<div>
 						<h2 class="text-center">Find The Perfect Cluster for Yourself</h2>
-						<form class="form-inline search-form" method="post">
+						<div class="form-inline search-form" >
 							<div class="form-group label-floating">
 								<label class="control-label">What are you looking for?</label>
-								<input class="form-control bg-white" placeholder="" type="text" value="">
+								<input id="searchClusterMain" class="form-control bg-white" placeholder="" type="text" value="">
 							</div>
-							<button class="btn btn-blue btn-lg">Search</button>
-						</form>
+							<button id="serachBtn" class="btn btn-blue btn-lg">Search</button>
+						</div>
 					</div>
 
 				</div>
@@ -27,7 +27,7 @@
 			<div class="col-12 mt-5">
 				<div class="row d-flex justify-content-between align-items-center">
 					<div class="col-xl-3 col-lg-4 col-md-6 col-12">
-						<p class="total-clustors"> {{count($viewCluster)}} cluster available</p>
+						<p class="total-clustors"> Clusters</p>
 					</div>
 					<div class="col-xl-3 col-lg-4 col-md-6  col-12">
 						<form method="get" action="">						
@@ -232,6 +232,21 @@
 						}
 					})
 				});
+				$('#serachBtn').on('click', function() {
+					var search=$('#searchClusterMain').val();
+					$.ajax({
+						url:"{{url('searchClusterMain')}}?search="+search,
+						type:'get',
+					
+						success:function(result)
+						{
+							$('.appSearch').empty().append(result);
+							window.scrollTo(300, 500);
+
+						}
+					})
+				});
+				 
 			});
 		</script>
 	<!--Home page end-->

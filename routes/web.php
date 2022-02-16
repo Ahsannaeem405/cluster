@@ -306,4 +306,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/subscribeEmail', [frontController::class, 'subscribe']);
 Route::get('/searchCluster', [frontController::class, 'searchCluster']);
+Route::get('/searchClusterMain', [frontController::class, 'searchClusterMain']);
 

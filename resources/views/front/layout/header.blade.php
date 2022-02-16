@@ -27,6 +27,7 @@
 	<!-- WebP Safari Support -->
 	<script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/polyfills.js"></script>
 	<script src="../../unpkg.com/webp-hero%400.0.0-dev.27/dist-cjs/webp-hero.bundle.js"></script>
+	<link rel="icon" href="{{$setting->logo}}" type="image/icon type">
 </head>
 
 <body class="landing-page">
