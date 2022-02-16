@@ -257,7 +257,7 @@
                                     data-bs-placement="right" data-bs-original-title="FAV PAGE">
                                     <use xlink:href="#olymp-star-icon"></use>
                                 </svg>
-                                <span class="left-menu-title">Clustors</span>
+                                <span class="left-menu-title">Clusters</span>
                             </a>
                         </li>
                     @endif
@@ -412,7 +412,7 @@
                                     data-bs-placement="right" data-bs-original-title="FAV PAGE">
                                     <use xlink:href="#olymp-star-icon"></use>
                                 </svg>
-                                <span class="left-menu-title">Clustors</span>
+                                <span class="left-menu-title">Clusters</span>
                             </a>
                         </li>
                     @endif
