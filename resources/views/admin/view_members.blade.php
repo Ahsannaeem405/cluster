@@ -193,16 +193,14 @@
 						
 							@foreach($cluster as $listcMain)
 							@php
-								$join=App\Models\JoinCluster::where('user_id',$list->id)->where('cluster_id',$listcMain->id)->get();
+								$join=App\Models\JoinCluster::where('user_id',$list->id)->where('cluster_id',$listcMain->id)->first();
 							@endphp
-							@foreach($join as $listc)
-							@if($listc->cluster_id == $listcMain->id)
+							@if($join->cluster_id == $listcMain->id)
 							<option value="{{$listcMain->id}}" selected >{{$listcMain->name}}</option>
 							@else
 				
 							<option value="{{$listcMain->id}}" >{{$listcMain->name}}</option>
 							@endif
-							@endforeach
 							@endforeach
 							{{-- @foreach($list->memberCluster as $listc)
 								<option value="{{$listc->Clusterr->id}}" @if( $listc->cluster_id == $listc->Clusterr->id) selected  @endif>{{$listc->Clusterr->name}}</option>
