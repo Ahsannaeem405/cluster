@@ -451,7 +451,8 @@ class ClusterController extends Controller
 
             $useID = Auth::user()->id;
             $user =  User::find($useID);
-            if ($user->post_role != 'manager') {
+
+            if ($user->post_role != 'manager' || $user->post_role != 'admin') {
                 $user->post_role = 'member';
             }
             $user->save();
