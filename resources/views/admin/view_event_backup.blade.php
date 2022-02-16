@@ -7,13 +7,6 @@
     $post_role = Auth::user()->post_role;
     ?>
 
-    <!-- ... end Responsive Header-BP -->
-
-    <div class="header-spacer header-spacer-small"></div>
-
-
-    <!-- Main Header Groups -->
-
     <div class="main-header">
         <div class="content-bg-wrap bg-group event-manager-bg"
             style="background:  linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3)), url({{ asset('/img/events-manager.jpg') }})">

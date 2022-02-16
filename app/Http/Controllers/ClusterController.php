@@ -639,9 +639,10 @@ class ClusterController extends Controller
     public function addUser(Request $request)
     {
         //dd($request->input());
+
         $request->validate([
             'first_name' => 'required',
-            'email' => 'required',
+           'email' => 'required|email|unique:users',
             'password' => 'required',
 
         ]);

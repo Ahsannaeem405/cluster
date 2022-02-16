@@ -3,7 +3,6 @@
 @section('content')
 
 
-    <br />
     <?php
 
     $role = Auth::user()->role;
@@ -82,7 +81,7 @@
                                   <td>{{$list->email}}</td>
                                   <td>{{$list->number}}</td>
                                   <td>{{$list->gender}}</td>
-                                  <td>{{$list->role}}</td>
+                                  <td>{{$list->post_role}}</td>
 
                                     
                                     <td>
@@ -123,7 +122,7 @@
                                                         <div class="form-group">
                                                             <label for="exampleFormControlInput1">Name</label>
                                                             <input type="text" name="first_name"
-                                                                value="{{ $list->first_name }}" class="form-control"
+                                                                value="{{ $list->first_name }}" class="form-control @error('first_name') is-invalid @enderror"
                                                                 id="Cluster-Name">
                                                             @error('first_name')
                                                                 <span class="invalid-feedback" role="alert">
@@ -134,7 +133,7 @@
                                                         <div class="form-group">
                                                             <label for="exampleFormControlInput1">Email</label>
                                                             <input type="email" name="email" value="{{ $list->email }}"
-                                                                class="form-control" id="Cluster-Name">
+                                                                class="form-control @error('email') is-invalid @enderror" id="Cluster-Name">
                                                             @error('email')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -143,7 +142,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="exampleFormControlInput1">Old Password</label>
-                                                            <input type="password" name="c_password" class="form-control"
+                                                            <input type="password" name="c_password" class="form-control @error('c_password') is-invalid @enderror"
                                                                 id="Cluster-Name" placeholder="Enter Old Password">
                                                             @error('c_password')
                                                                 <span class="invalid-feedback" role="alert">
@@ -154,7 +153,7 @@
                                                         <div class="form-group">
                                                             <label for="exampleFormControlInput1">New Password</label>
                                                             <input type="password" name="new_password"
-                                                                class="form-control" id="Cluster-Name"
+                                                                class="form-control @error('new_password') is-invalid @enderror" id="Cluster-Name"
                                                                 placeholder="Enter New Password">
                                                             @error('new_password')
                                                                 <span class="invalid-feedback" role="alert">

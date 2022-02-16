@@ -10,15 +10,16 @@ use Illuminate\Queue\SerializesModels;
 class SubscribeMail extends Mailable
 {
     use Queueable, SerializesModels;
+    public $details;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($details)
     {
-        //
+        $this->details = $details;
     }
 
     /**
@@ -28,6 +29,7 @@ class SubscribeMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->subject('Subscription')
+                    ->view('front.subscribe')->with('details', $this->details);
     }
 }

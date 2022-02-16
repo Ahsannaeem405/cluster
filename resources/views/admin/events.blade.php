@@ -5,7 +5,6 @@
 <?php
 $role = Auth::user()->role;
 ?>
-    <div class="header-spacer header-spacer-small"></div>
 
 
     <!-- Main Header Groups -->

@@ -15,7 +15,7 @@
 								<input class="form-control bg-white" placeholder="" type="text" value="">
 							</div>
 							<button class="btn btn-blue btn-lg">Search</button>
-					
+						</form>
 					</div>
 
 				</div>
@@ -30,20 +30,23 @@
 						<p class="total-clustors"> {{count($viewCluster)}} cluster available</p>
 					</div>
 					<div class="col-xl-3 col-lg-4 col-md-6  col-12">
-						<div class="form-group clustor-sort d-flex align-items-center justify-content-around">
+						<form method="get" action="">						
+							<div class="form-group clustor-sort d-flex align-items-center justify-content-around">
 							<label for="inputState">Sort By</label>
-							<select id="inputState" class=" w-75">
-								<option selected>Top Clustors</option>
-								<option>Most Popular</option>
-								<option>Most Newest</option>
+							<select id="searchCluster" name="searchCluster" class=" w-75">
+								<option value="top_cluster" selected>Top Clustors</option>
+								<option value="most_popular">Most Popular</option>
+								<option value="most_newest">Most Newest</option>
 							</select>
 						</div>
+					</form>
+
 					</div>
 				</div>
 
 			</div>
 		</div>
-		<div class="row  mb-4">
+		<div class="row  mb-4 appSearch">
 			@foreach($viewCluster as $list)
 			@php
 				$image=explode(',',$list->image);
@@ -213,6 +216,23 @@
 			</div>
 		</div>
 		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+		<script>
+			$(document).ready(function(){
+				$('#searchCluster').on('change', function() {
+					var search=$('#searchCluster').val();
+					$.ajax({
+						url:"{{url('searchCluster')}}?search="+search,
+						type:'get',
+					
+						success:function(result)
+						{
+							$('.appSearch').empty().append(result);
+						}
+					})
+				});
+			});
+		</script>
 	<!--Home page end-->
 @endsection

@@ -8,12 +8,18 @@
                         <h5 class="news-sub-heading text-white">
                             News Subscribe Now for Updates!
                         </h5>
-                        <form>
+                            <form method="post" action="{{ url('/subscribeEmail') }}">
+                              @csrf
                             <div class="footer-form">
-                                <input type="email" required placeholder="Email Address" class="form=conteol w-100 " />
-                                <input type="submit" class="footer-news-btn form-control" value="submit" />
+                                <input type="email" name="email" required placeholder="Email Address" class="form=conteol w-100 " />
+                                <button type="submit" class="footer-news-btn w-50">Subscribe</button>
+                               
                             </div>
-                            
+                            @if ($message = Session::get('success'))
+                            <div class="text-success ">
+                                <strong>{{ $message }}</strong>
+                            </div>
+                            @endif
                             
                         </form>
 
@@ -33,20 +39,16 @@
                             Contact Us
                         </h4>
                         <div class="d-flex " style="gap:10px;">
-                            <a href="mailto:
-                            @if(isset($setting)){{$setting->email}} 
-							@else  Example@gmail.com
-                            @endif
-                            ">
+                            <a href="mailto:@if(isset($setting)){{$setting->email}} 
+							@else Example@gmail.com
+                            @endif">
                                 <div class="footer-links">
                                     <i class="fa fa-envelope"></i>
                                 </div>
                             </a>
-                            <a href="tel:
-                            @if(isset($setting)){{$setting->phone}} 
+                            <a href="tel:@if(isset($setting)){{$setting->phone}} 
 							@else 1234456788
-                            @endif
-                            ">
+                            @endif">
                                 <div class="footer-links">
                                     <i class="fa fa-phone"></i>
                                 </div>
