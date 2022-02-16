@@ -2,7 +2,7 @@
 @section('page_title', 'Home Page')
 @section('content')
     <?php
-    $role = Auth::user()->role;
+    $role = Auth::user()->post_role;
     $var = 0;
     $ii = 0;
     ?>
