@@ -35,7 +35,6 @@ class LoginController extends Controller
     {
 
 
-        // @dd(auth()->user()->post_role);
         if (auth()->user()->post_role == 'admin') {
             return '/admin';
         }

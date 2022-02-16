@@ -307,9 +307,7 @@ class ClusterController extends Controller
         // dd($id);
 
         $user = JoinCluster::where('cluster_id', $id)->get();
-        // $event['event'] = Event::all();
-        //  $event['event_join'] = EventJoin::where('event_id',$id)->get();
-        // return view('admin.view_users', $event);
+
         return view('admin.view_users', compact('user'));
     }
 
@@ -416,6 +414,8 @@ class ClusterController extends Controller
     function join_cluster($id)
     {
 
+        // dd($id);
+
         $date =   date("Y-m-d H:i:s");
         $clust = Cluster::find($id);
 
@@ -444,6 +444,7 @@ class ClusterController extends Controller
         $joinn1 = EventJoin::Where('cluster_id', $id)->Where('user_id','!=', 1)->get();
 
 
+
         if ($get == 0) {
 
             $event = Event::where('cluster_id', $id)->where('Event_type', 'Public')->get();
@@ -451,11 +452,15 @@ class ClusterController extends Controller
 
             $useID = Auth::user()->id;
             $user =  User::find($useID);
-            if ($user->post_role != 'manager') {
+
+
+
+            if ($user->post_role != 'manager' && $user->post_role != 'admin') {
+                // @dd($user->post_role);
                 $user->post_role = 'member';
             }
             $user->save();
-
+            // @dd(12);
 
             $join = new JoinCluster();
             $join->cluster_id = $id;

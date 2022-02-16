@@ -27,88 +27,12 @@
     </div>
     <div class="container-fluid" style="padding-left: 26px;padding-right: 26px;">
 
+        @if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+@endif
 
-        {{-- <div class="ui-block responsive-flex">
-            <br />
-            <div class="col-12" style="    padding: 7px;">
-                @if ($message = Session::get('success'))
-                    <div class="alert alert-success ">
-                        <strong>{{ $message }}</strong>
-                    </div>
-                @endif
-
-                <div class="table-responsive">
-                    <table id="table_id" class="display">
-                        @if ($message = Session::get('success'))
-                            <div class="alert alert-success ">
-                                <strong>{{ $message }}</strong>
-                            </div>
-                        @endif
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>
-                                    Second Name
-                                </th>
-                                <th>Email</th>
-                                <th>Date of Birth</th>
-                                <th>Role</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i = 1;
-
-                            ?>
-                            @foreach ($user as $users)
-
-
-                                <tr>
-                                    <td>{{ $i++ }}</td>
-                                    <td>{{ $users->User->first_name }}</td>
-                                    <td>{{ $users->User->last_name }}</td>
-                                    <td>{{ $users->User->email }}</td>
-                                    <td>{{ $users->User->dob }}</td>
-                                    <td>{{ $users->User->role }}</td>
-                                    <td>
-                                        <div class="author-page author vcard inline-items more">
-                                            <div class="author-thumb">
-                                                <button class="btn btn-primary">Action &nbsp; <i class="fa fa-angle-down"
-                                                        style="font-size: 17px;" aria-hidden="true"></i>
-                                                </button>
-                                                <div class="more-dropdown more-with-triangle" style="margin-top: -7px;">
-                                                    <div class="mCustomScrollbar" data-mcs-theme="dark">
-
-
-                                                        <ul class="account-settings">
-                                                            <li>
-
-                                                                <a style="font-size: 14px;"
-                                                                    href="{{ url("$role/manager/status", [$users->id, $users->User->id]) }}">
-                                                                    <span> Manager</span>
-                                                                </a>
-
-                                                            </li>
-
-
-                                                        </ul>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </td>
-
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div> --}}
 
 
 
@@ -136,6 +60,7 @@
                         @foreach ($user as $users)
 
 
+                        @if($users->User->role != 'admin')
                             <tr>
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $users->User->first_name }}</td>
@@ -174,6 +99,7 @@
                                 </td>
 
                             </tr>
+                            @endif
                         @endforeach
 
                     </tbody>

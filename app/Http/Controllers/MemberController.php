@@ -160,7 +160,7 @@ class MemberController extends Controller
 
     public function search_cluster(Request $request){
 
-        $viewCluster = Cluster::Where('name', $request->name)->where('cluster_type', 'Public')->get();
+        $viewCluster = Cluster::where('name','like','%'.$request->name.'%')->where('cluster_type', 'Public')->get();
 
         return view('member.searchCluseter', compact('viewCluster'));
 
@@ -170,7 +170,9 @@ class MemberController extends Controller
 
     public function search_event(Request $request){
 
-        $search_event = Event::Where('name', $request->name)->where('Event_type', 'Public')->get();
+
+
+        $search_event = Event::where('name','like','%'.$request->name.'%')->where('Event_type', 'Public')->get();
 
         return view('member.searchEvent', compact('search_event'));
 
@@ -255,7 +257,7 @@ class MemberController extends Controller
         $event['clustor'] = Cluster::all();
         $event['event'] = Event::where('userid', Auth::user()->id)->get();
 
-        $event['search_event'] = EventJoin::where('user_id', Auth::user()->id)->take(10)->get();
+        $event['search_event'] = Event::where('Event_type','Public')->take(10)->get();
 
 
         $event['event_3'] = Event::where('userid', Auth::user()->id)->whereDate('datetimepicker',  $date)->take(3)->get();

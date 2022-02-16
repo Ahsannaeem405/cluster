@@ -48,7 +48,7 @@ $role = Auth::user()->post_role;
 
 
         @foreach ($search_event as $events)
-
+        @if(!isset($events->Join))
 
             <tr class="">
                 <td class="author">
@@ -75,9 +75,8 @@ $role = Auth::user()->post_role;
                 </td>
 
                 <td class="description event-as" atrr={{ $events->id }}>
-                    @if(isset($events->Join))
-                    <button class="btn btn-danger"> Joined</button>
-                    @else
+
+
 
                     <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}">
                         <button class="btn btn-primary" style="background: #ff5e3a;border-color: #ff5e3a;">
@@ -86,12 +85,13 @@ $role = Auth::user()->post_role;
 
 
                     </a>
-@endif
+
 
                 </td>
 
 
             </tr>
+            @endif
         @endforeach
 
 
