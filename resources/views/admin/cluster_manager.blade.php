@@ -166,10 +166,15 @@
                                                   <div class="form-group"  id="cluster">
                                                       <label class="control-label">Clusters</label>
                                                       <select class="clusterMemberMultiple disabled @error('cluster') is-invalid @enderror" name="cluster[]" multiple="multiple" >
-                                                          @foreach($cluster as $list)
-                                                          <option value="{{$list->id}}" >{{$list->name}}</option>
-                                              
-                                                          @endforeach
+                                                        @foreach($cluster as $listcMain)
+							@php
+								$join=App\Models\JoinCluster::where('user_id',$listM->id)->where('cluster_id',$listcMain->id)->first();
+							@endphp
+							
+							<option @if($join) selected @endif value="{{$listcMain->id}}"  >{{$listcMain->name}}</option>
+							
+				
+							@endforeach
                                                         </select>
                                                         @error('cluster')
                                                       <span class="invalid-feedback" role="alert">
