@@ -307,9 +307,7 @@ class ClusterController extends Controller
         // dd($id);
 
         $user = JoinCluster::where('cluster_id', $id)->get();
-        // $event['event'] = Event::all();
-        //  $event['event_join'] = EventJoin::where('event_id',$id)->get();
-        // return view('admin.view_users', $event);
+
         return view('admin.view_users', compact('user'));
     }
 
