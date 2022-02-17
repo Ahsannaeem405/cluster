@@ -266,6 +266,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::post('/invite/user', [ServiceController::class, 'invite_user']);
 
+        Route::get('/request/joinCluster/{id}', [MemberController::class, 'request_join']);
 
         Route::post('deleteCluster/{id}', [ClusterController::class, 'deleteCluster']);
         Route::get('/admin/view_cluster', [ClusterController::class, 'viewCluster']);
