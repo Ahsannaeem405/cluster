@@ -202,6 +202,7 @@
                                         $i = 0;
                                         ?>
 
+{{-- @dd($event_3) --}}
                                         @if (isset($event_3) && count($event_3) > 0)
 
 
@@ -292,7 +293,7 @@
 
 
                                         <div class="author-date">
-                                            <a class="h6 post__author-name fn" href=""
+                                            <a class="h6 post__author-name fn"
                                                 style="font-size: 20px;">{{ 'Cluster Overview' }}</a>
                                             <div class="country"></div>
                                         </div>
@@ -510,7 +511,7 @@
 
                                                                     <div class="col-12 text-center">
 
-                                                                        <img style="width: 34%" loading="lazy"
+                                                                        <img style="min-height: 299px;max-height: 299px;width: 69%" loading="lazy"
                                                                             src="{{ asset("images/$events->image") }}"
                                                                             alt="author" width="100" height="100">
                                                                     </div>
@@ -1029,7 +1030,14 @@
 
                         <div class="form-group ">
                             <label for="exampleFormControlInput1">Select Cluster Image</label>
-                            <input type="file" name="image[]" class="form-control" id="Cluster-Name" required>
+                            <input type="file" name="image[]" class="form-control  @error('image') is-invalid @enderror" id="Cluster-Name" required>
+
+                            @error('image')
+                            <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+
                             <input type="hidden" style="border: none;" required
                                 @if (isset($clust->detail)) value="{{ $clust->detail }}" @endif name="detail"
                                 id="">

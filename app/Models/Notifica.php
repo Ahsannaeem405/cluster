@@ -13,4 +13,9 @@ class Notifica extends Model
     {
         return $this->belongsTo('App\Models\Event', 'eventID');
     }
+
+    public function User()
+    {
+        return $this->belongsTo('App\Models\User', 'userid');
+    }
 }

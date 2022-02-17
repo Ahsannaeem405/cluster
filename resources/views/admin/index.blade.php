@@ -2,6 +2,11 @@
 @section('page_title', 'Home Page')
 @section('content')
 
+<style>
+    a.canvasjs-chart-credit {
+    display: none;
+}
+</style>
 
     <!-- Main Header Groups -->
 
@@ -128,7 +133,11 @@
 
     <?php
 $i = 0;
+ $arr =  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct','Nov' ,'Dec']
     ?>
+
+
+
 
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
@@ -142,11 +151,12 @@ $i = 0;
                     text: "Clusters of this year"
                 },
                 axisY: {
-                    title: "Total Cluster"
+                    title: "Number of Cluster"
                 },
                 data: [{
+
                     type: "column",
-                    showInLegend: true,
+                    // showInLegend: true,
                     legendMarkerColor: "#08ddc1",
                     // legendText: "MMbbl = one million barrels",
                     dataPoints: [
@@ -155,53 +165,10 @@ $i = 0;
 
                         {
                             y: {{$clusterrs}},
-                            label: "{{$i++}}"
+                            label: "{{$arr[$i++]}}"
                         },
                         @endforeach
-                        // {
-                        //     y: 266455,
-                        //     label: "2"
-                        // },
-                        // {
-                        //     y: 169709,
-                        //     label: "3"
-                        // },
-                        // {
-                        //     y: 158400,
-                        //     label: "4"
-                        // },
-                        // {
-                        //     y: 142503,
-                        //     label: "5"
-                        // },
-                        // {
-                        //     y: 101500,
-                        //     label: "6"
-                        // },
-                        // {
-                        //     y: 97800,
-                        //     label: "7"
-                        // },
-                        // {
-                        //     y: 80000,
-                        //     label: "8"
-                        // },
-                        // {
-                        //     y: 80000,
-                        //     label: "9"
-                        // },
-                        // {
-                        //     y: 80000,
-                        //     label: "10"
-                        // },
-                        // {
-                        //     y: 80000,
-                        //     label: "11"
-                        // },
-                        // {
-                        //     y: 80000,
-                        //     label: "12"
-                        // },
+
 
 
 
@@ -211,9 +178,14 @@ $i = 0;
             });
             chart.render();
 
+
         }
+
     </script>
 
+<script>
 
+
+</script>
 
 @endsection

@@ -32,7 +32,7 @@
                         @if (Auth::user()->role == 'admin')
                             <h1>Manage your Clusters</h1>
                         @else
-                            <h1>Joined Clusters</h1>
+                            <h1>Your Joined Clusters</h1>
                         @endif
                         @if (Auth::user()->role == 'admin')
                             <p>Welcome to your Clusters Management page.Here you can easly Add, Delete and Edit you
@@ -232,6 +232,91 @@
 
             <div class="row appSearch" style="margin-top: 13px;">
 
+
+                @if(isset($public_cluster) && count($public_cluster) > 0)
+
+                @foreach ($public_cluster as $list)
+                @if (!isset($list->JoinClust))
+                    <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
+                        <a style="text-decoration: none;"
+                            @if (Auth::user()->role == 'admin') href="{{ url("$role/Join/cluster", $list->id) }}" @else  href="{{ url("$role/view/cluster", $list->id) }}" @endif>
+
+                            <div class="ui-block h-100 mb-0">
+
+                                <div class="friend-item friend-groups">
+                                    <?php
+                                    $clus_img2 = explode(',', $list->image);
+                                    $clus_img1 = array_slice($clus_img2, 0, 1);
+                                    ?>
+                                    <div class="friend-item-content">
+
+
+                                        <div class="friend-avatar">
+                                            <div class="author-thumb">
+                                                <img loading="lazy" src="{{ asset('images') }}/{{ $clus_img1[0] }}" alt=""
+                                                    width="34" height="34">
+                                            </div>
+                                            <div class="author-content">
+
+                                                <span class="pppp"
+                                                    style="    font-size: 20px;      color: black;text-decoration: none;">
+                                                    {{ $list->name }}</span>
+                                                @if (isset($list->joindetail) && count($list->joindetail) > 0)
+                                                    @php
+                                                        $manager = 0;
+                                                    @endphp
+                                                    @foreach ($list->joindetail as $listss)
+                                                        @php
+                                                            $manager++;
+                                                            if ($manager > 1) {
+                                                                break;
+                                                            }
+                                                        @endphp
+                                                        <div style="color: red" class="country">Manager:<span>
+                                                                {{ $listss->User->first_name }}
+                                                            </span></div>
+                                                    @endforeach
+
+                                                @else
+                                                    <div style="color: red" class="country">Manager:<span>
+                                                            N\A
+
+                                                        </span></div>
+                                                @endif
+                                                <p class="pppp" style="    color: black;">{{ $list->detail }}</p>
+
+
+
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="control-block-button" style="margin-top:-6px">
+
+
+                                            <a href="{{url("$role/request/joinCluster",[$list->id])}}" style="color: white; ">
+                                                <button class="btn btn-primary"
+                                                    style="background:#ff5e3a; border-color:#ff5e3a">Request For Join</button>
+                                            </a>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </a>
+
+                    </div>
+                @endif
+            @endforeach
+
+                @else
+
                 <div class="accordion-item"
                     style="    padding-left: 15px !important;padding-right: 15px !important;    padding: unset;margin-bottom: 11px;">
                     <div class="jumbotron jumbotron-fluid"
@@ -241,6 +326,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
 
 
 

@@ -23,11 +23,16 @@ class ClusterController extends Controller
     public function user_index()
     {
 
-        $viewCluster['viewCluster'] = Cluster::with('join')->get();
-        // dd($viewCluster);
-        $viewCluster['manager'] = User::where('role', 'user')->get();
 
-        return view('admin.view_cluster', $viewCluster);
+        $viewCluster['viewCluster']  =  JoinCluster::where('user_id', Auth::user()->id)->get();
+        $viewCluster['public_cluster'] = Cluster::where('cluster_type', 'Public')->get();
+        $manager['manager'] = User::where('role', 'user')->get();
+
+
+        // $viewCluster['viewCluster'] = Cluster::Where('cluster_type', 'Public')->with('join')->get();
+        // $viewCluster['manager'] = User::where('role', 'user')->get();
+
+        return view('admin.view_cluster', $viewCluster, $manager);
     }
 
     public function communication()
@@ -248,38 +253,33 @@ class ClusterController extends Controller
 
 
         $i = 01;
-        for($i = $i ; $i <= $i; $i++){
+        for ($i = $i; $i <= $i; $i++) {
 
-            if($i != 13)
-            {
-            $date = date("$i");
-            $cluster[] = Cluster::whereMonth('created_at',$date)->get();
-        }
-        else
-        {
-            break;
-
+            if ($i != 13) {
+                $date = date("$i");
+                $cluster[] = Cluster::whereMonth('created_at', $date)->get();
+            } else {
+                break;
+            }
         }
 
-        }
-
-       $clusterr[] =  count($cluster[0]);
-       $clusterr[] =  count($cluster[1]);
-       $clusterr[] =  count($cluster[2]);
-       $clusterr[] =  count($cluster[3]);
-       $clusterr[] =  count($cluster[4]);
-       $clusterr[] =  count($cluster[5]);
-       $clusterr[] =  count($cluster[6]);
-       $clusterr[] =  count($cluster[7]);
-       $clusterr[] =  count($cluster[8]);
-       $clusterr[] =  count($cluster[9]);
-       $clusterr[] =  count($cluster[10]);
-       $clusterr[] =  count($cluster[11]);
+        $clusterr[] =  count($cluster[0]);
+        $clusterr[] =  count($cluster[1]);
+        $clusterr[] =  count($cluster[2]);
+        $clusterr[] =  count($cluster[3]);
+        $clusterr[] =  count($cluster[4]);
+        $clusterr[] =  count($cluster[5]);
+        $clusterr[] =  count($cluster[6]);
+        $clusterr[] =  count($cluster[7]);
+        $clusterr[] =  count($cluster[8]);
+        $clusterr[] =  count($cluster[9]);
+        $clusterr[] =  count($cluster[10]);
+        $clusterr[] =  count($cluster[11]);
 
         $eve = Event::all()->count();
         $ser = Service::all()->count();
 
-        return view('admin.index', compact('clus', 'eve', 'ser','cluster', 'clusterr'));
+        return view('admin.index', compact('clus', 'eve', 'ser', 'cluster', 'clusterr'));
     }
 
 
@@ -323,6 +323,7 @@ class ClusterController extends Controller
 
 
         $date =   date("Y-m-d H:i:s");
+        $date1 =   date("Y-m-d");
 
         $clust = Cluster::find($id);
         if (isset($clust)) {
@@ -358,23 +359,21 @@ class ClusterController extends Controller
 
 
             $event = Event::where('cluster_id', $id)->get();
-            $event_3 = Event::where('cluster_id', $id)->whereDate('datetimepicker',  $date)->take(3)->get();
+            $event_3 = Event::where('cluster_id', $id)->whereDate('datetimepicker',  $date1)->take(3)->get();
         } else {
 
             $event = Event::where('Event_type', 'Public')->where('cluster_id', $id)->get();
 
-            $event_3 = Event::where('Event_type', 'Public')->where('cluster_id', $id)->whereDate('datetimepicker',  $date)->take(3)->get();
+            $event_3 = Event::where('Event_type', 'Public')->where('cluster_id', $id)->whereDate('datetimepicker',  $date1)->take(3)->get();
         }
 
         $eventtime = Event::Where('cluster_id', $id)->where('datetimepicker', '>', $date)->get();
 
 
-        // $event_3 = Event::Where('join_cluster_ID', $id)->take(3)->get();
 
         $joinn = EventJoin::Where('user_id', Auth::user()->id)->where('cluster_id', $id)->get();
-        // $joinn1  = EventJoin::Where('cluster_id', $id)->get();
 
-        $joinn1 = EventJoin::Where('cluster_id', $id)->Where('user_id','!=', 1)->get();
+        $joinn1 = EventJoin::Where('cluster_id', $id)->Where('user_id', '!=', 1)->get();
 
         // @dd($joinn);
         // if ($get == 0) {
@@ -403,7 +402,7 @@ class ClusterController extends Controller
         $manager = JoinCluster::Where('cluster_id', $id)->where('status', 2)->take(6)->get();
         $user = JoinCluster::Where('cluster_id', $id)->where('status', '!=', 0)->take(6)->get();
 
-        return view('admin.Events-manager', compact('user' ,'joinn1', 'manager', 'mang', 'event', 'id', 'joinn', 'clust', 'clus_img', 'clus_img1', 'event_3', 'clus_img2', 'eventtime', 'count_clus'));
+        return view('admin.Events-manager', compact('user', 'joinn1', 'manager', 'mang', 'event', 'id', 'joinn', 'clust', 'clus_img', 'clus_img1', 'event_3', 'clus_img2', 'eventtime', 'count_clus'));
 
         //    return back()->with('success', 'Please Select Another Cluster');
         // }
@@ -417,6 +416,7 @@ class ClusterController extends Controller
         // dd($id);
 
         $date =   date("Y-m-d H:i:s");
+        $date1 =   date("Y-m-d");
         $clust = Cluster::find($id);
 
         $clus_img2 = explode(',', $clust->image);
@@ -441,14 +441,14 @@ class ClusterController extends Controller
 
 
         $joinn = EventJoin::Where('user_id', Auth::user()->id)->where('cluster_id', $id)->get();
-        $joinn1 = EventJoin::Where('cluster_id', $id)->Where('user_id','!=', 1)->get();
+        $joinn1 = EventJoin::Where('cluster_id', $id)->Where('user_id', '!=', 1)->get();
 
 
 
         if ($get == 0) {
 
             $event = Event::where('cluster_id', $id)->where('Event_type', 'Public')->get();
-            $event_3 = Event::where('cluster_id', $id)->where('Event_type', 'Public')->take(3)->whereDate('datetimepicker',  $date)->get();
+            $event_3 = Event::where('cluster_id', $id)->where('Event_type', 'Public')->take(3)->whereDate('datetimepicker',  $date1)->get();
 
             $useID = Auth::user()->id;
             $user =  User::find($useID);
@@ -474,17 +474,18 @@ class ClusterController extends Controller
             return view('admin.Events-manager', compact('user', 'manager', 'mang', 'event', 'id', 'joinn', 'clust', 'clus_img', 'clus_img1', 'event_3', 'clus_img2', 'eventtime', 'count_clus'));
         } else {
 
+
             $mang = JoinCluster::Where('cluster_id', $id)->where('status', '!=', 0)->Where('user_id', Auth::user()->id)->first();
             $event = Event::where('cluster_id', $id)->get();
 
-            $event_3 = Event::where('cluster_id', $id)->take(3)->whereDate('datetimepicker',  $date)->get();
-
+            $event_3 = Event::where('cluster_id', $id)->take(3)->whereDate('datetimepicker',  $date1)->get();
+            // dd($event_3);
 
             $manager = JoinCluster::Where('cluster_id', $id)->where('status', 2)->take(6)->get();
             $user = JoinCluster::Where('cluster_id', $id)->where('status', '!=', 0)->take(6)->get();
 
 
-            return view('admin.Events-manager', compact('user','joinn1' ,'manager', 'mang', 'event', 'id', 'joinn', 'clust', 'clus_img', 'clus_img1', 'event_3', 'pending_user', 'clus_img2', 'eventtime', 'count_clus'));
+            return view('admin.Events-manager', compact('user', 'joinn1', 'manager', 'mang', 'event', 'id', 'joinn', 'clust', 'clus_img', 'clus_img1', 'event_3', 'pending_user', 'clus_img2', 'eventtime', 'count_clus'));
         }
     }
     //
@@ -528,8 +529,6 @@ class ClusterController extends Controller
         $manager['manager'] = User::where('role', 'user')->get();
 
         return view('admin.view_cluster', $viewCluster, $manager);
-
-
     }
 
 
@@ -601,8 +600,18 @@ class ClusterController extends Controller
 
 
 
+
+        $request->validate([
+
+            'image[]' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+
+        ]);
+
+
+        // dd(12);
         $cat = null;
         $clustor = Cluster::find($id);
+
 
         if (isset($request->image)) {
             foreach ($request->image as $image) {
@@ -647,7 +656,7 @@ class ClusterController extends Controller
 
         $request->validate([
             'first_name' => 'required',
-           'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users',
             'password' => 'required',
 
         ]);
@@ -732,12 +741,10 @@ class ClusterController extends Controller
         }
     }
 
-    public function view_all(){
+    public function view_all()
+    {
 
         $noti = RequestCluster::all();
         return view('admin.notification', compact('noti'));
     }
-
-
-
 }

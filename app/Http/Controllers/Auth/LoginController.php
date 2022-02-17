@@ -34,10 +34,10 @@ class LoginController extends Controller
     protected function redirectTo()
     {
 
-
         if (auth()->user()->post_role == 'admin') {
             return '/admin';
         }
+
 
         elseif (Auth::user()->post_role == 'member') {
 

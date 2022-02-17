@@ -133,6 +133,17 @@ Route::middleware(['auth'])->group(function () {
 
         Route::post('/websiteSetting', [SettingController::class, 'websiteSetting']);
         Route::post('/updateWebsiteSetting/{id}', [SettingController::class, 'updateWebsiteSetting']);
+        Route::get('/survey/form', [MemberController::class, 'survey_form']);
+        Route::post('/Survey/create', [MemberController::class, 'survey_create']);
+
+        Route::post('/Survey/edit', [MemberController::class, 'survey_edit']);
+
+
+        Route::get('/survey/list', [MemberController::class, 'survey_list']);
+        Route::get('/view/survey/{id}', [MemberController::class, 'view_list']);
+
+        Route::get('/survey/view/', [MemberController::class, 'survey_view']);
+
 
     });
 });
@@ -142,7 +153,6 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route:: prefix('/member')->middleware(['auth'])->group(function () {
-
     Route::get('/', [MemberController::class, 'member_index']);
     Route::get('/view/notifications', [ClusterController::class, 'view_all']);
 
@@ -223,6 +233,10 @@ Route:: prefix('/member')->middleware(['auth'])->group(function () {
 
 
 
+    Route::get('/survey/form', [MemberController::class, 'survey_form']);
+
+    Route::post('/Survey/create', [MemberController::class, 'survey_create']);
+    Route::get('/view/list/{id}', [MemberController::class, 'view_list']);
 
 
 
@@ -290,6 +304,8 @@ Route::middleware(['auth'])->group(function () {
         ////////////////////////services end
         Route::post('/AddCompany', [ServiceController::class, 'AddCompany']);
         Route::post('/UpdateCompany/{id}', [ServiceController::class, 'UpdateCompany']);
+        Route::post('/Survey/create', [MemberController::class, 'survey_create']);
+
     });
 });
 
@@ -306,4 +322,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/subscribeEmail', [frontController::class, 'subscribe']);
 Route::get('/searchCluster', [frontController::class, 'searchCluster']);
+
+Route::get('/view_que', [MemberController::class, 'view_que']);
+Route::post('/form/submision', [MemberController::class, 'form_submision']);
+
 

@@ -164,6 +164,8 @@
                             </svg>
                         </a>
                     </li>
+                    @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'member' )
+
                     <li>
                         <a href="{{ url("$role/services") }}">
                             <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
@@ -172,6 +174,8 @@
                             </svg>
                         </a>
                     </li>
+
+                    @endif
 
 
                     @if (Auth::user()->role == 'admin')
@@ -270,6 +274,8 @@
                             <span class="left-menu-title">Events</span>
                         </a>
                     </li>
+                    @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'member' )
+
                     <li>
                         <a href="{{ url("$role/services") }}">
                             <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
@@ -277,8 +283,11 @@
                                 <use xlink:href="#olymp-status-icon"></use>
                             </svg>
                             <span class="left-menu-title">Services</span>
+
                         </a>
                     </li>
+
+                    @endif
 
                     @if (Auth::user()->role == 'admin')
                         <li>
@@ -299,6 +308,42 @@
                                 <span class="left-menu-title">Users</span>
                             </a>
                         </li>
+
+                        @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'manager' )
+{{--
+                        <li>
+                            <a href="{{ url("$role/survey/form") }}">
+                                <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="WEATHER APP">
+                                    <use xlink:href="#olymp-music-shuffle-icon"></use>
+                                </svg>
+                                <span class="left-menu-title">Survey Form</span>
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="{{ url("$role/survey/list") }}">
+                                <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="WEATHER APP">
+                                    <use xlink:href="#olymp-music-shuffle-icon"></use>
+                                </svg>
+                                <span class="left-menu-title"> Users Survey Response</span>
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="{{ url("$role/survey/view") }}">
+                                <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="WEATHER APP">
+                                    <use xlink:href="#olymp-music-shuffle-icon"></use>
+                                </svg>
+                                <span class="left-menu-title"> Survey View</span>
+                            </a>
+                        </li> --}}
+                        @endif
+
                         <li>
                             <a href="{{ url("$role/cluster_manager") }}">
                                 <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
@@ -425,6 +470,8 @@
                             <span class="left-menu-title">Events</span>
                         </a>
                     </li>
+                    @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'member' )
+{{-- @dd(1); --}}
                     <li>
                         <a href="{{ url("$role/services") }}">
                             <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
@@ -432,9 +479,11 @@
                                 <use xlink:href="#olymp-status-icon"></use>
                             </svg>
                             <span class="left-menu-title">Services</span>
+
                         </a>
                     </li>
 
+                    @endif
                     @if (Auth::user()->role == 'admin')
                         <li>
                             <a href="{{ url('admin/members') }}">
@@ -558,6 +607,8 @@
                                     <div class="author-thumb">
                                         <img loading="lazy"  src=" {{ asset('images/') }}/{{ $notif->Event->image }}" alt="author" width="34" height="34">
                                     </div>
+
+
                                     <div class="notification-event">
                                         <a href="#" class="h6 notification-friend">{{ $notif->Event->name }}</a>
                                         <span class="chat-message-item" style="padding:8px;">{{ $notif->Event->description }}</span>
@@ -582,7 +633,7 @@
                                     </div>
                                     <div class="notification-event">
                                         <a href="#" class="h6 notification-friend" style="text-decoration: none">{{ $clusss->Cluster->name }}</a>
-                                        <span class="chat-message-item" style="padding:8px;">{{ $clusss->Cluster->detail }}</span>
+                                        <span class="chat-message-item" style="padding:8px;"> <b>{{ $clusss->User->first_name }}</b> send request for join cluster <b>{{$clusss->Cluster->name}}</b> </span>
                                     </div>
                                     <span class="notification-icon">
                                         <a @if (auth::user()->role == 'admin') href="{{ url("$role/aprroved/request",[$clusss->id]) }}" @endif class="accept-request">
@@ -1255,4 +1306,4 @@
 
     </header>
 
- 
+

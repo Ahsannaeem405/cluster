@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\EventJoin;
 use App\Models\JoinCluster;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -37,12 +38,19 @@ class RegisterController extends Controller
     // protected $redirectTo = RouteServiceProvider::HOME;
     protected function redirectTo(){
 
-        if (auth()->user()->role == 'admin') {
-             return '/admin';
-         }
-         else{
+        if (auth()->user()->post_role == 'admin') {
+            return '/admin';
+        }
+
+
+        elseif (Auth::user()->post_role == 'member') {
+
+            return '/member';
+
+        } else {
+
             return '/user';
-         }
+        }
 
       }
     /**
@@ -94,7 +102,7 @@ class RegisterController extends Controller
             'role' => 'user',
             'status' => 1,
             'register_role' =>$data['post_role'],
-            // 'post_role' =>$data['post_role'],
+          'post_role' =>$data['post_role'],
         ]);
         // $user_id=$user->id;
 
