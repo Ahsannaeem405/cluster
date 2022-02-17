@@ -34,7 +34,8 @@
 							<div class="form-group clustor-sort d-flex align-items-center justify-content-around">
 							<label for="inputState">Sort By</label>
 							<select id="searchCluster" name="searchCluster" class=" w-75">
-								<option value="top_cluster" selected>Top Clustors</option>
+								<option value="" selected>All Clustors</option>
+								<option value="top_cluster">Top Clustors</option>
 								<option value="most_popular">Most Popular</option>
 								<option value="most_newest">Most Newest</option>
 							</select>

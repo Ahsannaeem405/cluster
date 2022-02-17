@@ -32,7 +32,7 @@ class frontController extends Controller
     public function cluster_details($id)
     {
        
-        $viewCluster['viewEvent']=Event::where('cluster_id',$id)->get();
+        $viewCluster['viewEvent']=Event::where('Event_type','Public')->where('cluster_id',$id)->get();
         
         return view('front.cluster_details',$viewCluster);
 
@@ -82,7 +82,7 @@ public function login_event($event_name,$id)
         $top_cluster['top_cluster']=$request->search;
         if($request->search == 'top_cluster')
         {
-            $top_cluster['viewCluster']=Cluster::withCount('topCluster')->having('top_cluster_count','>',0)->orderBy('top_cluster_count','DESC')->take(4)->get();
+            $top_cluster['viewCluster']=Cluster::where('cluster_type','Public')->withCount('topCluster')->having('top_cluster_count','>',0)->orderBy('top_cluster_count','DESC')->take(4)->get();
             //dd($top_cluster['viewCluster']);
 
             return view('front.search_cluster',$top_cluster);
@@ -91,10 +91,10 @@ public function login_event($event_name,$id)
         if($request->search == 'most_popular')
         {   
             
-            $top_cluster['viewCluster']=Cluster::withCount('topEvent')->having('top_event_count','>',0)->orderBy('top_event_count','DESC')->take(4)->get();
+            $top_cluster['viewCluster']=Cluster::where('cluster_type','Public')->withCount('topEvent')->having('top_event_count','>',0)->orderBy('top_event_count','DESC')->take(4)->get();
 
         }else{
-            $top_cluster['TopCluster']=Cluster::orderBy('id','DESC')->take(4)->get();
+            $top_cluster['TopCluster']=Cluster::where('cluster_type','Public')->orderBy('id','DESC')->take(4)->get();
           
         }
         return view('front.search_cluster',$top_cluster);
@@ -102,7 +102,7 @@ public function login_event($event_name,$id)
 
     public function searchClusterMain(Request $request)
     {
-        $top_cluster['viewCluster']=Cluster::where('name','like','%'.$request->search.'%')->take(4)->get();
+        $top_cluster['viewCluster']=Cluster::where('cluster_type','Public')->where('name','like','%'.$request->search.'%')->take(4)->get();
         // dd($top_cluster['TopCluster']);
         return view('front.searchMain_cluster',$top_cluster);
        }
