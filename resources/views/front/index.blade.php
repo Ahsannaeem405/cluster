@@ -34,8 +34,8 @@
 							<div class="form-group clustor-sort d-flex align-items-center justify-content-around">
 							<label for="inputState">Sort By</label>
 							<select id="searchCluster" name="searchCluster" class=" w-75">
-								<option value="" selected>All Clustors</option>
-								<option value="top_cluster">Top Clustors</option>
+								<option value="" selected>All Clusters</option>
+								<option value="top_cluster">Top Clusters</option>
 								<option value="most_popular">Most Popular</option>
 								<option value="most_newest">Most Newest</option>
 							</select>
@@ -149,28 +149,7 @@
 						</div>
 					</div>
 				</div>
-			{{-- <div class="col-lg-3 col-md-6 col-sm-8 col-12">
-				<div class="clustor-card">
-					<div class="clustor-card-head">
-					<a href="{{ url('register/event') }}/{{$eventlist->id}}">
-						<img src="{{asset('images')}}/{{$eventlist->image}}"/>
-				</div>
-					<div class="card-body">
-						<h3 class="clustor-card-heading">{{$eventlist->name}}</h3>
-						<div class="clustor-card-details d-flex justify-content-between align-items-center">
-
-					<p><i class="fa fa-calendar mx-1"></i>
-						{{date('m-d-Y',strtotime($eventlist->created_at))}}</p>
-						<p ><i class="fa fa-map-marker mx-1"></i>
-						{{$eventlist->location}} </p>
-						</div>
-						<p>{{Str::limit($eventlist->description, 20, $end='(read more)')}} </p>
-					</a>
-						<a href="{{ url('register/event') }}/{{$eventlist->id}}" class="btn btn-outline-danger  mt-3 w-100"  style="color: black">Register Now</a>
-					</div>
-				</div>
-			</div>
-		 --}}
+		
 			
 			@endforeach
 		

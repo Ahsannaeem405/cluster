@@ -30,7 +30,6 @@ class SettingController extends Controller
             'dob' => 'required',
             'number' => 'required',
             'gender' => 'required',
-            'image' => 'required',
         
 
         ]);
