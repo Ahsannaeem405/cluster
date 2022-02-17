@@ -10,6 +10,8 @@ use App\Models\JoinCluster;
 use App\Models\Company;
 use App\Models\Notifica;
 use App\Models\Notificationn;
+use App\Models\User;
+use App\Models\Setting;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 class ServiceController extends Controller
@@ -25,7 +27,8 @@ class ServiceController extends Controller
 
         }
         else{
-            $service['services']=JoinCluster::where('user_id',Auth::user()->id)->where('status',2)->get();
+            $service['services']=JoinCluster::where('user_id',Auth::user()->id)->where('status',1)->get();
+          //  $service['services']=Service::get();
 
         }
         return view('admin.view_services', $service);
@@ -109,7 +112,10 @@ class ServiceController extends Controller
                     return redirect()->back()->with('success', 'Apply Service Sucessfully!');
 
             }else{
-                return view('admin.view_setting');
+                $setting['user_data']=User::where('id',Auth::user()->id)->first();
+                $setting['company_data']=Company::where('user_id',Auth::user()->id)->first();
+                $setting['setting_data']=Setting::first();
+                return view('admin.view_setting',$setting);
             }
 
            // dd($user_comp);

@@ -295,7 +295,7 @@
 
 	@foreach($services as $serviceslist)
 	@php
-		     $service_get=App\Models\JoinCluster::where('cluster_id',$serviceslist->cluster_id)->where('user_id',Auth::user()->id)->where('status',2)->get();
+	$service_get=App\Models\JoinCluster::where('cluster_id',$serviceslist->cluster_id)->where('user_id',Auth::user()->id)->where('status',1)->get();
 	$service_member= $serviceslist->serviceClusterMember;
 	@endphp
 	@foreach($service_member as $list)

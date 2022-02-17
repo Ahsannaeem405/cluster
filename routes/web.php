@@ -288,7 +288,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/applyService', [ServiceController::class, 'applyService']);
 
         ////////////////////////services end
-        Route::post('/AddCompany', [ServiceController::class, 'AddCompany']);
+        Route::any('/AddCompany', [ServiceController::class, 'AddCompany']);
         Route::post('/UpdateCompany/{id}', [ServiceController::class, 'UpdateCompany']);
     });
 });

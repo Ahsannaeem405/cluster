@@ -40,7 +40,7 @@
         <div class="col-lg-6 col-md-6 bg-white py-5 px-5">
             <div class="forgot">
                 <h2>Forgot your password?</h2>
-                <p>Change your password in three easy steps. This will help you to secure your password!</p>
+                <p>Change your password in  easy steps. This will help you to secure your password!</p>
                
             </div>
             @if (session('status'))

@@ -91,7 +91,7 @@
 	<div class="row">
 		<div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
 			<div class="tab-content" id="calendar-events-tabs-content">
-				<div class="tab-pane fade show active" id="events" role="tabpanel" aria-labelledby="events-tab">
+				<div class="tab-pane fade @if($_SERVER['REQUEST_URI'] != "/user/applyService") show active @endif " id="events" role="tabpanel" aria-labelledby="events-tab">
 					<div class="container">
 						<div class="row">
 							<div class="col-12">
@@ -107,7 +107,7 @@
 											<div class="col-md-6 offset-md-3 text-center">
 												<div class="kv-avatar">
 													<div class="file-loading">
-														<input id="avatar-2" name="image" type="file" required>
+														<input id="avatar-2" name="image" type="file" >
 													</div>
 												</div>
 
@@ -497,7 +497,7 @@
 				</div>
 				@if(Auth::user()->role == 'user')
 
-				<div class="tab-pane fade" id="company" role="tabpanel" aria-labelledby="company-tab">
+				<div class="tab-pane fade @if($_SERVER['REQUEST_URI'] == "/user/applyService") show active @endif" id="company" role="tabpanel" aria-labelledby="company-tab">
 					<div class="container">
 						<div class="row">
 							<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -508,7 +508,7 @@
 									<div class="ui-block-content">
 										<!-- Personal Information Form  -->
 										@if($company_data == null)
-										<form method="post" action="{{url('user/AddCompany')}}">
+										<form method="POST" action="{{url('user/AddCompany')}}">
 											@csrf
 												<div class="col col-lg-12 col-md-6 col-sm-12 col-12">
 													<div class="form-group ">
@@ -938,10 +938,15 @@
 								<div class="accordion-body setting-nav">
 									<ul class="nav  calendar-events-tabs" id="calendar-events-tabs" role="tablist">
 										<li class="" role="presentation">
-											<a class="nav-link active" id="events-tab" data-bs-toggle="tab" href="#events" role="tab" aria-controls="home" aria-selected="true">
+											<a class="nav-link @if($_SERVER['REQUEST_URI'] != "/user/applyService") active @endif " id="events-tab" data-bs-toggle="tab" href="#events" role="tab" aria-controls="home" aria-selected="true">
 												Personel Setttings
 											</a>
 										</li>
+										
+{{-- @php
+@dd($_SERVER['REQUEST_URI'] == "/user/applyService");
+@endphp --}}
+										
 										@if(Auth::user()->role == 'admin')
 										<li class="" role="presentation">
 											<a class="nav-link" id="notifications-tab" data-bs-toggle="tab" href="#notifications" role="tab" aria-controls="home" aria-selected="false">
@@ -951,7 +956,7 @@
 										@endif
 										@if(Auth::user()->role == 'user')
 										<li class="" role="presentation">
-											<a class="nav-link" id="company-tab" data-bs-toggle="tab" href="#company" role="tab" aria-controls="home" aria-selected="false">
+											<a class="nav-link  @if($_SERVER['REQUEST_URI'] == "/user/applyService") active @endif " id="company-tab" data-bs-toggle="tab" href="#company" role="tab" aria-controls="home" aria-selected="false">
 												User Company
 											</a>
 										</li>
