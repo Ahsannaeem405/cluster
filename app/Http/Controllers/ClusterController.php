@@ -136,7 +136,7 @@ class ClusterController extends Controller
             $image = $request->file('image');
             $imageName = $image->getClientOriginalName();
             $event->image = $imageName;
-            $path = $image->move(public_path('images'), $imageName);
+            $path = $image->move('images', $imageName);
         }
 
 
@@ -184,7 +184,7 @@ class ClusterController extends Controller
             $image = $request->file('image');
             $imageName = $image->getClientOriginalName();
             $event->image = $imageName;
-            $path = $image->move(public_path('images'), $imageName);
+            $path = $image->move('images', $imageName);
         }
 
 
@@ -507,7 +507,7 @@ class ClusterController extends Controller
         if (isset($request->image)) {
             foreach ($request->image as $image) {
                 $imageName = $image->getClientOriginalName();
-                $path = $image->move(public_path('images/'), $imageName);
+                $path = $image->move('images/', $imageName);
                 $cat .= $imageName . ",";
             }
         }
@@ -534,6 +534,7 @@ class ClusterController extends Controller
 
     public function updateCluster(Request $request, $id)
     {
+       // dd($request->input());
         $request->validate([
             'name' => 'required',
             'detail' => 'required',
@@ -551,7 +552,7 @@ class ClusterController extends Controller
         if (isset($request->image)) {
             foreach ($request->image as $image) {
                 $imageName = $image->getClientOriginalName();
-                $path = $image->move(public_path('images/'), $imageName);
+                $path = $image->move('images/', $imageName);
                 $cat .= $imageName . ",";
             }
         }
@@ -562,6 +563,7 @@ class ClusterController extends Controller
         $clustor->name = $request->name;
         $clustor->detail = $request->detail;
         $clustor->manager_id = $request->manager_id;
+        $clustor->cluster_type = $request->cluster_type;
         $clustor->save();
         return redirect()->back()->with('success', 'Cluster Updated Successfully!');
     }
@@ -579,7 +581,7 @@ class ClusterController extends Controller
         if (isset($request->image)) {
             foreach ($request->image as $image) {
                 $imageName = $image->getClientOriginalName();
-                $path = $image->move(public_path('images/'), $imageName);
+                $path = $image->move('images/', $imageName);
                 $cat .= $imageName . ",";
             }
         }
@@ -616,10 +618,11 @@ class ClusterController extends Controller
         if (isset($request->image)) {
             foreach ($request->image as $image) {
                 $imageName = $image->getClientOriginalName();
-                $path = $image->move(public_path('images/'), $imageName);
+                $path = $image->move('images/', $imageName);
                 $cat .= $imageName . ",";
             }
         }
+
 
 
         $clustor->detail = $request->detail;
@@ -646,7 +649,7 @@ class ClusterController extends Controller
 
     public function users()
     {
-        $user['user_list'] = User::where('role', 'user')->get();
+        $user['user_list'] = User::where('role', 'user')->paginate(10);
 
         return view('admin.users', $user);
     }

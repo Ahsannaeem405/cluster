@@ -9,13 +9,13 @@
 				<div class="col-lg-10 col-md-10 col-12 d-flex justify-content-center">
 					<div>
 						<h2 class="text-center">Find The Perfect Cluster for Yourself</h2>
-						<form class="form-inline search-form" method="post">
+						<div class="form-inline search-form" >
 							<div class="form-group label-floating">
 								<label class="control-label">What are you looking for?</label>
-								<input class="form-control bg-white" placeholder="" type="text" value="">
+								<input id="searchClusterMain" class="form-control bg-white" placeholder="" type="text" value="">
 							</div>
-							<button class="btn btn-blue btn-lg">Search</button>
-						</form>
+							<button id="serachBtn" class="btn btn-blue btn-lg">Search</button>
+						</div>
 					</div>
 
 				</div>
@@ -27,14 +27,15 @@
 			<div class="col-12 mt-5">
 				<div class="row d-flex justify-content-between align-items-center">
 					<div class="col-xl-3 col-lg-4 col-md-6 col-12">
-						<p class="total-clustors"> {{count($viewCluster)}} cluster available</p>
+						<p class="total-clustors"> Clusters</p>
 					</div>
 					<div class="col-xl-3 col-lg-4 col-md-6  col-12">
 						<form method="get" action="">						
 							<div class="form-group clustor-sort d-flex align-items-center justify-content-around">
 							<label for="inputState">Sort By</label>
 							<select id="searchCluster" name="searchCluster" class=" w-75">
-								<option value="top_cluster" selected>Top Clustors</option>
+								<option value="" selected>All Clusters</option>
+								<option value="top_cluster">Top Clusters</option>
 								<option value="most_popular">Most Popular</option>
 								<option value="most_newest">Most Newest</option>
 							</select>
@@ -51,7 +52,7 @@
 			@php
 				$image=explode(',',$list->image);
 			@endphp
-			{{-- @dd($list); --}}
+			{{-- //@dd($list); --}}
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
 			
 					<div class="clustor-card">
@@ -148,28 +149,7 @@
 						</div>
 					</div>
 				</div>
-			{{-- <div class="col-lg-3 col-md-6 col-sm-8 col-12">
-				<div class="clustor-card">
-					<div class="clustor-card-head">
-					<a href="{{ url('register/event') }}/{{$eventlist->id}}">
-						<img src="{{asset('images')}}/{{$eventlist->image}}"/>
-				</div>
-					<div class="card-body">
-						<h3 class="clustor-card-heading">{{$eventlist->name}}</h3>
-						<div class="clustor-card-details d-flex justify-content-between align-items-center">
-
-					<p><i class="fa fa-calendar mx-1"></i>
-						{{date('m-d-Y',strtotime($eventlist->created_at))}}</p>
-						<p ><i class="fa fa-map-marker mx-1"></i>
-						{{$eventlist->location}} </p>
-						</div>
-						<p>{{Str::limit($eventlist->description, 20, $end='(read more)')}} </p>
-					</a>
-						<a href="{{ url('register/event') }}/{{$eventlist->id}}" class="btn btn-outline-danger  mt-3 w-100"  style="color: black">Register Now</a>
-					</div>
-				</div>
-			</div>
-		 --}}
+		
 			
 			@endforeach
 		
@@ -232,6 +212,21 @@
 						}
 					})
 				});
+				$('#serachBtn').on('click', function() {
+					var search=$('#searchClusterMain').val();
+					$.ajax({
+						url:"{{url('searchClusterMain')}}?search="+search,
+						type:'get',
+					
+						success:function(result)
+						{
+							$('.appSearch').empty().append(result);
+							window.scrollTo(300, 500);
+
+						}
+					})
+				});
+				 
 			});
 		</script>
 	<!--Home page end-->

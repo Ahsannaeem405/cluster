@@ -33,12 +33,26 @@ class Cluster extends Model
     }
 
     public function joindetail()
-    {
+    { 
         return $this->hasMany('App\Models\JoinCluster', 'cluster_id','id')->where('status',2);
     }
     public function topCluster()
     {
-        return $this->hasMany('App\Models\JoinCluster', 'cluster_id','id')->where('status',1)->take(4);
+        return $this->hasMany('App\Models\JoinCluster', 'cluster_id','id')->where('status',1);
+      //  return $this->topCluster2()->count;
+
+    }
+    public function selectCluster()
+    {
+        return $this->hasMany('App\Models\JoinCluster','cluster_id',"id");
+      //  return $this->topCluster2()->count;
+
+    }
+
+    public function topEvent()
+    {
+        return $this->hasMany('App\Models\Event', 'cluster_id');
+
     }
     
 }

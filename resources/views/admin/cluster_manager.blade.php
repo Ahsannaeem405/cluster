@@ -35,7 +35,7 @@
   
       <div class="container-fluid">
           <div class="row">
-            <div class="col-12" style="padding: 7px;">
+            <div class="col-12">
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success ">
                     <strong>{{ $message }}</strong>
@@ -56,7 +56,6 @@
                   </div>
               </div>
           </div>
-          <div class="row">
               <div class="col-12">
                   <div class="members-table">
                       <table class="table table-striped">
@@ -64,6 +63,7 @@
                               <tr>
                                 <th class="text-center" scope="col">#</th>
 								<th class="" scope="col">Name</th>
+								<th class="" scope="col">Email</th>
 								<th class="" scope="col">Cluster Name</th>
 								<th class="" scope="col">Role</th>
 								<th class=" text-center" scope="col">Action</th>
@@ -77,6 +77,7 @@
                               <tr>
                                   <td class="text-center">{{$i++}}</td>
                                   <td class="py-2">{{$listM->first_name}}</td>
+                                  <td class="py-2">{{$listM->email}}</td>
                                   <td>
                                       							
 									@foreach($listM->memberCluster as $listc)
@@ -160,16 +161,21 @@
                                               <div class="form-group"  id="cluster">
                                                   <label class="control-label">Users</label>
                                                   
-                                               <input  class="form-control" value="{{$listM->first_name}}" disabled>
+                                               <input  class="form-control" name="" value="{{$listM->first_name}}" disabled>
                                                   
                                                   </div>
                                                   <div class="form-group"  id="cluster">
                                                       <label class="control-label">Clusters</label>
                                                       <select class="clusterMemberMultiple disabled @error('cluster') is-invalid @enderror" name="cluster[]" multiple="multiple" >
-                                                          @foreach($cluster as $list)
-                                                          <option value="{{$list->id}}" >{{$list->name}}</option>
-                                              
-                                                          @endforeach
+                                                        @foreach($cluster as $listcMain)
+                                                            @php
+                                                                $join=App\Models\JoinCluster::where('user_id',$listM->id)->where('cluster_id',$listcMain->id)->first();
+                                                            @endphp
+                                                            
+                                                            <option @if($join) selected @endif value="{{$listcMain->id}}"  >{{$listcMain->name}}</option>
+                                                            
+                                                
+                                                            @endforeach
                                                         </select>
                                                         @error('cluster')
                                                       <span class="invalid-feedback" role="alert">
@@ -181,7 +187,7 @@
                                                       </div>
                                            
                                               
-                                                <button type="submit" class="btn btn-blue  full-width">Assign</button>
+                                                <button type="submit" class="btn btn-blue  full-width">Update</button>
                                             </form>
                                         </div>
                                     </div>
@@ -256,7 +262,7 @@
                                 </div>
                      
                         
-                          <button type="submit" class="btn btn-blue  full-width">Assign</button>
+                          <button type="submit" class="btn btn-blue  full-width">Add New</button>
                       </form>
                   </div>
               </div>

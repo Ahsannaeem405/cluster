@@ -141,7 +141,7 @@
                     <li>
                         <a href="{{ url("$role") }}">
                             <svg class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip"
-                                data-bs-placement="right" data-bs-original-title="NEWSFEED">
+                                data-bs-placement="right" data-bs-original-title="Dashboard">
                                 <use xlink:href="#olymp-newsfeed-icon"></use>
                             </svg>
                         </a>
@@ -150,7 +150,7 @@
                         <li>
                             <a href="{{ url("$role/view_cluster") }}">
                                 <svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="FAV PAGE">
+                                    data-bs-placement="right" data-bs-original-title="Clusters">
                                     <use xlink:href="#olymp-star-icon"></use>
                                 </svg>
                             </a>
@@ -159,7 +159,7 @@
                     <li>
                         <a href="{{ url("$role/view/event") }}">
                             <svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip"
-                                data-bs-placement="right" data-bs-original-title="Manage Widgets">
+                                data-bs-placement="right" data-bs-original-title="Events">
                                 <use xlink:href="#olymp-manage-widgets-icon"></use>
                             </svg>
                         </a>
@@ -169,7 +169,7 @@
                     <li>
                         <a href="{{ url("$role/services") }}">
                             <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
-                                data-bs-placement="right" data-bs-original-title="Community Badges">
+                                data-bs-placement="right" data-bs-original-title="Services">
                                 <use xlink:href="#olymp-status-icon"></use>
                             </svg>
                         </a>
@@ -182,7 +182,7 @@
                         <li>
                             <a href="{{ url("$role/members") }}">
                                 <svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
+                                    data-bs-placement="right" data-bs-original-title="Members">
                                     <use xlink:href="#olymp-happy-faces-icon"></use>
                                 </svg>
                             </a>
@@ -190,7 +190,7 @@
                         <li>
                             <a href="{{ url("$role/users") }}">
                                 <svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
+                                    data-bs-placement="right" data-bs-original-title="Users">
                                     <use xlink:href="#olymp-happy-sticker-icon"></use>
                                 </svg>
                             </a>
@@ -198,7 +198,7 @@
                         <li>
                             <a href="{{ url("$role/cluster_manager") }}">
                                 <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="WEATHER APP">
+                                    data-bs-placement="right" data-bs-original-title="Cluster Manager">
                                     <use xlink:href="#olymp-music-shuffle-icon"></use>
                                 </svg>
                             </a>
@@ -206,7 +206,7 @@
                         <li>
                             <a href="{{ url("$role/communication") }}">
                                 <svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
+                                    data-bs-placement="right" data-bs-original-title="Communication">
                                     <use xlink:href="#olymp-badge-icon"></use>
                                 </svg>
                             </a>
@@ -215,7 +215,7 @@
                     <li>
                         <a href="{{ url("$role/setting") }}">
                             <svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip"
-                                data-bs-placement="right" data-bs-original-title="Friends Birthdays">
+                                data-bs-placement="right" data-bs-original-title="Setting">
                                 <use xlink:href="#olymp-settings-icon"></use>
                             </svg>
                         </a>
@@ -248,7 +248,7 @@
                     <li>
                         <a href="{{ url("$role") }}">
                             <svg class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip"
-                                data-bs-placement="right" data-bs-original-title="NEWSFEED">
+                                data-bs-placement="right" data-bs-original-title="Dashboard">
                                 <use xlink:href="#olymp-status-icon"></use>
                             </svg>
                             <span class="left-menu-title">Dashboard</span>
@@ -258,17 +258,17 @@
                         <li>
                             <a href="{{ url("$role/view_cluster") }}">
                                 <svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="FAV PAGE">
+                                    data-bs-placement="right" data-bs-original-title="Clusters">
                                     <use xlink:href="#olymp-star-icon"></use>
                                 </svg>
-                                <span class="left-menu-title">Clustors</span>
+                                <span class="left-menu-title">Clusters</span>
                             </a>
                         </li>
                     @endif
                     <li>
                         <a href="{{ url("$role/view/event/") }}">
                             <svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip"
-                                data-bs-placement="right" data-bs-original-title="Manage Widgets">
+                                data-bs-placement="right" data-bs-original-title="Events">
                                 <use xlink:href="#olymp-manage-widgets-icon"></use>
                             </svg>
                             <span class="left-menu-title">Events</span>
@@ -279,7 +279,7 @@
                     <li>
                         <a href="{{ url("$role/services") }}">
                             <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
-                                data-bs-placement="right" data-bs-original-title="Community Badges">
+                                data-bs-placement="right" data-bs-original-title="Services">
                                 <use xlink:href="#olymp-status-icon"></use>
                             </svg>
                             <span class="left-menu-title">Services</span>
@@ -293,7 +293,7 @@
                         <li>
                             <a href="{{ url("$role/members") }}">
                                 <svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
+                                    data-bs-placement="right" data-bs-original-title="Members">
                                     <use xlink:href="#olymp-happy-faces-icon"></use>
                                 </svg>
                                 <span class="left-menu-title">Members</span>
@@ -302,7 +302,7 @@
                         <li>
                             <a href="{{ url("$role/users") }}">
                                 <svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
+                                    data-bs-placement="right" data-bs-original-title="Users">
                                     <use xlink:href="#olymp-happy-sticker-icon"></use>
                                 </svg>
                                 <span class="left-menu-title">Users</span>
@@ -347,7 +347,7 @@
                         <li>
                             <a href="{{ url("$role/cluster_manager") }}">
                                 <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="WEATHER APP">
+                                    data-bs-placement="right" data-bs-original-title="Cluster Manager">
                                     <use xlink:href="#olymp-music-shuffle-icon"></use>
                                 </svg>
                                 <span class="left-menu-title">Cluster Manager</span>
@@ -356,7 +356,7 @@
                         <li>
                             <a href="{{ url("$role/communication") }}">
                                 <svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
+                                    data-bs-placement="right" data-bs-original-title="Communication">
                                     <use xlink:href="#olymp-badge-icon"></use>
                                 </svg>
                                 <span class="left-menu-title">Communication</span>
@@ -366,7 +366,7 @@
                     <li>
                         <a href="{{ url("$role/setting") }}">
                             <svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip"
-                                data-bs-placement="right" data-bs-original-title="Friends Birthdays">
+                                data-bs-placement="right" data-bs-original-title="Settings">
                                 <use xlink:href="#olymp-settings-icon"></use>
                             </svg>
                             <span class="left-menu-title">Settings</span>
@@ -423,7 +423,6 @@
                                     <use xlink:href="#olymp-dropdown-arrow-icon"></use>
                                 </svg>
                             </div>
-                            <span class="author-subtitle">SPACE COWBOY</span>
                         </a>
                     </div>
                 </div>
@@ -444,7 +443,7 @@
                     <li>
                         <a href="{{ url("$role") }}">
                             <svg class="olymp-newsfeed-icon left-menu-icon" data-bs-toggle="tooltip"
-                                data-bs-placement="right" data-bs-original-title="NEWSFEED">
+                                data-bs-placement="right" data-bs-original-title="Dashboard">
                                 <use xlink:href="#olymp-status-icon"></use>
                             </svg>
                             <span class="left-menu-title">Dashboard</span>
@@ -454,17 +453,17 @@
                         <li>
                             <a href="{{ url("$role/view_cluster") }}">
                                 <svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="FAV PAGE">
+                                    data-bs-placement="right" data-bs-original-title="Clusters">
                                     <use xlink:href="#olymp-star-icon"></use>
                                 </svg>
-                                <span class="left-menu-title">Clustors</span>
+                                <span class="left-menu-title">Clusters</span>
                             </a>
                         </li>
                     @endif
                     <li>
                         <a href="{{ url("$role/view/event") }}">
                             <svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip"
-                                data-bs-placement="right" data-bs-original-title="Manage Widgets">
+                                data-bs-placement="right" data-bs-original-title="Events">
                                 <use xlink:href="#olymp-manage-widgets-icon"></use>
                             </svg>
                             <span class="left-menu-title">Events</span>
@@ -475,7 +474,7 @@
                     <li>
                         <a href="{{ url("$role/services") }}">
                             <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
-                                data-bs-placement="right" data-bs-original-title="Community Badges">
+                                data-bs-placement="right" data-bs-original-title="Services">
                                 <use xlink:href="#olymp-status-icon"></use>
                             </svg>
                             <span class="left-menu-title">Services</span>
@@ -488,7 +487,7 @@
                         <li>
                             <a href="{{ url('admin/members') }}">
                                 <svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="FRIEND GROUPS">
+                                    data-bs-placement="right" data-bs-original-title="Members">
                                     <use xlink:href="#olymp-happy-faces-icon"></use>
                                 </svg>
                                 <span class="left-menu-title">Members</span>
@@ -497,7 +496,7 @@
                         <li>
                             <a href="{{ url('admin/users') }}">
                                 <svg class="olymp-headphones-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="MUSIC&PLAYLISTS">
+                                    data-bs-placement="right" data-bs-original-title="Users">
                                     <use xlink:href="#olymp-happy-sticker-icon"></use>
                                 </svg>
                                 <span class="left-menu-title">Users</span>
@@ -506,7 +505,7 @@
                         <li>
                             <a href="{{ url("$role/cluster_manager") }}">
                                 <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="WEATHER APP">
+                                    data-bs-placement="right" data-bs-original-title="Cluster Manager">
                                     <use xlink:href="#olymp-music-shuffle-icon"></use>
                                 </svg>
                                 <span class="left-menu-title">Cluster Manager</span>
@@ -515,7 +514,7 @@
                         <li>
                             <a href="{{ url("$role/communication") }}">
                                 <svg class="olymp-calendar-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="CALENDAR AND EVENTS">
+                                    data-bs-placement="right" data-bs-original-title="Communication">
                                     <use xlink:href="#olymp-badge-icon"></use>
                                 </svg>
                                 <span class="left-menu-title">Communication</span>
@@ -525,7 +524,7 @@
                     <li>
                         <a href="{{ url("$role/setting") }}">
                             <svg class="olymp-cupcake-icon left-menu-icon" data-bs-toggle="tooltip"
-                                data-bs-placement="right" data-bs-original-title="Friends Birthdays">
+                                data-bs-placement="right" data-bs-original-title="Settings">
                                 <use xlink:href="#olymp-settings-icon"></use>
                             </svg>
                             <span class="left-menu-title">Settings</span>
@@ -764,6 +763,66 @@
                         </div>
                     </a>
                 </div>
+                <div class="control-icon more has-items mt-2">
+                    <i class="far fa-bell text-white" aria-hidden="true">
+
+                    </i>
+
+                    <div class="more-dropdown more-with-triangle triangle-top-center">
+                        <div class="ui-block-title ui-block-title-small">
+                            <h6 class="title">Notifications</h6>
+
+                        </div>
+
+                        <div class="mCustomScrollbar" data-mcs-theme="dark">
+                            <ul class="notification-list chat-message">
+                                @foreach ($noti as $notif)
+
+                                <li class="message-unread">
+                                    <div class="author-thumb">
+                                        <img loading="lazy"  src=" {{ asset('images/') }}/{{ $notif->Event->image }}" alt="author" width="34" height="34">
+                                    </div>
+                                    <div class="notification-event">
+                                        <a href="#" class="h6 notification-friend">{{ $notif->Event->name }}</a>
+                                        <span class="chat-message-item" style="padding:8px;">{{ $notif->Event->description }}</span>
+                                    </div>
+                                    {{-- <span class="notification-icon">
+                                        <svg class="olymp-chat---messages-icon"><use xlink:href="#olymp-chat---messages-icon"></use></svg>
+                                    </span> --}}
+
+                                </li>
+                                @endforeach
+
+
+                                @foreach ($cluss as $clusss)
+
+                                <?php
+                                $img = explode(',', $clusss->Cluster->image);
+
+                                ?>
+                                <li class="message-unread">
+                                    <div class="author-thumb">
+                                        <img loading="lazy" style="border-radius: 8px;"  src=" {{ asset('images/') }}/{{ $img[0] }}" alt="author" width="34" height="34">
+                                    </div>
+                                    <div class="notification-event">
+                                        <a href="#" class="h6 notification-friend" style="text-decoration: none">{{ $clusss->Cluster->name }}</a>
+                                        <span class="chat-message-item" style="padding:8px;">{{ $clusss->Cluster->detail }}</span>
+                                    </div>
+                                    <span class="notification-icon">
+                                        <a @if (auth::user()->role == 'admin') href="{{ url("$role/aprroved/request",[$clusss->id]) }}" @endif class="accept-request">
+                                            <i class="fas fa-check"></i>
+                                        </a>                                    </span>
+
+                                </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+
+                        <a href="{{url("$role/view/notifications")}}" class="view-all bg-purple">View All Notifications</a>
+                    </div>
+                </div>
+
                 <div class="control-icon more has-items mr-5">
 
 

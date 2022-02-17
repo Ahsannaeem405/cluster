@@ -15,6 +15,7 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Laravel\Ui\Presets\React;
+use PHPUnit\Framework\Constraint\Count;
 
 class frontController extends Controller
 {
@@ -31,7 +32,7 @@ class frontController extends Controller
     public function cluster_details($id)
     {
        
-        $viewCluster['viewEvent']=Event::where('cluster_id',$id)->get();
+        $viewCluster['viewEvent']=Event::where('Event_type','Public')->where('cluster_id',$id)->get();
         
         return view('front.cluster_details',$viewCluster);
 
@@ -77,35 +78,32 @@ public function login_event($event_name,$id)
 
     public function searchCluster(Request $request)
     {
+        $final=array();
         $top_cluster['top_cluster']=$request->search;
         if($request->search == 'top_cluster')
         {
-            $top_cluster['viewCluster']=Cluster::get();
-    //        $game_data= DB::table('join_clusters')
-    //    ->leftjoin('clusters','clusters.id','=','join_clusters.cluster_id')
-    //    ->where('join_clusters.status',1)
-    //    ->select('clusters.*')->orderBy('id','DESC')->get();
-    //    foreach( $game_data as $list)
-    //    {
-    //     $game_data_join= DB::table('join_clusters')
-    //     ->where('cluster_id',$list->id)
-    //     ->where('join_clusters.status',1)
-    //     ->count();
-    //     echo '<pre>';
-    //         var_dump( $game_data_join);
-    //    }
-    //    die();
-    //    dd( $game_data);
+            $top_cluster['viewCluster']=Cluster::where('cluster_type','Public')->withCount('topCluster')->having('top_cluster_count','>',0)->orderBy('top_cluster_count','DESC')->take(4)->get();
+            //dd($top_cluster['viewCluster']);
+
             return view('front.search_cluster',$top_cluster);
 
         }
         if($request->search == 'most_popular')
         {   
+            
+            $top_cluster['viewCluster']=Cluster::where('cluster_type','Public')->withCount('topEvent')->having('top_event_count','>',0)->orderBy('top_event_count','DESC')->take(4)->get();
 
         }else{
-            $top_cluster['TopCluster']=Cluster::orderBy('id','DESC')->take(4)->get();
+            $top_cluster['TopCluster']=Cluster::where('cluster_type','Public')->orderBy('id','DESC')->take(4)->get();
           
         }
         return view('front.search_cluster',$top_cluster);
     }
+
+    public function searchClusterMain(Request $request)
+    {
+        $top_cluster['viewCluster']=Cluster::where('cluster_type','Public')->where('name','like','%'.$request->search.'%')->take(4)->get();
+        // dd($top_cluster['TopCluster']);
+        return view('front.searchMain_cluster',$top_cluster);
+       }
 }

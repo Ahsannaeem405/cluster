@@ -129,6 +129,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/applyServiceView/{id}', [ServiceController::class,'applyServiceView']);
         Route::get('/cluster_manager', [CManagerController::class,'cluster_manager']);
         Route::post('/addClusterManager', [CManagerController::class,'addClusterManager']);
+        Route::post('/updateClusterManager/{id}', [CManagerController::class,'updateClusterManager']);
+
         Route::post('/deleteClusterM/{id}', [CManagerController::class,'deleteClusterM']);
 
         Route::post('/websiteSetting', [SettingController::class, 'websiteSetting']);
@@ -322,6 +324,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/subscribeEmail', [frontController::class, 'subscribe']);
 Route::get('/searchCluster', [frontController::class, 'searchCluster']);
+Route::get('/searchClusterMain', [frontController::class, 'searchClusterMain']);
 
 Route::get('/view_que', [MemberController::class, 'view_que']);
 Route::post('/form/submision', [MemberController::class, 'form_submision']);

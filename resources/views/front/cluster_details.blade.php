@@ -16,6 +16,7 @@ style="background: linear-gradient(rgba(227, 9, 23, 0.5), rgba(227, 9, 23, 0.5))
 </div>
 <div class="container pt-5">
 <div class="row my-5 ">
+	@if(isset($viewEvent) && count($viewEvent) >0)
 	@foreach($viewEvent as $eventlist)
 
 	<div class="col-xl-4 col-lg-6  col-md-8 col-sm-8 col-12">
@@ -46,6 +47,16 @@ style="background: linear-gradient(rgba(227, 9, 23, 0.5), rgba(227, 9, 23, 0.5))
 		</div>
 	</div>
 	@endforeach
+	@else
+	<div class="accordion-item" >
+		<div class="jumbotron jumbotron-fluid"
+			style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
+			<div class="container py-5">
+				<h5 class="text-center">This Cluster does't have any upcoming event at this moment.</h5>
+			</div>
+		</div>
+	</div>
+	@endif
 </div>
 </div>
 @endsection

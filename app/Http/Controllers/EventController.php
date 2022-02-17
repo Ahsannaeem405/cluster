@@ -31,7 +31,7 @@ class EventController extends Controller
             $image = $request->file('image');
             $imageName = $image->getClientOriginalName();
             $clustor->image = $imageName;
-            $path = $image->move(public_path('images/'), $imageName);
+            $path = $image->move('images/', $imageName);
         }
         $clustor->name = $request->name;
         $clustor->detail = $request->detail;

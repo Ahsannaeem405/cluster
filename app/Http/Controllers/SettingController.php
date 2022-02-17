@@ -30,7 +30,6 @@ class SettingController extends Controller
             'dob' => 'required',
             'number' => 'required',
             'gender' => 'required',
-            'image' => 'required',
         
 
         ]);
@@ -47,7 +46,7 @@ class SettingController extends Controller
             $image = $request->file('image');
             $imageName = $image->getClientOriginalName();
             $user_update->image = $imageName;
-            $path = $image->move(public_path('images'), $imageName);
+            $path = $image->move('images', $imageName);
         }
 
         $user_update->save();
@@ -87,7 +86,7 @@ class SettingController extends Controller
             $image = $request->file('website_logo');
             $imageName = $image->getClientOriginalName();
             $setting->website_logo = $imageName;
-            $path = $image->move(public_path('images'), $imageName);
+            $path = $image->move('images', $imageName);
         }
         $setting->save();
         return redirect()->back()->with('success', 'Setting Saved Sucessfully!');
@@ -110,7 +109,7 @@ class SettingController extends Controller
             $image = $request->file('website_logo');
             $imageName = $image->getClientOriginalName();
             $setting->website_logo = $imageName;
-            $path = $image->move(public_path('images'), $imageName);
+            $path = $image->move('images', $imageName);
         }
         $setting->save();
         return redirect()->back()->with('success', 'Setting Updated Sucessfully!');
