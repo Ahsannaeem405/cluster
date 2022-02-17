@@ -51,7 +51,7 @@
 			@php
 				$image=explode(',',$list->image);
 			@endphp
-			{{-- @dd($list); --}}
+			@dd($list);
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-3">
 			
 					<div class="clustor-card">
