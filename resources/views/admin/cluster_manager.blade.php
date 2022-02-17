@@ -161,21 +161,21 @@
                                               <div class="form-group"  id="cluster">
                                                   <label class="control-label">Users</label>
                                                   
-                                               <input  class="form-control" value="{{$listM->first_name}}" disabled>
+                                               <input  class="form-control" name="" value="{{$listM->first_name}}" disabled>
                                                   
                                                   </div>
                                                   <div class="form-group"  id="cluster">
                                                       <label class="control-label">Clusters</label>
                                                       <select class="clusterMemberMultiple disabled @error('cluster') is-invalid @enderror" name="cluster[]" multiple="multiple" >
                                                         @foreach($cluster as $listcMain)
-							@php
-								$join=App\Models\JoinCluster::where('user_id',$listM->id)->where('cluster_id',$listcMain->id)->first();
-							@endphp
-							
-							<option @if($join) selected @endif value="{{$listcMain->id}}"  >{{$listcMain->name}}</option>
-							
-				
-							@endforeach
+                                                            @php
+                                                                $join=App\Models\JoinCluster::where('user_id',$listM->id)->where('cluster_id',$listcMain->id)->first();
+                                                            @endphp
+                                                            
+                                                            <option @if($join) selected @endif value="{{$listcMain->id}}"  >{{$listcMain->name}}</option>
+                                                            
+                                                
+                                                            @endforeach
                                                         </select>
                                                         @error('cluster')
                                                       <span class="invalid-feedback" role="alert">
@@ -187,7 +187,7 @@
                                                       </div>
                                            
                                               
-                                                <button type="submit" class="btn btn-blue  full-width">Assign</button>
+                                                <button type="submit" class="btn btn-blue  full-width">Update</button>
                                             </form>
                                         </div>
                                     </div>
@@ -262,7 +262,7 @@
                                 </div>
                      
                         
-                          <button type="submit" class="btn btn-blue  full-width">Assign</button>
+                          <button type="submit" class="btn btn-blue  full-width">Add New</button>
                       </form>
                   </div>
               </div>

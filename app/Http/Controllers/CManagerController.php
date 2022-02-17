@@ -24,6 +24,11 @@ class CManagerController extends Controller
 
     public function addClusterManager(Request $request)
     {
+          $request->validate([
+            'users' => 'required',
+            'cluster' => 'required',
+
+        ]);
         $users=$request->users;
         $cluster=$request->cluster;
 
@@ -45,7 +50,33 @@ class CManagerController extends Controller
         return redirect()->back()->with('success', 'Cluster Manager Added Sucessfully!');
 
     }
-    public function deleteClusterM(Request $request,$id)
+
+    
+    public function updateClusterManager(Request $request,$id)
+    {
+        $request->validate([
+            'cluster' => 'required',
+        ]);
+     
+        $cluster=$request->cluster;
+        $cluster_get = JoinCluster::where('user_id', $id)->get();
+        foreach ($cluster_get as $row_cluster_d) {
+            $clusterDelete = JoinCluster::find($row_cluster_d->id);
+            $clusterDelete->delete();
+        }
+        $clusters = $request->cluster;
+
+        foreach ($clusters as $row_cluster) {
+            $cluster = new JoinCluster();
+            $cluster->cluster_id = $row_cluster;
+            $cluster->user_id = $id;
+            $cluster->status = 2;
+            $cluster->save();
+        }
+        return redirect()->back()->with('success', 'Cluster Manager Updated Sucessfully!');
+
+    }
+    public function deleteClusterM($id)
     {   
         $cluster_get=JoinCluster::where('user_id',$id)->get();
         foreach( $cluster_get as $row_cluster_d)

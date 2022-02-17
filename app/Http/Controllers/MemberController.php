@@ -77,7 +77,7 @@ class MemberController extends Controller
         $user->post_role = 'member';
         $user->save();
 
-        $cluster = JoinCluster::where('user_id', $id);
+        //$cluster = JoinCluster::where('user_id', $id);
         $cluster_get = JoinCluster::where('user_id', $id)->get();
         foreach ($cluster_get as $row_cluster_d) {
             $clusterDelete = JoinCluster::find($row_cluster_d->id);
@@ -96,10 +96,15 @@ class MemberController extends Controller
     }
     public function assignManager(Request $request, $id)
     {
-
+    
         $user = User::find($id);
         $user->post_role = 'manager';
         $user->save();
+        $cluster_get = JoinCluster::where('user_id', $id)->get();
+        foreach ($cluster_get as $row_cluster_d) {
+            $clusterDelete = JoinCluster::find($row_cluster_d->id);
+            $clusterDelete->delete();
+        }
         $clusters = $request->cluster;
 
         foreach ($clusters as $row_cluster) {
@@ -109,7 +114,7 @@ class MemberController extends Controller
             $cluster->status = 2;
             $cluster->save();
         }
-        return redirect()->back()->with('success', 'Member Added Sucessfully!');
+        return redirect()->back()->with('success', 'Assign Manager Sucessfully!');
     }
 
     public function deleteMembers($id)

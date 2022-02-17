@@ -129,6 +129,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/applyServiceView/{id}', [ServiceController::class,'applyServiceView']);
         Route::get('/cluster_manager', [CManagerController::class,'cluster_manager']);
         Route::post('/addClusterManager', [CManagerController::class,'addClusterManager']);
+        Route::post('/updateClusterManager/{id}', [CManagerController::class,'updateClusterManager']);
+
         Route::post('/deleteClusterM/{id}', [CManagerController::class,'deleteClusterM']);
 
         Route::post('/websiteSetting', [SettingController::class, 'websiteSetting']);
@@ -288,7 +290,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/applyService', [ServiceController::class, 'applyService']);
 
         ////////////////////////services end
-        Route::any('/AddCompany', [ServiceController::class, 'AddCompany']);
+        Route::post('/AddCompany', [ServiceController::class, 'AddCompany']);
         Route::post('/UpdateCompany/{id}', [ServiceController::class, 'UpdateCompany']);
     });
 });

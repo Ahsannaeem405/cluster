@@ -131,9 +131,14 @@
 							<label class="control-label">Cluster</label>
 							<select class="clusterMemberMultiple disabled @error('cluster') is-invalid @enderror" name="cluster[]" multiple="multiple" >
 	
-								@foreach($list->memberCluster as $listc)
-								<option value="{{$listc->Clusterr->id}}" @if( $listc->cluster_id == $listc->Clusterr->id) selected  @endif>{{$listc->Clusterr->name}}</option>
-					
+								@foreach($cluster as $listcMain)
+							@php
+								$join=App\Models\JoinCluster::where('user_id',$list->id)->where('cluster_id',$listcMain->id)->first();
+							@endphp
+							
+							<option @if($join) selected @endif value="{{$listcMain->id}}"  >{{$listcMain->name}}</option>
+							
+				
 							@endforeach
 							  </select>
 							

@@ -503,7 +503,7 @@
 							<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 								<div class="ui-block">
 									<div class="ui-block-title">
-										<h6 class="title">company Settings</h6>
+										<h6 class="title">Company Settings</h6>
 									</div>
 									<div class="ui-block-content">
 										<!-- Personal Information Form  -->
@@ -513,7 +513,7 @@
 												<div class="col col-lg-12 col-md-6 col-sm-12 col-12">
 													<div class="form-group ">
 														<label class="control-label">Company Name</label>
-														<input type="text"  name="title" class="form-control"  >
+														<input type="text"  name="title" class="form-control"  placeholder="Enter Company Name" >
 														@error('title')
                                                   <span class="invalid-feedback" role="alert">
                                                   <strong>{{ $message }}</strong>
@@ -525,7 +525,7 @@
 												<div class="col col-lg-12 col-md-6 col-sm-12 col-12">
 													<div class="form-group ">
 														<label class="control-label">Company Description</label>
-														<input type="text"  name="description" class="form-control">
+														<input type="text"  name="description" class="form-control" placeholder="Enter Company Description">
 														@error('description')
 														<span class="invalid-feedback" role="alert">
 														<strong>{{ $message }}</strong>
