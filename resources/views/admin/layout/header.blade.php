@@ -539,66 +539,7 @@
 
             <div class="control-block">
 
-                <div class="control-icon more has-items mt-2">
-                    <svg class="olymp-chat---messages-icon">
-
-                        <use xlink:href="#olymp-chat---messages-icon"></use></svg>
-
-                    <div class="more-dropdown more-with-triangle triangle-top-center">
-                        <div class="ui-block-title ui-block-title-small">
-                            <h6 class="title">Notifications</h6>
-
-                        </div>
-
-                        <div class="mCustomScrollbar" data-mcs-theme="dark">
-                            <ul class="notification-list chat-message">
-                                @foreach ($noti as $notif)
-
-                                <li class="message-unread">
-                                    <div class="author-thumb">
-                                        <img loading="lazy"  src=" {{ asset('images/') }}/{{ $notif->Event->image }}" alt="author" width="34" height="34">
-                                    </div>
-                                    <div class="notification-event">
-                                        <a href="#" class="h6 notification-friend">{{ $notif->Event->name }}</a>
-                                        <span class="chat-message-item" style="padding:8px;">{{ $notif->Event->description }}</span>
-                                    </div>
-                                    {{-- <span class="notification-icon">
-                                        <svg class="olymp-chat---messages-icon"><use xlink:href="#olymp-chat---messages-icon"></use></svg>
-                                    </span> --}}
-
-                                </li>
-                                @endforeach
-
-
-                                @foreach ($cluss as $clusss)
-
-                                <?php
-                                $img = explode(',', $clusss->Cluster->image);
-
-                                ?>
-                                <li class="message-unread">
-                                    <div class="author-thumb">
-                                        <img loading="lazy" style="border-radius: 8px;"  src=" {{ asset('images/') }}/{{ $img[0] }}" alt="author" width="34" height="34">
-                                    </div>
-                                    <div class="notification-event">
-                                        <a href="#" class="h6 notification-friend" style="text-decoration: none">{{ $clusss->Cluster->name }}</a>
-                                        <span class="chat-message-item" style="padding:8px;">{{ $clusss->Cluster->detail }}</span>
-                                    </div>
-                                    <span class="notification-icon">
-                                        <a @if (auth::user()->role == 'admin') href="{{ url("$role/aprroved/request",[$clusss->id]) }}" @endif class="accept-request">
-                                            <i class="fas fa-check"></i>
-                                        </a>                                    </span>
-
-                                </li>
-                                @endforeach
-
-                            </ul>
-                        </div>
-
-                        <a href="{{url("$role/view/notifications")}}" class="view-all bg-purple">View All Notifications</a>
-                    </div>
-                </div>
-
+              
 {{--
                 <div class="author-page author vcard inline-items more" style="padding: unset;margin-right: 18px;">
                     <div class="author-thumb">
@@ -713,6 +654,66 @@
                         </div>
                     </a>
                 </div>
+                <div class="control-icon more has-items mt-2">
+                    <i class="far fa-bell text-white" aria-hidden="true">
+                     
+                    </i>
+
+                    <div class="more-dropdown more-with-triangle triangle-top-center">
+                        <div class="ui-block-title ui-block-title-small">
+                            <h6 class="title">Notifications</h6>
+
+                        </div>
+
+                        <div class="mCustomScrollbar" data-mcs-theme="dark">
+                            <ul class="notification-list chat-message">
+                                @foreach ($noti as $notif)
+
+                                <li class="message-unread">
+                                    <div class="author-thumb">
+                                        <img loading="lazy"  src=" {{ asset('images/') }}/{{ $notif->Event->image }}" alt="author" width="34" height="34">
+                                    </div>
+                                    <div class="notification-event">
+                                        <a href="#" class="h6 notification-friend">{{ $notif->Event->name }}</a>
+                                        <span class="chat-message-item" style="padding:8px;">{{ $notif->Event->description }}</span>
+                                    </div>
+                                    {{-- <span class="notification-icon">
+                                        <svg class="olymp-chat---messages-icon"><use xlink:href="#olymp-chat---messages-icon"></use></svg>
+                                    </span> --}}
+
+                                </li>
+                                @endforeach
+
+
+                                @foreach ($cluss as $clusss)
+
+                                <?php
+                                $img = explode(',', $clusss->Cluster->image);
+
+                                ?>
+                                <li class="message-unread">
+                                    <div class="author-thumb">
+                                        <img loading="lazy" style="border-radius: 8px;"  src=" {{ asset('images/') }}/{{ $img[0] }}" alt="author" width="34" height="34">
+                                    </div>
+                                    <div class="notification-event">
+                                        <a href="#" class="h6 notification-friend" style="text-decoration: none">{{ $clusss->Cluster->name }}</a>
+                                        <span class="chat-message-item" style="padding:8px;">{{ $clusss->Cluster->detail }}</span>
+                                    </div>
+                                    <span class="notification-icon">
+                                        <a @if (auth::user()->role == 'admin') href="{{ url("$role/aprroved/request",[$clusss->id]) }}" @endif class="accept-request">
+                                            <i class="fas fa-check"></i>
+                                        </a>                                    </span>
+
+                                </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+
+                        <a href="{{url("$role/view/notifications")}}" class="view-all bg-purple">View All Notifications</a>
+                    </div>
+                </div>
+
                 <div class="control-icon more has-items mr-5">
 
 

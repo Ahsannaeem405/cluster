@@ -20,7 +20,7 @@ class MemberController extends Controller
     public function members()
     {
         $user['cluster'] = Cluster::get();
-        $user['user_list'] = User::where('post_role', 'member')->Orwhere('post_role', 'manager')->get();
+        $user['user_list'] = User::where('post_role', 'member')->Orwhere('post_role', 'manager')->paginate(10);
 
         return view('admin.view_members', $user);
     }

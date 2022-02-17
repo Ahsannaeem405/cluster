@@ -35,7 +35,7 @@
   
       <div class="container-fluid">
           <div class="row">
-            <div class="col-12" style="padding: 7px;">
+            <div class="col-12">
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success ">
                     <strong>{{ $message }}</strong>
@@ -56,7 +56,6 @@
                   </div>
               </div>
           </div>
-          <div class="row">
               <div class="col-12">
                   <div class="members-table">
                       <table class="table table-striped">
@@ -64,6 +63,7 @@
                               <tr>
                                 <th class="text-center" scope="col">#</th>
 								<th class="" scope="col">Name</th>
+								<th class="" scope="col">Email</th>
 								<th class="" scope="col">Cluster Name</th>
 								<th class="" scope="col">Role</th>
 								<th class=" text-center" scope="col">Action</th>
@@ -77,6 +77,7 @@
                               <tr>
                                   <td class="text-center">{{$i++}}</td>
                                   <td class="py-2">{{$listM->first_name}}</td>
+                                  <td class="py-2">{{$listM->email}}</td>
                                   <td>
                                       							
 									@foreach($listM->memberCluster as $listc)

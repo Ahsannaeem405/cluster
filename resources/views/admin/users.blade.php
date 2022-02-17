@@ -33,7 +33,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12" style="padding: 7px;">
+            <div class="col-12">
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success ">
                         <strong>{{ $message }}</strong>
@@ -55,7 +55,6 @@
                 </div>
             </div>
            
-          <div class="row">
               <div class="col-12">
                   <div class="members-table">
                       <table class="table table-striped">
@@ -64,10 +63,9 @@
                                   <th scope="col" class="text-center">#</th>
                                   <th  scope="col">Name</th>
                                   <th  scope="col">Email</th>
-                                  <th  scope="col">Number</th>
                                   <th  scope="col">Gender</th>
                                   <th  scope="col">Role</th>
-                                  <th  scope="col"></th>
+                                  <th  scope="col">Action</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -79,7 +77,6 @@
                                   <td class="text-center">{{$i++}}</td>
                                   <td class="py-2">{{$list->first_name}} {{$list->last_name}}</td>
                                   <td>{{$list->email}}</td>
-                                  <td>{{$list->number}}</td>
                                   <td>{{$list->gender}}</td>
                                   <td>{{$list->post_role}}</td>
 
@@ -213,10 +210,15 @@
     </div>
                           
                                 @endforeach
-
+                    
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-center">
+                            {{ $user_list->links() }}
+                      </div>
                     </div>
+                  
+                  
                 </div>
             </div>
         </div>

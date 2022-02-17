@@ -264,7 +264,11 @@ aria-labelledby="create-friend-group-1" aria-hidden="true">
 								@endforeach
 						</tbody>
 					</table>
+					<div class="d-flex justify-content-center">
+						{{ $user_list->links() }}
+				  </div>
 				</div>
+				
 			</div>
 		</div>
 	</div>

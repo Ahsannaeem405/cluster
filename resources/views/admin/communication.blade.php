@@ -84,7 +84,7 @@ $role = Auth::user()->role;
 												<div class="row">
 													<div class="col-12">
 														<div class="form-group">
-															<textarea id="editor" name="desc" rows="10"></textarea>
+															<textarea id="editor" name="desc" rows="10" required></textarea>
 														</div>
 													</div>
 												</div>
@@ -155,7 +155,7 @@ $role = Auth::user()->role;
 												<div class="row">
 													<div class="col-12">
 														<div class="form-group">
-															<textarea id="editor1" name="desc" rows="10"></textarea>
+															<textarea id="editor1" name="desc" rows="10" required></textarea>
 														</div>
 													</div>
 												</div>
@@ -224,7 +224,7 @@ $role = Auth::user()->role;
 												<div class="row">
 													<div class="col-12">
 														<div class="form-group">
-															<textarea id="editor2" name="desc" rows="10"></textarea>
+															<textarea id="editor2" name="desc" rows="10" required></textarea>
 														</div>
 													</div>
 												</div>
@@ -294,7 +294,7 @@ $role = Auth::user()->role;
 												<div class="row">
 													<div class="col-12">
 														<div class="form-group">
-															<textarea id="editor3" name="desc" rows="10"></textarea>
+															<textarea id="editor3" name="desc" rows="10" required></textarea>
 														</div>
 													</div>
 												</div>
