@@ -131,7 +131,7 @@ class ClusterController extends Controller
             $image = $request->file('image');
             $imageName = $image->getClientOriginalName();
             $event->image = $imageName;
-            $path = $image->move(public_path('images'), $imageName);
+            $path = $image->move('images', $imageName);
         }
 
 
@@ -179,7 +179,7 @@ class ClusterController extends Controller
             $image = $request->file('image');
             $imageName = $image->getClientOriginalName();
             $event->image = $imageName;
-            $path = $image->move(public_path('images'), $imageName);
+            $path = $image->move('images', $imageName);
         }
 
 
@@ -506,7 +506,7 @@ class ClusterController extends Controller
         if (isset($request->image)) {
             foreach ($request->image as $image) {
                 $imageName = $image->getClientOriginalName();
-                $path = $image->move(public_path('images/'), $imageName);
+                $path = $image->move('images/', $imageName);
                 $cat .= $imageName . ",";
             }
         }
@@ -553,7 +553,7 @@ class ClusterController extends Controller
         if (isset($request->image)) {
             foreach ($request->image as $image) {
                 $imageName = $image->getClientOriginalName();
-                $path = $image->move(public_path('images/'), $imageName);
+                $path = $image->move('images/', $imageName);
                 $cat .= $imageName . ",";
             }
         }
@@ -582,7 +582,7 @@ class ClusterController extends Controller
         if (isset($request->image)) {
             foreach ($request->image as $image) {
                 $imageName = $image->getClientOriginalName();
-                $path = $image->move(public_path('images/'), $imageName);
+                $path = $image->move('images/', $imageName);
                 $cat .= $imageName . ",";
             }
         }
@@ -609,7 +609,7 @@ class ClusterController extends Controller
         if (isset($request->image)) {
             foreach ($request->image as $image) {
                 $imageName = $image->getClientOriginalName();
-                $path = $image->move(public_path('images/'), $imageName);
+                $path = $image->move('images/', $imageName);
                 $cat .= $imageName . ",";
             }
         }
