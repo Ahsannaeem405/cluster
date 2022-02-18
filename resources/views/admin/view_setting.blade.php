@@ -508,7 +508,7 @@
 									<div class="ui-block-content">
 										<!-- Personal Information Form  -->
 										@if($company_data == null)
-										<form method="POST" action="{{url('user/AddCompany')}}">
+										<form method="post" action="{{url('user/AddCompany')}}" enctype="multipart/form-data">
 											@csrf
 												<div class="col col-lg-12 col-md-6 col-sm-12 col-12">
 													<div class="form-group ">
@@ -536,7 +536,8 @@
 
 
 												<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-													<button type="submit" class="btn btn-primary  full-width">Save Now</button>
+                                                    <input type="submit" class="btn btn-primary  full-width" value="Save Now">
+													{{-- <button type="submit" >Save Now</button> --}}
 												</div>
 										</form>
 										@else
@@ -942,11 +943,11 @@
 												Personel Setttings
 											</a>
 										</li>
-										
+
 {{-- @php
 @dd($_SERVER['REQUEST_URI'] == "/user/applyService");
 @endphp --}}
-										
+
 										@if(Auth::user()->role == 'admin')
 										<li class="" role="presentation">
 											<a class="nav-link" id="notifications-tab" data-bs-toggle="tab" href="#notifications" role="tab" aria-controls="home" aria-selected="false">

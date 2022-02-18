@@ -146,7 +146,7 @@
                             </svg>
                         </a>
                     </li>
-                    @if (Auth::user()->role == 'admin')
+                    @if (Auth::user()->role == 'admin' || Auth::user()->post_role == 'member' || Auth::user()->post_role == 'manager')
                         <li>
                             <a href="{{ url("$role/view_cluster") }}">
                                 <svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip"
@@ -164,17 +164,15 @@
                             </svg>
                         </a>
                     </li>
-                    @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'member' )
-
-                    <li>
-                        <a href="{{ url("$role/services") }}">
-                            <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
-                                data-bs-placement="right" data-bs-original-title="Services">
-                                <use xlink:href="#olymp-status-icon"></use>
-                            </svg>
-                        </a>
-                    </li>
-
+                    @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'member')
+                        <li>
+                            <a href="{{ url("$role/services") }}">
+                                <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="Services">
+                                    <use xlink:href="#olymp-status-icon"></use>
+                                </svg>
+                            </a>
+                        </li>
                     @endif
 
 
@@ -254,7 +252,7 @@
                             <span class="left-menu-title">Dashboard</span>
                         </a>
                     </li>
-                    @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'member')
+                    @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'member' || Auth::user()->post_role == 'manager')
                         <li>
                             <a href="{{ url("$role/view_cluster") }}">
                                 <svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip"
@@ -274,19 +272,17 @@
                             <span class="left-menu-title">Events</span>
                         </a>
                     </li>
-                    @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'member' )
+                    @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'member')
+                        <li>
+                            <a href="{{ url("$role/services") }}">
+                                <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="Services">
+                                    <use xlink:href="#olymp-status-icon"></use>
+                                </svg>
+                                <span class="left-menu-title">Services</span>
 
-                    <li>
-                        <a href="{{ url("$role/services") }}">
-                            <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
-                                data-bs-placement="right" data-bs-original-title="Services">
-                                <use xlink:href="#olymp-status-icon"></use>
-                            </svg>
-                            <span class="left-menu-title">Services</span>
-
-                        </a>
-                    </li>
-
+                            </a>
+                        </li>
                     @endif
 
                     @if (Auth::user()->role == 'admin')
@@ -309,9 +305,8 @@
                             </a>
                         </li>
 
-                        @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'manager' )
-{{--
-                        <li>
+                        @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'manager')
+                            {{-- <li>
                             <a href="{{ url("$role/survey/form") }}">
                                 <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
                                     data-bs-placement="right" data-bs-original-title="WEATHER APP">
@@ -449,7 +444,7 @@
                             <span class="left-menu-title">Dashboard</span>
                         </a>
                     </li>
-                    @if (Auth::user()->role == 'admin')
+                    @if (Auth::user()->role == 'admin' || Auth::user()->post_role == 'member' || Auth::user()->post_role == 'manager')
                         <li>
                             <a href="{{ url("$role/view_cluster") }}">
                                 <svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip"
@@ -469,19 +464,18 @@
                             <span class="left-menu-title">Events</span>
                         </a>
                     </li>
-                    @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'member' )
-{{-- @dd(1); --}}
-                    <li>
-                        <a href="{{ url("$role/services") }}">
-                            <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
-                                data-bs-placement="right" data-bs-original-title="Services">
-                                <use xlink:href="#olymp-status-icon"></use>
-                            </svg>
-                            <span class="left-menu-title">Services</span>
+                    @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'member')
+                        {{-- @dd(1); --}}
+                        <li>
+                            <a href="{{ url("$role/services") }}">
+                                <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="Services">
+                                    <use xlink:href="#olymp-status-icon"></use>
+                                </svg>
+                                <span class="left-menu-title">Services</span>
 
-                        </a>
-                    </li>
-
+                            </a>
+                        </li>
                     @endif
                     @if (Auth::user()->role == 'admin')
                         <li>
@@ -588,9 +582,9 @@
             <div class="control-block">
 
                 <div class="control-icon more has-items mt-2">
-                    <svg class="olymp-chat---messages-icon">
+                    <i class="far fa-bell text-white" aria-hidden="true">
 
-                        <use xlink:href="#olymp-chat---messages-icon"></use></svg>
+                    </i>
 
                     <div class="more-dropdown more-with-triangle triangle-top-center">
                         <div class="ui-block-title ui-block-title-small">
@@ -601,106 +595,59 @@
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
                             <ul class="notification-list chat-message">
                                 @foreach ($noti as $notif)
+                                    <li class="message-unread">
+                                        <div class="author-thumb">
+                                            <img loading="lazy"
+                                                src=" {{ asset('images/') }}/{{ $notif->Event->image }}"
+                                                alt="author" width="34" height="34">
+                                        </div>
 
-                                <li class="message-unread">
-                                    <div class="author-thumb">
-                                        <img loading="lazy"  src=" {{ asset('images/') }}/{{ $notif->Event->image }}" alt="author" width="34" height="34">
-                                    </div>
+
+                                        <div class="notification-event">
+                                            <a href="#" class="h6 notification-friend">{{ $notif->Event->name }}</a>
+                                            <span class="chat-message-item"
+                                                style="padding:8px;">{{ $notif->Event->description }}</span>
+                                        </div>
 
 
-                                    <div class="notification-event">
-                                        <a href="#" class="h6 notification-friend">{{ $notif->Event->name }}</a>
-                                        <span class="chat-message-item" style="padding:8px;">{{ $notif->Event->description }}</span>
-                                    </div>
-                                    {{-- <span class="notification-icon">
-                                        <svg class="olymp-chat---messages-icon"><use xlink:href="#olymp-chat---messages-icon"></use></svg>
-                                    </span> --}}
-
-                                </li>
+                                    </li>
                                 @endforeach
 
 
                                 @foreach ($cluss as $clusss)
+                                    <?php
+                                    $img = explode(',', $clusss->Cluster->image);
 
-                                <?php
-                                $img = explode(',', $clusss->Cluster->image);
+                                    ?>
+                                    <li class="message-unread">
+                                        <div class="author-thumb">
+                                            <img loading="lazy" style="border-radius: 8px;"
+                                                src=" {{ asset('images/') }}/{{ $img[0] }}" alt="author"
+                                                width="34" height="34">
+                                        </div>
+                                        <div class="notification-event">
+                                            <a href="#" class="h6 notification-friend"
+                                                style="text-decoration: none">{{ $clusss->Cluster->name }}</a>
+                                            <span class="chat-message-item" style="padding:8px;">
+                                                <b>{{ $clusss->User->first_name }}</b> send request for join cluster
+                                                <b>{{ $clusss->Cluster->name }}</b> </span>
+                                        </div>
+                                        <span class="notification-icon">
+                                            <a @if (auth::user()->role == 'admin') href="{{ url("$role/aprroved/request", [$clusss->id]) }}" @endif
+                                                class="accept-request">
+                                                <i class="fas fa-check"></i>
+                                            </a> </span>
 
-                                ?>
-                                <li class="message-unread">
-                                    <div class="author-thumb">
-                                        <img loading="lazy" style="border-radius: 8px;"  src=" {{ asset('images/') }}/{{ $img[0] }}" alt="author" width="34" height="34">
-                                    </div>
-                                    <div class="notification-event">
-                                        <a href="#" class="h6 notification-friend" style="text-decoration: none">{{ $clusss->Cluster->name }}</a>
-                                        <span class="chat-message-item" style="padding:8px;"> <b>{{ $clusss->User->first_name }}</b> send request for join cluster <b>{{$clusss->Cluster->name}}</b> </span>
-                                    </div>
-                                    <span class="notification-icon">
-                                        <a @if (auth::user()->role == 'admin') href="{{ url("$role/aprroved/request",[$clusss->id]) }}" @endif class="accept-request">
-                                            <i class="fas fa-check"></i>
-                                        </a>                                    </span>
-
-                                </li>
+                                    </li>
                                 @endforeach
 
                             </ul>
                         </div>
 
-                        <a href="{{url("$role/view/notifications")}}" class="view-all bg-purple">View All Notifications</a>
+                        <a href="{{ url("$role/view/notifications") }}" class="view-all bg-purple">View All
+                            Notifications</a>
                     </div>
                 </div>
-
-{{--
-                <div class="author-page author vcard inline-items more" style="padding: unset;margin-right: 18px;">
-                    <div class="author-thumb">
-                        <i class="fa fa-icon"></i>
-                        <div class="more-dropdown more-with-triangle">
-                            <div class="mCustomScrollbar" data-mcs-theme="dark">
-                                <div class="ui-block-title ui-block-title-small">
-                                    <h6 class="title"> Notifications</h6>
-                                </div>
-
-                                <ul class="account-settings">
-                                    @foreach ($noti as $notif)
-                                        <li>
-
-
-                                            <img style="height: 29px;"
-                                                src=" {{ asset('images/') }}/{{ $notif->Event->image }}" alt="">
-                                            &nbsp;
-                                            &nbsp;
-                                            <span>{{ $notif->Event->name }}</span>
-
-                                        </li>
-                                    @endforeach
-
-
-                                    @foreach ($cluss as $clusss)
-                                        <li>
-
-
-
-                                            <img style="height: 29px;"
-                                                src=" {{ asset('images/') }}/{{ $clusss->User->image }}" alt="">
-                                            &nbsp;
-                                            &nbsp;
-                                            <span>{{ $clusss->User->first_name }}</span>
-
-                                        </li>
-                                    @endforeach
-
-
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                    <a href="#" class="author-name fn">
-                        <div class="author-title">
-                            <i class="fas fa-bell"></i>
-
-                        </div>
-                    </a>
-                </div> --}}
 
                 <div class="author-page author vcard inline-items more">
                     <div class="author-thumb">
@@ -746,8 +693,8 @@
                         <div class="author-title">
                             <div class="author-thumb">
                                 @if (isset(Auth::user()->image))
-                                    <img alt="author" src="{{ asset('images') }}/{{ Auth::user()->image }}" width="36"
-                                        height="36" class="avatar">
+                                    <img alt="author" src="{{ asset('images') }}/{{ Auth::user()->image }}"
+                                        width="36" height="36" class="avatar">
                                 @else
                                     <i style="font-size: 21px;" class="fa fa-user"></i>
                                 @endif
@@ -762,65 +709,6 @@
                             </svg>
                         </div>
                     </a>
-                </div>
-                <div class="control-icon more has-items mt-2">
-                    <i class="far fa-bell text-white" aria-hidden="true">
-
-                    </i>
-
-                    <div class="more-dropdown more-with-triangle triangle-top-center">
-                        <div class="ui-block-title ui-block-title-small">
-                            <h6 class="title">Notifications</h6>
-
-                        </div>
-
-                        <div class="mCustomScrollbar" data-mcs-theme="dark">
-                            <ul class="notification-list chat-message">
-                                @foreach ($noti as $notif)
-
-                                <li class="message-unread">
-                                    <div class="author-thumb">
-                                        <img loading="lazy"  src=" {{ asset('images/') }}/{{ $notif->Event->image }}" alt="author" width="34" height="34">
-                                    </div>
-                                    <div class="notification-event">
-                                        <a href="#" class="h6 notification-friend">{{ $notif->Event->name }}</a>
-                                        <span class="chat-message-item" style="padding:8px;">{{ $notif->Event->description }}</span>
-                                    </div>
-                                    {{-- <span class="notification-icon">
-                                        <svg class="olymp-chat---messages-icon"><use xlink:href="#olymp-chat---messages-icon"></use></svg>
-                                    </span> --}}
-
-                                </li>
-                                @endforeach
-
-
-                                @foreach ($cluss as $clusss)
-
-                                <?php
-                                $img = explode(',', $clusss->Cluster->image);
-
-                                ?>
-                                <li class="message-unread">
-                                    <div class="author-thumb">
-                                        <img loading="lazy" style="border-radius: 8px;"  src=" {{ asset('images/') }}/{{ $img[0] }}" alt="author" width="34" height="34">
-                                    </div>
-                                    <div class="notification-event">
-                                        <a href="#" class="h6 notification-friend" style="text-decoration: none">{{ $clusss->Cluster->name }}</a>
-                                        <span class="chat-message-item" style="padding:8px;">{{ $clusss->Cluster->detail }}</span>
-                                    </div>
-                                    <span class="notification-icon">
-                                        <a @if (auth::user()->role == 'admin') href="{{ url("$role/aprroved/request",[$clusss->id]) }}" @endif class="accept-request">
-                                            <i class="fas fa-check"></i>
-                                        </a>                                    </span>
-
-                                </li>
-                                @endforeach
-
-                            </ul>
-                        </div>
-
-                        <a href="{{url("$role/view/notifications")}}" class="view-all bg-purple">View All Notifications</a>
-                    </div>
                 </div>
 
                 <div class="control-icon more has-items mr-5">
@@ -1364,5 +1252,3 @@
         <!-- ... end  Tab panes -->
 
     </header>
-
-

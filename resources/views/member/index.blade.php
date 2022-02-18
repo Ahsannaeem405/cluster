@@ -2,7 +2,11 @@
 @section('page_title', 'Home Page')
 @section('content')
 
-
+<style>
+    a.canvasjs-chart-credit {
+    display: none;
+}
+</style>
     <!-- Main Header Groups -->
 
     <div class="main-header">
@@ -125,6 +129,8 @@
 
     <?php
 $i = 0;
+
+$arr =  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct','Nov' ,'Dec']
     ?>
 
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
@@ -143,7 +149,7 @@ $i = 0;
                 },
                 data: [{
                     type: "column",
-                    showInLegend: true,
+                    // showInLegend: true,
                     legendMarkerColor: "#08ddc1",
                     // legendText: "MMbbl = one million barrels",
                     dataPoints: [
@@ -152,7 +158,7 @@ $i = 0;
 
                         {
                             y: {{$clusterrs}},
-                            label: "{{$i++}}"
+                            label: "{{$arr[$i++]}}"
                         },
                         @endforeach
 

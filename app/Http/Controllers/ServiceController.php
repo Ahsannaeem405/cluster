@@ -27,8 +27,9 @@ class ServiceController extends Controller
 
         }
         else{
-            $service['services']=JoinCluster::where('user_id',Auth::user()->id)->where('status',1)->get();
-          //  $service['services']=Service::get();
+            $service['services']=JoinCluster::where('user_id',Auth::user()->id)->where('status', 1)->get();
+
+            //  $service['services']=Service::get();
 
         }
         return view('admin.view_services', $service);
@@ -91,7 +92,6 @@ class ServiceController extends Controller
 ////////////applyService start
     public function applyService(Request $request)
     {
-       //dd($request->input());
 
         $apply_type=$request->apply;
         $service_id=$request->service_id;
@@ -158,6 +158,9 @@ class ServiceController extends Controller
     //////////////////add user company start
     public function AddCompany(Request $request)
     {
+
+
+        $apply_service = null;
         $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -170,9 +173,10 @@ class ServiceController extends Controller
         $company->description=$description;
         $company->user_id=Auth::user()->id;
         $company->save();
-        return redirect()->back()->with('success', 'Company Added Sucessfully!');
+        return redirect('member/services')->with('success','Company Added Sucessfully!');
+        // return back()->with('success', 'Company Added Sucessfully!');
+
     }
-    //////////////////add user company end
 
     public function UpdateCompany(Request $request,$id)
     {
