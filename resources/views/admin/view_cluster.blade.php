@@ -1,3 +1,6 @@
+@php
+@dd(Auth::user()->post_role);
+@endphp
 @extends('admin.layout')
 @section('page_title', 'Home Page')
 @section('content')
@@ -147,7 +150,8 @@
                                                         }
                                                     @endphp
                                                     <div style="color: red" class="country">Manager:<span>
-                                                        </span></div>
+
+                                                    </span></div>
                                                 @endforeach
 
                                             @else
