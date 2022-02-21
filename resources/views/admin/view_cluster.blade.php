@@ -146,7 +146,7 @@
 
                                     <div class="friend-avatar">
                                         <div class="author-thumb">
-                                            <img loading="lazy" src="{{ asset('images') }}/{{ $clus_img1[0] }}" alt=""
+                                            <img loading="lazy" src="{{ asset('images') }}/{{ $clus_img2[0] }}" alt=""
                                                 width="34" height="34">
                                         </div>
                                         <div class="author-content">
@@ -286,8 +286,8 @@
                                         <label for="exampleFormControlTextarea1">Cluster Type</label>
 
                                         <select class="form-select" name="cluster_type">
-                                            <option value="Public">Public </option>
-                                            <option value="Private">Private </option>
+                                            <option value="Public" @if($list->cluster_type == "Public") selected @endif>Public </option>
+                                            <option value="Private" @if($list->cluster_type == "Private") selected @endif>Private </option>
                                         </select>
                                     </div>
 
