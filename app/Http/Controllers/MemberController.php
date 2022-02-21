@@ -20,6 +20,7 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Laravel\Ui\Presets\React;
+use PhpOption\Option;
 
 class MemberController extends Controller
 {
@@ -231,7 +232,7 @@ class MemberController extends Controller
 
 
         $req = RequestCluster::find($id);
-        $clus =  JoinCluster::where('cluster_id',$req->cluster_id)->where('user_id', $req->user_id)->first();
+        $clus =  JoinCluster::where('cluster_id', $req->cluster_id)->where('user_id', $req->user_id)->first();
 
         $req->delete();
         $clus->delete();
@@ -245,9 +246,9 @@ class MemberController extends Controller
         $req = RequestCluster::find($id);
 
 
-        $clus =  JoinCluster::where('cluster_id',$req->cluster_id)->where('user_id', $req->user_id)->first();
+        $clus =  JoinCluster::where('cluster_id', $req->cluster_id)->where('user_id', $req->user_id)->first();
         // @dd( $clus);
-        if($clus != null){
+        if ($clus != null) {
             $clus->cluster_id =   $req->cluster_id;
             $clus->user_id =  $req->user_id;
             $clus->status =  1;
@@ -291,49 +292,79 @@ class MemberController extends Controller
 
     public function survey_edit(Request $req)
     {
-        //  dd($req);
-        // for($i = 0; $i< count($req->survey_form) ; $i++)
-        // {
 
-        // $ser = SurveryNumber::find($req->survey_form[$i]);
+        if($req->questionr || $req->question)
+        {
+            $serr = new SurveryNumber();
+            $serr->userID = Auth::user()->id;
+            $serr->save();
+        }
 
-        // $ser->id =$req->survey_form[$i];
+        if ($req->questionr != null) {
 
-        // $ser->save();
-        // }
+            for ($i = 0; $i < count($req->questionr); $i++) {
 
-        // dd($req);
+                $que = new Question();
+                $que->question_title = $req->questionr[$i];
+                $que->question_title = $req->questionr[$i];
+                $que->question_type = 'radio';
+                $que->servey_id =   $serr->id;
+
+                $que->user_id = Auth::user()->id;
+
+                $que->save();
+
+                $opt = new Opition();
+                $opt->option1 = $req->option1[$i];
+                $opt->option2 = $req->option2[$i];
+                $opt->option3 = $req->option3[$i];
+                $opt->option4 = $req->option4[$i];
+                $opt->question_id = $que->id;
+                $opt->save();
+            }
+        }
+
+
+        if ($req->question != null) {
+            for ($i = 0; $i < count($req->question); $i++) {
+
+                $que = new Question();
+                $que->question_title = $req->question[$i];
+                $que->question_type = 'text';
+                $que->user_id = Auth::user()->id;
+                $que->servey_id =  $serr->id;
+                $que->save();
+            }
+        }
+
+
+
+        for ($i = 0; $i < count($req->quesIDRad); $i++) {
+
+
+            $quee =  Question::find($req->quesIDRad[$i]);
+            $quee->question_title = $req->questionrad[$i];
+            $quee->save();
+
+            $optt = Opition::Where('question_id', $req->quesIDRad[$i])->first();
+            $optt->option1 = $req->option11[$i];
+            $optt->option2 = $req->option22[$i];
+            $optt->option3 = $req->option33[$i];
+            $optt->option4 = $req->option44[$i];
+            $optt->save();
+        }
 
         for ($i = 0; $i < count($req->quesID); $i++) {
 
 
-                        $que =  Question::find($req->quesID[$i]);
+            $quee =  Question::find($req->quesID[$i]);
 
-                        // if ($que->question_type == 'text') {
-                            $que->question_title = $req->question[$i];
-                            $que->save();
-                        // }
-
-
-
-
-                // @dd($que);
-
-
-            //     if ($que->question_type == 'radio') {
-            //         $que->question_title = $req->questionr[$i];
-            //         $que->save();
-
-
-            //         $opt =  Opition::where('question_id', $req->questionr[$i])->first();
-            //         $opt->option1 = $req->option1[$i];
-            //         $opt->option2 = $req->option2[$i];
-            //         $opt->option3 = $req->option3[$i];
-            //         $opt->option4 = $req->option4[$i];
-            //         $opt->save();
-
-            // }
+            $quee->question_title = $req->questioninp[$i];
+            $quee->save();
         }
+
+
+
 
         return back();
     }
@@ -344,7 +375,7 @@ class MemberController extends Controller
 
 
         $serr = new SurveryNumber();
-        $serr->servey_number = 1;
+        $serr->userID = Auth::user()->id;
         $serr->save();
 
         if ($req->question != null) {
@@ -402,17 +433,17 @@ class MemberController extends Controller
 
 
 
-        $que = Question::where('question_type', 'radio')->get();
-        $tex = Question::where('question_type', 'text')->get();
+        // $que = Question::where('question_type', 'radio')->get();
+        // $tex = Question::where('question_type', 'text')->get();
 
 
-        return view('member.view_que', compact('que', 'tex', 'serv'));
+        return view('member.view_que', compact( 'serv'));
     }
 
     public function form_submision(Request $req)
     {
 
-        // dd($req);
+
         for ($i = 0; $i < count($req->optionID); $i++) {
 
             $reqq =   $req->optionID[$i];
@@ -420,6 +451,9 @@ class MemberController extends Controller
             $ans = new Answer();
             $ans->questionID =  $req->questionIDr[$i];
             $ans->optionID = $req->optionID[$i];
+            $ans->formID = $req->Formm[$i];
+
+
             $ans->answer = $req->$r;
             $ans->userID = Auth::user()->id;
             $ans->save();
@@ -429,6 +463,9 @@ class MemberController extends Controller
             $ans = new Answer();
             $ans->answer_text =  $req->answer_text[$i];
             $ans->questionID = $req->questionID[$i];
+            $ans->formID = $req->Form[$i];
+
+
             $ans->userID = Auth::user()->id;
 
             $ans->save();
@@ -452,8 +489,8 @@ class MemberController extends Controller
     public function survey_view()
     {
 
-        // dd(12);
-        $serv = SurveryNumber::all();
+
+        $serv = SurveryNumber::where('');
         return view('member.edit_survey', compact('serv'));
     }
 }

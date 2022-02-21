@@ -79,7 +79,10 @@
     <?php
     $role = Auth::user()->post_role;
 
-    ?>
+
+$dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
+?>
+
 
     <!-- Preloader -->
 
@@ -176,8 +179,8 @@
                     @endif
 
 
-                    @if (Auth::user()->role == 'admin')
-                        <li>
+                    @if (Auth::user()->role == 'admin' || Auth::user()->post_role == 'manager')
+                    <li>
                             <a href="{{ url("$role/members") }}">
                                 <svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip"
                                     data-bs-placement="right" data-bs-original-title="Members">
@@ -193,6 +196,56 @@
                                 </svg>
                             </a>
                         </li>
+
+                        @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'manager')
+
+                        <li>
+                            <a href="{{ url("$role/survey/form") }}">
+
+                                <svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Events">
+                                <use xlink:href="#olymp-manage-widgets-icon"></use>
+                            </svg>
+
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="{{ url("$role/survey/list") }}">
+                                <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Services">
+                                <use xlink:href="#olymp-status-icon"></use>
+                            </svg>
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="{{ url("$role/survey/view") }}">
+                                <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title="WEATHER APP">
+                                    <use xlink:href="#olymp-music-shuffle-icon"></use>
+                                </svg>
+                            </a>
+                        </li>
+
+                        @endif
+
+
+
+                        @if(Auth::user()->post_role != 'admin')
+
+                        <li>
+                            <a href="{{ url("$role/Survey/Question") }}">
+                                <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" data-bs-original-title=" Survey Question">
+                                    <use xlink:href="#olymp-music-shuffle-icon"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        @endif
+
                         <li>
                             <a href="{{ url("$role/cluster_manager") }}">
                                 <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
@@ -209,6 +262,18 @@
                                 </svg>
                             </a>
                         </li>
+                    @endif
+
+                    @if(Auth::user()->post_role != 'admin' )
+
+                    <li>
+                        <a href="{{ url("$role/survey/question") }}">
+                            <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Survey Question">
+                                <use xlink:href="#olymp-music-shuffle-icon"></use>
+                            </svg>
+                        </a>
+                    </li>
                     @endif
                     <li>
                         <a href="{{ url("$role/setting") }}">
@@ -285,7 +350,9 @@
                         </li>
                     @endif
 
-                    @if (Auth::user()->role == 'admin')
+                    @if (Auth::user()->role == 'admin' || Auth::user()->post_role == 'manager')
+
+                    {{-- @if (Auth::user()->role == 'admin') --}}
                         <li>
                             <a href="{{ url("$role/members") }}">
                                 <svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip"
@@ -305,13 +372,14 @@
                             </a>
                         </li>
 
-                        @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'manager')
-                            {{-- <li>
+                            <li>
                             <a href="{{ url("$role/survey/form") }}">
-                                <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="WEATHER APP">
-                                    <use xlink:href="#olymp-music-shuffle-icon"></use>
-                                </svg>
+
+                                <svg class="olymp-manage-widgets-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Events">
+                                <use xlink:href="#olymp-manage-widgets-icon"></use>
+                            </svg>
+
                                 <span class="left-menu-title">Survey Form</span>
                             </a>
                         </li>
@@ -319,10 +387,10 @@
 
                         <li>
                             <a href="{{ url("$role/survey/list") }}">
-                                <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" data-bs-original-title="WEATHER APP">
-                                    <use xlink:href="#olymp-music-shuffle-icon"></use>
-                                </svg>
+                                <svg class="olymp-badge-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Services">
+                                <use xlink:href="#olymp-status-icon"></use>
+                            </svg>
                                 <span class="left-menu-title"> Users Survey Response</span>
                             </a>
                         </li>
@@ -336,8 +404,8 @@
                                 </svg>
                                 <span class="left-menu-title"> Survey View</span>
                             </a>
-                        </li> --}}
-                        @endif
+                        </li>
+
 
                         <li>
                             <a href="{{ url("$role/cluster_manager") }}">
@@ -357,6 +425,19 @@
                                 <span class="left-menu-title">Communication</span>
                             </a>
                         </li>
+                    @endif
+
+                    @if(Auth::user()->post_role != 'admin'  )
+
+                    <li>
+                        <a href="{{ url("$role/survey/question") }}">
+                            <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Cluster Manager">
+                                <use xlink:href="#olymp-music-shuffle-icon"></use>
+                            </svg>
+                            <span class="left-menu-title">Survey Question</span>
+                        </a>
+                    </li>
                     @endif
                     <li>
                         <a href="{{ url("$role/setting") }}">
@@ -633,7 +714,7 @@
                                                 <b>{{ $clusss->Cluster->name }}</b> </span>
                                         </div>
                                         <span class="notification-icon">
-                                            <a @if (auth::user()->role == 'admin') href="{{ url("$role/aprroved/request", [$clusss->id]) }}" @endif
+                                            <a @if (auth::user()->role == 'admin' || auth::user()->post_role == 'manager') href="{{ url("$role/aprroved/request", [$clusss->id]) }}" @endif
                                                 class="accept-request">
                                                 <i class="fas fa-check"></i>
                                             </a> </span>

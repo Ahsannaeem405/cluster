@@ -109,7 +109,7 @@
                                             {{ $events->Cluster->detail }}
                                         </td>
 
-                                        @if (auth::user()->role == 'admin')
+                                        @if (auth::user()->role == 'admin' || auth::user()->post_role == 'manager')
                                         <td class="description event-as">
 
                                             <a href="{{ url("$role/reject/request", [$events->id]) }}">

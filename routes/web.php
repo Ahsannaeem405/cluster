@@ -144,6 +144,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/view/survey/{id}', [MemberController::class, 'view_list']);
 
         Route::get('/survey/view/', [MemberController::class, 'survey_view']);
+        Route::get('/survey/question', [MemberController::class, 'view_que']);
 
 
     });
@@ -239,6 +240,7 @@ Route:: prefix('/manager')->middleware(['auth'])->group(function () {
     Route::get('/view/survey/{id}', [MemberController::class, 'view_list']);
 
     Route::get('/survey/view/', [MemberController::class, 'survey_view']);
+    Route::get('/survey/question', [MemberController::class, 'view_que']);
 
 
 });
@@ -329,8 +331,10 @@ Route:: prefix('/member')->middleware(['auth'])->group(function () {
     Route::post('/Survey/create', [MemberController::class, 'survey_create']);
     Route::get('/view/list/{id}', [MemberController::class, 'view_list']);
 
+    Route::get('/survey/question', [MemberController::class, 'view_que']);
 
 
+    Route::get('/view/survey/{id}', [MemberController::class, 'view_list']);
 
 
 
@@ -408,6 +412,8 @@ Route::middleware(['auth'])->group(function () {
         Route::any('/AddCompany', [ServiceController::class, 'AddCompany']);
         Route::post('/UpdateCompany/{id}', [ServiceController::class, 'UpdateCompany']);
         Route::post('/Survey/create', [MemberController::class, 'survey_create']);
+        Route::get('/survey/question', [MemberController::class, 'view_que']);
+        Route::get('/view/survey/{id}', [MemberController::class, 'view_list']);
 
     });
 });
@@ -426,7 +432,6 @@ Route::post('/subscribeEmail', [frontController::class, 'subscribe']);
 Route::get('/searchCluster', [frontController::class, 'searchCluster']);
 Route::get('/searchClusterMain', [frontController::class, 'searchClusterMain']);
 
-Route::get('/view_que', [MemberController::class, 'view_que']);
 Route::post('/form/submision', [MemberController::class, 'form_submision']);
 
 

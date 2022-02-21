@@ -31,12 +31,7 @@
             <div class="col-12 text-end" >
 
                 @if (isset($ans) && count($ans) > 0)
-                {{-- <a href="{{ url("$post_role/survey/form") }}">
-                    <i class="fa fa-plus" aria-hidden="true"
-                        style="    background: #1f6606;font-size: 22px;padding: 6px;color: white;border-radius: 6px;"></i>
 
-
-                </a> --}}
 
 
                 <a href="{{ url("$post_role/survey/form") }}" style="margin-right: 26px;height: 21%;margin-bottom: 13px;" class="btn btn-control bg-green">
@@ -104,7 +99,7 @@
                                     </td>
 
                                     <td class="description event-as">
-                                        <a style="text-decoration: none" href="{{url("$role/view/survey/{$anss->User->id}")}}">
+                                        <a style="text-decoration: none" href="{{url("$post_role/view/survey/{$anss->User->id}")}}">
 
 
 

@@ -48,22 +48,23 @@
 
 
 
-                                    <div class="row" >
+                                    <div class="row">
                                         <div class="col-3 offset-3 text-center">
-                                            <button class="btn btn-primary add_radio">Add Radio</button>
+                                            <button class="btn btn-primary add_radio">Add Question For Choice</button>
                                         </div>
                                         <div class="col-3 text-center">
-                                            <button class="btn btn-primary add_input">Add Input</button>
+                                            <button class="btn btn-primary add_input" style="width: 85%;">Add Question</button>
 
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-12 add_radio1" style="display: none">
+                                <div class="col-12 add_radio1 " style="display: none">
                                     <div class="row">
-                                        <div class="col-12">
+                                        <div class="col-8 offset-2 mb-3">
 
-                                            <button class="btn btn-success mt-3 radio_quest">Add Radio Question</button>
+                                            <button class="btn btn-success mt-3 radio_quest">Add Question For
+                                                Choice</button>
                                         </div>
 
                                     </div>
@@ -72,25 +73,40 @@
 
                                 <div class="col-12 add_input1" style="display: none">
                                     <div class="row">
-                                        <div class="col-12 ">
+                                        <div class="col-8 offset-2 mb-3">
 
-                                            <button class="btn btn-success mt-3 input_quest">Add Input Question</button>
+                                            <button class="btn btn-success mt-3 input_quest" >Add Question</button>
                                         </div>
 
                                     </div>
                                 </div>
 
-                                <div class="col-12">
+                                <div class="offset-2 col-8" style="border: 2px solid darkgrey;border-radius: 15px;padding: 30px;">
                                     <div class="row">
                                         <form action="{{ url("$role/Survey/create") }}" method="POST">
                                             @csrf
 
-                                            <div class="col-6 quest">
+                                            <div class="col-12 quest">
+                                                <div class="jumboo">
 
 
+
+                                                <div class="accordion-item" style="    padding: unset;">
+                                                    <div class="jumbotron jumbotron-fluid"
+                                                        style="    margin-bottom: 0; background: white;">
+                                                        <div class="container">
+                                                            <h5 class="text-center">No Question Available</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                             </div>
-                                            <input type="submit" name="submit" class="btn btn-primary" value="Submit" id="">
+                                            </div>
+                                            <div class="col-12 subb" style="display: none;margin-top: 32px; text-align: center;">
+                                                <input type="submit"  name="submit" class="btn btn-primary" value="Submit"
+                                                    id="">
+
+                                            </div>
 
                                         </form>
                                     </div>
@@ -134,6 +150,7 @@
 
             $('.add_input').click(function() {
 
+
                 $('.add_radio1').css('display', 'none');
 
 
@@ -145,16 +162,30 @@
 
             $(".radio_quest").on("click", function() {
 
+                $('.subb').css('display', 'block');
+            });
+
+            $(".input_quest").on("click", function() {
+
+                $('.subb').css('display', 'block');
+            });
+
+            $(".radio_quest").on("click", function() {
+                $('.jumboo').empty();
+
+
                 $(".quest").append(
-                    "<div class='form-group'> <label for=''> Enter Question</label> <input type='text' name='questionr[]' class='form-control' id='Cluster-Name' required> </div><div class='col-6'><div class='form-check'><input class='form-check-input' type='radio' name='flexRadioDefault'id='flexRadioDefault1'><input type='text' class='form-control' name='option1[]'></div><div class='form-check'><input class='form-check-input' type='radio' name='flexRadioDefault'id='flexRadioDefault2' ><input type='text' class='form-control' name='option2[]'></div><div class='form-check'><input class='form-check-input' type='radio' name='flexRadioDefault'id='flexRadioDefault2' ><input type='text' class='form-control' name='option3[]'></div><div class='form-check'><input class='form-check-input' type='radio' name='flexRadioDefault'id='flexRadioDefault2' ><input type='text' class='form-control' name='option4[]'></div></div>"
+                    "<div class='form-group'> <label for=''> Enter Question</label> <input type='text'  name='questionr[]' class='form-control' id='Cluster-Name' required> </div><div class='col-6'><div class='form-check'><input class='form-check-input' type='radio' name='flexRadioDefault'id='flexRadioDefault1'><input type='text' class='form-control' name='option1[]'></div><div class='form-check'><input class='form-check-input' type='radio' name='flexRadioDefault'id='flexRadioDefault2' ><input type='text' class='form-control' name='option2[]'></div><div class='form-check'><input class='form-check-input' type='radio' name='flexRadioDefault'id='flexRadioDefault2' ><input type='text' class='form-control' name='option3[]'></div><div class='form-check'><input class='form-check-input' type='radio' name='flexRadioDefault'id='flexRadioDefault2' ><input type='text' class='form-control' name='option4[]'></div></div>"
                 );
 
             });
 
             $(".input_quest").on("click", function() {
 
+                $('.jumboo').empty();
+
                 $(".quest").append(
-                    "<div class='form-group'> <label for=''> Enter Question</label> <input type='text' name='question[]' class='form-control' id='Cluster-Name' required> </div>"
+                    "<div class='form-group' style='margin-top: 25px;'> <label for=''> Enter Question</label> <input type='text'  name='question[]' class='form-control' id='Cluster-Name' required> </div>"
                 );
 
             });

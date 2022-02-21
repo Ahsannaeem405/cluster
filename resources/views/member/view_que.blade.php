@@ -35,117 +35,148 @@
 
 
 
+        <div class="members-table">
 
-        <div class="row">
-            <div class="col-12">
-                <div class="members-table">
+            <div class="accordion-item" style="    padding: unset;">
+                <div class="jumbotron jumbotron-fluid"
+                    style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
+                    <div class="container" style="margin-top:-40px">
+                        <div class="offset-2 col-8"
+                            style="border: 2px solid darkgrey;border-radius: 15px;padding-left: 30px;">
+                            <div class="row">
+                                <?php
+                                $i = 1;
+                                ?>
 
-                    <div class="accordion-item" style="    padding: unset;">
-                        <div class="jumbotron jumbotron-fluid"
-                            style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
-                            <div class="container">
-                                <div class="col-12">
-                                    <div class="row">
-<?php
-$i = 1;
-?>
-                                        @foreach ($serv as $servs)
+                                <form action="{{ url('form/submision') }}" method="POST">
+                                    @csrf
 
-                                        <h2>Servey Form {{$i++}}</h2>
 
-                                        <form action="{{ url('form/submision') }}" method="POST">
-                                                @csrf
-                                                <div class="col-8">
-                                                    @foreach ($servs->Ques as $ques)
+                                    @foreach ($serv as $servs)
 
+                                            <h2 class="text-center" style="margin-top: 56px;">Servey Form
+                                                {{ $i++ }}
+                                            </h2>
+
+                                            <div class="col-12">
+
+                                                @foreach ($servs->Ques as $ques)
+                                                    {{-- @if ($ques->Answer != null)
+                                                        //for showing only who's form that are not submitted by user,
+
+                                                    @else --}}
+
+
+                                                    @if ($ques->question_type == 'radio')
                                                         <br>
-
-                                                        @if($ques->question_type == 'radio')
                                                         <label for="">
 
                                                             Question : </span> {{ $ques->question_title }}
                                                             <span>
 
                                                         </label>
-                                                        @endif
-                                                        <br>
+                                                    @endif
 
-                                                        @foreach ($ques->Option as $quess)
+                                                    @foreach ($ques->Option as $quess)
+                                                        <div class="col-12">
+                                                            {{-- @dd($ques->servey_id) --}}
+
                                                             <input type="hidden" name="questionIDr[]"
                                                                 value="{{ $ques->id }}" id="">
+
+                                                            <input type="hidden" name="Formm[]"
+                                                                value="{{ $ques->servey_id }}" id="">
+
                                                             <input type="hidden" name="optionID[]"
                                                                 value="{{ $quess->id }}" id="">
 
-                                                            <input class="form-check-input" value="{{ $quess->option1 }}"
-                                                                type="radio" name="option{{ $quess->id }}"
-                                                                id="flexRadioDefault1">
-                                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                                {{ $quess->option1 }}
-                                                            </label>
+                                                            @if (isset($quess->option1))
+                                                                <input class="form-check-input"
+                                                                    value="{{ $quess->option1 }}" type="radio"
+                                                                    name="option{{ $quess->id }}" id="flexRadioDefault1">
+                                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                                    {{ $quess->option1 }}
+                                                                </label>
+                                                            @endif
+
+
+
                                                             <br>
+                                                            @if (isset($quess->option2))
+                                                                <input class="form-check-input" type="radio"
+                                                                    value="{{ $quess->option2 }}"
+                                                                    name="option{{ $quess->id }}"
+                                                                    id="flexRadioDefault1">
+                                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                                    {{ $quess->option2 }}
+                                                                </label>
+                                                            @endif
+                                                            @if (isset($quess->option3))
+                                                                <br>
 
-                                                            <input class="form-check-input" type="radio"
-                                                                value="{{ $quess->option2 }}"
-                                                                name="option{{ $quess->id }}" id="flexRadioDefault1">
-                                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                                {{ $quess->option2 }}
-                                                            </label>
-                                                            <br>
-
-                                                            <input class="form-check-input" type="radio"
-                                                                value="{{ $quess->option3 }}"
-                                                                name="option{{ $quess->id }}" id="flexRadioDefault1">
-                                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                                {{ $quess->option3 }}
-
-
-                                                            </label>
-                                                            <br>
-                                                            <input class="form-check-input" type="radio"
-                                                                value="{{ $quess->option4 }}"
-                                                                name="option{{ $quess->id }}" id="flexRadioDefault1">
-                                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                                {{ $quess->option4 }}
+                                                                <input class="form-check-input" type="radio"
+                                                                    value="{{ $quess->option3 }}"
+                                                                    name="option{{ $quess->id }}"
+                                                                    id="flexRadioDefault1">
+                                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                                    {{ $quess->option3 }}
 
 
-                                                            </label>
-                                                        @endforeach
-
-                                                        @if($ques->question_type == 'text')
-
-                                                        <label for="">
-                                                          Question :     {{ $ques->question_title }}
-                                                        </label>
-                                                        <input type="hidden" name="questionID[]" value="{{ $ques->id }}" id="">
-                                                        <input type="text" class="form-control" name="answer_text[]" id="">
-
-                                                        @endif
+                                                                </label>
+                                                            @endif
+                                                            @if (isset($quess->option4))
+                                                                <br>
+                                                                <input class="form-check-input" type="radio"
+                                                                    value="{{ $quess->option4 }}"
+                                                                    name="option{{ $quess->id }}"
+                                                                    id="flexRadioDefault1">
+                                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                                    {{ $quess->option4 }}
 
 
+                                                                </label>
+                                                            @endif
+                                                        </div>
                                                     @endforeach
-                                        @endforeach
 
-                                        <br>
-                                        <br>
+                                                    @if ($ques->question_type == 'text')
+                                                        <br>
+                                                        <label for="">
+                                                            Question : {{ $ques->question_title }}
+                                                        </label>
+                                                        <input type="hidden" name="Form[]" value="{{ $ques->servey_id }}"
+                                                            id="">
+                                                        <input type="hidden" name="questionID[]"
+                                                            value="{{ $ques->id }}" id="">
+                                                        <input type="text" class="form-control" name="answer_text[]"
+                                                            id="">
+                                                    @endif
 
-                                        <input type="submit" class="btn btn-primary" value="Submit Form" id="">
 
-                                    </div>
+                                                    {{-- @endif --}}
+                                                @endforeach
+                                            </div>
+                                    @endforeach
 
+                                    <br>
+                                    <br>
 
-                                    </form>
-                                </div>
+                                    <input type="submit" class="btn btn-primary" value="Submit Form" id="">
+                                </form>
                             </div>
-
 
 
 
                         </div>
                     </div>
-                </div>
 
+
+
+
+                </div>
             </div>
         </div>
+
 
 
 
