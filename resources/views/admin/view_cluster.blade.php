@@ -303,7 +303,7 @@
                                         <input type="file" name="image[]"
                                             class="form-control @error('image') is-invalid @enderror" value=""
                                             id="Cluster-Name" placeholder="Enter Cluster Image">
-                                        <img src="{{ asset('images') }}/{{ $clus_img1[0] }}" name="imgg" width="100"
+                                        <img src="{{ asset('images') }}/{{ $clus_img2[0] }}" name="imgg" width="100"
                                             height="100">
                                         @error('image')
                                             <span class="invalid-feedback" role="alert">
