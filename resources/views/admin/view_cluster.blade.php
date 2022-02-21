@@ -1,6 +1,4 @@
-@php
-@dd(Auth::user()->post_role);
-@endphp
+
 @extends('admin.layout')
 @section('page_title', 'Home Page')
 @section('content')
