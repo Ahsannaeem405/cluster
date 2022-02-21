@@ -110,7 +110,7 @@ class ClusterController extends Controller
         $event['user'] = User::Where('role', '!=', 'admin')->get();
 
 
-        //  @dd($event);
+        // @dd($event);
         return view('admin.view_event', $event);
     }
 
@@ -582,13 +582,14 @@ class ClusterController extends Controller
                 $path = $image->move('images/', $imageName);
                 $cat .= $imageName . ",";
             }
+            $clustor->cluster_overview = $request->cluster_overview;
+
+            $concat =  $clustor->image . $cat;
+            $clustor->image = $concat;
         }
 
 
-        $clustor->cluster_overview = $request->cluster_overview;
-
-        $concat =  $clustor->image . $cat;
-        $clustor->image = $concat;
+   
         $clustor->save();
 
 
@@ -619,14 +620,15 @@ class ClusterController extends Controller
                 $path = $image->move('images/', $imageName);
                 $cat .= $imageName . ",";
             }
+            $clustor->detail = $request->detail;
+
+            $concat =  $clustor->image . $cat;
+            $clustor->image = $concat;
         }
 
 
 
-        $clustor->detail = $request->detail;
-
-        $concat =  $clustor->image . $cat;
-        $clustor->image = $concat;
+ 
         $clustor->save();
 
 

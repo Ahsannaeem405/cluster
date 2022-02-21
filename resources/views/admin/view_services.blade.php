@@ -164,16 +164,8 @@
                                             <a href="{{ url('admin/applyServiceView') }}/{{ $serviceslist->id }}"
                                                 style="    color: white;border-radius: 50%;"
                                                 class=" btn btn-control bg-blue ">
-
-                                                <i class="fas fa-file text-white" style="margin-top: 6px;"></i>
-                                                <span class="badge bg-warning" style="
-            position: absolute;
-            right: -3px;
-            top: -5px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-           ">{{ count($apply_services) }}</span>
+                                                <i class="fas fa-external-link-square text-white" style="margin-top: 6px;"></i>
+                                                <span class="badge bg-warning" style="position: absolute;right: -3px;top: -5px;width: 20px;height: 20px;border-radius: 50%;">{{ count($apply_services) }}</span>
                                             </a>
 
                                         </div>
