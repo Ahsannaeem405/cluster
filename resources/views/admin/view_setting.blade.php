@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page_title', 'Home Page')
+@section('page_title', 'Setting Page')
 @section('content')
 
 
@@ -68,7 +68,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
-				<div class="main-header-content">
+				<div class="main-header-content mt-5">
 					<h1>Setting</h1>
 					<p>Welcome to your account setting, here you can edit your account details</p>
 				</div>

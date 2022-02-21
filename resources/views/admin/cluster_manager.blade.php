@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page_title', 'Home Page')
+@section('page_title', 'Cluster Manager Page')
 @section('content')
 
 
@@ -15,7 +15,7 @@
           <div class="container ">
               <div class="row">
                   <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
-                      <div class="main-header-content">
+                      <div class="main-header-content mt-5">
                           @if(Auth::user()->role == 'admin')
                           <h1>Cluster Manager</h1>
                           @else

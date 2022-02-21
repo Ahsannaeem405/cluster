@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page_title', 'Home Page')
+@section('page_title', 'Mamber Page')
 @section('content')
 
 	<div class="main-header">
@@ -7,7 +7,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
-					<div class="main-header-content">
+					<div class="main-header-content mt-5">
 						<h1>Members</h1>
 						<p>Welcome to your member manager page.Here you can easly Add, Delete and Edit you mambers.
 							Thank you</p>
@@ -55,6 +55,7 @@
 								<th class="" scope="col">First Name</th>
 								<th class="" scope="col">Email</th>
 								<th class="" scope="col">Cluster</th>
+								<th class="" scope="col">Role</th>
 								<th class=" text-center" scope="col">Action</th>
 							</tr>
 						</thead>
@@ -70,19 +71,11 @@
 								<td class="py-2">{{$list->first_name}}</td>
 								<td class="py-2">{{$list->email}}</td>
 								<td class="py-2">
-
-
                                         @foreach($list->memberCluster as $listc)
-
                                    <span>    &#8226; {{$listc->Clusterr->name}}</span>
                                         @endforeach
-
-									{{-- @dd($listc->selectCluster($listc->user_id)); --}}
-
-
-
-
 								</td>
+								<td class="py-2">{{$list->post_role}}</td>
 
 								<td>
 									<div class="d-flex justify-content-end">

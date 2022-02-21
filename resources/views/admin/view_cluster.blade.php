@@ -1,6 +1,6 @@
 
 @extends('admin.layout')
-@section('page_title', 'Home Page')
+@section('page_title', 'Cluster Page')
 @section('content')
 
     <?php
@@ -29,7 +29,7 @@
         <div class="container">
             <div class="row">
                 <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
-                    <div class="main-header-content">
+                    <div class="main-header-content mt-5">
 
                         @if (Auth::user()->role == 'admin')
                             <h1>Manage your Clusters</h1>

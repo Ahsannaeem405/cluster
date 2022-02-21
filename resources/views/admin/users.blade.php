@@ -17,7 +17,7 @@
         <div class="container">
             <div class="row">
                 <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
-                    <div class="main-header-content">
+                    <div class="main-header-content mt-5">
                         <h1>Manage User</h1>
                         <p>Welcome to your user manager page.Here you can easly Add, Delete and Edit you mambers.
                             Thank you</p>
