@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\EventJoin;
 use App\Models\JoinCluster;
+use App\Models\RequestCluster;
 use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
@@ -115,13 +116,22 @@ class RegisterController extends Controller
 
             foreach( $clusters as $row_cluster)
             {
-
+                $get = RequestCluster::where('cluster_id', $row_cluster)->where('user_id',  $user_id)->count();
 
                 $cluster=new JoinCluster();
                 $cluster->cluster_id=$row_cluster;
                 $cluster->user_id=$user_id;
                 $cluster->status='0';
                 $cluster->save();
+
+                if ($get == 0) {
+                    $req = new RequestCluster();
+                    $req->cluster_id = $row_cluster;
+                    $req->user_id = $user_id;
+                    $req->save();
+                }
+
+
             }
 
         }

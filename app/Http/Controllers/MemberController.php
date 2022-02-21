@@ -16,6 +16,7 @@ use App\Models\Question;
 use App\Models\RequestCluster;
 use App\Models\SurveryNumber;
 use App\Models\User;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Laravel\Ui\Presets\React;
@@ -96,7 +97,7 @@ class MemberController extends Controller
     }
     public function assignManager(Request $request, $id)
     {
-    
+
         $user = User::find($id);
         $user->post_role = 'manager';
         $user->save();
@@ -201,12 +202,26 @@ class MemberController extends Controller
 
 
         $get = RequestCluster::where('cluster_id', $id)->where('user_id', Auth::user()->id)->count();
+        $get1 = JoinCluster::where('cluster_id', $id)->where('user_id', Auth::user()->id)->count();
         if ($get == 0) {
             $req = new RequestCluster();
             $req->cluster_id = $id;
             $req->user_id = Auth::user()->id;
             $req->save();
         }
+
+
+
+        if ($get1 == 0) {
+            $join = new JoinCluster();
+            $join->cluster_id = $id;
+            $join->user_id = Auth::user()->id;
+            $join->status = 0;
+            $join->save();
+        }
+
+
+
         return back()->with('success', 'Request Submitted Sucessfully');
     }
 
@@ -216,7 +231,12 @@ class MemberController extends Controller
 
 
         $req = RequestCluster::find($id);
+        $clus =  JoinCluster::where('cluster_id',$req->cluster_id)->where('user_id', $req->user_id)->first();
+
         $req->delete();
+        $clus->delete();
+
+
         return back()->with('success', 'Rejected Successfully');
     }
     public function aprroved($id)
@@ -224,12 +244,17 @@ class MemberController extends Controller
 
         $req = RequestCluster::find($id);
 
-        $clus = new JoinCluster();
-        $clus->cluster_id =   $req->cluster_id;
-        $clus->user_id =  $req->user_id;
-        $clus->status =  1;
-        $clus->save();
-        $req->delete();
+
+        $clus =  JoinCluster::where('cluster_id',$req->cluster_id)->where('user_id', $req->user_id)->first();
+        // @dd( $clus);
+        if($clus != null){
+            $clus->cluster_id =   $req->cluster_id;
+            $clus->user_id =  $req->user_id;
+            $clus->status =  1;
+            $clus->save();
+            $req->delete();
+        }
+
         return back()->with('success', 'Approved Successfully');
     }
 

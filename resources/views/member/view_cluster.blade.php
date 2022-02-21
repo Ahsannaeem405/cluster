@@ -95,6 +95,10 @@
         <div class="row">
 
 
+            {{-- @dd($viewCluster) --}}
+            @if(isset($viewCluster) && count($viewCluster) > 0)
+
+
             @foreach ($viewCluster as $list)
                 <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
                     <a style="text-decoration: none;"
@@ -184,6 +188,17 @@
 
                 </div>
             @endforeach
+                    @else
+                    <div class="accordion-item"
+                    style="    padding-left: 15px !important;padding-right: 15px !important;    padding: unset;margin-bottom: 11px;">
+                    <div class="jumbotron jumbotron-fluid"
+                        style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
+                        <div class="container">
+                            <h5 class="text-center">No Cluster Available</h5>
+                        </div>
+                    </div>
+                </div>
+                    @endif
         </div>
     </div>
 
@@ -235,6 +250,7 @@
 
                 @if(isset($public_cluster) && count($public_cluster) > 0)
 
+                {{-- @dd($public_cluster) --}}
                 @foreach ($public_cluster as $list)
                 @if (!isset($list->JoinClust))
                     <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">

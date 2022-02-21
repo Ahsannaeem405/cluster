@@ -48,7 +48,7 @@
                             <th scope="col">Second Name</th>
                             <th scope="col">Email </th>
                             <th scope="col">DOB </th>
-                            <th scope="col">Role </th>
+                            {{-- <th scope="col">Role </th> --}}
                             <th scope="col">Action </th>
 
                         </tr>
@@ -67,7 +67,7 @@
                                 <td>{{ $users->User->last_name }}</td>
                                 <td>{{ $users->User->email }}</td>
                                 <td>{{ $users->User->dob }}</td>
-                                <td>{{ $users->User->role }}</td>
+                                {{-- <td>{{ $users->User->role }}</td> --}}
                                 <td>
                                     <div class="author-page author vcard inline-items more">
                                         <div class="author-thumb">
