@@ -64,28 +64,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             @if (Auth::user()->role == 'admin')
                 <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
 
@@ -125,6 +103,7 @@
             @endif
 
             @foreach ($viewCluster as $list)
+     
                 <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
                     <a style="text-decoration: none;"
                         @if (Auth::user()->role == 'admin') href="{{ url("$role/Join/cluster", $list->id) }}" @else  href="{{ url("$role/view/cluster", $list->id) }}" @endif>
@@ -160,6 +139,7 @@
                                                     $manager = 0;
                                                 @endphp
                                                 @foreach ($list->joindetail as $listss)
+                                                @dd($listss);
                                                     @php
                                                         $manager++;
                                                         if ($manager > 1) {
