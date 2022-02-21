@@ -81,7 +81,8 @@
                                   <td>
                                       							
 									@foreach($listM->memberCluster as $listc)
-                                    {{$listc->Clusterr->name.','}}
+                                   
+                                    <span>    &#8226; {{$listc->Clusterr->name}}</span>
                                 
                                 @endforeach
                                   </td>

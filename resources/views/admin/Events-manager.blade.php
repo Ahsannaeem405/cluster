@@ -592,10 +592,12 @@
                                                                             {{ $events->description }}</p>
 
                                                                         <div class="col-12 text-center">
-
-                                                                            <img style="width: 34%" loading="lazy"
+                                                                            <img style="min-height: 299px;max-height: 299px;width: 69%" loading="lazy"
+                                                                            src="{{ asset("images/$events->image") }}"
+                                                                            alt="author" width="100" height="100">                 
+                                                                            {{-- <img style="width: 34%" loading="lazy"
                                                                                 src="{{ asset("images/$events->image") }}"
-                                                                                alt="author" width="100" height="100">
+                                                                                alt="author" width="100" height="100"> --}}
                                                                         </div>
                                                                         <div class="col-12 text-end">
                                                                             {{-- @dd($events) --}}

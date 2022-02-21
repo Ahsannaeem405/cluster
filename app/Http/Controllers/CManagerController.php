@@ -38,8 +38,14 @@ class CManagerController extends Controller
             $user=User::find($userList);
             $user->post_role='manager';
             $user->save();
+            $cluster_get = JoinCluster::where('user_id', $userList)->get();
+            foreach ($cluster_get as $row_cluster_d) {
+                $clusterDelete = JoinCluster::find($row_cluster_d->id);
+                $clusterDelete->delete();
+            }
             foreach($cluster as $clusterList)
             {
+
                 $clusteradd=new JoinCluster();
                 $clusteradd->cluster_id=$clusterList;
                 $clusteradd->user_id=$userList;

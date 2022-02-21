@@ -1,3 +1,4 @@
+
 @extends('admin.layout')
 @section('page_title', 'Home Page')
 @section('content')
@@ -64,28 +65,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             @if (Auth::user()->role == 'admin')
                 <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
 
@@ -125,6 +104,7 @@
             @endif
 
             @foreach ($viewCluster as $list)
+     
                 <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
                     <a style="text-decoration: none;"
                         @if (Auth::user()->role == 'admin') href="{{ url("$role/Join/cluster", $list->id) }}" @else  href="{{ url("$role/view/cluster", $list->id) }}" @endif>
@@ -146,7 +126,7 @@
 
                                     <div class="friend-avatar">
                                         <div class="author-thumb">
-                                            <img loading="lazy" src="{{ asset('images') }}/{{ $clus_img1[0] }}" alt=""
+                                            <img loading="lazy" src="{{ asset('images') }}/{{ $clus_img2[0] }}" alt=""
                                                 width="34" height="34">
                                         </div>
                                         <div class="author-content">
@@ -160,6 +140,7 @@
                                                     $manager = 0;
                                                 @endphp
                                                 @foreach ($list->joindetail as $listss)
+                                        
                                                     @php
                                                         $manager++;
                                                         if ($manager > 1) {
@@ -167,8 +148,8 @@
                                                         }
                                                     @endphp
                                                     <div style="color: red" class="country">Manager:<span>
-                                                            {{ $listss->User->first_name }}
-                                                        </span></div>
+
+                                                    </span></div>
                                                 @endforeach
 
                                             @else
@@ -286,8 +267,8 @@
                                         <label for="exampleFormControlTextarea1">Cluster Type</label>
 
                                         <select class="form-select" name="cluster_type">
-                                            <option value="Public">Public </option>
-                                            <option value="Private">Private </option>
+                                            <option value="Public" @if($list->cluster_type == "Public") selected @endif>Public </option>
+                                            <option value="Private" @if($list->cluster_type == "Private") selected @endif>Private </option>
                                         </select>
                                     </div>
 
@@ -303,7 +284,7 @@
                                         <input type="file" name="image[]"
                                             class="form-control @error('image') is-invalid @enderror" value=""
                                             id="Cluster-Name" placeholder="Enter Cluster Image">
-                                        <img src="{{ asset('images') }}/{{ $clus_img1[0] }}" name="imgg" width="100"
+                                        <img src="{{ asset('images') }}/{{ $clus_img2[0] }}" name="imgg" width="100"
                                             height="100">
                                         @error('image')
                                             <span class="invalid-feedback" role="alert">
@@ -325,6 +306,46 @@
 
                                     <button type="submit" class="btn btn-blue btn-sm full-width">Update Cluster</button>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="modal fade" id="delete-new-member{{ $list->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="create-friend-group-1" aria-hidden="true">
+                    <div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
+                        <div class="modal-content">
+                            <a href="#" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">
+                                <svg class="olymp-close-icon">
+                                    <use xlink:href="#olymp-close-icon"></use>
+                                </svg>
+                            </a>
+                            <div class="modal-header">
+                                <h6 class="title">Delete Cluster</h6>
+                            </div>
+        
+                            <div class="modal-body">
+                                <div class="">
+                                    <p>Are you sure you want to delete this cluster <span
+                                            class="font-weight-bold text-danger">{{ $list->name }}</span>
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <form method="post" action="{{ url("$role/deleteCluster") }}/{{ $list->id }}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-blue full-width"
+                                                class="close icon-close">Yes</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-6">
+                                        <button href="#" class="btn btn-secondary full-width" class="close icon-close"
+                                            data-bs-dismiss="modal" aria-label="Close">No</button>
+        
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -409,43 +430,7 @@
 
 
     @if (isset($list->id))
-        <div class="modal fade" id="delete-new-member{{ $list->id }}" tabindex="-1" role="dialog"
-            aria-labelledby="create-friend-group-1" aria-hidden="true">
-            <div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
-                <div class="modal-content">
-                    <a href="#" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">
-                        <svg class="olymp-close-icon">
-                            <use xlink:href="#olymp-close-icon"></use>
-                        </svg>
-                    </a>
-                    <div class="modal-header">
-                        <h6 class="title">Delete Cluster</h6>
-                    </div>
-
-                    <div class="modal-body">
-                        <div class="">
-                            <p>Are you sure you want to delete this cluster <span
-                                    class="font-weight-bold text-danger">{{ $list->name }}</span>
-                            </p>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <form method="post" action="{{ url("$role/deleteCluster") }}/{{ $list->id }}">
-                                    @csrf
-                                    <button type="submit" class="btn btn-blue full-width"
-                                        class="close icon-close">Yes</button>
-                                </form>
-                            </div>
-                            <div class="col-6">
-                                <button href="#" class="btn btn-secondary full-width" class="close icon-close"
-                                    data-bs-dismiss="modal" aria-label="Close">No</button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     @endif
 
     {{-- For member show search --}}

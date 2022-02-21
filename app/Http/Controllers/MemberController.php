@@ -19,6 +19,7 @@ use App\Models\User;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Ui\Presets\React;
 use PhpOption\Option;
 
@@ -45,9 +46,10 @@ class MemberController extends Controller
         $user = new User();
         $user->first_name = $request->first_name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->post_role = 'member';
         $user->status = '1';
+        $user->role = 'user';
         $user->save();
         $get_user = User::where('post_role', 'member')->orderBy('id', 'DESC')->first();
         $user_id = $get_user->id;
@@ -55,11 +57,10 @@ class MemberController extends Controller
 
         foreach ($clusters as $row_cluster) {
 
-
             $cluster = new JoinCluster();
             $cluster->cluster_id = $row_cluster;
             $cluster->user_id = $user_id;
-            $cluster->status = 2;
+            $cluster->status = 1;
             $cluster->save();
         }
         return redirect()->back()->with('success', 'Member Added Sucessfully!');
@@ -77,6 +78,7 @@ class MemberController extends Controller
         $user->first_name = $request->first_name;
         $user->email = $request->email;
         $user->post_role = 'member';
+        $user->role = 'user';
         $user->save();
 
         //$cluster = JoinCluster::where('user_id', $id);
@@ -91,7 +93,7 @@ class MemberController extends Controller
             $clusteradd = new JoinCluster();
             $clusteradd->cluster_id = $row_cluster;
             $clusteradd->user_id = $id;
-            $clusteradd->status = 2;
+            $clusteradd->status = 1;
             $clusteradd->save();
         }
         return redirect()->back()->with('success', 'Member Updated Sucessfully!');

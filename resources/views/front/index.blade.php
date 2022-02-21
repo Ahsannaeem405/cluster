@@ -1,3 +1,5 @@
+{{-- @dd($viewCluster); --}}
+
 @extends('front.layout')
 @section('page_title','Home Page')
 @section('content')
@@ -48,6 +50,7 @@
 			</div>
 		</div>
 		<div class="row  mb-4 appSearch">
+			@if(isset($viewCluster) && count($viewCluster) > 0)
 			@foreach($viewCluster as $list)
 			@php
 				$image=explode(',',$list->image);
@@ -107,6 +110,16 @@
 			
 			</div>
 			@endforeach
+			@else
+			<div class="accordion-item" >
+				<div class="jumbotron jumbotron-fluid"
+					style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
+					<div class="container py-5">
+						<h5 class="text-center">No Cluster Available</h5>
+					</div>
+				</div>
+			</div>
+			@endif
 		</div>
 	</div>
 	<div class="upcoming-events">
@@ -118,6 +131,8 @@
 				</div>
 			</div>
 			<div class="row mt-3">
+				@if(isset($viewEvent) && count($viewEvent) > 0)
+
 				@foreach($viewEvent as $eventlist)
 				@php
 					// @dd($eventlist);
@@ -152,7 +167,16 @@
 		
 			
 			@endforeach
-		
+			@else
+			<div class="accordion-item" >
+				<div class="jumbotron jumbotron-fluid"
+					style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
+					<div class="container py-5">
+						<h5 class="text-center">No Event Available</h5>
+					</div>
+				</div>
+			</div>
+			@endif
 		
 		</div>
 		</div>	
