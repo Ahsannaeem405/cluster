@@ -92,7 +92,7 @@ class MemberController extends Controller
             $clusteradd = new JoinCluster();
             $clusteradd->cluster_id = $row_cluster;
             $clusteradd->user_id = $id;
-            $clusteradd->status = 2;
+            $clusteradd->status = 1;
             $clusteradd->save();
         }
         return redirect()->back()->with('success', 'Member Updated Sucessfully!');
