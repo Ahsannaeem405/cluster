@@ -638,10 +638,11 @@ class ClusterController extends Controller
     public function deleteCluster($id)
     {
         $clustor = Cluster::find($id);
-        if (\File::exists(public_path('images/' . $clustor->image . ''))) {
-            //dd('File does not exists.');
-            \File::delete(public_path('images/' . $clustor->image . ''));
-        }
+
+        // if (\File::exists(public_path('images/' . $clustor->image . ''))) {
+        //     //dd('File does not exists.');
+        //     \File::delete(public_path('images/' . $clustor->image . ''));
+        // }
         $clustor->delete();
         return redirect()->back()->with('error', 'Cluster Deleted Successfully!');
     }
