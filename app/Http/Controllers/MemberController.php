@@ -19,6 +19,7 @@ use App\Models\User;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Ui\Presets\React;
 
 class MemberController extends Controller
@@ -44,7 +45,7 @@ class MemberController extends Controller
         $user = new User();
         $user->first_name = $request->first_name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->post_role = 'member';
         $user->status = '1';
         $user->save();
