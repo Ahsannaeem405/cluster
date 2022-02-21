@@ -20,6 +20,7 @@ class CreateAnswersTable extends Migration
             $table->string('userID')->nullable();
             $table->string('optionID')->nullable();
             $table->string('answer_text')->nullable();
+            $table->string('formID')->nullable();
 
 
 

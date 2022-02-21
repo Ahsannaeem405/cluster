@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Question extends Model
 {
@@ -18,6 +19,13 @@ class Question extends Model
     {
         return $this->hasOne('App\Models\Answer', 'questionID','id');
     }
+
+
+    public function Answer()
+    {
+        return $this->hasOne('App\Models\Answer', 'questionID','id')->where('userID', Auth::user()->id);
+    }
+
 
 
 

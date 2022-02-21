@@ -43,26 +43,20 @@
                     <div class="accordion-item" style="    padding: unset;">
                         <div class="jumbotron jumbotron-fluid"
                             style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
-                            <div class="container">
+                            <div class="container" style="margin-top: 46px;">
                                 <div class="col-12">
                                     <div class="row">
                                         <?php
                                         $i = 1;
                                         ?>
 
-
-
-
                                         @foreach ($serv as $servs)
-                                            <h2>Servey Form {{ $i++ }}</h2>
-
-                                            {{-- @dd($servs->Ques[0]->Ans) --}}
+                                            <h2 style="margin-top: 46px;">Servey Form {{ $i++ }}</h2>
 
 
                                             <div class="col-8">
                                                 @foreach ($servs->Ques as $ques)
                                                     <br>
-                                                    {{-- @dd($ques->Ans) --}}
 
                                                     @if ($ques->question_type == 'radio')
                                                         <label for="">
@@ -75,40 +69,46 @@
                                                         <br>
 
                                                         @foreach ($ques->Option as $quess)
-                                                            <input class="form-check-input"
-                                                                @if ($ques->Ans->answer == $quess->option1) checked @endif
-                                                                value="{{ $quess->option1 }}" type="radio"
-                                                                id="flexRadioDefault1">
-                                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                                {{ $quess->option1 }}
-                                                            </label>
-                                                            <br>
-
-                                                            <input class="form-check-input"
-                                                                @if ($ques->Ans->answer == $quess->option2) checked @endif
-                                                                type="radio" id="flexRadioDefault1">
-                                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                                {{ $quess->option2 }}
-                                                            </label>
-                                                            <br>
-
-                                                            <input class="form-check-input" type="radio"
-                                                                @if ($ques->Ans->answer == $quess->option3) checked @endif
-                                                                id="flexRadioDefault1">
-                                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                                {{ $quess->option3 }}
-
-
-                                                            </label>
-                                                            <br>
-                                                            <input class="form-check-input" type="radio"
-                                                                @if ($ques->Ans->answer == $quess->option4) checked @endif
-                                                                id="flexRadioDefault1">
-                                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                                {{ $quess->option4 }}
+                                                            @if (isset($quess->option1))
+                                                                <input class="form-check-input"
+                                                                    @if (isset($ques->Ans->answer) && $ques->Ans->answer == $quess->option1) checked @endif
+                                                                    value="{{ $quess->option1 }}" type="radio"
+                                                                    id="flexRadioDefault1">
+                                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                                    {{ $quess->option1 }}
+                                                                </label>
+                                                                <br>
+                                                            @endif
+                                                            @if (isset($quess->option2))
+                                                                <input class="form-check-input"
+                                                                    @if (isset($ques->Ans->answer) && $ques->Ans->answer == $quess->option2) checked @endif
+                                                                    type="radio" id="flexRadioDefault1">
+                                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                                    {{ $quess->option2 }}
+                                                                </label>
+                                                                <br>
+                                                            @endif
+                                                            @if (isset($quess->option3))
+                                                                <input class="form-check-input" type="radio"
+                                                                    @if (isset($ques->Ans->answer) && $ques->Ans->answer == $quess->option3) checked @endif
+                                                                    id="flexRadioDefault1">
+                                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                                    {{ $quess->option3 }}
 
 
-                                                            </label>
+                                                                </label>
+                                                                <br>
+                                                            @endif
+                                                            @if (isset($quess->option4))
+                                                                <input class="form-check-input" type="radio"
+                                                                    @if (isset($ques->Ans->answer) && $ques->Ans->answer == $quess->option4) checked @endif
+                                                                    id="flexRadioDefault1">
+                                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                                    {{ $quess->option4 }}
+
+                                                                </label>
+                                                                <br>
+                                                            @endif
                                                         @endforeach
 
                                                     @elseif ($ques->question_type == 'text')
@@ -119,6 +119,7 @@
                                                             name="questionID[]" value="{{ $ques->id }}" id="">
                                                     @endif
                                                 @endforeach
+                                            </div>
                                         @endforeach
 
                                         <br>

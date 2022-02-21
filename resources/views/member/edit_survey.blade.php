@@ -50,10 +50,11 @@
 
                                     <div class="row">
                                         <div class="col-3 offset-3 text-center">
-                                            <button class="btn btn-primary add_radio">Add Radio</button>
+                                            <button class="btn btn-primary add_radio">Add Question For Choice</button>
                                         </div>
                                         <div class="col-3 text-center">
-                                            <button class="btn btn-primary add_input">Add Input</button>
+                                            <button class="btn btn-primary add_input" style="width: 85%;">Add
+                                                Question</button>
 
                                         </div>
                                     </div>
@@ -61,7 +62,7 @@
 
                                 <div class="col-12 add_radio1" style="display: none">
                                     <div class="row">
-                                        <div class="col-12">
+                                        <div class="offset-2 col-8">
 
                                             <button class="btn btn-success mt-3 radio_quest">Add Radio Question</button>
                                         </div>
@@ -72,7 +73,7 @@
 
                                 <div class="col-12 add_input1" style="display: none">
                                     <div class="row">
-                                        <div class="col-12 ">
+                                        <div class="offset-2 col-8">
 
                                             <button class="btn btn-success mt-3 input_quest">Add Input Question</button>
                                         </div>
@@ -80,7 +81,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12">
+                                <div class="offset-2 col-8"   style="    border: 2px solid darkgrey;border-radius: 15px;padding-left: 30px;">
                                     <div class="row">
                                         <form action="{{ url("$role/Survey/edit") }}" method="POST">
                                             @csrf
@@ -89,61 +90,79 @@
                                             ?>
 
 
-                                            <div class="col-6 quest">
+                                            <div class="col-12"
+                                           style="margin-top: 18px;">
                                                 @foreach ($serv as $servs)
-                                                    <h2>Servey Form {{ $i++ }}</h2>
+                                                    <h2 class="text-center"
+                                                        style="margin-top: 40px;margin-bottom: 40px;">Servey Form
+                                                        {{ $i++ }}</h2>
 
                                                     <input type="hidden" value="{{ $servs->id }}" name="survey_form[]"
                                                         id="">
 
+
                                                     @foreach ($servs->Ques as $ques)
-                                                        <input type="hidden" name="quesID[]" value="{{ $ques->id }}">
+                                                        @if ($ques->question_type == 'text')
+                                                            <label for="">
+                                                                Question :
+                                                            </label>
+                                                            <input type="hidden" name="quesID[]"
+                                                                value="{{ $ques->id }}">
 
-                                                        {{-- @if ($ques->question_type == 'radio') --}}
-                                                            {{-- <div class='form-group'> <label for=''> Question :</label>
-                                                                <input type='text' name='questionr[]'
-                                                                    value="{{ $ques->question_title }}"
-                                                                    class='form-control' id='Cluster-Name' required>
-                                                                 </div> --}}
+                                                            <input type="text" value="{{ $ques->question_title }}"
+                                                                name="questioninp[]" id="">
+                                                            <br>
+                                                        @endif
 
-                                                            <div class='col-6'>
 
-                                                                @foreach ($ques->Option as $quess)
+                                                        <div class='col-12' style="padding: unset">
+
+
+
+
+                                                            @foreach ($ques->Option as $quess)
+                                                                @if ($ques->question_type == 'radio')
+                                                                    <br>
+                                                                    <label for="">
+                                                                        Question :
+                                                                    </label>
+                                                                    <input type="hidden" name="quesIDRad[]"
+                                                                        value="{{ $ques->id }}">
+                                                                    <input type="text" value="{{ $ques->question_title }}"
+                                                                        name="questionrad[]" id="">
+                                                                @endif
+
+
                                                                     <div class='form-check'>
                                                                         <input class='form-check-input' type='radio'
                                                                             name='flexRadioDefault' id='flexRadioDefault1'>
                                                                         <input type='text' class='form-control'
                                                                             value="{{ $quess->option1 }}"
-                                                                            name='option1[]'>
+                                                                            name='option11[]'>
                                                                     </div>
+
                                                                     <div class='form-check'>
                                                                         <input class='form-check-input' type='radio'
                                                                             name='flexRadioDefault' id='flexRadioDefault2'>
                                                                         <input type='text' value="{{ $quess->option2 }}"
-                                                                            class='form-control' name='option2[]'>
+                                                                            class='form-control' name='option22[]'>
                                                                     </div>
+
                                                                     <div class='form-check'><input class='form-check-input'
                                                                             type='radio' name='flexRadioDefault'
                                                                             id='flexRadioDefault2'><input type='text'
                                                                             class='form-control'
                                                                             value="{{ $quess->option3 }}"
-                                                                            name='option3[]'></div>
+                                                                            name='option33[]'></div>
+
                                                                     <div class='form-check'><input class='form-check-input'
                                                                             type='radio' name='flexRadioDefault'
                                                                             id='flexRadioDefault2'><input type='text'
                                                                             class='form-control'
                                                                             value="{{ $quess->option4 }}"
-                                                                            name='option4[]'></div>
-                                                                @endforeach
-                                                            </div>
-
-                                                        {{-- @elseif ($ques->question_type == 'text') --}}
-                                                            <label for="">
-                                                                Question : {{ $ques->question_title }}
-                                                            </label>
-                                                            <input type="text" value="{{ $ques->question_title }}"
-                                                                name="question[]"  id="">
-                                                        {{-- @endif --}}
+                                                                            name='option44[]'></div>
+                                                            @endforeach
+                                                        </div>
                                                     @endforeach
                                                 @endforeach
 
@@ -152,12 +171,13 @@
 
                                             <div class="col-6 quest">
 
-
-
                                             </div>
+
                                             <input type="submit" name="submit" class="btn btn-primary" value="Update" id="">
 
                                         </form>
+
+
                                     </div>
                                 </div>
 
@@ -210,6 +230,7 @@
 
             $(".radio_quest").on("click", function() {
 
+                // alert(12);
                 $(".quest").append(
                     "<div class='form-group'> <label for=''> Enter Question</label> <input type='text' name='questionr[]' class='form-control' id='Cluster-Name' required> </div><div class='col-6'><div class='form-check'><input class='form-check-input' type='radio' name='flexRadioDefault'id='flexRadioDefault1'><input type='text' class='form-control' name='option1[]'></div><div class='form-check'><input class='form-check-input' type='radio' name='flexRadioDefault'id='flexRadioDefault2' ><input type='text' class='form-control' name='option2[]'></div><div class='form-check'><input class='form-check-input' type='radio' name='flexRadioDefault'id='flexRadioDefault2' ><input type='text' class='form-control' name='option3[]'></div><div class='form-check'><input class='form-check-input' type='radio' name='flexRadioDefault'id='flexRadioDefault2' ><input type='text' class='form-control' name='option4[]'></div></div>"
                 );
