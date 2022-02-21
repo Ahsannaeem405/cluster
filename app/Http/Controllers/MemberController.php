@@ -48,6 +48,7 @@ class MemberController extends Controller
         $user->password = Hash::make($request->password);
         $user->post_role = 'member';
         $user->status = '1';
+        $user->role = 'user';
         $user->save();
         $get_user = User::where('post_role', 'member')->orderBy('id', 'DESC')->first();
         $user_id = $get_user->id;
@@ -55,11 +56,10 @@ class MemberController extends Controller
 
         foreach ($clusters as $row_cluster) {
 
-
             $cluster = new JoinCluster();
             $cluster->cluster_id = $row_cluster;
             $cluster->user_id = $user_id;
-            $cluster->status = 2;
+            $cluster->status = 1;
             $cluster->save();
         }
         return redirect()->back()->with('success', 'Member Added Sucessfully!');
@@ -77,6 +77,7 @@ class MemberController extends Controller
         $user->first_name = $request->first_name;
         $user->email = $request->email;
         $user->post_role = 'member';
+        $user->role = 'user';
         $user->save();
 
         //$cluster = JoinCluster::where('user_id', $id);
