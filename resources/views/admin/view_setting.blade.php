@@ -497,7 +497,7 @@
 				</div>
 				@if(Auth::user()->role == 'user')
 
-				<div class="tab-pane fade @if($_SERVER['REQUEST_URI'] == "/user/applyService") show active @endif" id="company" role="tabpanel" aria-labelledby="company-tab">
+				<div class="tab-pane fade @if($_SERVER['REQUEST_URI'] == "/public/user/applyService") show active @endif" id="company" role="tabpanel" aria-labelledby="company-tab">
 					<div class="container">
 						<div class="row">
 							<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -939,7 +939,7 @@
 								<div class="accordion-body setting-nav">
 									<ul class="nav  calendar-events-tabs" id="calendar-events-tabs" role="tablist">
 										<li class="" role="presentation">
-											<a class="nav-link @if($_SERVER['REQUEST_URI'] != "/user/applyService") active @endif " id="events-tab" data-bs-toggle="tab" href="#events" role="tab" aria-controls="home" aria-selected="true">
+											<a class="nav-link @if($_SERVER['REQUEST_URI'] != "/public/user/applyService") active @endif " id="events-tab" data-bs-toggle="tab" href="#events" role="tab" aria-controls="home" aria-selected="true">
 												Personel Setttings
 											</a>
 										</li>
@@ -957,7 +957,7 @@
 										@endif
 										@if(Auth::user()->role == 'user')
 										<li class="" role="presentation">
-											<a class="nav-link  @if($_SERVER['REQUEST_URI'] == "/user/applyService") active @endif " id="company-tab" data-bs-toggle="tab" href="#company" role="tab" aria-controls="home" aria-selected="false">
+											<a class="nav-link  @if($_SERVER['REQUEST_URI'] == "/public/user/applyService") active @endif " id="company-tab" data-bs-toggle="tab" href="#company" role="tab" aria-controls="home" aria-selected="false">
 												User Company
 											</a>
 										</li>
