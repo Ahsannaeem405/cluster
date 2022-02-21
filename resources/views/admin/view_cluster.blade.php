@@ -139,7 +139,7 @@
                                                     $manager = 0;
                                                 @endphp
                                                 @foreach ($list->joindetail as $listss)
-                                                @dd($listss);
+                                        
                                                     @php
                                                         $manager++;
                                                         if ($manager > 1) {
@@ -147,7 +147,6 @@
                                                         }
                                                     @endphp
                                                     <div style="color: red" class="country">Manager:<span>
-                                                            {{ isset($listss->User->first_name) }}
                                                         </span></div>
                                                 @endforeach
 
