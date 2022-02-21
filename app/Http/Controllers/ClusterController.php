@@ -552,8 +552,9 @@ class ClusterController extends Controller
                 $path = $image->move('images/', $imageName);
                 $cat .= $imageName . ",";
             }
+            $clustor->image = $cat;
+
         }
-        $clustor->image = $cat;
 
 
 
