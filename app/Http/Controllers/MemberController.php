@@ -459,7 +459,10 @@ class MemberController extends Controller
     public function form_submision(Request $req)
     {
 
-        // dd($req);
+
+
+        if(isset($req->survyID))
+        {
 
 
         for ($i = 0; $i < count($req->survyID); $i++) {
@@ -470,6 +473,10 @@ class MemberController extends Controller
             $surv->surveyID = $req->survyID[$i];
             $surv->save();
         }
+    }
+
+    if(isset($req->optionID))
+    {
         for ($i = 0; $i < count($req->optionID); $i++) {
 
             $reqq =   $req->optionID[$i];
@@ -482,6 +489,8 @@ class MemberController extends Controller
             $ans->userID = Auth::user()->id;
             $ans->save();
         }
+    }
+
         if (isset($req->answer_text)) {
 
 

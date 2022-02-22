@@ -45,8 +45,7 @@ class ClusterController extends Controller
     public function send_email(Request $request)
     {
 
-        // dd($request);
-
+// dd($request);
         if ($request->Managers) {
             // dd(1);
             $man = User::where('post_role', 'manager')->get();

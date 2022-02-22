@@ -156,10 +156,23 @@
                                         @endif
                                     @endforeach
 
+
+                                    @if(count($serv) > 0 )
                                     <br>
                                     <br>
 
                                     <input type="submit" class="btn btn-primary" value="Submit Form" id="">
+                                    @else
+                                    <div class="accordion-item"
+                                    style="    padding-left: 15px !important;padding-right: 15px !important;    padding: unset;margin-bottom: 11px;">
+                                    <div class="jumbotron jumbotron-fluid"
+                                        style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;background: white;">
+                                        <div class="container">
+                                            <h5 class="text-center">No Survey Available</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                    @endif
                                 </form>
                             </div>
 

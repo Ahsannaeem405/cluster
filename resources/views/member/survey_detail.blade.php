@@ -44,14 +44,14 @@
                         <div class="jumbotron jumbotron-fluid"
                             style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
                             <div class="container" style="margin-top: 46px;">
-                                <div class="col-12">
+                                <div class="offset-2 col-8" style="    border: 2px solid darkgrey;border-radius: 15px;padding: 30px;">
                                     <div class="row">
                                         <?php
                                         $i = 1;
                                         ?>
 
                                         @foreach ($serv as $servs)
-                                            <h2 style="margin-top: 46px;">Servey Form {{ $i++ }}</h2>
+                                            <h2 style="margin-top: 46px;">{{ $servs->title}}</h2>
 
 
                                             <div class="col-8">
@@ -60,8 +60,11 @@
 
                                                     @if ($ques->question_type == 'radio')
                                                         <label for="">
+                                                            <b>
 
-                                                            Question : </span> {{ $ques->question_title }}
+
+
+                                                            Question :  </b> </span> {{ $ques->question_title }}
                                                             <span>
 
                                                         </label>
@@ -69,6 +72,9 @@
                                                         <br>
 
                                                         @foreach ($ques->Option as $quess)
+                                                        <div class="col-12">
+
+
                                                             @if (isset($quess->option1))
                                                                 <input class="form-check-input"
                                                                     @if (isset($ques->Ans->answer) && $ques->Ans->answer == $quess->option1) checked @endif
@@ -97,6 +103,7 @@
 
 
                                                                 </label>
+
                                                                 <br>
                                                             @endif
                                                             @if (isset($quess->option4))
@@ -108,12 +115,13 @@
 
                                                                 </label>
                                                                 <br>
+                                                            </div>
                                                             @endif
                                                         @endforeach
 
                                                     @elseif ($ques->question_type == 'text')
                                                         <label for="">
-                                                            Question : {{ $ques->question_title }}
+                                                          <b>  Question :  </b> {{ $ques->question_title }}
                                                         </label>
                                                         <input type="text" value="{{ $ques->Ans->answer_text }}"
                                                             name="questionID[]" value="{{ $ques->id }}" id="">

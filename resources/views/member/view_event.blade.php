@@ -246,7 +246,7 @@
                                                         <div class="author-date">
                                                             <a class="h6 post__author-name fn"
                                                                 href="#">{{ $events->User->first_name }}</a>
-                                                            created the
+                                                                join this
                                                             <a href="#">{{ $events->name }}</a>
                                                             <div class="post__date">
                                                                 <time class="published" datetime="2017-03-24T18:18">
@@ -616,7 +616,7 @@
                                                         <div class="author-date">
                                                             <a class="h6 post__author-name fn"
                                                                 href="#">{{ $events->User->first_name }}</a>
-                                                            created the
+                                                                join this
                                                             <a href="#">{{ $events->EventJoin->name }}</a>
                                                             <div class="post__date">
                                                                 <time class="published" datetime="2017-03-24T18:18">

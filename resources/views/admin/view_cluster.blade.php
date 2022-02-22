@@ -148,6 +148,7 @@
                                                         }
                                                     @endphp
                                                     <div style="color: red" class="country">Manager:<span>
+                                                        {{ $listss->User->first_name }}
 
                                                     </span></div>
                                                 @endforeach
