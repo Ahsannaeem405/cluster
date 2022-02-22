@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page_title', 'Home Page')
+@section('page_title', 'User Page')
 @section('content')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 
@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
-                    <div class="main-header-content">
+                    <div class="main-header-content mt-5">
                         <h1>Manage Events</h1>
                         <p>Welcome to your event manager page. Here you can Add new, Edit and Delete events.</p>
                     </div>

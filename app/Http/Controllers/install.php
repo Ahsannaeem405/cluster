@@ -11,12 +11,14 @@ class install extends Controller
     {
        // dd($request->input());
         $request->validate([
+            'dbhost' => 'required',
             'dbname' => 'required',
             'dbusername' => 'required',
             'email' => 'required',
             'pwd' => 'required',
                
         ]);
+    $dbhost=$request->dbhost;
     $dbname=$request->dbname;
     $dbusername = $request->dbusername;
     $dbpass=$request->dbpass;
@@ -29,13 +31,13 @@ class install extends Controller
         APP_NAME=Laravel\n
         APP_ENV=local\n
         APP_KEY=base64:ZTQ6Z06QE1/WXpuORbsNqEaka3zzdmEwHiVxm+QDZl4=\n
-        APP_DEBUG=true\n
+        APP_DEBUG=false\n
         APP_URL=http://localhost\n
         LOG_CHANNEL=stack\n
         LOG_DEPRECATIONS_CHANNEL=null\n
         LOG_LEVEL=debug\n
-        DB_CONNECTION=mysql\n
-        DB_HOST=92.249.44.207\n";
+        DB_CONNECTION=mysql\n";
+        $txt10 =  "DB_HOST=".$dbhost."\n";
         $txt11 = "DB_PORT=3306\n";
         $txt12 = "DB_DATABASE=".$dbname."\n";
         $txt13 = "DB_USERNAME=".$dbusername."\n";
@@ -54,14 +56,17 @@ class install extends Controller
         $txt23 = "REDIS_PASSWORD=null\n";
         $txt24 = "REDIS_PORT=6379\n";
 
-        $txt25 = "MAIL_MAILER=smtp\n";
-        $txt26 = "MAIL_HOST=mailhog\n";
-        $txt27 = "MAIL_PORT=1025\n";
-        $txt28 = "MAIL_USERNAME=null\n";
-        $txt29 = "MAIL_PASSWORD=null\n";
+
+  
+
+        $txt25 = "MAIL_MAILER=sendmail\n";
+        $txt26 = "MAIL_HOST=smtp.gmail.com\n";
+        $txt27 = "MAIL_PORT=587\n";
+        $txt28 = "MAIL_USERNAME=demotalha1@gmail.com\n";
+        $txt29 = "MAIL_PASSWORD=demo@123456789\n";
         $txt30 = "MAIL_ENCRYPTION=null\n";
-        $txt31 = "MAIL_FROM_ADDRESS=null\n";
-        $txt33 = "MAIL_FROM_NAME=null\n";
+        $txt31 = "MAIL_FROM_ADDRESS=tls\n";
+        $txt33 = "MAIL_FROM_NAME=Cluster\n";
 
         $txt34 = "AWS_ACCESS_KEY_ID=\n";
         $txt35 = "AWS_SECRET_ACCESS_KEY=\n";
@@ -78,6 +83,7 @@ class install extends Controller
         $txt44 = "MIX_PUSHER_APP_CLUSTER=null\n";
 
         fwrite($myfile, $txt0);
+        fwrite($myfile, $txt10);
         fwrite($myfile, $txt11);
         fwrite($myfile, $txt12);
         fwrite($myfile, $txt13);

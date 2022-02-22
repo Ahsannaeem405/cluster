@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page_title', 'Home Page')
+@section('page_title', 'Event Page')
 @section('content')
     <?php
     $role = Auth::user()->post_role;
@@ -27,7 +27,7 @@
         <div class="container">
             <div class="row">
                 <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
-                    <div class="main-header-content">
+                    <div class="main-header-content mt-5">
                         <h1>Manage Cluster</h1>
                         <p>Welcome to your event manager page. Here you can Add new, Edit and Delete events.</p>
                     </div>

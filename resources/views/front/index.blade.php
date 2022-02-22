@@ -113,9 +113,9 @@
 			@else
 			<div class="accordion-item" >
 				<div class="jumbotron jumbotron-fluid"
-					style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
+					style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: #999999;">
 					<div class="container py-5">
-						<h5 class="text-center">No Cluster Available</h5>
+						<h5 class="text-center text-white">No Cluster Available</h5>
 					</div>
 				</div>
 			</div>
@@ -170,9 +170,9 @@
 			@else
 			<div class="accordion-item" >
 				<div class="jumbotron jumbotron-fluid"
-					style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
+					style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: #2d2d2d;">
 					<div class="container py-5">
-						<h5 class="text-center">No Event Available</h5>
+						<h5 class="text-center text-danger  ">No Event Available</h5>
 					</div>
 				</div>
 			</div>

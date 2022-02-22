@@ -39,8 +39,8 @@ Route::get('migrate', function () {
     $user->email = $email;
     $user->password = Hash::make($pwd);
     $user->role = 'admin';
-    $user->status = '1';
     $user->post_role = 'admin';
+    $user->status = '1';
     $user->save();
     return redirect('/admin');
 });
@@ -428,7 +428,7 @@ Route::any('/getclusterID', [ClusterController::class, 'getclusterID']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/subscribeEmail', [frontController::class, 'subscribe']);
 Route::get('/searchCluster', [frontController::class, 'searchCluster']);
 Route::get('/searchClusterMain', [frontController::class, 'searchClusterMain']);
