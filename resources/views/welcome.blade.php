@@ -270,21 +270,21 @@ p {
                                 </div>
                             </div> 
                             <label class="fieldlabels">DataBase Host: *</label> 
-                            <input type="text" name="dbhost" class="dbhost" placeholder="DataBase Host"  required /> 
+                            <input type="text" name="dbhost" class="dbhost form-control @error('dbhost') is-invalid @enderror" placeholder="DataBase Host"  required /> 
                             @error('dbhost')
 								<span class="invalid-feedback" role="alert">
 								<strong>{{ $message }}</strong>
 								</span>
 								@enderror
                             <label class="fieldlabels">DataBase Name: *</label> 
-                            <input type="text" name="dbname" class="dbname" placeholder="DataBase Name"  required /> 
+                            <input type="text" name="dbname" class="dbname form-control @error('dbname') is-invalid @enderror" placeholder="DataBase Name"  required /> 
                             @error('dbname')
 								<span class="invalid-feedback" role="alert">
 								<strong>{{ $message }}</strong>
 								</span>
 								@enderror
                             <label class="fieldlabels">DataBase User Name: *</label> 
-                            <input type="text" name="dbusername" class="dbname" placeholder="DataBase User Name" required/> 
+                            <input type="text" name="dbusername" class="dbname form-control @error('dbusername') is-invalid @enderror" placeholder="DataBase User Name" required/> 
                             @error('dbusername')
 								<span class="invalid-feedback" role="alert">
 								<strong>{{ $message }}</strong>
@@ -293,11 +293,7 @@ p {
                             <label class="fieldlabels">DataBase Password *</label> 
                             <input type="text" name="dbpass" placeholder="DataBase Password" required/> 
                             
-                            @error('dbpass')
-                            <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror  
+                           
                         </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     </fieldset>
                     <fieldset>
@@ -312,14 +308,14 @@ p {
                             </div> 
 
                             <label class="fieldlabels">Email: *</label> 
-                            <input type="email" name="email" placeholder="UserName" required /> 
+                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="UserName" required /> 
                             @error('email')
 								<span class="invalid-feedback" role="alert">
 								<strong>{{ $message }}</strong>
 								</span>
 								@enderror
                             <label class="fieldlabels">Password: *</label> 
-                            <input type="password" name="pwd" placeholder="Password"  required/> 
+                            <input type="password" name="pwd" class="form-control @error('pwd') is-invalid @enderror" placeholder="Password"  required/> 
                             @error('pwd')
 								<span class="invalid-feedback" role="alert">
 								<strong>{{ $message }}</strong>
