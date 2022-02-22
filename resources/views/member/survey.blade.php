@@ -85,6 +85,11 @@
                                     <div class="row">
                                         <form action="{{ url("$role/Survey/create") }}" method="POST">
                                             @csrf
+                                            <div class="col-12 title" style="display: none;margin-bottom: 17px;">
+                                                    <h4 for=""> Enter Survey Title </h4>
+                                                    <input type="text" name="title" class="form-control" id="">
+
+                                            </div>
 
                                             <div class="col-12 quest">
                                                 <div class="jumboo">
@@ -163,9 +168,15 @@
             $(".radio_quest").on("click", function() {
 
                 $('.subb').css('display', 'block');
+                $('.title').css('display', 'block');
+
             });
 
+
+
+
             $(".input_quest").on("click", function() {
+                $('.title').css('display', 'block');
 
                 $('.subb').css('display', 'block');
             });

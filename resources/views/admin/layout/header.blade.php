@@ -714,7 +714,7 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
                                                 <b>{{ $clusss->Cluster->name }}</b> </span>
                                         </div>
                                         <span class="notification-icon">
-                                            <a @if (auth::user()->role == 'admin' || auth::user()->post_role == 'manager') href="{{ url("$role/aprroved/request", [$clusss->id]) }}" @endif
+                                            <a @if (auth::user()->role == 'admin' ||$clusss->Cluster->Manger) href="{{ url("$role/aprroved/request", [$clusss->id]) }}" @endif
                                                 class="accept-request">
                                                 <i class="fas fa-check"></i>
                                             </a> </span>

@@ -161,6 +161,7 @@
                                     </div>
 
 
+                                    {{-- @dd($list->Event) --}}
 
 
                                     <div class="control-block-button" style="margin-top:-6px">
@@ -252,6 +253,8 @@
 
                 {{-- @dd($public_cluster) --}}
                 @foreach ($public_cluster as $list)
+
+                {{-- @dd($list->JoinClust) --}}
                 @if (!isset($list->JoinClust))
                     <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
                         <a style="text-decoration: none;"

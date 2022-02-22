@@ -317,6 +317,7 @@ class ClusterController extends Controller
     function view_cluster($id)
     {
 
+        // dd($id);
         $clus_img = null;
         $clus_img2 = null;
         $clus_img1 = null;
@@ -410,7 +411,7 @@ class ClusterController extends Controller
     function join_cluster($id)
     {
 
-        // dd($id);
+     ;
 
         $date =   date("Y-m-d H:i:s");
         $date1 =   date("Y-m-d");
@@ -431,6 +432,8 @@ class ClusterController extends Controller
             $count_clus = 100;
         }
 
+        // dd($id);
+
         $get = JoinCluster::Where('cluster_id', $id)->where('status', '!=', 0)->Where('user_id', Auth::user()->id)->count();
         $eventtime = Event::Where('datetimepicker', '>', $date)->where('cluster_id', $id)->get();
         $pending_user = JoinCluster::Where('cluster_id', $id)->where('status',  0)->take(6)->get();
@@ -439,7 +442,6 @@ class ClusterController extends Controller
 
         $joinn = EventJoin::Where('user_id', Auth::user()->id)->where('cluster_id', $id)->get();
         $joinn1 = EventJoin::Where('cluster_id', $id)->Where('user_id', '!=', 1)->get();
-
 
 
         if ($get == 0) {
@@ -453,9 +455,10 @@ class ClusterController extends Controller
 
 
             if ($user->post_role != 'manager' && $user->post_role != 'admin') {
-                // @dd($user->post_role);
                 $user->post_role = 'member';
             }
+
+
             $user->save();
 
             $join = new JoinCluster();
@@ -479,9 +482,10 @@ class ClusterController extends Controller
             // dd($event_3);
 
             $manager = JoinCluster::Where('cluster_id', $id)->where('status', 2)->take(6)->get();
-            $user = JoinCluster::Where('cluster_id', $id)->where('status', 0)->take(4)->get();
+            $user = JoinCluster::Where('cluster_id', $id)->where('status', 1)->take(4)->get();
 
 
+            // @dd(user );
             return view('admin.Events-manager', compact('user', 'joinn1', 'manager', 'mang', 'event', 'id', 'joinn', 'clust', 'clus_img', 'clus_img1', 'event_3', 'pending_user', 'clus_img2', 'eventtime', 'count_clus'));
         }
     }
@@ -589,7 +593,7 @@ class ClusterController extends Controller
         }
 
 
-   
+
         $clustor->save();
 
 
@@ -628,7 +632,7 @@ class ClusterController extends Controller
 
 
 
- 
+
         $clustor->save();
 
 
@@ -651,7 +655,6 @@ class ClusterController extends Controller
     public function users()
     {
         $user['user_list'] = User::where('post_role', 'user')->paginate(10);
-
         return view('admin.users', $user);
     }
     public function addUser(Request $request)

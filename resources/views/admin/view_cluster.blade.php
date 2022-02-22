@@ -104,7 +104,7 @@
             @endif
 
             @foreach ($viewCluster as $list)
-     
+
                 <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mb-3">
                     <a style="text-decoration: none;"
                         @if (Auth::user()->role == 'admin') href="{{ url("$role/Join/cluster", $list->id) }}" @else  href="{{ url("$role/view/cluster", $list->id) }}" @endif>
@@ -140,7 +140,7 @@
                                                     $manager = 0;
                                                 @endphp
                                                 @foreach ($list->joindetail as $listss)
-                                        
+
                                                     @php
                                                         $manager++;
                                                         if ($manager > 1) {
@@ -169,15 +169,21 @@
 
 
                                     <div class="control-block-button" style="margin-top:-6px">
+{{--
+                                        @dd($list) --}}
                                         @if (Auth::user()->role == 'user')
+                                        {{-- @dd($list) --}}
                                             @if (isset($list->join))
+
+
 
                                                 <a class="btn btn-primary text-white" > Pending</a>
                                             @else
-                                                <a href="{{ url('/user/Join/cluster', $list->id) }}"
-                                                    class="btn btn-control " style="background:#ff5e3a;    color: white; ">
-                                                    <i class="fa fa-plus"></i>
-                                                </a>
+                                                {{-- <a href="{{ url('/user/Join/cluster', $list->id) }}"
+                                                  > --}}
+
+                                                    <button class="btn btn-success"> Joined</button>
+                                                {{-- </a> --}}
                                             @endif
 
 
@@ -325,7 +331,7 @@
                             <div class="modal-header">
                                 <h6 class="title">Delete Cluster</h6>
                             </div>
-        
+
                             <div class="modal-body">
                                 <div class="">
                                     <p>Are you sure you want to delete this cluster <span
@@ -343,7 +349,7 @@
                                     <div class="col-6">
                                         <button href="#" class="btn btn-secondary full-width" class="close icon-close"
                                             data-bs-dismiss="modal" aria-label="Close">No</button>
-        
+
                                     </div>
                                 </div>
                             </div>
@@ -430,7 +436,7 @@
 
 
     @if (isset($list->id))
-        
+
     @endif
 
     {{-- For member show search --}}

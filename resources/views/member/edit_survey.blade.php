@@ -64,7 +64,7 @@
                                     <div class="row">
                                         <div class="offset-2 col-8">
 
-                                            <button class="btn btn-success mt-3 radio_quest">Add Radio Question</button>
+                                            <button class="btn btn-success mt-3 radio_quest">Add Question For Choice</button>
                                         </div>
 
                                     </div>
@@ -75,27 +75,27 @@
                                     <div class="row">
                                         <div class="offset-2 col-8">
 
-                                            <button class="btn btn-success mt-3 input_quest">Add Input Question</button>
+                                            <button class="btn btn-success mt-3 input_quest">Add  Question</button>
                                         </div>
 
                                     </div>
                                 </div>
 
-                                <div class="offset-2 col-8"   style="    border: 2px solid darkgrey;border-radius: 15px;padding-left: 30px;">
+                                <div class="offset-2 col-8 subb"   @if( count($serv) == 0)   style="display:none; " @else  style=" border: 2px solid darkgrey;border-radius: 15px;padding-left: 30px;" @endif >
+
                                     <div class="row">
                                         <form action="{{ url("$role/Survey/edit") }}" method="POST">
                                             @csrf
                                             <?php
                                             $i = 1;
                                             ?>
-
-
                                             <div class="col-12"
                                            style="margin-top: 18px;">
+
                                                 @foreach ($serv as $servs)
                                                     <h2 class="text-center"
-                                                        style="margin-top: 40px;margin-bottom: 40px;">Servey Form
-                                                        {{ $i++ }}</h2>
+                                                        style="margin-top: 40px;margin-bottom: 40px;">{{$servs->title}}
+                                                        </h2>
 
                                                     <input type="hidden" value="{{ $servs->id }}" name="survey_form[]"
                                                         id="">
@@ -169,16 +169,24 @@
 
                                             </div>
 
-                                            <div class="col-6 quest">
+
+                                            <div class="col-12 title" style="display: none;margin-bottom: 17px;    margin-top: 19px;">
+                                                <h4 for=""> Enter Survey Title </h4>
+                                                <input type="text" name="title" class="form-control" id="">
+
+                                        </div>
+                                            <div class="col-12 quest">
 
                                             </div>
 
-                                            <input type="submit" name="submit" class="btn btn-primary" value="Update" id="">
+
+                                            <input type="submit" @if( count($serv) == 0)  style="display:none" @endif name="submit" class="btn btn-primary subb" value="Update" id="">
 
                                         </form>
 
 
                                     </div>
+
                                 </div>
 
 
@@ -226,6 +234,21 @@
 
             });
 
+
+            $(".radio_quest").on("click", function() {
+
+            $('.subb').css('display', 'block');
+            $('.title').css('display', 'block');
+            });
+
+
+
+            $(".input_quest").on("click", function() {
+
+            $('.subb').css('display', 'block');
+            $('.title').css('display', 'block');
+
+            });
 
 
             $(".radio_quest").on("click", function() {
