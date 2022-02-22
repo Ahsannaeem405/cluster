@@ -327,7 +327,7 @@ class ClusterController extends Controller
         $date =   date("Y-m-d H:i:s");
         $date1 =   date("Y-m-d");
 
-        $invite_user = User::Where('role', '!=', 'admin')->get();
+        $invite_user = User::Where('role', '!=', 'admin')->where('id', '!=', Auth::user()->id)->get();
 
         $clust = Cluster::find($id);
         if (isset($clust)) {
@@ -418,6 +418,7 @@ class ClusterController extends Controller
         $date =   date("Y-m-d H:i:s");
         $date1 =   date("Y-m-d");
         $clust = Cluster::find($id);
+        $invite_user = User::Where('role', '!=', 'admin')->where('id', '!=', Auth::user()->id)->get();
 
         $clus_img2 = explode(',', $clust->image);
 
@@ -472,7 +473,7 @@ class ClusterController extends Controller
             $mang = JoinCluster::Where('cluster_id', $id)->where('status', '!=', 0)->Where('user_id', Auth::user()->id)->first();
 
 
-            return view('admin.Events-manager', compact('user', 'manager', 'mang', 'event', 'id', 'joinn', 'clust', 'clus_img', 'clus_img1', 'event_3', 'clus_img2', 'eventtime', 'count_clus'));
+            return view('admin.Events-manager', compact('user', 'invite_user' , 'manager', 'mang', 'event', 'id', 'joinn', 'clust', 'clus_img', 'clus_img1', 'event_3', 'clus_img2', 'eventtime', 'count_clus'));
         } else {
 
 
@@ -481,17 +482,14 @@ class ClusterController extends Controller
             $event = Event::where('cluster_id', $id)->get();
 
             $event_3 = Event::where('cluster_id', $id)->take(3)->whereDate('datetimepicker',  $date1)->get();
-            // dd($event_3);
 
             $manager = JoinCluster::Where('cluster_id', $id)->where('status', 2)->take(6)->get();
             $user = JoinCluster::Where('cluster_id', $id)->where('status', 1)->take(4)->get();
 
 
-            // @dd(user );
-            return view('admin.Events-manager', compact('user', 'joinn1', 'manager', 'mang', 'event', 'id', 'joinn', 'clust', 'clus_img', 'clus_img1', 'event_3', 'pending_user', 'clus_img2', 'eventtime', 'count_clus'));
+            return view('admin.Events-manager', compact('user', 'invite_user' ,'joinn1', 'manager', 'mang', 'event', 'id', 'joinn', 'clust', 'clus_img', 'clus_img1', 'event_3', 'pending_user', 'clus_img2', 'eventtime', 'count_clus'));
         }
     }
-    //
     public function createCluster(Request $request)
     {
 

@@ -146,6 +146,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/survey/view/', [MemberController::class, 'survey_view']);
         Route::get('/survey/question', [MemberController::class, 'view_que']);
 
+        Route::post('/invite/cluster/', [MemberController::class, 'invite_user']);
+
+
 
     });
 });
@@ -243,6 +246,7 @@ Route:: prefix('/manager')->middleware(['auth'])->group(function () {
     Route::get('/survey/view/', [MemberController::class, 'survey_view']);
     Route::get('/survey/question', [MemberController::class, 'view_que']);
 
+    Route::post('/invite/cluster/', [MemberController::class, 'invite_user']);
 
 });
 

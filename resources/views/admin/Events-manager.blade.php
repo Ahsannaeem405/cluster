@@ -101,10 +101,10 @@
                                                             <textarea name="detail"
                                                                 style="  font-size: 16px;       margin-top: 15px;  border: none;    color: white;    font-weight: 400;background-color: rgba(0, 0, 0, 0);"
                                                                 name="" id="" cols="30" rows="2">
-                                                                        @if (isset($clust->detail))
-                                                                        {{ $clust->detail }}
-                                                                            @endif
-                                                                        </textarea>
+                                                                            @if (isset($clust->detail))
+    {{ $clust->detail }}
+    @endif
+                                                                            </textarea>
 
                                                         </div>
 
@@ -185,8 +185,8 @@
                                         <div class="control-block-button">
 
                                             @if ((isset($mang->status) && $mang->status == 2) || Auth::user()->role == 'admin')
-                                                <a style="height: 100%;" class="btn btn-control bg-green" data-bs-toggle="modal"
-                                                    data-bs-target="#create-event">
+                                                <a style="height: 100%;" class="btn btn-control bg-green"
+                                                    data-bs-toggle="modal" data-bs-target="#create-event">
                                                     <svg class="olymp-plus-icon">
                                                         <use xlink:href="#olymp-plus-icon"></use>
                                                     </svg>
@@ -306,14 +306,16 @@
                                                 </svg>
                                                 <ul class="more-dropdown">
                                                     <li>
-                                                        <a data-bs-toggle="modal" data-bs-target="#edit-clus">Upload Image</a>
+                                                        <a data-bs-toggle="modal" data-bs-target="#edit-clus">Upload
+                                                            Image</a>
 
 
                                                     </li>
 
 
                                                     <li>
-                                                        <a data-bs-toggle="modal" data-bs-target="#invite-user">Invite User</a>
+                                                        <a data-bs-toggle="modal" data-bs-target="#invite-user">Invite
+                                                            User</a>
 
 
                                                     </li>
@@ -376,7 +378,8 @@
                                                         $i++;
                                                         ?>
 
-                                                        <a href="{{ asset("images/$clus_imgs") }}" class="col col-3-width">
+                                                        <a href="{{ asset("images/$clus_imgs") }}"
+                                                            class="col col-3-width">
                                                             <img loading="lazy" src="{{ asset("images/$clus_imgs") }}"
                                                                 alt="photo" width="600" height="600">
                                                         </a>
@@ -580,7 +583,8 @@
 
 
                                                                                 <div class="author-date">
-                                                                                    <a class="h6 post__author-name fn" href="#"
+                                                                                    <a class="h6 post__author-name fn"
+                                                                                        href="#"
                                                                                         style="font-size: 26px;">{{ $events->name }}
                                                                                     </a>
                                                                                     {{-- created as <a
@@ -613,7 +617,8 @@
                                                                                 @if (isset($events->Event->cluster_id))
                                                                                     @if ($ii != $events->id)
                                                                                         <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
-                                                                                            class="btn btn-primary"> Join</a>
+                                                                                            class="btn btn-primary">
+                                                                                            Join</a>
                                                                                     @else
                                                                                         <a class="btn btn-primary bg-green "
                                                                                             style="border-color:green; color:white">
@@ -728,7 +733,8 @@
                                                             width="36" height="36" class="avatar">
 
                                                     @else
-                                                        <i style="font-size: 25px;margin-top: 5px;" class="fa fa-user"></i>
+                                                        <i style="font-size: 25px;margin-top: 5px;"
+                                                            class="fa fa-user"></i>
                                                     @endif
                                                 </div>
                                                 <div class="notification-event">
@@ -830,6 +836,7 @@
 
                                     @if (isset($joinn1) && count($joinn1) > 0)
                                         @foreach ($joinn1 as $joinns)
+                                        {{-- @dd($joinns) --}}
                                             @if ($joinns->User->role != 'admin')
                                                 <li>
                                                     <div class="author-thumb">
@@ -916,7 +923,8 @@
                             <input type="hidden" value="@if (isset($mang->id)) {{ $mang->id }} @endif"
                                 name="mangerID" id="">
 
-                            <input type="hidden" value="@if (isset($mang->cluster_id)) {{ $mang->cluster_id }} @endif"
+                            <input type="hidden"
+                                value="@if (isset($mang->cluster_id)) {{ $mang->cluster_id }} @endif"
                                 name="cluster_id" id="">
 
 
@@ -965,7 +973,8 @@
         </div>
 
 
-        <div class="modal fade" id="edit-clus" tabindex="-1" role="dialog" aria-labelledby="edit-clus" aria-hidden="true">
+        <div class="modal fade" id="edit-clus" tabindex="-1" role="dialog" aria-labelledby="edit-clus"
+            aria-hidden="true">
             <div class="modal-dialog window-popup edit-clus" role="document">
                 <div class="modal-content">
                     <a href="#" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">
@@ -978,15 +987,16 @@
                     </div>
 
                     <div class="modal-body">
-                        <form @if (isset($clust->id)) action="{{ url("$role/upd/cluster/$clust->id") }}" @endif
+                        <form
+                            @if (isset($clust->id)) action="{{ url("$role/upd/cluster/$clust->id") }}" @endif
                             method="post" enctype="multipart/form-data">
                             @csrf
 
 
                             <div class="form-group ">
                                 <label for="exampleFormControlInput1">Select Cluster Image</label>
-                                <input type="file" name="image[]" class="form-control  @error('image') is-invalid @enderror"
-                                    id="Cluster-Name" required>
+                                <input type="file" name="image[]"
+                                    class="form-control  @error('image') is-invalid @enderror" id="Cluster-Name" required>
 
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
@@ -1026,7 +1036,8 @@
 
         {{-- Start Invite User For Cluster --}}
 
-        <div class="modal fade" id="invite-user" tabindex="-1" role="dialog" aria-labelledby="invite-user" aria-hidden="true">
+        <div class="modal fade" id="invite-user" tabindex="-1" role="dialog" aria-labelledby="invite-user"
+            aria-hidden="true">
             <div class="modal-dialog window-popup invite-user" role="document">
                 <div class="modal-content">
                     <a href="#" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">
@@ -1035,27 +1046,32 @@
                         </svg>
                     </a>
                     <div class="modal-header">
-                        <h6 class="title">Invite Cluster</h6>
+                        <h6 class="title">Invite User</h6>
                     </div>
 
                     <div class="modal-body">
-                        <form @if (isset($clust->id)) action="{{ url("$role/upd/cluster/$clust->id") }}" @endif
+                        <form @if (isset($clust->id)) action="{{ url("$role/invite/cluster") }}" @endif
                             method="post" enctype="multipart/form-data">
                             @csrf
 
 
-                            <div class="form-group" style="text-align: end">
-                                <select name="" id="">
-                                    <option value=""> </option>
+                            <div class="form-group" style="text-align: start">
+                                <label for=""> Select User</label>
+                                <select class="clusterMultiple" name="userid[]" size="1" multiple>
+
+                                    @foreach ($invite_user as $invite_users)
+                                        <option value="{{ $invite_users->id }}">
+                                            {{ $invite_users->first_name }}
+                                            {{ $invite_users->last_name }}</option>
+                                    @endforeach
                                 </select>
 
+                                <input type="hidden" value="{{ $clust->id }}" name="clusterID" id="">
 
                             </div>
                             @if ((isset($mang->status) && $mang->status == 2) || Auth::user()->role == 'admin')
-
                                 <input type="submit" class="btn btn-primary " value="Update" name="" id="">
-
-                                @endif
+                            @endif
                             {{-- <button>Create Event</button> --}}
                         </form>
                     </div>
@@ -1201,47 +1217,56 @@
                                     <ul class="more-dropdown more-with-triangle triangle-bottom-right">
                                         <li>
                                             <a href="#">
-                                                <img loading="lazy" src="img/icon-chat1.html" alt="icon" width="20" height="20">
+                                                <img loading="lazy" src="img/icon-chat1.html" alt="icon" width="20"
+                                                    height="20">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img loading="lazy" src="img/icon-chat2.html" alt="icon" width="20" height="20">
+                                                <img loading="lazy" src="img/icon-chat2.html" alt="icon" width="20"
+                                                    height="20">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img loading="lazy" src="img/icon-chat3.html" alt="icon" width="20" height="20">
+                                                <img loading="lazy" src="img/icon-chat3.html" alt="icon" width="20"
+                                                    height="20">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img loading="lazy" src="img/icon-chat4.html" alt="icon" width="20" height="20">
+                                                <img loading="lazy" src="img/icon-chat4.html" alt="icon" width="20"
+                                                    height="20">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img loading="lazy" src="img/icon-chat5.html" alt="icon" width="20" height="20">
+                                                <img loading="lazy" src="img/icon-chat5.html" alt="icon" width="20"
+                                                    height="20">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img loading="lazy" src="img/icon-chat6.html" alt="icon" width="20" height="20">
+                                                <img loading="lazy" src="img/icon-chat6.html" alt="icon" width="20"
+                                                    height="20">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img loading="lazy" src="img/icon-chat7.html" alt="icon" width="20" height="20">
+                                                <img loading="lazy" src="img/icon-chat7.html" alt="icon" width="20"
+                                                    height="20">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img loading="lazy" src="img/icon-chat8.html" alt="icon" width="20" height="20">
+                                                <img loading="lazy" src="img/icon-chat8.html" alt="icon" width="20"
+                                                    height="20">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img loading="lazy" src="img/icon-chat9.html" alt="icon" width="20" height="20">
+                                                <img loading="lazy" src="img/icon-chat9.html" alt="icon" width="20"
+                                                    height="20">
                                             </a>
                                         </li>
                                         <li>
@@ -1450,4 +1475,12 @@
 
             });
         </script>
+
+        <script>
+            $(document).ready(function() {
+
+                $('.clusterMultiple').select2();
+            });
+        </script>
+
     @endsection

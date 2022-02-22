@@ -522,4 +522,27 @@ class MemberController extends Controller
 
         return view('member.edit_survey', compact('serv'));
     }
+
+    public function invite_user(Request $request){
+
+
+        for($i = 0; $i < count($request->userid); $i++)
+        {
+            $get = JoinCluster::where('user_id', $request->userid[$i])->where('cluster_id',$request->clusterID )->count();
+
+            if($get == 0)
+            {
+                $join = new JoinCluster();
+                $join->user_id = $request->userid[$i];
+                $join->cluster_id = $request->clusterID;
+                $join->status = 1;
+                $join->save();
+            }
+
+
+        }
+
+        return back()->with('success', "Sucessfully Invited");
+
+    }
 }
