@@ -269,6 +269,13 @@ p {
                                     <h2 class="steps">Step 2 - 4</h2>
                                 </div>
                             </div> 
+                            <label class="fieldlabels">DataBase Host: *</label> 
+                            <input type="text" name="dbhost" class="dbhost" placeholder="DataBase Host"  required /> 
+                            @error('dbhost')
+								<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+								</span>
+								@enderror
                             <label class="fieldlabels">DataBase Name: *</label> 
                             <input type="text" name="dbname" class="dbname" placeholder="DataBase Name"  required /> 
                             @error('dbname')

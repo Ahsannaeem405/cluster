@@ -126,7 +126,7 @@
 
 						<div class="form-group"  id="cluster">
 							<label class="control-label">Cluster</label>
-							<select class="clusterMemberMultiple disabled @error('cluster') is-invalid @enderror" name="cluster[]" multiple="multiple" >
+							<select class="clusterMemberMultiple disabled @error('cluster') is-invalid @enderror" name="cluster[]" multiple="multiple" required>
 
 								@foreach($cluster as $listcMain)
 							@php
@@ -191,7 +191,7 @@
 
 					<div class="form-group"  id="cluster">
 						<label class="control-label">Cluster</label>
-						<select class="clusterMemberMultiple  @error('password') is-invalid @enderror" name="cluster[]" multiple="multiple" >
+						<select class="clusterMemberMultiple  @error('password') is-invalid @enderror" name="cluster[]" multiple="multiple" required>
 
 							@foreach($cluster as $listcMain)
 							@php

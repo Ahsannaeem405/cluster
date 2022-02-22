@@ -140,7 +140,7 @@
 	</div>
 
 	<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1">
-		<a href="02-ProfilePage.html" class="logo">
+		<a href="#" class="logo">
 			<div class="img-wrap">
 				<img loading="lazy" src="img/white-logo.png" alt="logo-tital" width="34" height="34">
 			</div>

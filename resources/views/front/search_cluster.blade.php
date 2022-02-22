@@ -1,5 +1,6 @@
 
 @if($top_cluster == 'top_cluster')
+@if(isset($viewCluster) && count($viewCluster) > 0)
 @foreach($viewCluster as $list)
     
 @php
@@ -65,11 +66,22 @@
 	
 		
 @endforeach
+@else
+<div class="accordion-item" >
+	<div class="jumbotron jumbotron-fluid"
+		style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: #999999;">
+		<div class="container py-5">
+			<h5 class="text-center text-white">No Top Cluster Available</h5>
+		</div>
+	</div>
+</div>
+@endif
 
 @endif
     @if($top_cluster == 'most_popular')
   
-           
+	@if(isset($viewCluster) && count($viewCluster) > 0)
+
 @foreach($viewCluster as $list)
     
 	@php
@@ -135,9 +147,19 @@
 		
 			
 	@endforeach
-
+	@else
+	<div class="accordion-item" >
+		<div class="jumbotron jumbotron-fluid"
+			style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: #999999;">
+			<div class="container py-5">
+				<h5 class="text-center text-white">No Most Popular Cluster Available</h5>
+			</div>
+		</div>
+	</div>
+	@endif
     @endif
             @if($top_cluster == 'most_newest')
+			@if(isset($TopCluster) && count($TopCluster) > 0)
             @foreach($TopCluster as $list)
             
 			@php
@@ -201,6 +223,16 @@
 			
 			</div>
 			@endforeach
+			@else
+			<div class="accordion-item" >
+				<div class="jumbotron jumbotron-fluid"
+					style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: #999999;">
+					<div class="container py-5">
+						<h5 class="text-center text-white">No Most Newest Cluster Available</h5>
+					</div>
+				</div>
+			</div>
+			@endif
             @endif
 
     

@@ -245,7 +245,7 @@
 
                                                         <div class="author-date">
                                                             <a class="h6 post__author-name fn"
-                                                                href="02-ProfilePage.html">{{ $events->User->first_name }}</a>
+                                                                href="#">{{ $events->User->first_name }}</a>
                                                             created the
                                                             <a href="#">{{ $events->name }}</a>
                                                             <div class="post__date">
@@ -601,7 +601,7 @@
                                             </div>
 
                                             <div class="post-thumb">
-                                                <img loading="lazy" style="    min-height: 339px;max-height: 339px;"
+                                                <img loading="lazy" style="min-height: 339px;max-height: 339px;"
                                                     @if (isset($events->EventJoin->image)) src="{{ asset('images/') }}/{{ $events->EventJoin->image }}" @endif
                                                     alt="photo" width="770" height="379">
                                             </div>
@@ -615,7 +615,7 @@
 
                                                         <div class="author-date">
                                                             <a class="h6 post__author-name fn"
-                                                                href="02-ProfilePage.html">{{ $events->User->first_name }}</a>
+                                                                href="#">{{ $events->User->first_name }}</a>
                                                             created the
                                                             <a href="#">{{ $events->EventJoin->name }}</a>
                                                             <div class="post__date">

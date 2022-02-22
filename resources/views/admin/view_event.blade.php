@@ -241,7 +241,7 @@
 
                                                         <div class="author-date">
                                                             <a class="h6 post__author-name fn"
-                                                                href="02-ProfilePage.html">{{ $events->User->first_name }}</a>
+                                                                href="#">{{ $events->User->first_name }}</a>
                                                             created the
                                                             <a href="#">{{ $events->name }}</a>
                                                             <div class="post__date">
