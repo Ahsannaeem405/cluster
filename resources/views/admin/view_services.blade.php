@@ -264,7 +264,7 @@
 
                                     <div class="modal-body">
                                         <div class="">
-                                            <p>Are you sure you want to delete this user <span
+                                            <p>Are you sure you want to delete this Service <span
                                                     class="font-weight-bold text-danger">{{ $serviceslist->name }}</span>
                                             </p>
                                         </div>
