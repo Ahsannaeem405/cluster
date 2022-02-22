@@ -436,7 +436,7 @@ class MemberController extends Controller
             }
         }
 
-        return back()->with('success', 'Add Question Successfulyy');
+        return back()->with('success', 'Add Question Successfully');
     }
 
     public function survey_list()

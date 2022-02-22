@@ -61,12 +61,10 @@
                                     <th class="upcoming">
                                         DESCRIPTION
                                     </th>
-                                    @if (auth::user()->role == 'admin')
-
-                                    <th class="description">
-                                        Action </th>
-                                        @endif
-
+                                    @if (auth::user()->role == 'admin' || auth::user()->post_role == 'manager')
+                                        <th class="description">
+                                            Action </th>
+                                    @endif
 
                                 </tr>
 
@@ -96,9 +94,8 @@
 
 
                                         <td class="description event-as">
-                                            <img loading="lazy"
-                                                src="{{ asset('images/') }}/{{ $img[0] }}" alt="friend"
-                                                width="38" height="38">
+                                            <img loading="lazy" src="{{ asset('images/') }}/{{ $img[0] }}"
+                                                alt="friend" width="38" height="38">
                                         </td>
 
                                         <td class="location event-as">
@@ -109,26 +106,24 @@
                                             {{ $events->Cluster->detail }}
                                         </td>
 
-                                        @if (auth::user()->role == 'admin' || auth::user()->post_role == 'manager')
-                                        <td class="description event-as">
+                                        @if (auth::user()->role == 'admin' || $events->Cluster->Manger)
+                                            <td class="description event-as">
 
-                                            <a href="{{ url("$role/reject/request", [$events->id]) }}">
-                                                <i class="fas fa-ban"></i>
+                                                <a href="{{ url("$role/reject/request", [$events->id]) }}">
+                                                    <i class="fas fa-ban"></i>
 
-                                            </a>
-                                            &nbsp;
-
-
-                                            <span class="notification-icon">
-
-                                                <a
-                                                    href="{{ url("$role/aprroved/request", [$events->id]) }}">
-                                                    <i class="fas fa-check" aria-hidden="true"></i>
-                                                </a> </span>
+                                                </a>
+                                                &nbsp;
 
 
-                                        </td>
+                                                <span class="notification-icon">
 
+                                                    <a href="{{ url("$role/aprroved/request", [$events->id]) }}">
+                                                        <i class="fas fa-check" aria-hidden="true"></i>
+                                                    </a> </span>
+
+
+                                            </td>
                                         @endif
 
 
