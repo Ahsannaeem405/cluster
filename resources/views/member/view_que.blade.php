@@ -53,20 +53,19 @@
 
 
                                     @foreach ($serv as $servs)
+                                        {{-- @dd($servs->id , $servs->Survey->surveyID) --}}
 
-                                            <h2 class="text-center" style="margin-top: 56px;">Servey Form
-                                                {{ $i++ }}
+                                        @if (!$servs->Survey)
+                                            <input type="hidden" name="survyID[]" value="{{ $servs->id }}" id="">
+
+
+                                            <h2 class="text-center" style="margin-top: 56px;"> {{ $servs->title }}
+
                                             </h2>
 
                                             <div class="col-12">
 
                                                 @foreach ($servs->Ques as $ques)
-                                                    {{-- @if ($ques->Answer != null)
-                                                        //for showing only who's form that are not submitted by user,
-
-                                                    @else --}}
-
-
                                                     @if ($ques->question_type == 'radio')
                                                         <br>
                                                         <label for="">
@@ -93,7 +92,8 @@
                                                             @if (isset($quess->option1))
                                                                 <input class="form-check-input"
                                                                     value="{{ $quess->option1 }}" type="radio"
-                                                                    name="option{{ $quess->id }}" id="flexRadioDefault1">
+                                                                    name="option{{ $quess->id }}"
+                                                                    id="flexRadioDefault1">
                                                                 <label class="form-check-label" for="flexRadioDefault1">
                                                                     {{ $quess->option1 }}
                                                                 </label>
@@ -151,11 +151,9 @@
                                                         <input type="text" class="form-control" name="answer_text[]"
                                                             id="">
                                                     @endif
-
-
-                                                    {{-- @endif --}}
                                                 @endforeach
                                             </div>
+                                        @endif
                                     @endforeach
 
                                     <br>

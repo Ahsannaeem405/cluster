@@ -159,6 +159,7 @@ Route:: prefix('/manager')->middleware(['auth'])->group(function () {
     Route::get('/', [ClusterController::class, 'index']);
     Route::get('/view/notifications', [ClusterController::class, 'view_all']);
 
+    Route::get('/request/joinCluster/{id}', [MemberController::class, 'request_join']);
 
     Route::get('/view/cluster/{id}', [ClusterController::class, 'view_cluster']);
     Route::post('/invite/user', [ServiceController::class, 'invite_user']);
@@ -176,7 +177,7 @@ Route:: prefix('/manager')->middleware(['auth'])->group(function () {
     Route::post('upd/cluster/{id}', [ClusterController::class, 'upd_cluster']);
 
     Route::post('deleteCluster/{id}', [ClusterController::class, 'deleteCluster']);
-    Route::get('/view_cluster', [ClusterController::class, 'viewCluster']);
+    Route::get('/view_cluster', [MemberController::class, 'MangerCluster']);
 
     Route::get('/view/join/{id}/{idd}', [ClusterController::class, 'view_join']);
 

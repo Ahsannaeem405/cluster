@@ -15,6 +15,7 @@ use App\Models\Opition;
 use App\Models\Question;
 use App\Models\RequestCluster;
 use App\Models\SurveryNumber;
+use App\Models\SurveyReply;
 use App\Models\User;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\Auth;
@@ -187,6 +188,20 @@ class MemberController extends Controller
 
 
 
+    public function MangerCluster()
+    {
+
+
+
+        $viewCluster['viewCluster']  =  JoinCluster::where('user_id', Auth::user()->id)->get();
+        $viewCluster['public_cluster'] = Cluster::where('cluster_type', 'Public')->get();
+        $manager['manager'] = User::where('role', 'user')->get();
+
+        // $mang = JoinCluster::Where('cluster_id', $id)->where('status', '!=', 0)->Where('user_id', Auth::user()->id)->first();
+
+
+        return view('manager.view_cluster', $viewCluster, $manager);
+    }
 
     public function viewCluster()
     {
@@ -295,10 +310,11 @@ class MemberController extends Controller
     public function survey_edit(Request $req)
     {
 
-        if($req->questionr || $req->question)
-        {
+
+        if ($req->questionr || $req->question) {
             $serr = new SurveryNumber();
             $serr->userID = Auth::user()->id;
+            $serr->title = $req->title;
             $serr->save();
         }
 
@@ -375,9 +391,11 @@ class MemberController extends Controller
     public function survey_create(Request $req)
     {
 
+        // dd($req->title);
 
         $serr = new SurveryNumber();
         $serr->userID = Auth::user()->id;
+        $serr->title = $req->title;
         $serr->save();
 
         if ($req->question != null) {
@@ -433,19 +451,25 @@ class MemberController extends Controller
     {
         $serv = SurveryNumber::all();
 
+        //   dd( $serv[0]->Survey);
 
-
-        // $que = Question::where('question_type', 'radio')->get();
-        // $tex = Question::where('question_type', 'text')->get();
-
-
-        return view('member.view_que', compact( 'serv'));
+        return view('member.view_que', compact('serv'));
     }
 
     public function form_submision(Request $req)
     {
 
+        // dd($req);
 
+
+        for ($i = 0; $i < count($req->survyID); $i++) {
+
+
+            $surv = new SurveyReply();
+            $surv->userID = Auth::user()->id;
+            $surv->surveyID = $req->survyID[$i];
+            $surv->save();
+        }
         for ($i = 0; $i < count($req->optionID); $i++) {
 
             $reqq =   $req->optionID[$i];
@@ -454,23 +478,25 @@ class MemberController extends Controller
             $ans->questionID =  $req->questionIDr[$i];
             $ans->optionID = $req->optionID[$i];
             $ans->formID = $req->Formm[$i];
-
-
             $ans->answer = $req->$r;
             $ans->userID = Auth::user()->id;
             $ans->save();
         }
-        for ($i = 0; $i < count($req->answer_text); $i++) {
-
-            $ans = new Answer();
-            $ans->answer_text =  $req->answer_text[$i];
-            $ans->questionID = $req->questionID[$i];
-            $ans->formID = $req->Form[$i];
+        if (isset($req->answer_text)) {
 
 
-            $ans->userID = Auth::user()->id;
+            for ($i = 0; $i < count($req->answer_text); $i++) {
 
-            $ans->save();
+                $ans = new Answer();
+                $ans->answer_text =  $req->answer_text[$i];
+                $ans->questionID = $req->questionID[$i];
+                $ans->formID = $req->Form[$i];
+
+
+                $ans->userID = Auth::user()->id;
+
+                $ans->save();
+            }
         }
 
         return back()->with('success', 'Submitted Successfully');
@@ -492,7 +518,8 @@ class MemberController extends Controller
     {
 
 
-        $serv = SurveryNumber::where('');
+        $serv = SurveryNumber::where('userID', Auth::user()->id)->get();
+
         return view('member.edit_survey', compact('serv'));
     }
 }
