@@ -327,6 +327,8 @@ class ClusterController extends Controller
         $date =   date("Y-m-d H:i:s");
         $date1 =   date("Y-m-d");
 
+        $invite_user = User::Where('role', '!=', 'admin')->get();
+
         $clust = Cluster::find($id);
         if (isset($clust)) {
 
@@ -401,7 +403,7 @@ class ClusterController extends Controller
         $manager = JoinCluster::Where('cluster_id', $id)->where('status', 2)->take(6)->get();
         $user = JoinCluster::Where('cluster_id', $id)->where('status', 1)->take(6)->get();
 
-        return view('admin.Events-manager', compact('user', 'joinn1', 'manager', 'mang', 'event', 'id', 'joinn', 'clust', 'clus_img', 'clus_img1', 'event_3', 'clus_img2', 'eventtime', 'count_clus'));
+        return view('admin.Events-manager', compact('user','invite_user' ,  'joinn1', 'manager', 'mang', 'event', 'id', 'joinn', 'clust', 'clus_img', 'clus_img1', 'event_3', 'clus_img2', 'eventtime', 'count_clus'));
 
 
 
@@ -411,7 +413,7 @@ class ClusterController extends Controller
     function join_cluster($id)
     {
 
-     ;
+
 
         $date =   date("Y-m-d H:i:s");
         $date1 =   date("Y-m-d");
@@ -586,12 +588,12 @@ class ClusterController extends Controller
                 $path = $image->move('images/', $imageName);
                 $cat .= $imageName . ",";
             }
-            $clustor->cluster_overview = $request->cluster_overview;
 
             $concat =  $clustor->image . $cat;
             $clustor->image = $concat;
         }
 
+        $clustor->cluster_overview = $request->cluster_overview;
 
 
         $clustor->save();
@@ -617,6 +619,8 @@ class ClusterController extends Controller
         $cat = null;
         $clustor = Cluster::find($id);
 
+        // dd($request->detail);
+
 
         if (isset($request->image)) {
             foreach ($request->image as $image) {
@@ -624,13 +628,13 @@ class ClusterController extends Controller
                 $path = $image->move('images/', $imageName);
                 $cat .= $imageName . ",";
             }
-            $clustor->detail = $request->detail;
 
             $concat =  $clustor->image . $cat;
             $clustor->image = $concat;
         }
 
 
+        $clustor->detail = $request->detail;
 
 
         $clustor->save();

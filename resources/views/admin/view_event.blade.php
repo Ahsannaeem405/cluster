@@ -277,7 +277,8 @@
 
                                                                 {{-- </div> --}}
 
-
+                                                                <input type="hidden" value="{{ $events->cluster_id }}"
+                                                                name="clusterID" id="">
 
                                                                 <input type="hidden" value="{{ $events->id }}"
                                                                     name="eventID" id="">
@@ -505,13 +506,8 @@
                                                                 </select>
 
 
-
-                                                                {{-- <select name="userid" id="">
-                                                            @foreach ($user as $users)
-
-                                                                    <option value="{{$users->id}}">{{$users->first_name}} {{$users->last_name}}</option>
-                                                                    @endforeach
-                                                        </select> --}}
+                                                                <input type="hidden" value="{{ $events->cluster_id }}"
+                                                                name="clusterID" id="">
                                                                 <input type="hidden" value="{{ $events->id }}"
                                                                     name="eventID" id="">
 
