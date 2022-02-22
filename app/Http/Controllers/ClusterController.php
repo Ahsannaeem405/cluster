@@ -650,7 +650,7 @@ class ClusterController extends Controller
 
     public function users()
     {
-        $user['user_list'] = User::where('role', 'user')->paginate(10);
+        $user['user_list'] = User::where('post_role', 'user')->paginate(10);
 
         return view('admin.users', $user);
     }

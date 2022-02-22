@@ -63,7 +63,6 @@
                                   <th scope="col" class="text-center">#</th>
                                   <th  scope="col">Name</th>
                                   <th  scope="col">Email</th>
-                                  <th  scope="col">Gender</th>
                                   <th  scope="col">Role</th>
                                   <th  scope="col">Action</th>
                               </tr>
@@ -77,7 +76,6 @@
                                   <td class="text-center">{{$i++}}</td>
                                   <td class="py-2">{{$list->first_name}} {{$list->last_name}}</td>
                                   <td>{{$list->email}}</td>
-                                  <td>{{$list->gender}}</td>
                                   <td>{{$list->post_role}}</td>
 
                                     
