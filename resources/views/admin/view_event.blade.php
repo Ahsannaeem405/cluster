@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
-                    <div class="main-header-content mt-5" >
+                    <div class="main-header-content mt-5">
                         <h1>Your Events</h1>
 
                     </div>
@@ -43,7 +43,11 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link join_evnt1">Join Events</a>
+                                <a class="nav-link join_evnt1">Joined Events</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link join_evnt12">Events list </a>
                             </li>
 
 
@@ -144,10 +148,7 @@
                                                     </div>
                                                 </div>
                                             @endforeach
-
-
-                                            @else
-
+                                        @else
                                             <div class="accordion-item" style="    padding: unset;">
                                                 <div class="jumbotron jumbotron-fluid"
                                                     style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);background: white;">
@@ -217,7 +218,7 @@
                                                         style="text-decoration: none">{{ $events->name }}</a>
                                                     <div class="event__date">
                                                         <time class="published" datetime="2017-03-24T18:18">
-                                                            {{ $events->datetimepicker }}
+                                                            {{ date('Y-m-d H:i A', strtotime($events->datetimepicker)) }}
                                                         </time>
                                                     </div>
                                                 </div>
@@ -242,11 +243,10 @@
                                                         <div class="author-date">
                                                             <a class="h6 post__author-name fn"
                                                                 href="#">{{ $events->User->first_name }}</a>
-                                                                join this
+                                                            join this
                                                             <a href="#">{{ $events->name }}</a>
                                                             <div class="post__date">
-                                                                <time class="published" datetime="2017-03-24T18:18">
-                                                                    {{ $events->datetimepicker }}
+                                                                <time>{{ date('H:i A', strtotime($events->datetimepicker)) }}
                                                                 </time>
                                                             </div>
                                                         </div>
@@ -265,8 +265,8 @@
 
 
                                                                 <label class="control-label">Invite User</label>
-                                                                <select class="clusterMultiple" name="userid[]" size="1"
-                                                                    multiple>
+                                                                <select required class="clusterMultiple" name="userid[]"
+                                                                    size="1" multiple>
 
                                                                     @foreach ($user as $users)
                                                                         <option value="{{ $users->id }}">
@@ -278,7 +278,7 @@
                                                                 {{-- </div> --}}
 
                                                                 <input type="hidden" value="{{ $events->cluster_id }}"
-                                                                name="clusterID" id="">
+                                                                    name="clusterID" id="">
 
                                                                 <input type="hidden" value="{{ $events->id }}"
                                                                     name="eventID" id="">
@@ -387,7 +387,8 @@
                                                     {{ $events->EventJoin->description }}
                                                 </td>
                                                 <td class="description event-as" atrr={{ $events->EventJoin->id }}>
-                                                    {{ $events->EventJoin->datetimepicker }}
+
+                                                    {{ date('Y-m-d H:i A', strtotime($events->EventJoin->datetimepicker)) }}
 
                                                 </td>
 
@@ -399,9 +400,118 @@
                                     </tbody>
                                 </table>
                             @else
+                                <div class="jumbotron jumbotron-fluid" style="    margin-bottom: 0;background: white;">
+                                    <div class="container">
+                                        <h4 class="text-center">No Data Available</h4>
+                                    </div>
+                                </div>
+
+
+                            @endif
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        {{-- Event List --}}
+
+
+        <div id="join_evnt22" role="tabpanel" aria-labelledby="notifications-tab">
+
+
+            <div class="container-fluid" style="padding-left:47px;padding-right:47px;">
+                <div class="row">
+                    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="ui-block">
+
+                            @if (isset($event) && count($event) > 0)
+                                <table class="event-item-table event-item-table-fixed-width">
+
+                                    <thead>
+
+                                        <tr>
+
+                                            <th class="author">
+                                                #
+                                            </th>
+
+                                            <th class="location">
+                                                IMAGE
+                                            </th>
+
+                                            <th class="location">
+                                                NAME
+                                            </th>
+
+                                            <th class="upcoming">
+                                                DESCRIPTION
+                                            </th>
+
+                                            <th class="description">
+                                                EVENT DATE </th>
+
+                                                <th class="description">
+                                                  Action </th>
+
+
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+                                        <?php
+                                        $i = 1;
+
+                                        ?>
+
+
+                                        @foreach ($event as $events)
 
 
 
+                                            <tr class="">
+                                                <td class="author">
+                                                    {{ $i++ }}
+                                                </td>
+
+
+                                                <td class="description">
+                                                    <img loading="lazy"
+                                                        src="{{ asset('images/') }}/{{ $events->image }}"
+                                                        alt="friend" width="38" height="38">
+                                                </td>
+
+                                                <td class="location">
+                                                    {{ $events->name }}
+
+                                                </td>
+                                                <td class="upcoming " >
+                                                    {{ $events->description }}
+                                                </td>
+                                                <td class="description ">
+
+                                                    {{ date('Y-m-d H:i A', strtotime($events->datetimepicker)) }}
+
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-edit" style="font-size: 18px;" aria-hidden="true"> </i>
+                                                    &nbsp;
+
+                                                    <i class="fa fa-trash olymp-happy-faces-icon " style="font-size: 18px;" aria-hidden="true"> </i>
+
+                                                </td>
+
+
+                                            </tr>
+                                        @endforeach
+
+
+                                    </tbody>
+                                </table>
+                            @else
                                 <div class="jumbotron jumbotron-fluid" style="    margin-bottom: 0;background: white;">
                                     <div class="container">
                                         <h4 class="text-center">No Data Available</h4>
@@ -419,6 +529,7 @@
         </div>
 
 
+        {{-- Event List --}}
 
 
 
@@ -448,7 +559,8 @@
                                                         style="text-decoration: none">{{ $events->EventJoin->name }}</a>
                                                     <div class="event__date">
                                                         <time class="published" datetime="2017-03-24T18:18">
-                                                            {{ $events->EventJoin->datetimepicker }}
+                                                            {{ date('Y-m-d H:i A', strtotime($events->EventJoin->datetimepicker)) }}
+
                                                         </time>
                                                     </div>
                                                 </div>
@@ -472,11 +584,12 @@
                                                         <div class="author-date">
                                                             <a class="h6 post__author-name fn"
                                                                 href="02-ProfilePage.html">{{ $events->User->first_name }}</a>
-                                                                join this
+                                                            join this
                                                             <a href="#">{{ $events->EventJoin->name }}</a>
                                                             <div class="post__date">
                                                                 <time class="published" datetime="2017-03-24T18:18">
-                                                                    {{ $events->EventJoin->datetimepicker }}
+                                                                    {{ date('H:i A', strtotime($events->EventJoin->datetimepicker)) }}
+
                                                                 </time>
                                                             </div>
                                                         </div>
@@ -495,8 +608,8 @@
                                                                 @csrf
 
                                                                 <label class="control-label">Invite User</label>
-                                                                <select class="clusterMultiple" name="userid[]" size="1"
-                                                                    multiple>
+                                                                <select required class="clusterMultiple" name="userid[]"
+                                                                    size="1" multiple>
 
                                                                     @foreach ($user as $users)
                                                                         <option value="{{ $users->id }}">
@@ -507,7 +620,7 @@
 
 
                                                                 <input type="hidden" value="{{ $events->cluster_id }}"
-                                                                name="clusterID" id="">
+                                                                    name="clusterID" id="">
                                                                 <input type="hidden" value="{{ $events->id }}"
                                                                     name="eventID" id="">
 
@@ -573,7 +686,8 @@
 
                             <div class="form-group">
                                 <label class="control-label">Event Name</label>
-                                <input class="form-control" name="name" placeholder="Enter Event Name" type="text">
+                                <input class="form-control" name="name" required placeholder="Enter Event Name"
+                                    type="text">
                             </div>
 
                             <div class="form-group">
@@ -792,21 +906,30 @@
         $(document).ready(function() {
 
             $("#join_evnt").css('display', 'none');
+            $("#join_evnt22").css('display', 'none');
             $("#your_evnt").css('display', 'block');
+
 
             $(".your_evnt1").click(function() {
                 $("#join_evnt").css('display', 'none');
+                $("#join_evnt22").css('display', 'none');
                 $("#your_evnt").css('display', 'block');
-                // alert(12);
 
             });
 
 
 
             $(".join_evnt1").click(function() {
+                $("#join_evnt22").css('display', 'none');
                 $("#join_evnt").css('display', 'block');
                 $("#your_evnt").css('display', 'none');
-                // alert(12);
+
+            });
+
+            $(".join_evnt12").click(function() {
+                $("#join_evnt22").css('display', 'block');
+                $("#join_evnt").css('display', 'none');
+                $("#your_evnt").css('display', 'none');
 
             });
         });
@@ -836,7 +959,7 @@
             $(".cluster_id1").change(function() {
 
                 var clusterID = $(this).val();
-
+// alert(clusterID);
 
                 $.ajax({
                     type: "GET",

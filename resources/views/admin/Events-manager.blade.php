@@ -500,21 +500,32 @@
 
 
                                                                             <div class="author-date">
-                                                                                <a class="h6 post__author-name fn" href="#"
+                                                                                <a class="h6 post__author-name fn"
                                                                                     style="font-size: 26px;">{{ $events->name }}
                                                                                 </a>
 
                                                                                 <div class="post__date"
-                                                                                    style="font-size: 18px;">
-                                                                                    <time class="published"
+                                                                                    >
+                                                                                    <time class="published" style="font-size: 15px;"
                                                                                         datetime="2004-07-24T18:18">
-                                                                                        {{ $events->datetimepicker }}
-                                                                                        {{-- {{ date('h:i A', strtotime($events->time)) }} --}}
+                                                                                        {{ date('Y-m-d H:i A', strtotime( $events->datetimepicker))  }}
                                                                                     </time>
+
+                                                                                    <details>
+                                                                                        <summary> <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                                                            {{Str::limit($events->location, 10, $end='...')}}   </summary>
+
+                                                                                            <p>{{ $events->location }}</p>
+
+                                                                                           </details>
+
+
                                                                                 </div>
                                                                             </div>
 
                                                                         </div>
+
+
 
                                                                         <p style="font-size: 18px;">
                                                                             {{ $events->description }}</p>
@@ -532,9 +543,9 @@
                                                                                     <a href="{{ url("$role/view/join", [$events->id, $events->Event->cluster_id]) }}"
                                                                                         class="btn btn-primary"> Join</a>
                                                                                 @else
-                                                                                    <a class="btn btn-primary bg-green "
+                                                                                    {{-- <a class="btn btn-primary bg-green "
                                                                                         style="border-color:green; color:white">
-                                                                                        Joined</a>
+                                                                                        Joined</a> --}}
                                                                                 @endif
                                                                             @endif
                                                                         </div>
@@ -584,21 +595,30 @@
 
                                                                                 <div class="author-date">
                                                                                     <a class="h6 post__author-name fn"
-                                                                                        href="#"
+
                                                                                         style="font-size: 26px;">{{ $events->name }}
                                                                                     </a>
-                                                                                    {{-- created as <a
-                                                                                            href="#">{{ $events->Event_type }}</a> --}}
+
                                                                                     <div class="post__date"
-                                                                                        style="font-size: 18px;">
+                                                                                       >
                                                                                         <time class="published"
-                                                                                            datetime="2004-07-24T18:18">
-                                                                                            {{ $events->datetimepicker }}
+                                                                                            datetime="2004-07-24T18:18"  style="font-size: 15px;">
+                                                                                            {{ date('Y-m-d H:i A', strtotime( $events->datetimepicker))  }}
+
                                                                                         </time>
+                                                                                        <details>
+                                                                                            <summary> <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                                                                {{Str::limit($events->location, 10, $end='...')}}   </summary>
+
+                                                                                                <p>{{ $events->location }}</p>
+
+                                                                                               </details>
                                                                                     </div>
                                                                                 </div>
 
                                                                             </div>
+
+
 
                                                                             <p style="font-size: 18px;">
                                                                                 {{ $events->description }}</p>
@@ -620,9 +640,9 @@
                                                                                             class="btn btn-primary">
                                                                                             Join</a>
                                                                                     @else
-                                                                                        <a class="btn btn-primary bg-green "
+                                                                                        {{-- <a class="btn btn-primary bg-green "
                                                                                             style="border-color:green; color:white">
-                                                                                            Joined</a>
+                                                                                            Joined</a> --}}
                                                                                     @endif
                                                                                 @endif
                                                                             </div>
@@ -818,8 +838,6 @@
 
 
                                 </ul>
-
-                                <!-- .. end W-Activity-Feed -->
                             </div>
 
 
@@ -832,11 +850,8 @@
 
 
                                 <ul class="widget w-activity-feed notification-list">
-
-
                                     @if (isset($joinn1) && count($joinn1) > 0)
                                         @foreach ($joinn1 as $joinns)
-                                        {{-- @dd($joinns) --}}
                                             @if ($joinns->User->role != 'admin')
                                                 <li>
                                                     <div class="author-thumb">
@@ -906,20 +921,21 @@
                     <div class="modal-body">
                         <form action="{{ url("$role/add/event") }}" enctype="multipart/form-data" method="POST">
                             @csrf
-
                             <div class="form-group  is-select">
                                 <label class="control-label"> Event Type</label>
                                 <select class="form-select" name="Event_type">
+                                    @if($clust->cluster_type != 'Private')
                                     <option value="Public">Public Event</option>
+                                    @endif
                                     <option value="Private">Private Event</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label">Event Name</label>
-                                <input class="form-control" name="name" placeholder="Enter Event Name" type="text">
+                                <input class="form-control" required name="name" placeholder="Enter Event Name" type="text">
                             </div>
-                            {{-- @dd($mang) --}}
+
                             <input type="hidden" value="@if (isset($mang->id)) {{ $mang->id }} @endif"
                                 name="mangerID" id="">
 
@@ -939,8 +955,13 @@
 
                             <div class="form-group date-time-picker">
                                 <label class="control-label">Image</label>
-                                <input type="file" required name="image" class="form-control" value="">
+                                <input type="file" accept="image/png, image/gif, image/jpg, image/jpeg" required name="image" class="form-control" value="">
 
+                                @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
 
                             <div class="row">
