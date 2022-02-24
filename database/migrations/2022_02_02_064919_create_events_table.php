@@ -27,7 +27,6 @@ class CreateEventsTable extends Migration
             $table->string('type_Emj')->nullable();
             $table->string('cluster_id')->nullable();
 
-
             $table->timestamps();
         });
     }

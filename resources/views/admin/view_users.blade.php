@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page_title', 'User Page')
+@section('page_title', 'View User Page')
 @section('content')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 

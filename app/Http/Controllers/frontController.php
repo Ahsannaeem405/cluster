@@ -78,20 +78,31 @@ public function login_event($event_name,$id)
 
     public function searchCluster(Request $request)
     {
-        $final=array();
+   
         $top_cluster['top_cluster']=$request->search;
         if($request->search == 'top_cluster')
         {
-            $top_cluster['viewCluster']=Cluster::where('cluster_type','Public')->withCount('topCluster')->having('top_cluster_count','>',0)->orderBy('top_cluster_count','DESC')->take(4)->get();
+            $top_cluster['viewCluster']=Cluster::where('cluster_type','Public')->withCount('topCluster')->orderBy('top_cluster_count','DESC')->take(4)->get();
+            // $top_cluster['viewCluster']=Cluster::where('cluster_type','Public')->withCount('topCluster')->having('top_cluster_count','>',0)->orderBy('top_cluster_count','DESC')->take(4)->get();
             //dd($top_cluster['viewCluster']);
 
             return view('front.search_cluster',$top_cluster);
 
         }
+        if($request->search == 'all_cluster')
+        {
+            $top_cluster['allCluster']=Cluster::where('cluster_type','Public')->orderBy('id','ASC')->take(4)->get();
+            //dd($top_cluster['viewCluster']);
+
+            return view('front.search_cluster',$top_cluster);
+
+        }
+
+        
         if($request->search == 'most_popular')
         {   
             
-            $top_cluster['viewCluster']=Cluster::where('cluster_type','Public')->withCount('topEvent')->having('top_event_count','>',0)->orderBy('top_event_count','DESC')->take(4)->get();
+            $top_cluster['viewCluster']=Cluster::where('cluster_type','Public')->withCount('topEvent')->orderBy('top_event_count','DESC')->take(4)->get();
 
         }else{
             $top_cluster['TopCluster']=Cluster::where('cluster_type','Public')->orderBy('id','DESC')->take(4)->get();

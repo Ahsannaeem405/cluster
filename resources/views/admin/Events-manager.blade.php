@@ -1,5 +1,5 @@
     @extends('admin.layout')
-    @section('page_title', 'Event Page')
+    @section('page_title', 'Cluster Page')
     @section('content')
         <?php
         $role = Auth::user()->post_role;

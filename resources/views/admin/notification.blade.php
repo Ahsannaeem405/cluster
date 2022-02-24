@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page_title', 'Home Page')
+@section('page_title', 'Notification Page')
 @section('content')
 
     <?php
