@@ -105,13 +105,12 @@ class ClusterController extends Controller
         $event['clustor'] = Cluster::all();
         $event['event'] = Event::where('userid', Auth::user()->id)->get();
 
-        $event['event_3'] = Event::where('userid', Auth::user()->id)->whereDate('datetimepicker',  $date)->take(3)->get();
+        $event['event_3'] = Event::where('userid', Auth::user()->id)->whereDate('datetimepicker',  $date)->orderBy('datetimepicker')->take(3)->get();
 
         $event['event_join'] = EventJoin::where('user_id', Auth::user()->id)->get();
         $event['user'] = User::Where('role', '!=', 'admin')->get();
 
 
-        // @dd($event);
         return view('admin.view_event', $event);
     }
 
@@ -129,6 +128,10 @@ class ClusterController extends Controller
     public function add_event(Request $request)
     {
 
+
+        $request->validate([
+            'image' => 'image|mimes:jpeg,png,jpg,svg|max:2048'
+        ]);
 
         $cat = null;
 
@@ -363,16 +366,16 @@ class ClusterController extends Controller
 
 
             $event = Event::where('cluster_id', $id)->get();
-            $event_3 = Event::where('cluster_id', $id)->whereDate('datetimepicker',  $date1)->take(3)->get();
+            $event_3 = Event::where('cluster_id', $id)->whereDate('datetimepicker',  $date1)->orderBy('datetimepicker')->take(3)->get();
         } else {
 
 
 
-            $event = Event::where('Event_type', 'Public')->where('cluster_id', $id)->get();
-            $event_3 = Event::where('Event_type', 'Public')->where('cluster_id', $id)->whereDate('datetimepicker',  $date1)->take(3)->get();
+            $event = Event::where('Event_type', 'Public')->where('cluster_id', $id)->orderBy('datetimepicker')->get();
+            $event_3 = Event::where('Event_type', 'Public')->where('cluster_id', $id)->whereDate('datetimepicker',  $date1)->orderBy('datetimepicker')->take(3)->get();
         }
 
-        $eventtime = Event::Where('cluster_id', $id)->where('datetimepicker', '>', $date)->get();
+        $eventtime = Event::Where('cluster_id', $id)->where('datetimepicker', '>', $date)->orderBy('datetimepicker')->get();
 
 
 
@@ -436,10 +439,9 @@ class ClusterController extends Controller
             $count_clus = 100;
         }
 
-        // dd($id);
 
         $get = JoinCluster::Where('cluster_id', $id)->where('status', '!=', 0)->Where('user_id', Auth::user()->id)->count();
-        $eventtime = Event::Where('datetimepicker', '>', $date)->where('cluster_id', $id)->get();
+        $eventtime = Event::Where('datetimepicker', '>', $date)->where('cluster_id', $id)->orderBy('datetimepicker')->get();
         $pending_user = JoinCluster::Where('cluster_id', $id)->where('status',  0)->take(6)->get();
 
 
@@ -450,8 +452,8 @@ class ClusterController extends Controller
 
         if ($get == 0) {
 
-            $event = Event::where('cluster_id', $id)->where('Event_type', 'Public')->get();
-            $event_3 = Event::where('cluster_id', $id)->where('Event_type', 'Public')->take(3)->whereDate('datetimepicker',  $date1)->get();
+            $event = Event::where('cluster_id', $id)->orderBy('datetimepicker')->where('Event_type', 'Public')->get();
+            $event_3 = Event::where('cluster_id', $id)->where('Event_type', 'Public')->take(3)->whereDate('datetimepicker',  $date1)->orderBy('datetimepicker')->get();
 
             $useID = Auth::user()->id;
             $user =  User::find($useID);
@@ -480,9 +482,9 @@ class ClusterController extends Controller
 
 
             $mang = JoinCluster::Where('cluster_id', $id)->where('status', '!=', 0)->Where('user_id', Auth::user()->id)->first();
-            $event = Event::where('cluster_id', $id)->get();
+            $event = Event::where('cluster_id', $id)->orderBy('datetimepicker')->get();
 
-            $event_3 = Event::where('cluster_id', $id)->take(3)->whereDate('datetimepicker',  $date1)->get();
+            $event_3 = Event::where('cluster_id', $id)->take(3)->whereDate('datetimepicker',  $date1)->orderBy('datetimepicker')->get();
 
             $manager = JoinCluster::Where('cluster_id', $id)->where('status', 2)->take(6)->get();
             $user = JoinCluster::Where('cluster_id', $id)->where('status', 1)->take(4)->get();
@@ -775,6 +777,8 @@ class ClusterController extends Controller
     public function getclusterID(Request $request)
     {
 
+
+       $clus =  Cluster::find($request->id);
 
 
         $mang = JoinCluster::Where('cluster_id', $request->id)->where('status', '!=', 0)->Where('user_id', Auth::user()->id)->first();
