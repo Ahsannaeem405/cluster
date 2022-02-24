@@ -179,7 +179,7 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
                     @endif
 
 
-                    @if (Auth::user()->role == 'admin' || Auth::user()->post_role == 'manager')
+                    @if (Auth::user()->role == 'admin' )
                     <li>
                             <a href="{{ url("$role/members") }}">
                                 <svg class="olymp-happy-faces-icon left-menu-icon" data-bs-toggle="tooltip"
@@ -196,7 +196,7 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
                                 </svg>
                             </a>
                         </li>
-
+                    @endif
                         @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'manager')
 
                         <li>
@@ -235,7 +235,7 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
 
 
                         @if(Auth::user()->post_role != 'admin')
-
+                        @if (Auth::user()->post_role == 'user' || Auth::user()->post_role == 'member')
                         <li>
                             <a href="{{ url("$role/Survey/Question") }}">
                                 <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
@@ -245,6 +245,8 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
                             </a>
                         </li>
                         @endif
+                        @endif
+                        @if (Auth::user()->role == 'admin' )
 
                         <li>
                             <a href="{{ url("$role/cluster_manager") }}">
@@ -265,7 +267,7 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
                     @endif
 
                     @if(Auth::user()->post_role != 'admin' )
-
+                    @if(Auth::user()->post_role == 'user' ||  Auth::user()->post_role == 'member')
                     <li>
                         <a href="{{ url("$role/survey/question") }}">
                             <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
@@ -274,6 +276,7 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
                             </svg>
                         </a>
                     </li>
+                    @endif
                     @endif
                     <li>
                         <a href="{{ url("$role/setting") }}">
@@ -337,6 +340,7 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
                             <span class="left-menu-title">Events</span>
                         </a>
                     </li>
+                    
                     @if (Auth::user()->post_role == 'admin' || Auth::user()->post_role == 'member')
                         <li>
                             <a href="{{ url("$role/services") }}">
@@ -350,7 +354,7 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
                         </li>
                     @endif
 
-                    @if (Auth::user()->role == 'admin' || Auth::user()->post_role == 'manager')
+                    @if (Auth::user()->role == 'admin' )
 
                     {{-- @if (Auth::user()->role == 'admin') --}}
                         <li>
@@ -371,6 +375,8 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
                                 <span class="left-menu-title">Users</span>
                             </a>
                         </li>
+                        @endif
+                        @if (Auth::user()->role == 'admin' || Auth::user()->post_role == 'manager')
 
                             <li>
                             <a href="{{ url("$role/survey/form") }}">
@@ -405,8 +411,8 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
                                 <span class="left-menu-title"> Survey View</span>
                             </a>
                         </li>
-
-
+                        @endif
+                        @if (Auth::user()->role == 'admin' )
                         <li>
                             <a href="{{ url("$role/cluster_manager") }}">
                                 <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
@@ -426,9 +432,10 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
                             </a>
                         </li>
                     @endif
-
-                    @if(Auth::user()->post_role != 'admin'  )
-
+                        
+                    @if(Auth::user()->post_role != 'admin' )
+                    @if(Auth::user()->post_role == 'user' ||  Auth::user()->post_role == 'member')
+                       
                     <li>
                         <a href="{{ url("$role/survey/question") }}">
                             <svg class="olymp-weather-icon left-menu-icon" data-bs-toggle="tooltip"
@@ -438,6 +445,7 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
                             <span class="left-menu-title">Survey Question</span>
                         </a>
                     </li>
+                    @endif
                     @endif
                     <li>
                         <a href="{{ url("$role/setting") }}">
@@ -631,7 +639,7 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
 						<span>Log Out</span>
 					</a> --}}
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit(); localStorage.setItem('user','Form');">
                             {{ __('Logout') }}
                         </a>
 
@@ -752,7 +760,7 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
                                     </li>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();  localStorage.setItem('user','Form');">
                                         <svg class="olymp-logout-icon">
                                             <use xlink:href="#olymp-logout-icon"></use>
                                         </svg>
