@@ -671,7 +671,9 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
             <div class="control-block">
 
                 <div class="control-icon more has-items mt-2">
+
                     <i class="far fa-bell text-white" aria-hidden="true"></i>
+                    @if(count($cluss) >0 )
                     <span style="
                     position: absolute;
                     backbround:red;
@@ -688,6 +690,7 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
                     align-items: center;
                     font-size: 12px;
                     "><small>{{count($cluss)}}</small></span>
+                    @endif
                     <div class="more-dropdown more-with-triangle triangle-top-center">
                         <div class="ui-block-title ui-block-title-small">
                             <h6 class="title">Notifications</h6>
@@ -715,7 +718,7 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
                                     </li>
                                 @endforeach
 
-
+                                @if(count($cluss) > 0 )       
                                 @foreach ($cluss as $clusss)
                                     <?php
                                     $img = explode(',', $clusss->Cluster->image);
@@ -742,7 +745,11 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
 
                                     </li>
                                 @endforeach
-
+                                    @else
+                                    <div class="my-3">
+                                        <p class="text-center">No Available Notifications</p>
+                                    </div>
+                                    @endif
                             </ul>
                         </div>
 
