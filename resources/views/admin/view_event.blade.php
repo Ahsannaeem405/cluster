@@ -253,7 +253,7 @@
                                                         <div class="author-date">
                                                             <a class="h6 post__author-name fn"
                                                                 href="#">{{ $events->User->first_name }}</a>
-                                                            join this
+                                                            create this
                                                             <a href="#">{{ $events->name }}</a>
                                                             <div class="post__date">
                                                                 <time>{{ date('h:i A', strtotime($events->datetimepicker)) }}
