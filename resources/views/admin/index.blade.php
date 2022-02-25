@@ -123,7 +123,7 @@
 
     </div>
 
-    
+    @if(Aurh::user()->role !='admin')
 		{{-- servey form --}}
         @if(count($serv) > 0 )
         @foreach ($serv as $servs)
@@ -140,6 +140,7 @@
   @endif
   @endif
   @endforeach
+  @endif
   @endif
   
   <!-- Modal -->
