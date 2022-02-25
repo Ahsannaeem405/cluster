@@ -123,7 +123,7 @@
 
     </div>
 
-    
+    @if(Auth::user()->role !='admin')
 		{{-- servey form --}}
         @if(count($serv) > 0 )
         @foreach ($serv as $servs)
@@ -141,13 +141,14 @@
   @endif
   @endforeach
   @endif
+  @endif
   
   <!-- Modal -->
   <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Servey Form</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Survey Form</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -282,7 +283,7 @@
                                 <div class="jumbotron jumbotron-fluid"
                                     style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;background: white;">
                                     <div class="container">
-                                        <h5 class="text-center"> Your Servey Submitted</h5>
+                                        <h5 class="text-center"> Your Survey Submitted</h5>
                                     </div>
                                 </div>
                             </div>
