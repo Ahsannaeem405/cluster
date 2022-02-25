@@ -42,6 +42,8 @@ class Event extends Model
 
 
     public function UserExist($id)
+
+
     {
       return User::whereDoesntHave('Join', function ($query) use ($id) {
             $query->where('event_id', $id);

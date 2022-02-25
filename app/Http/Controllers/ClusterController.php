@@ -111,7 +111,7 @@ class ClusterController extends Controller
         $event['event_join'] = EventJoin::where('user_id', Auth::user()->id)->get();
         $event['user'] = User::Where('role', '!=', 'admin')->get();
 
-
+// dd($event['event']);
         return view('admin.view_event', $event);
     }
 
@@ -175,7 +175,7 @@ class ClusterController extends Controller
     }
     public function edit_event(Request $request,$id)
     {
-        
+
 
         $cat = null;
 
@@ -719,8 +719,8 @@ class ClusterController extends Controller
 
     public function deleteCluster($id)
     {
-      
-       
+
+
         $service = Service::where('cluster_id',$id)->get();
         foreach( $service as  $list)
         {
@@ -729,7 +729,7 @@ class ClusterController extends Controller
         }
 
         $joinEvent = EventJoin::where('cluster_id',$id)->get();
-    
+
         foreach( $joinEvent as  $list)
         {
              $joinE_delete=EventJoin::find($list->id);
@@ -749,7 +749,7 @@ class ClusterController extends Controller
             $join_delete->delete();
        }
 
-       
+
         $clustor = Cluster::find($id);
 
         if (\File::exists(public_path('images/' . $clustor->image . ''))) {
@@ -757,7 +757,7 @@ class ClusterController extends Controller
             \File::delete(public_path('images/' . $clustor->image . ''));
         }
         $clustor->delete();
-   
+
         return redirect()->back()->with('error', 'Cluster Deleted Successfully!');
     }
 

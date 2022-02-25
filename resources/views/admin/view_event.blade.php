@@ -253,7 +253,7 @@
                                                         <div class="author-date">
                                                             <a class="h6 post__author-name fn"
                                                                 href="#">{{ $events->User->first_name }}</a>
-                                                            join this
+                                                            create this
                                                             <a href="#">{{ $events->name }}</a>
                                                             <div class="post__date">
                                                                 <time>{{ date('h:i A', strtotime($events->datetimepicker)) }}
@@ -752,7 +752,7 @@
 
 
                                                                 <?php
-                                                                $get = $events->UserExist($events->id);
+                                                                $get = $events->EventJoin->UserExist($events->id);
                                                                 ?>
 
 
@@ -851,7 +851,7 @@
                             <div class="form-group">
                                 <label class="control-label">Select Cluster</label>
 
-                                <select class="form-select cluster_id1" name="cluster_id">
+                                <select class="form-select cluster_id1" required name="cluster_id">
                                     @foreach ($clustor as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}
                                         </option>

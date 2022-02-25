@@ -267,12 +267,10 @@
                                     </div>
                                 </div>
 
-                                <!-- ... end Today Events -->
                             </div>
 
 
                         </div>
-                        <!-- Main Content -->
                         <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
                             @if (session()->has('success'))
                                 <div class="alert alert-success">
@@ -364,13 +362,11 @@
                                                 class="btn btn-primary formsum1" value="Submit" name="" id="">
 
 
-                                            {{-- </p> --}}
                                         </form>
                                         <div class="post-block-photo js-zoom-gallery">
                                             <?php
                                             $i = 1;
                                             ?>
-                                            {{-- @dd($clus_img2) --}}
 
                                             @if (isset($clus_img))
                                                 @foreach ($clus_img as $clus_imgs)
