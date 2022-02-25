@@ -565,4 +565,10 @@ class MemberController extends Controller
         return back()->with('success', "Sucessfully Invited");
 
     }
+    public function skipForm()
+    {
+        setcookie('skip','SkipFrom', time() + (86400 *30));//set for a day
+
+        return back()->with('success', "Sucessfully Invited");
+    }
 }

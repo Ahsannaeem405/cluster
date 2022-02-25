@@ -70,6 +70,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/Join/cluster/{id}', [ClusterController::class, 'join_cluster']);
         Route::post('/add/events/', [ClusterController::class, 'add_events']);
         Route::post('/add/event/', [ClusterController::class, 'add_event']);
+        Route::post('/edit/event/{id}', [ClusterController::class, 'edit_event']);
+        Route::post('/deleteEvent/{id}', [ClusterController::class, 'deleteEvent']);
         Route::post('/update/event/{id}', [ClusterController::class, 'update_event']);
         Route::get('/delete/event/{id}', [ClusterController::class, 'delete_event']);
 
@@ -438,5 +440,6 @@ Route::get('/searchCluster', [frontController::class, 'searchCluster']);
 Route::get('/searchClusterMain', [frontController::class, 'searchClusterMain']);
 
 Route::post('/form/submision', [MemberController::class, 'form_submision']);
+Route::post('/skipForm', [MemberController::class, 'skipForm']);
 
 

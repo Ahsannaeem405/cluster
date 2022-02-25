@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ApplyService;
 use App\Models\Cluster;
 use App\Models\Event;
 use App\Models\EventJoin;
@@ -9,7 +10,9 @@ use App\Models\JoinCluster;
 use App\Models\RequestCluster;
 use App\Models\Service;
 use App\Models\User;
+use App\Models\SurveryNumber;
 use GuzzleHttp\Psr7\Request as Psr7Request;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Mail\Mailable;
@@ -170,7 +173,57 @@ class ClusterController extends Controller
         // return view('admin.view_cluster', compact('viewCluster'));
 
     }
+    public function edit_event(Request $request,$id)
+    {
+        
 
+        $cat = null;
+
+        $event =Event::find($id);
+
+        if (isset($request->image)) {
+            $request->validate([
+                'image' => 'image|mimes:jpeg,png,jpg,svg|max:2048'
+            ]);
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $event->image = $imageName;
+            $path = $image->move('images', $imageName);
+        }
+
+
+        $event->name = $request->name;
+        $event->Event_type = $request->Event_type;
+        $event->join_cluster_ID = $request->mangerID;
+        $event->cluster_id = $request->cluster_id;
+        $event->location = $request->location;
+        $event->datetimepicker = $request->datetimepicker;
+        $event->time = $request->time;
+        $event->time_type = $request->time_type;
+        $event->timezone = $request->timezone;
+        $event->description = $request->description;
+        $event->type_Emj = $request->type_Emj;
+        $event->manager_cluster = $request->manager_cluster;
+        $event->userid = Auth::user()->id;
+        $event->save();
+
+
+        return redirect()->back()->with('success', 'Event Updated Sucessfully!');
+    }
+
+    public function deleteEvent($id)
+    {
+        $joinEvent=EventJoin::where('event_id',$id)->get();
+        foreach($joinEvent as $list)
+        {
+            $deleteEventJoin=EventJoin::find($list->id);
+            $deleteEventJoin->delete();
+        }
+        $event =Event::find($id);
+        $event->delete();
+        return redirect()->back()->with('error', 'Event Deleted Sucessfully!');
+
+    }
     public function add_events(Request $request)
     {
 
@@ -260,7 +313,7 @@ class ClusterController extends Controller
 
 
         $clus = Cluster::all()->count();
-
+        $serv = SurveryNumber::all();
 
 
         $i = 01;
@@ -290,7 +343,7 @@ class ClusterController extends Controller
         $eve = Event::all()->count();
         $ser = Service::all()->count();
 
-        return view('admin.index', compact('clus', 'eve', 'ser', 'cluster', 'clusterr'));
+        return view('admin.index', compact('clus', 'eve', 'ser', 'cluster', 'clusterr','serv'));
     }
 
 
@@ -666,6 +719,37 @@ class ClusterController extends Controller
 
     public function deleteCluster($id)
     {
+      
+       
+        $service = Service::where('cluster_id',$id)->get();
+        foreach( $service as  $list)
+        {
+             $service_delete=Service::find($list->id);
+             $service_delete->delete();
+        }
+
+        $joinEvent = EventJoin::where('cluster_id',$id)->get();
+    
+        foreach( $joinEvent as  $list)
+        {
+             $joinE_delete=EventJoin::find($list->id);
+             $joinE_delete->delete();
+        }
+        $event = Event::where('cluster_id',$id)->get();
+        foreach( $event as  $list)
+       {
+            $event_delete=Event::find($list->id);
+            $event_delete->delete();
+       }
+
+       $joinCluster = JoinCluster::where('cluster_id',$id)->get();
+       foreach( $joinCluster as  $list)
+       {
+            $join_delete=JoinCluster::find($list->id);
+            $join_delete->delete();
+       }
+
+       
         $clustor = Cluster::find($id);
 
         if (\File::exists(public_path('images/' . $clustor->image . ''))) {
@@ -673,6 +757,7 @@ class ClusterController extends Controller
             \File::delete(public_path('images/' . $clustor->image . ''));
         }
         $clustor->delete();
+   
         return redirect()->back()->with('error', 'Cluster Deleted Successfully!');
     }
 

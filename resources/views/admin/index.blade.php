@@ -1,3 +1,4 @@
+
 @extends('admin.layout')
 @section('page_title', 'Home Page')
 @section('content')
@@ -122,8 +123,200 @@
 
     </div>
 
+    
+		{{-- servey form --}}
+        @if(count($serv) > 0 )
+        @foreach ($serv as $servs)
+            {{-- @dd($servs->id , $servs->Survey->surveyID) --}}
+
+            @if (!$servs->Survey)
+            @php
+ 
+
+            @endphp
+        @if(!isset($_COOKIE['skip']))
+
+<button type="button" id="serveyModel" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">s</button>
+  @endif
+  @endif
+  @endforeach
+  @endif
+  
+  <!-- Modal -->
+  <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Servey Form</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="container" style="margin-top:0px">
+                <div class="offset-2 col-8"
+                    style="border: 2px solid darkgrey;border-radius: 15px;padding-left: 30px;">
+                    <div class="row">
+                        <?php
+                        $i = 1;
+                        ?>
+
+                        <form action="{{ url('form/submision') }}" method="POST">
+                            @csrf
+
+                            @if(count($serv) > 0 )
+                            @foreach ($serv as $servs)
+                                {{-- @dd($servs->id , $servs->Survey->surveyID) --}}
+
+                                @if (!$servs->Survey)
+                                    <input type="hidden" name="survyID[]" value="{{ $servs->id }}" id="">
 
 
+                                    <h2 class="text-center" style="margin-top: 56px;"> {{ $servs->title }}
+
+                                    </h2>
+
+                                    <div class="col-12">
+                                        {{-- @dd($servs->Ques); --}}
+                                        @foreach ($servs->Ques as $ques)
+                                            @if ($ques->question_type == 'radio')
+                                                <br>
+                                                <label for="">
+
+                                                    Question : </span> {{ $ques->question_title }}
+                                                    <span>
+
+                                                </label>
+                                            @endif
+
+                                            @foreach ($ques->Option as $quess)
+                                                <div class="col-12">
+                                                    {{-- @dd($ques->servey_id) --}}
+
+                                                    <input type="hidden" name="questionIDr[]"
+                                                        value="{{ $ques->id }}" id="">
+
+                                                    <input type="hidden" name="Formm[]"
+                                                        value="{{ $ques->servey_id }}" id="">
+
+                                                    <input type="hidden" name="optionID[]"
+                                                        value="{{ $quess->id }}" id="">
+
+                                                    @if (isset($quess->option1))
+                                                        <input class="form-check-input"
+                                                            value="{{ $quess->option1 }}" type="radio"
+                                                            name="option{{ $quess->id }}"
+                                                            id="flexRadioDefault1">
+                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                            {{ $quess->option1 }}
+                                                        </label>
+                                                    @endif
+
+
+
+                                                    <br>
+                                                    @if (isset($quess->option2))
+                                                        <input class="form-check-input" type="radio"
+                                                            value="{{ $quess->option2 }}"
+                                                            name="option{{ $quess->id }}"
+                                                            id="flexRadioDefault1">
+                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                            {{ $quess->option2 }}
+                                                        </label>
+                                                    @endif
+                                                    @if (isset($quess->option3))
+                                                        <br>
+
+                                                        <input class="form-check-input" type="radio"
+                                                            value="{{ $quess->option3 }}"
+                                                            name="option{{ $quess->id }}"
+                                                            id="flexRadioDefault1">
+                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                            {{ $quess->option3 }}
+
+
+                                                        </label>
+                                                    @endif
+                                                    @if (isset($quess->option4))
+                                                        <br>
+                                                        <input class="form-check-input" type="radio"
+                                                            value="{{ $quess->option4 }}"
+                                                            name="option{{ $quess->id }}"
+                                                            id="flexRadioDefault1">
+                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                            {{ $quess->option4 }}
+
+
+                                                        </label>
+                                                    @endif
+                                                </div>
+                                            @endforeach
+
+                                            @if ($ques->question_type == 'text')
+                                                <br>
+                                                <label for="">
+                                                    Question : {{ $ques->question_title }}
+                                                </label>
+                                                <input type="hidden" name="Form[]" value="{{ $ques->servey_id }}"
+                                                    id="">
+                                                <input type="hidden" name="questionID[]"
+                                                    value="{{ $ques->id }}" id="">
+                                                <input type="text" class="form-control" name="answer_text[]"
+                                                    id="">
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                @endif
+                            @endforeach
+
+
+                       
+                            <br>
+                            <br>
+                            {{-- @dd(count($submit)) --}}
+                            @if (!$servs->Survey)
+                                <input type="submit" class="btn btn-primary" value="Submit Form" id="">
+
+                                @else
+                                  
+                                <div class="accordion-item"
+                                style="    padding-left: 15px !important;padding-right: 15px !important;    padding: unset;margin-bottom: 11px;">
+                                <div class="jumbotron jumbotron-fluid"
+                                    style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;background: white;">
+                                    <div class="container">
+                                        <h5 class="text-center"> Your Servey Submitted</h5>
+                                    </div>
+                                </div>
+                            </div>
+                                @endif
+                            @else
+                            <div class="accordion-item"
+                            style="    padding-left: 15px !important;padding-right: 15px !important;    padding: unset;margin-bottom: 11px;">
+                            <div class="jumbotron jumbotron-fluid"
+                                style="    margin-bottom: 0;    border-radius: 5px 5px 0 0;background: white;">
+                                <div class="container">
+                                    <h5 class="text-center">No Survey Available</h5>
+                                </div>
+                            </div>
+                        </div>
+                            @endif
+                        </form>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <form action="{{url('skipForm')}}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-secondary">Skip</button>
+            </form>
+     
+
+        </div>
+      </div>
+    </div>
+  </div>
 
     <a class="back-to-top" href="#">
         <svg class="back-icon" width="14" height="18">
@@ -182,9 +375,17 @@ $i = 0;
         }
 
     </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
 
+    $(document).ready(function(){
+        $('#serveyModel').click();
+        $('#Skip').click(function(){
+            localStorage.setItem('user','SkipForm');
+       
+        });
+    });
 
 </script>
 

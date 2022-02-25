@@ -1,7 +1,10 @@
 {{-- @dd($viewCluster); --}}
 
 @extends('front.layout')
+
 @section('page_title','Home Page')
+
+
 @section('content')
     
 	<!--Home page Start-->
@@ -36,7 +39,7 @@
 							<div class="form-group clustor-sort d-flex align-items-center justify-content-around">
 							<label for="inputState">Sort By</label>
 							<select id="searchCluster" name="searchCluster" class=" w-75">
-								<option value="" selected>All Clusters</option>
+								<option value="all_cluster" selected>All Clusters</option>
 								<option value="top_cluster">Top Clusters</option>
 								<option value="most_popular">Most Popular</option>
 								<option value="most_newest">Most Newest</option>
@@ -148,7 +151,7 @@
 						</div>
 	
 						<div class="group-card-body">
-							<h4 class="event-name text-center">{{$eventlist->name}}</h4>
+							<h4 class="event-name text-center">{{Str::limit($eventlist->name, 10)}}</h4>
 							<div class="row py-2">
 								<div class="col-6">
 									<small><i class="fa fa-calendar mx-1"></i>{{date('m-d-Y',strtotime($eventlist->created_at))}}</small>
@@ -156,9 +159,13 @@
 								<div class="col-6 ">
 									<small class="text-end"><i class="fa fa-clock-o mx-1"></i>{{date('H:i A',strtotime($eventlist->created_at))}}</small>
 								</div>
-								<p class="event-dis mb-0 text-center">
-								{{Str::limit($eventlist->description, 20, $end='(read more)')}}
-								</p>
+								<details class="event-dis mb-0 text-center">
+									<summary>{{Str::limit($eventlist->description, 20, $end='...')}}</summary>
+									<p >
+										{{$eventlist->description}}
+										</p>								 
+									 </details>
+								
 							</div>
 	
 						</div>
@@ -220,10 +227,15 @@
 			</div>
 		</div>
 		</div>
+
+		
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 		<script>
 			$(document).ready(function(){
+			
+
 				$('#searchCluster').on('change', function() {
 					var search=$('#searchCluster').val();
 					$.ajax({

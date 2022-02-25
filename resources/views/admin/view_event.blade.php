@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('page_title', 'Event Page')
+@section('page_title', 'View Event Page')
 @section('content')
 
     <?php
@@ -8,7 +8,16 @@
     ?>
 
 
-
+@if ($message = Session::get('success'))
+<div class="alert alert-success ">
+    <strong>{{ $message }}</strong>
+</div>
+@endif
+@if ($message = Session::get('error'))
+<div class="alert alert-danger ">
+<strong>{{ $message }}</strong>
+</div>
+@endif
     <div class="main-header">
         <div class="content-bg-wrap bg-group event-manager-bg"
             style="background:  linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3)), url({{ asset('/img/events-manager.jpg') }})">
@@ -502,17 +511,144 @@
 
                                                 </td>
                                                 <td>
-                                                    <i class="fa fa-edit" style="font-size: 18px;" aria-hidden="true">
-                                                    </i>
+                                                    <i class="fa fa-edit text-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#edit-event{{$events->id}}" style="font-size: 18px;" aria-hidden="true"> </i>
                                                     &nbsp;
 
-                                                    <i class="fa fa-trash olymp-happy-faces-icon " style="font-size: 18px;"
-                                                        aria-hidden="true"> </i>
+                                                    <i data-bs-toggle="modal" data-bs-target="#delete-new-event{{$events->id}}" class="fa fa-trash olymp-happy-faces-icon text-danger" style="font-size: 18px;" aria-hidden="true"> </i>
 
                                                 </td>
 
 
                                             </tr>
+
+                                            <div class="modal fade" id="edit-event{{$events->id}}" tabindex="-1" role="dialog" aria-labelledby="create-event"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog window-popup create-event" role="document">
+                                                <div class="modal-content">
+                                                    <a href="#" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">
+                                                        <svg class="olymp-close-icon">
+                                                            <use xlink:href="#olymp-close-icon"></use>
+                                                        </svg>
+                                                    </a>
+                                                    <div class="modal-header">
+                                                        <h6 class="title">Edit an Event</h6>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <form action="{{ url("$role/edit/event") }}/{{$events->id}}" enctype="multipart/form-data" method="POST">
+                                                            @csrf
+
+                                                            <div class="form-group  is-select">
+                                                                <label class="control-label"> Event Type</label>
+                                                                <select class="form-select" name="Event_type">
+                                                                    <option value="Public" @if($events->Event_type == 'Public') selected @endif>Public Event</option>
+                                                                    <option value="Private" @if($events->Event_type == 'Private') selected @endif>Private Event</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="control-label">Event Name</label>
+                                                                <input class="form-control" name="name" value="{{$events->name}}" required placeholder="Enter Event Name"
+                                                                    type="text">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="control-label">Select Cluster</label>
+
+                                                                <select class="form-select cluster_id1" name="cluster_id">
+                                                                    @foreach ($clustor as $item)
+                                                                        <option value="{{ $item->id }}"  @if($events->cluster_id == $item->id) selected @endif>{{ $item->name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+
+
+                                                            <input type="hidden" value="" name="mangerID" id="mangerID">
+
+
+
+
+                                                            <div class="form-group  is-empty">
+                                                                <label class="control-label">Event Location</label>
+                                                                <input class="form-control"  required placeholder="Enter Event Location" name="location"
+                                                                value="{{$events->location}}" type="text">
+                                                            </div>
+
+
+
+                                                            <div class="form-group date-time-picker">
+                                                                <label class="control-label">Image</label>
+                                                                <input type="file"  name="image" class="form-control" value="">
+                                                                <img src="{{asset('images')}}/{{$events->image}}" width="80" height="80">
+                                                            </div>
+
+                                                            <div class="row">
+
+                                                                <div class=" col-lg-12 col-md-12 col-sm-12 col-12">
+                                                                    <div class="form-group date-time-picker">
+                                                                        <label class="control-label">Event Date</label>
+                                                                        <input value="{{$events->datetimepicker}}" required type="datetime-local" style="height: 40px;" name="datetimepicker"
+                                                                            class="form-control" name="date" >
+
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <textarea class="form-control" required placeholder="Event Description"
+                                                                    name="description">{{$events->description}}</textarea>
+                                                            </div>
+
+
+
+                                                            <input type="submit" class="btn btn-primary " value="Create Event" name="" id="">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        {{-- delte event --}}
+
+<div class="modal fade" id="delete-new-event{{$events->id}}" tabindex="-1" role="dialog"
+    aria-labelledby="create-friend-group-1" aria-hidden="true">
+    <div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
+        <div class="modal-content">
+            <a href="#" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon">
+                    <use xlink:href="#olymp-close-icon"></use>
+                </svg>
+            </a>
+            <div class="modal-header">
+                <h6 class="title">Delete Event</h6>
+            </div>
+
+            <div class="modal-body">
+                <div class="">
+                    <p>Are you sure you want to delete this Event <span class="text-danger">{{$events->name}}</span></p>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <form method="post" action="{{url('admin/deleteEvent')}}/{{$events->id}}">
+                            @csrf
+                            <button type="submit" class="btn btn-danger full-width" class="close icon-close" >Yes</button>
+                    </form>
+                    </div>
+                    <div class="col-6">
+                    <button href="#" class="btn btn-warning  full-width" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">No</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
                                         @endforeach
 
 
