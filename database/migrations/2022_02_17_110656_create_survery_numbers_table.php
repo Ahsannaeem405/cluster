@@ -16,7 +16,7 @@ class CreateSurveryNumbersTable extends Migration
         Schema::create('survery_numbers', function (Blueprint $table) {
             $table->id();
             $table->string('userID')->nullable();
-            $table->string('title')->nullable();
+            // $table->string('title')->nullable();
             $table->timestamps();
         });
     }
