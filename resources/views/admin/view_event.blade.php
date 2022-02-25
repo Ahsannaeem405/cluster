@@ -55,7 +55,7 @@
                                 <a class="nav-link join_evnt1">Joined Events</a>
                             </li>
 
-                            @if (Auth::user()->post_role == 'member' || Auth::user()->post_role == 'manager')
+                            @if (Auth::user()->role == 'admin' || Auth::user()->post_role == 'manager')
                                 <li class="nav-item">
                                     <a class="nav-link join_evnt12">Events list </a>
                                 </li>
