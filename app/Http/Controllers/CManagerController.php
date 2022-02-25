@@ -10,6 +10,8 @@ use App\Models\JoinCluster;
 use App\Models\Company;
 use App\Models\Setting;
 use App\Models\User;
+use App\Models\Event;
+use App\Models\EventJoin;
 use Laravel\Ui\Presets\React;
 
 class CManagerController extends Controller
@@ -45,7 +47,20 @@ class CManagerController extends Controller
             }
             foreach($cluster as $clusterList)
             {
-
+                $event = Event::where('cluster_id', $clusterList)->get();
+                if(!empty($event) )
+                {
+                    foreach($event as $events)
+                    {
+                        $joinEven =  new EventJoin();
+                        $joinEven->user_id =$userList;
+                        $joinEven->event_id =$events->id;
+                        $joinEven->cluster_id =  $clusterList;
+                        $joinEven->status =  'joined';
+                        $joinEven->save();
+                    }
+                }
+          
                 $clusteradd=new JoinCluster();
                 $clusteradd->cluster_id=$clusterList;
                 $clusteradd->user_id=$userList;
@@ -69,10 +84,32 @@ class CManagerController extends Controller
         foreach ($cluster_get as $row_cluster_d) {
             $clusterDelete = JoinCluster::find($row_cluster_d->id);
             $clusterDelete->delete();
+    
         }
+        $event_get = EventJoin::where('user_id', $id)->get();
+        foreach ($event_get as $row_event_d) {
+     
+        $eventDelete = EventJoin::find($row_event_d->id);
+        $eventDelete->delete();
+        }
+
         $clusters = $request->cluster;
 
         foreach ($clusters as $row_cluster) {
+            $event = Event::where('cluster_id', $row_cluster)->get();
+                if(!empty($event) )
+                {
+                    foreach($event as $events)
+                    {
+                        $joinEven =  new EventJoin();
+                        $joinEven->user_id =$id;
+                        $joinEven->event_id =$events->id;
+                        $joinEven->cluster_id =  $row_cluster;
+                        $joinEven->status =  'joined';
+                        $joinEven->save();
+                    }
+                }
+
             $cluster = new JoinCluster();
             $cluster->cluster_id = $row_cluster;
             $cluster->user_id = $id;

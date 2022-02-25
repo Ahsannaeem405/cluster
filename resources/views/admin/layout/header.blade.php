@@ -671,10 +671,23 @@ $dataa = App\Models\Answer::where('userID', Auth::user()->id)->count();
             <div class="control-block">
 
                 <div class="control-icon more has-items mt-2">
-                    <i class="far fa-bell text-white" aria-hidden="true">
-
-                    </i>
-
+                    <i class="far fa-bell text-white" aria-hidden="true"></i>
+                    <span style="
+                    position: absolute;
+                    backbround:red;
+                    background: red;
+                    width: 18px;
+                    height: 18px;
+                    border-radius: 50%;
+                    /* padding: 0px 5px; */
+                    color: white;
+                    top: -9px;
+                    left: 9px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 12px;
+                    "><small>{{count($cluss)}}</small></span>
                     <div class="more-dropdown more-with-triangle triangle-top-center">
                         <div class="ui-block-title ui-block-title-small">
                             <h6 class="title">Notifications</h6>
