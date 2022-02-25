@@ -20,6 +20,16 @@ class SurveryNumber extends Model
         return $this->hasOne('App\Models\SurveyReply', 'surveyID','id')->where('userID', Auth::user()->id);
     }
 
+    public function Cluster()
+    {
+        return $this->belongsTo('App\Models\Cluster', 'clusterid');
+    }
+
+    public function JoinCluster()
+    {
+        return $this->hasOne('App\Models\JoinCluster' ,  'cluster_id' , 'clusterid')->where('status', 2)->where('user_id', Auth::user()->id);
+    }
+
 
 
 }

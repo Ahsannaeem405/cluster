@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSurveryNumbersTable extends Migration
+class AddPaidToClusteridTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateSurveryNumbersTable extends Migration
      */
     public function up()
     {
-        Schema::create('survery_numbers', function (Blueprint $table) {
-            $table->id();
-            $table->string('userID')->nullable();
-            // $table->string('title')->nullable();
-            $table->timestamps();
+        Schema::table('survery_numbers', function (Blueprint $table) {
+            $table->string('clusterid')->nullable();
         });
     }
 
@@ -28,6 +25,8 @@ class CreateSurveryNumbersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('survery_numbers');
+        Schema::table('survery_numbers', function (Blueprint $table) {
+            //
+        });
     }
 }

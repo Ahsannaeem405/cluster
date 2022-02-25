@@ -301,8 +301,9 @@ class MemberController extends Controller
     public function survey_form()
     {
 
+        $cluster = Cluster::all();
 
-        return view('member.survey');
+        return view('member.survey', compact('cluster'));
     }
 
 
@@ -315,6 +316,7 @@ class MemberController extends Controller
             $serr = new SurveryNumber();
             $serr->userID = Auth::user()->id;
             $serr->title = $req->title;
+            $serr->clusterid = $req->clusterid;
             $serr->save();
         }
 
@@ -372,6 +374,10 @@ class MemberController extends Controller
             $optt->save();
         }
 
+        if($req->quesID != null)
+        {
+
+
         for ($i = 0; $i < count($req->quesID); $i++) {
 
 
@@ -380,6 +386,7 @@ class MemberController extends Controller
             $quee->question_title = $req->questioninp[$i];
             $quee->save();
         }
+    }
 
 
 
@@ -391,11 +398,13 @@ class MemberController extends Controller
     public function survey_create(Request $req)
     {
 
-        // dd($req->title);
+        // dd($req->clusterID);
 
         $serr = new SurveryNumber();
         $serr->userID = Auth::user()->id;
         $serr->title = $req->title;
+        $serr->clusterid = $req->clusterid;
+
         $serr->save();
 
         if ($req->question != null) {
@@ -526,10 +535,12 @@ class MemberController extends Controller
     public function survey_view()
     {
 
+        $cluster =  Cluster::all();
 
-        $serv = SurveryNumber::where('userID', Auth::user()->id)->get();
+        $servv = SurveryNumber::where('userID', Auth::user()->id)->get();
+        $serv = SurveryNumber::get();
 
-        return view('member.edit_survey', compact('serv'));
+        return view('member.edit_survey', compact('serv','servv' ,'cluster'));
     }
 
     public function invite_user(Request $request){

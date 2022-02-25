@@ -44,7 +44,17 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\JoinCluster', 'user_id');
     }
- 
+
+
+
+    public function Join()
+    {
+        return $this->hasOne('App\Models\EventJoin', 'user_id', 'id');
+    }
+
+
+
+
     /**
      * The attributes that should be cast.
      *
