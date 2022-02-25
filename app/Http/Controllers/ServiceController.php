@@ -183,7 +183,6 @@ class ServiceController extends Controller
     public function invite_user(Request $request)
     {
 
-        // dd($request);
 
         for ($i = 0; $i < count($request->userid); $i++) {
             $noti = new Notifica();

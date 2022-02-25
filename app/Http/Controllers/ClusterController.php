@@ -175,6 +175,11 @@ class ClusterController extends Controller
     {
 
 
+        $request->validate([
+            'image' => 'image|mimes:jpeg,png,jpg,svg|max:2048'
+        ]);
+
+
 
         $cat = null;
 
@@ -217,6 +222,9 @@ class ClusterController extends Controller
         $event->manager_cluster = $request->manager_cluster;
         $event->userid = Auth::user()->id;
         $event->save();
+
+        // dd($event);
+
         return redirect()->back()->with('success', 'Event Added Sucessfully!');
     }
     public function update_event(Request $request, $id)
@@ -293,14 +301,28 @@ class ClusterController extends Controller
     public function manger($id, $userID)
     {
 
-        // dd($userID);
+
 
         $users = User::find($userID);
         $users->post_role = 'manager';
+
         $users->save();
 
         $user = JoinCluster::find($id);
         $user->status = 2;
+
+
+        $event = Event::where('cluster_id', $user->cluster_id)->get();
+
+        foreach($event as $events)
+        {
+            $joinEven =  new EventJoin();
+            $joinEven->user_id =$userID;
+            $joinEven->event_id =$events->id;
+            $joinEven->cluster_id =  $user->cluster_id;
+            $joinEven->status =  'joined';
+            $joinEven->save();
+        }
         $user->save();
         return back()->with('success', 'Submitted Successfully');
     }
@@ -745,11 +767,11 @@ class ClusterController extends Controller
 
 
        $clus =  Cluster::find($request->id);
-
+       $type =  $clus->cluster_type;
 
         $mang = JoinCluster::Where('cluster_id', $request->id)->where('status', '!=', 0)->Where('user_id', Auth::user()->id)->first();
         if (isset($mang)) {
-            return response()->json(['joinID' => $mang->id]);
+            return response()->json(['joinID' => $mang->id, 'type' => $type ]);
         }
     }
 

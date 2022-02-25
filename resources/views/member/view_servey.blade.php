@@ -134,8 +134,11 @@
                                             <div class="modal-body">
 
                                                 <div class="form-group  is-select">
+                                                    @if($anss->Ques)
                                                     <label class="control-label"> Question :
+
                                                         {{ $anss->Ques->question_title }} </label>
+
 
                                                     {{-- @dd($anss->Ques->question_type) --}}
                                                     @if ($anss->Ques->question_type == 'radio')
@@ -178,6 +181,7 @@
                                                     @else
                                                         <input type="text" value="{{ $anss->Ques->answer_text }}" id="">
                                                     @endif
+                                                        @endif
 
 
 

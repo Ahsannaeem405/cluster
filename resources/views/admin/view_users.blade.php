@@ -67,7 +67,6 @@
                                 <td>{{ $users->User->last_name }}</td>
                                 <td>{{ $users->User->email }}</td>
                                 <td>{{ $users->User->dob }}</td>
-                                {{-- <td>{{ $users->User->role }}</td> --}}
                                 <td>
                                     <div class="author-page author vcard inline-items more">
                                         <div class="author-thumb">

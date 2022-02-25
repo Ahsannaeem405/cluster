@@ -46,10 +46,11 @@
                                 <a class="nav-link join_evnt1">Joined Events</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link join_evnt12">Events list </a>
-                            </li>
-
+                            @if (Auth::user()->post_role == 'member' || Auth::user()->post_role == 'manager')
+                                <li class="nav-item">
+                                    <a class="nav-link join_evnt12">Events list </a>
+                                </li>
+                            @endif
 
 
                         </ul>
@@ -116,7 +117,7 @@
                                                 <div class="accordion-item">
                                                     <div class="accordion-header" id="heading{{ $events->id }}">
                                                         <div class="event-time">
-                                                            <time>{{ date('H:i A', strtotime($events->datetimepicker)) }}
+                                                            <time>{{ date('h:i A', strtotime($events->datetimepicker)) }}
                                                             </time>
 
                                                         </div>
@@ -218,7 +219,7 @@
                                                         style="text-decoration: none">{{ $events->name }}</a>
                                                     <div class="event__date">
                                                         <time class="published" datetime="2017-03-24T18:18">
-                                                            {{ date('Y-m-d H:i A', strtotime($events->datetimepicker)) }}
+                                                            {{ date('Y-m-d h:i A', strtotime($events->datetimepicker)) }}
                                                         </time>
                                                     </div>
                                                 </div>
@@ -237,8 +238,8 @@
                                             <div class="row">
                                                 <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                                                     <div class="post__author author vcard inline-items">
-                                                        <img loading="lazy" src="{{ asset("images/$events->image") }}"
-                                                            width="36" height="36" alt="author">
+
+                                                        <i class="fa fa-user" style="font-size: 18px;"></i> &nbsp;
 
                                                         <div class="author-date">
                                                             <a class="h6 post__author-name fn"
@@ -246,7 +247,7 @@
                                                             join this
                                                             <a href="#">{{ $events->name }}</a>
                                                             <div class="post__date">
-                                                                <time>{{ date('H:i A', strtotime($events->datetimepicker)) }}
+                                                                <time>{{ date('h:i A', strtotime($events->datetimepicker)) }}
                                                                 </time>
                                                             </div>
                                                         </div>
@@ -262,20 +263,27 @@
                                                             <form method="post" action="{{ url("$role/invite/user") }}">
                                                                 @csrf
 
-
+                                                                <?php
+                                                                $get = $events->UserExist($events->id);
+                                                                ?>
 
                                                                 <label class="control-label">Invite User</label>
+
                                                                 <select required class="clusterMultiple" name="userid[]"
                                                                     size="1" multiple>
 
-                                                                    @foreach ($user as $users)
-                                                                        <option value="{{ $users->id }}">
-                                                                            {{ $users->first_name }}
-                                                                            {{ $users->last_name }}</option>
+                                                                    @foreach ($get as $gets)
+                                                                        @if ($gets->id != Auth::user()->id)
+                                                                            <option value="{{ $gets->id }}">
+                                                                                {{ $gets->first_name }}
+                                                                                {{ $gets->last_name }}
+                                                                            </option>
+                                                                        @endif
                                                                     @endforeach
+
                                                                 </select>
 
-                                                                {{-- </div> --}}
+
 
                                                                 <input type="hidden" value="{{ $events->cluster_id }}"
                                                                     name="clusterID" id="">
@@ -388,7 +396,7 @@
                                                 </td>
                                                 <td class="description event-as" atrr={{ $events->EventJoin->id }}>
 
-                                                    {{ date('Y-m-d H:i A', strtotime($events->EventJoin->datetimepicker)) }}
+                                                    {{ date('Y-m-d h:i A', strtotime($events->EventJoin->datetimepicker)) }}
 
                                                 </td>
 
@@ -453,8 +461,8 @@
                                             <th class="description">
                                                 EVENT DATE </th>
 
-                                                <th class="description">
-                                                  Action </th>
+                                            <th class="description">
+                                                Action </th>
 
 
                                         </tr>
@@ -469,9 +477,6 @@
 
 
                                         @foreach ($event as $events)
-
-
-
                                             <tr class="">
                                                 <td class="author">
                                                     {{ $i++ }}
@@ -480,27 +485,29 @@
 
                                                 <td class="description">
                                                     <img loading="lazy"
-                                                        src="{{ asset('images/') }}/{{ $events->image }}"
-                                                        alt="friend" width="38" height="38">
+                                                        src="{{ asset('images/') }}/{{ $events->image }}" alt="friend"
+                                                        width="38" height="38">
                                                 </td>
 
                                                 <td class="location">
                                                     {{ $events->name }}
 
                                                 </td>
-                                                <td class="upcoming " >
+                                                <td class="upcoming ">
                                                     {{ $events->description }}
                                                 </td>
                                                 <td class="description ">
 
-                                                    {{ date('Y-m-d H:i A', strtotime($events->datetimepicker)) }}
+                                                    {{ date('Y-m-d h:i A', strtotime($events->datetimepicker)) }}
 
                                                 </td>
                                                 <td>
-                                                    <i class="fa fa-edit" style="font-size: 18px;" aria-hidden="true"> </i>
+                                                    <i class="fa fa-edit" style="font-size: 18px;" aria-hidden="true">
+                                                    </i>
                                                     &nbsp;
 
-                                                    <i class="fa fa-trash olymp-happy-faces-icon " style="font-size: 18px;" aria-hidden="true"> </i>
+                                                    <i class="fa fa-trash olymp-happy-faces-icon " style="font-size: 18px;"
+                                                        aria-hidden="true"> </i>
 
                                                 </td>
 
@@ -559,7 +566,7 @@
                                                         style="text-decoration: none">{{ $events->EventJoin->name }}</a>
                                                     <div class="event__date">
                                                         <time class="published" datetime="2017-03-24T18:18">
-                                                            {{ date('Y-m-d H:i A', strtotime($events->EventJoin->datetimepicker)) }}
+                                                            {{ date('Y-m-d h:i A', strtotime($events->EventJoin->datetimepicker)) }}
 
                                                         </time>
                                                     </div>
@@ -588,7 +595,7 @@
                                                             <a href="#">{{ $events->EventJoin->name }}</a>
                                                             <div class="post__date">
                                                                 <time class="published" datetime="2017-03-24T18:18">
-                                                                    {{ date('H:i A', strtotime($events->EventJoin->datetimepicker)) }}
+                                                                    {{ date('h:i A', strtotime($events->EventJoin->datetimepicker)) }}
 
                                                                 </time>
                                                             </div>
@@ -607,16 +614,32 @@
                                                             <form method="post" action="{{ url("$role/invite/user") }}">
                                                                 @csrf
 
+
+                                                                <?php
+                                                                $get = $events->UserExist($events->id);
+                                                                ?>
+
+
                                                                 <label class="control-label">Invite User</label>
                                                                 <select required class="clusterMultiple" name="userid[]"
                                                                     size="1" multiple>
 
-                                                                    @foreach ($user as $users)
+                                                                    @foreach ($get as $gets)
+                                                                        @if ($gets->id != Auth::user()->id)
+                                                                            <option value="{{ $gets->id }}">
+                                                                                {{ $gets->first_name }}
+                                                                                {{ $gets->last_name }}
+                                                                            </option>
+                                                                        @endif
+                                                                    @endforeach
+
+                                                                    {{-- @foreach ($user as $users)
                                                                         <option value="{{ $users->id }}">
                                                                             {{ $users->first_name }}
                                                                             {{ $users->last_name }}</option>
-                                                                    @endforeach
+                                                                    @endforeach --}}
                                                                 </select>
+
 
 
                                                                 <input type="hidden" value="{{ $events->cluster_id }}"
@@ -678,9 +701,8 @@
 
                             <div class="form-group  is-select">
                                 <label class="control-label"> Event Type</label>
-                                <select class="form-select" name="Event_type">
-                                    <option value="Public">Public Event</option>
-                                    <option value="Private">Private Event</option>
+                                <select class="form-select evenType" name="Event_type">
+
                                 </select>
                             </div>
 
@@ -717,8 +739,14 @@
 
                             <div class="form-group date-time-picker">
                                 <label class="control-label">Image</label>
-                                <input type="file" required name="image" class="form-control" value="">
+                                <input type="file" accept="image/png, image/gif, image/jpg, image/jpeg" required
+                                    name="image" class="form-control" value="">
 
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <div class="row">
@@ -939,14 +967,21 @@
         $(document).ready(function() {
 
 
-            var clusterID = $(this).val();
-
+            var clusterID = $('.cluster_id1').val();
 
             $.ajax({
                 type: "GET",
                 url: "{{ url('getclusterID') }}?id=" + clusterID,
                 success: function(res) {
 
+                    if (res.type == 'Private') {
+                        $('.evenType').empty().append("<option value='Private'>Private Event</option>");
+                    } else {
+                        $('.evenType').empty().append(
+                            "<option value='Private'>Private Event</option><option value='Public'>Public Event</option>"
+                        );
+
+                    }
 
                     console.log(res.joinID);
 
@@ -959,14 +994,22 @@
             $(".cluster_id1").change(function() {
 
                 var clusterID = $(this).val();
-// alert(clusterID);
+                // alert(clusterID);
 
                 $.ajax({
                     type: "GET",
                     url: "{{ url('getclusterID') }}?id=" + clusterID,
                     success: function(res) {
 
+                        if (res.type == 'Private') {
+                            $('.evenType').empty().append(
+                                "<option value='Private'>Private Event</option>");
+                        } else {
+                            $('.evenType').empty().append(
+                                "<option value='Private'>Private Event</option><option value='Public'>Public Event</option>"
+                            );
 
+                        }
                         console.log(res.joinID);
 
                         $('#mangerID').empty().val(res.joinID);

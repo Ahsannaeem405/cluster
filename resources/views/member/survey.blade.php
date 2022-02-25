@@ -87,8 +87,16 @@
                                             @csrf
                                             <div class="col-12 title" style="display: none;margin-bottom: 17px;">
                                                     <h4 for=""> Enter Survey Title </h4>
-                                                    <input type="text" name="title" class="form-control" id="">
+                                                    <input type="text" name="title" required class="form-control" id="">
 
+                                                    <label for="" style="margin-top: 16px;">Select Cluster </label>
+
+                                                    <select name="clusterid" required class="form-control" id="" >
+                                                        @foreach ($cluster as $clusters)
+                                                        <option value="{{$clusters->id}}">{{$clusters->name  }}</option>
+
+                                                        @endforeach
+                                                    </select>
                                             </div>
 
                                             <div class="col-12 quest">

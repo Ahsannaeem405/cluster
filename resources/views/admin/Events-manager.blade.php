@@ -214,7 +214,7 @@
                                                     <div class="accordion-item">
                                                         <div class="accordion-header" id="heading{{ $events->id }}">
                                                             <div class="event-time">
-                                                                <time>{{ date('H:i A', strtotime($events->datetimepicker)) }}
+                                                                <time>{{ date('h:i A', strtotime($events->datetimepicker)) }}
                                                                 </time>
 
                                                             </div>
@@ -304,6 +304,9 @@
                                                 <svg class="olymp-three-dots-icon">
                                                     <use xlink:href="#olymp-three-dots-icon"></use>
                                                 </svg>
+
+                                                @if ((isset($mang->status) && $mang->status == 2) || Auth::user()->role == 'admin')
+
                                                 <ul class="more-dropdown">
                                                     <li>
                                                         <a data-bs-toggle="modal" data-bs-target="#edit-clus">Upload
@@ -321,6 +324,7 @@
                                                     </li>
 
                                                 </ul>
+                                                @endif
                                             </div>
 
                                         </div>
@@ -337,7 +341,7 @@
                                                 @else
 
 
-                                                    <input type="text" style="border: none;" required
+                                                    <input type="text" readonly style="border: none;" required
                                                         @if (isset($clust->cluster_overview)) value="{{ $clust->cluster_overview }}" @endif
                                                         placeholder="Enter Overview Detail" id="">
                                                 @endif
@@ -508,7 +512,7 @@
                                                                                     >
                                                                                     <time class="published" style="font-size: 15px;"
                                                                                         datetime="2004-07-24T18:18">
-                                                                                        {{ date('Y-m-d H:i A', strtotime( $events->datetimepicker))  }}
+                                                                                        {{ date('Y-m-d h:i A', strtotime( $events->datetimepicker))  }}
                                                                                     </time>
 
                                                                                     <details>
@@ -603,7 +607,7 @@
                                                                                        >
                                                                                         <time class="published"
                                                                                             datetime="2004-07-24T18:18"  style="font-size: 15px;">
-                                                                                            {{ date('Y-m-d H:i A', strtotime( $events->datetimepicker))  }}
+                                                                                            {{ date('Y-m-d h:i A', strtotime( $events->datetimepicker))  }}
 
                                                                                         </time>
                                                                                         <details>
@@ -852,8 +856,9 @@
                                 <ul class="widget w-activity-feed notification-list">
                                     @if (isset($joinn1) && count($joinn1) > 0)
                                         @foreach ($joinn1 as $joinns)
-                                            @if ($joinns->User->role != 'admin')
-                                                <li>
+                                            @if ($joinns->User->role != 'admin' &&  $joinns->User->post_role != 'member' &&  $joinns->User->post_role != 'manager')
+
+                                            <li>
                                                     <div class="author-thumb">
                                                         @if (isset($joinns->User->image))
                                                             <img alt="author"
@@ -1078,7 +1083,7 @@
 
                             <div class="form-group" style="text-align: start">
                                 <label for=""> Select User</label>
-                                <select class="clusterMultiple" name="userid[]" size="1" multiple>
+                                <select class="clusterMultiple" required name="userid[]" size="1" multiple>
 
                                     @foreach ($invite_user as $invite_users)
                                         <option value="{{ $invite_users->id }}">

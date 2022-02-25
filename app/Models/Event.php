@@ -24,14 +24,28 @@ class Event extends Model
 
     public function Join()
     {
-        return $this->hasOne('App\Models\EventJoin', 'event_id','id')->where('user_id',Auth::user()->id);
+        return $this->hasOne('App\Models\EventJoin', 'event_id', 'id')->where('user_id', Auth::user()->id);
     }
+
+
+    public function JoinEvent()
+    {
+        return $this->hasMany('App\Models\EventJoin', 'event_id', 'id');
+    }
+
 
 
     public function User()
-{
+    {
         return $this->belongsTo('App\Models\User', 'userid');
     }
 
-   
+
+    public function UserExist($id)
+    {
+      return User::whereDoesntHave('Join', function ($query) use ($id) {
+            $query->where('event_id', $id);
+        })->get();
+        // return $this->belongsTo('App\Models\User', 'userid');
+    }
 }
