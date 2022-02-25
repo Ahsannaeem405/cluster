@@ -123,7 +123,7 @@
 
     </div>
 
-    @if(Aurh::user()->role !='admin')
+    @if(Auth::user()->role !='admin')
 		{{-- servey form --}}
         @if(count($serv) > 0 )
         @foreach ($serv as $servs)
