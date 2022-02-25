@@ -752,7 +752,7 @@
 
 
                                                                 <?php
-                                                                $get = $events->UserExist($events->id);
+                                                                $get = $events->EventJoin->UserExist($events->id);
                                                                 ?>
 
 

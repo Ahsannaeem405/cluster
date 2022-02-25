@@ -111,7 +111,7 @@ class ClusterController extends Controller
         $event['event_join'] = EventJoin::where('user_id', Auth::user()->id)->get();
         $event['user'] = User::Where('role', '!=', 'admin')->get();
 
-dd($event['event']);
+// dd($event['event']);
         return view('admin.view_event', $event);
     }
 
