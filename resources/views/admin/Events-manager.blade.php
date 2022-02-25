@@ -280,9 +280,6 @@
                                 </div>
                             @endif
                             <div id="newsfeed-items-grid">
-
-
-
                                 <div class="ui-block">
 
                                     <!-- Search Result -->
@@ -390,38 +387,26 @@
                                                     @endif
                                                 @endforeach
                                             @endif
-                                            <a @if (isset($clus_img1[0])) href="{{ asset("images/$clus_img1[0]") }}" @endif
-                                                @if ($count_clus != 100 && $count_clus != 1) class="more-photos col col-3-width" @else class=" col col-3-width" @endif>
-                                                <img loading="lazy"
+                                            {{-- <a @if (isset($clus_img1[0])) href="{{ asset("images/$clus_img1[0]") }}" @endif
+                                                @if ($count_clus != 100 && $count_clus != 1) class="more-photos col col-3-width" @else class=" col col-3-width" @endif> --}}
+
+                                                <a @if (isset($clus_img1[0])) href="{{ asset("images/$clus_img1[0]") }}" @endif
+                                                @if ($count_clus != 100 && $count_clus != 1) class=" col col-3-width" @else class=" col col-3-width" @endif>
+                                                                                                <img loading="lazy"
                                                     @if (isset($clus_img1[0])) src="{{ asset("images/$clus_img1[0]") }}" @endif
                                                     alt="photo" width="600" height="600">
 
-                                                <span class="h2">
+                                                {{-- <span class="h2">
                                                     @if ($count_clus != 100 && $count_clus != 1)
                                                         {{ $count_clus - 1 }}
                                                     @endif
-                                                </span>
+                                                </span> --}}
                                             </a>
                                         </div>
 
                                         <div class="post-additional-info">
 
-                                            {{-- <ul class="friends-harmonic">
 
-                                                @if (isset($clus_img2))
-                                                    @foreach ($clus_img2 as $clus_imgs2)
-                                                        @if ($clus_imgs2 != null)
-                                                            <li>
-                                                                <a href="#">
-                                                                    <img loading="lazy"
-                                                                        src="{{ asset("images/$clus_imgs2") }}" alt="friend"
-                                                                        width="28" height="28">
-                                                                </a>
-                                                            </li>
-                                                        @endif
-                                                    @endforeach
-                                                @endif
-                                            </ul> --}}
                                             <div class="names-people-likes">
 
                                             </div>
