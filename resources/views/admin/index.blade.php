@@ -1,3 +1,4 @@
+
 @extends('admin.layout')
 @section('page_title', 'Home Page')
 @section('content')
@@ -130,10 +131,11 @@
 
             @if (!$servs->Survey)
             @php
-             $seconds ="<script>document.write(localStorage.getItem('user'));</script>";
-             $skip=$seconds;
+ 
+
             @endphp
-    @if(!isset($skip) || $skip !='SkipForm')
+        @if(!isset($_COOKIE['skip']))
+
 <button type="button" id="serveyModel" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">s</button>
   @endif
   @endif
@@ -305,7 +307,11 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" id="Skip" data-bs-dismiss="modal">Skip</button>
+            <form action="{{url('skipForm')}}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-secondary">Skip</button>
+            </form>
+     
 
         </div>
       </div>

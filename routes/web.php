@@ -440,5 +440,6 @@ Route::get('/searchCluster', [frontController::class, 'searchCluster']);
 Route::get('/searchClusterMain', [frontController::class, 'searchClusterMain']);
 
 Route::post('/form/submision', [MemberController::class, 'form_submision']);
+Route::post('/skipForm', [MemberController::class, 'skipForm']);
 
 
