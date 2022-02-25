@@ -851,7 +851,7 @@
                             <div class="form-group">
                                 <label class="control-label">Select Cluster</label>
 
-                                <select class="form-select cluster_id1" name="cluster_id">
+                                <select class="form-select cluster_id1" required name="cluster_id">
                                     @foreach ($clustor as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}
                                         </option>
