@@ -1130,12 +1130,12 @@
             $(".cluster_id1").change(function() {
 
                 var clusterID = $(this).val();
-                // alert(clusterID);
 
                 $.ajax({
                     type: "GET",
                     url: "{{ url('getclusterID') }}?id=" + clusterID,
                     success: function(res) {
+
 
                         if (res.type == 'Private') {
                             $('.evenType').empty().append(

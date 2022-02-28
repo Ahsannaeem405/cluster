@@ -854,9 +854,16 @@ class ClusterController extends Controller
        $clus =  Cluster::find($request->id);
        $type =  $clus->cluster_type;
 
+
         $mang = JoinCluster::Where('cluster_id', $request->id)->where('status', '!=', 0)->Where('user_id', Auth::user()->id)->first();
+
         if (isset($mang)) {
             return response()->json(['joinID' => $mang->id, 'type' => $type ]);
+        }
+        else
+        {
+            return response()->json([ 'type' => $type ]);
+
         }
     }
 
