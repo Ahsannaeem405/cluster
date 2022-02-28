@@ -42,7 +42,7 @@ Route::get('migrate', function () {
     $user->post_role = 'admin';
     $user->status = '1';
     $user->save();
-    return redirect('/admin');
+    return redirect('/login?signin');
 });
 
 Route::post('/profileSetting/{id}', [SettingController::class, 'profileSetting']);
